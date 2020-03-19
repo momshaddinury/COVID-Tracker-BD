@@ -33,7 +33,7 @@ class LoadingScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              'COVID-19 Tracker',
+              'COVID-19',
               style: TextStyle(
                 color: Colors.red,
                 fontSize: 50.0,

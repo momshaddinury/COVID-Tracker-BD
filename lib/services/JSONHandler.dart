@@ -4,7 +4,7 @@ import 'package:covidtrackerbd/initialize.dart';
 
 JSONHandler jsonHandler = JSONHandler();
 final String apiURL = "https://perceptronlab.com/project/covidtrackerbd";
-int infected, dead, recovered, dateTime;
+int infected, dead, recovery, dateTime;
 
 class JSONHandler {
   Map<String, dynamic> responseJSONDecode;
@@ -20,11 +20,11 @@ class JSONHandler {
       if (jsonHandler.responseJSONDecode.isNotEmpty) {
         infected = responseJSONDecode['infected'];
         dead = responseJSONDecode['death'];
-        recovered = responseJSONDecode['recovered'];
+        recovery = responseJSONDecode['recovered'];
 
         streamController.sink.add(infected);
         streamController.sink.add(dead);
-        streamController.sink.add(recovered);
+        streamController.sink.add(recovery);
 //        }
       }
     }

@@ -1,15 +1,14 @@
 import 'dart:convert';
 
+import 'package:covidtrackerbd/constants//country.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:covidtrackerbd/service & api/globalDataHandler.dart';
+import 'package:covidtrackerbd/services//globalDataHandler.dart';
 
-import 'package:covidtrackerbd/constants//helper.dart';
-import 'package:covidtrackerbd/constants//country.dart';
 
-import 'package:covidtrackerbd/widgets/details.dart';
-import 'package:covidtrackerbd/widgets/InfoShow.dart';
+import 'package:covidtrackerbd/Screens/widgets//details.dart';
+import 'package:covidtrackerbd/Screens/widgets/InfoShow.dart';
 
 
 class Global extends StatefulWidget {
@@ -20,7 +19,6 @@ class Global extends StatefulWidget {
 class _GlobalState extends State<Global> {
   @override
   void initState() {
-    super.initState();
     super.initState();
     totalCases = '100,679';
     deaths = '3,412';

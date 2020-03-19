@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   http: ^0.12.0+4
   neat_periodic_task: ^1.0.1
+  firebase_auth: ^0.15.5+2
 
 dev_dependencies:
   flutter_test:

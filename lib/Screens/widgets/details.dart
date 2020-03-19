@@ -1,10 +1,8 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../constants//country.dart';
-import '../constants//helper.dart';
-import 'InfoShow.dart';
+import 'package:covidtrackerbd/constants//country.dart';
+import 'package:covidtrackerbd/Screens/widgets/InfoShow.dart';
 
 class Details extends StatelessWidget {
   final List<Country> countries;
@@ -27,10 +25,21 @@ class Details extends StatelessWidget {
           builder: (BuildContext context, scrollController) {
             return Container(
               decoration: BoxDecoration(
-                color: Color(0xFFF5F5F5),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.red[200],
+                    blurRadius: 20.0, // soften the shadow
+                    spreadRadius: 1.0, //extend the shadow
+                    offset: Offset(
+                      5.0, // Move to right 10  horizontally
+                      -2.0, // Move to bottom 10 Vertically
+                    ),
+                  )
+                ],
+                color: Colors.white,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(35),
-                  topRight: Radius.circular(35),
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
                 ),
               ),
               child: Center(

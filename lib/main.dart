@@ -19,6 +19,8 @@ void main() {
   runApp(App());
 }
 
+/// App starts from here
+/// Go to Initialize.dart file
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class App extends StatelessWidget {
       title: 'Corona',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Quicksand'),
-      home: /*HomePage()*/ Initialize(),
+      home:  Initialize(),
     );
   }
 }

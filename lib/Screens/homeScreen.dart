@@ -1,11 +1,13 @@
-import 'package:covidtrackerbd/tabs//home.dart';
-import 'package:covidtrackerbd/tabs/global.dart';
-import 'package:covidtrackerbd/tabs/location.dart';
-import 'package:covidtrackerbd/tabs/survey.dart';
+import 'package:covidtrackerbd/Screens//tabs//home.dart';
+import 'package:covidtrackerbd/Screens/tabs/global.dart';
+import 'package:covidtrackerbd/Screens/tabs/location.dart';
+import 'package:covidtrackerbd/Screens/tabs/survey.dart';
+import 'package:covidtrackerbd/initialize.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 HomeScreen homeScreen = HomeScreen();
+int cIndex = 0;
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,27 +15,31 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _cIndex = 0;
+  ///Current index of bottomNavigationBar item
 
+  ///List of all the tabs
   final tabs = [
     Home(),
     Location(),
     Global(),
-    Survery(),
+    Survey(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.redAccent,
+          backgroundColor: Colors.red[700],
           title: Text(
-            "COVID19 Live Tracker (BETA)",
-            style: TextStyle(color: Colors.white, fontSize: 30),
+            "COVID 19 - BD",
+            style: TextStyle(color: Colors.white, fontSize: 20),
           ),
         ),
-        backgroundColor: Color(0xFFF5F5F5),
-        body: tabs[_cIndex],
+        backgroundColor: Colors.white,
+
+        ///Houses all the tabs and changes based on onTap of
+        ///bottomNavigationBar items
+        body: tabs[cIndex],
         bottomNavigationBar: Theme(
           data: Theme.of(context).copyWith(
               // sets the background color of the `BottomNavigationBar`
@@ -42,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
               primaryColor: Colors.white),
           child: BottomNavigationBar(
             backgroundColor: Colors.redAccent,
-            currentIndex: _cIndex,
+            currentIndex: cIndex,
             type: BottomNavigationBarType.shifting,
             items: [
               BottomNavigationBarItem(
@@ -55,12 +61,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: Icon(Icons.public, color: Colors.white),
                   title: new Text('Global')),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.healing, color: Colors.white),
-                  title: new Text('Recover')),
+                  icon: Icon(Icons.rate_review, color: Colors.white),
+                  title: new Text('Online Test')),
             ],
             onTap: (index) {
+              ///onTap change the index to move to respective tab
               setState(() {
-                _cIndex = index;
+                cIndex = index;
               });
             },
           ),
