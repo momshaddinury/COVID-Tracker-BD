@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class InfoShow extends StatelessWidget {
+class InfoShow extends StatefulWidget {
   final String top, left, right;
   final double size;
 
@@ -10,7 +10,11 @@ class InfoShow extends StatelessWidget {
     this.right,
     this.size,
   });
+  @override
+  _InfoShowState createState() => _InfoShowState();
+}
 
+class _InfoShowState extends State<InfoShow> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,16 +23,16 @@ class InfoShow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            getInfo('Total Cases:', top, true, Colors.orange),
+            getInfo('Total Cases:', widget.top, true, Colors.orange),
             SizedBox(
-              height: size,
+              height: widget.size,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                getInfo('Deaths', left, false, Colors.red),
-                getInfo('Recovered:', right, false, Colors.blue),
+                getInfo('Deaths', widget.left, false, Colors.red),
+                getInfo('Recovered:', widget.right, false, Colors.blue),
               ],
             ),
           ],
@@ -48,14 +52,14 @@ class InfoShow extends StatelessWidget {
               text,
               style: TextStyle(
                 color: color,
-                fontSize: size * (top ? 1 : 0.8),
+                fontSize: widget.size * (top ? 1 : 0.8),
               ),
             ),
             Text(
               number,
               style: TextStyle(
                 color: color,
-                fontSize: size * (top ? 1 : 0.8),
+                fontSize: widget.size * (top ? 1 : 0.8),
               ),
             ),
           ],
@@ -64,3 +68,4 @@ class InfoShow extends StatelessWidget {
     );
   }
 }
+

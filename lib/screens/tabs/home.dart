@@ -1,26 +1,16 @@
-import 'package:covidtrackerbd/Screens/homeScreen.dart';
-import 'package:covidtrackerbd/Screens/tabs/survey.dart';
 import 'package:covidtrackerbd/Screens/widgets/InfoShow.dart';
-import 'package:covidtrackerbd/initialize.dart';
 import 'package:covidtrackerbd/services/JSONHandler.dart';
-import 'package:covidtrackerbd/services/globalDataHandler.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
+  Home(this.goToOnlineTestTab);
+  final Function goToOnlineTestTab;
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  @override
-  void initState() {
-    super.initState();
-    totalCases = '$infected';
-    deaths = '$dead';
-    recovered = '$recovery';
-  }
-
   @override
   Widget build(BuildContext context) {
     final data = MediaQuery.of(context);
@@ -47,9 +37,9 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 InfoShow(
-                  top: totalCases,
-                  left: deaths,
-                  right: recovered,
+                  top: infected.toString(),
+                  left: dead.toString(),
+                  right: recovery.toString(),
                   size: data.size.width * 0.1,
                 ),
                 Container(),
@@ -64,6 +54,17 @@ class _HomeState extends State<Home> {
                           )),
                       Container(
                         margin: EdgeInsets.all(20),
+                        decoration: BoxDecoration(boxShadow: [
+                          BoxShadow(
+                            color: Colors.black45,
+                            blurRadius: 10.0, // soften the shadow
+                            spreadRadius: 1.0, //extend the shadow
+                            offset: Offset(
+                              0.0, // Move to right 10  horizontally
+                              2.0, // Move to bottom 10 Vertically
+                            ),
+                          )
+                        ]),
                         child: FlatButton(
                           padding: EdgeInsets.all(20),
                           child: Text(
@@ -74,12 +75,9 @@ class _HomeState extends State<Home> {
                           ),
                           color: Colors.redAccent,
                           textColor: Colors.white,
-                          onPressed: () {
-                            print('Submit');
-                            streamController.sink.add(3);
-                          }
+                          onPressed: widget.goToOnlineTestTab,
                         ),
-                      ),
+                      )
                     ],
                   ),
                 )
@@ -91,3 +89,4 @@ class _HomeState extends State<Home> {
     );
   }
 }
+

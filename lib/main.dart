@@ -16,6 +16,8 @@ import 'package:flutter/material.dart';
 import 'initialize.dart';
 
 void main() {
+  /*WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIOverlays([]);*/
   runApp(App());
 }
 

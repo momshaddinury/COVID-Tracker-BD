@@ -1,13 +1,9 @@
-import 'package:covidtrackerbd/Screens//tabs//home.dart';
+import 'package:covidtrackerbd/Screens/tabs/home.dart';
 import 'package:covidtrackerbd/Screens/tabs/global.dart';
 import 'package:covidtrackerbd/Screens/tabs/location.dart';
-import 'package:covidtrackerbd/Screens/tabs/survey.dart';
-import 'package:covidtrackerbd/initialize.dart';
+import 'package:covidtrackerbd/screens/tabs/survey/survey.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-HomeScreen homeScreen = HomeScreen();
-int cIndex = 0;
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -16,17 +12,43 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   ///Current index of bottomNavigationBar item
+  int cIndex = 0;
+
+  @override
+  void initState() {
+    /*totalCases = '$infected';
+    deaths = '$dead';
+    recovered = '$recovery';*/
+    super.initState();
+  }
+
+  void goToOnlineTestTab() {
+    setState(() {
+      cIndex = 3;
+    });
+  }
 
   ///List of all the tabs
-  final tabs = [
-    Home(),
-    Location(),
-    Global(),
-    Survey(),
-  ];
+  Widget tabs() {
+    switch (cIndex) {
+      case 0:
+        return Home(goToOnlineTestTab);
+        break;
+      case 1:
+        return Location();
+        break;
+      case 2:
+        return Global();
+        break;
+      case 3:
+        return Survey();
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    print('homeScreen');
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.red[700],
@@ -39,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
         ///Houses all the tabs and changes based on onTap of
         ///bottomNavigationBar items
-        body: tabs[cIndex],
+        body: tabs(),
         bottomNavigationBar: Theme(
           data: Theme.of(context).copyWith(
               // sets the background color of the `BottomNavigationBar`

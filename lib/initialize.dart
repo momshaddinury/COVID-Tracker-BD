@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:covidtrackerbd/Screens/homeScreen.dart';
+import 'package:covidtrackerbd/services/locatioinService.dart';
 import 'package:flutter/material.dart';
 import 'package:covidtrackerbd/services/JSONHandler.dart';
 import 'Screens/loadingScreen.dart';
@@ -17,10 +18,10 @@ class Initialize extends StatefulWidget {
 }
 
 class _InitializeState extends State<Initialize> {
-
   /// Calls two process
   tasks() async {
     await jsonHandler.fetchData();
+    await getLocation();
     await scheduler();
   }
 
@@ -28,7 +29,7 @@ class _InitializeState extends State<Initialize> {
   scheduler() async {
     // Create a periodic task that prints 'Hello World' every 30s
     final scheduler = NeatPeriodicTaskScheduler(
-      interval: Duration(seconds: 120),
+      interval: Duration(seconds: 15),
       name: 'Fetch Data',
       timeout: Duration(seconds: 5),
       task: () async => jsonHandler.fetchData(),
@@ -59,9 +60,11 @@ class _InitializeState extends State<Initialize> {
             ///If fetchData() resulted in error
             if (snapShot.hasError) {
               Text("Error");
-            } else if (snapShot.connectionState == ConnectionState.waiting) { ///if fetch data is working to fetch data
+            } else if (snapShot.connectionState == ConnectionState.waiting) {
+              ///if fetch data is working to fetch data
               return LoadingScreen();
             }
+
             ///If fetchData() successfully fetched data
             return HomeScreen();
           },

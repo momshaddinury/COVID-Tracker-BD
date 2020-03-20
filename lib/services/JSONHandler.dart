@@ -11,13 +11,14 @@ class JSONHandler {
 
   fetchData() async {
     print("fetchData()");
-    await Future.delayed(Duration(seconds: 1));
+    //await Future.delayed(Duration(seconds: 1));
     http.Response response = await http.get(apiURL);
 
     if (response.statusCode == 200) {
       jsonHandler.decodeJson(response.body);
 
       if (jsonHandler.responseJSONDecode.isNotEmpty) {
+        print("[JOSNs]: $responseJSONDecode");
         infected = responseJSONDecode['infected'];
         dead = responseJSONDecode['death'];
         recovery = responseJSONDecode['recovered'];
@@ -25,7 +26,6 @@ class JSONHandler {
         streamController.sink.add(infected);
         streamController.sink.add(dead);
         streamController.sink.add(recovery);
-//        }
       }
     }
   }

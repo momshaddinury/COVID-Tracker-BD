@@ -10,7 +10,15 @@ class _LocationState extends State<Location> {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text("Location tab is under development"),
+        child: Text(
+          "This tab will be a web view. Under development",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 30,
+            color: Colors.red,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
       ),
     );
   }

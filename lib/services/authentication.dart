@@ -1,8 +1,14 @@
-import 'package:covidtrackerbd/constants/users.dart';
+import 'package:covidtrackerbd/model/users.dart';
+import 'package:covidtrackerbd/screens/tabs/survey/loggedIn.dart';
+import 'package:covidtrackerbd/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+FirebaseUser userUID;
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+//  PatientDataModel model;
 
   // create user obj based on firebase user
   User _userFromFirebaseUser(FirebaseUser user) {
@@ -18,18 +24,52 @@ class AuthService {
   Future signInAnon() async {
     try {
       AuthResult result = await _auth.signInAnonymously();
-      FirebaseUser user = result.user;
-      return _userFromFirebaseUser(user);
+      userUID = result.user;
+      print("userUID: ${userUID.uid}");
+      return _userFromFirebaseUser(userUID);
     } catch (e) {
       print(e.toString());
       return null;
     }
   }
 
-// sign in with email and password
+  Future updateDB() async {
+//    print("updateDB");
+//    print(model.fullName);
+//    print(model.age);
+//    print(model.phoneNumber);
+//    print(model.profession);
+//    print(model.breathCount);
+//    print(model.temp);
+//    print(model.interaction);
+    // create a new document for the user with uid
+    await DatabaseService(uid: userUID.uid).updateData(
+      fullName,
+      gender,
+      age,
+      phoneNumber,
+      isInfected,
+      profession,
+      breathCount,
+      temp,
+      interaction,
+      date,
+      isContacted,
+      location,
+    );
+  }
 
-// register with email and password
+  // sign in with email and password
 
-// sign out
+  // register with email and password
 
+  // sign out
+  Future signOut() async {
+    try {
+      return await _auth.signOut();
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
 }

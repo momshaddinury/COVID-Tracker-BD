@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:covidtrackerbd/constants//country.dart';
+import 'package:covidtrackerbd/model//country.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:covidtrackerbd/services//globalDataHandler.dart';
+import 'package:covidtrackerbd/model//globalDataHandler.dart';
 
 
 import 'package:covidtrackerbd/Screens/widgets//details.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:covidtrackerbd/constants//country.dart';
+import 'package:covidtrackerbd/model//country.dart';
 import 'package:covidtrackerbd/Screens/widgets/InfoShow.dart';
 
 class Details extends StatelessWidget {
