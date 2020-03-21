@@ -30,7 +30,9 @@ class App extends StatelessWidget {
       title: 'Corona',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Quicksand'),
-      home:  Initialize(),
+      home: SafeArea(
+        child: Initialize(),
+      ),
     );
   }
 }

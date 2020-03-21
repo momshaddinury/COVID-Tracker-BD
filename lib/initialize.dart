@@ -53,22 +53,20 @@ class _InitializeState extends State<Initialize> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Center(
-        child: StreamBuilder(
-          stream: streamController.stream,
-          builder: (context, snapShot) {
-            ///If fetchData() resulted in error
-            if (snapShot.hasError) {
-              Text("Error");
-            } else if (snapShot.connectionState == ConnectionState.waiting) {
-              ///if fetch data is working to fetch data
-              return LoadingScreen();
-            }
+      body: StreamBuilder(
+        stream: streamController.stream,
+        builder: (context, snapShot) {
+          ///If fetchData() resulted in error
+          if (snapShot.hasError) {
+            Text("Error");
+          } else if (snapShot.connectionState == ConnectionState.waiting) {
+            ///if fetch data is working to fetch data
+            return LoadingScreen();
+          }
 
-            ///If fetchData() successfully fetched data
-            return HomeScreen();
-          },
-        ),
+          ///If fetchData() successfully fetched data
+          return HomeScreen();
+        },
       ),
     );
   }

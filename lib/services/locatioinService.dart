@@ -1,4 +1,4 @@
-import 'package:covidtrackerbd/screens/tabs/survey/loggedIn.dart';
+import 'package:covidtrackerbd/model/patientDataModel.dart';
 import 'package:geolocator/geolocator.dart';
 
 getLocation() async {

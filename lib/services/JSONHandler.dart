@@ -12,6 +12,7 @@ class JSONHandler {
   fetchData() async {
     print("fetchData()");
     //await Future.delayed(Duration(seconds: 1));
+
     http.Response response = await http.get(apiURL);
 
     if (response.statusCode == 200) {

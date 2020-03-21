@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:covidtrackerbd/services/authentication.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 
 class LoggedOut extends StatefulWidget {
@@ -13,6 +14,7 @@ class _LoggedOutState extends State<LoggedOut> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -35,35 +37,52 @@ class COVIDTestStartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black45,
-            blurRadius: 10.0, // soften the shadow
-            spreadRadius: 1.0, //extend the shadow
-            offset: Offset(
-              0.0, // Move to right 10  horizontally
-              2.0, // Move to bottom 10 Vertically
-            ),
-          )
-        ],
-      ),
-      margin: EdgeInsets.all(20),
-      child: FlatButton(
-        padding: EdgeInsets.all(20),
-        child: Text(
-          'Start Online COVID Test',
-          style: TextStyle(
-            fontSize: 25,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Container(
+          child: Image.asset(
+            'assets/3337528.jpg',
+            fit: BoxFit.contain,
+            height: 250,
+            width: 250,
           ),
         ),
-        color: Colors.red[400],
-        textColor: Colors.white,
-        onPressed: () async {
-          await auth.signInAnon();
-        },
-      ),
+        SizedBox(height: 40,),
+        Center(
+          child: Text(
+            "Am I Infected With Coronavirus?",
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 30.0,
+              ),
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+          ),
+          margin: EdgeInsets.all(20),
+          child: FlatButton(
+            padding: EdgeInsets.all(20),
+            child: Text(
+              'COVID-19 Report Submission',
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            color: Colors.red[400],
+            textColor: Colors.white,
+            onPressed: () async {
+              await auth.signInAnon();
+              SpinKitPulse(
+                color: Colors.redAccent,
+                size: 60.0,
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }

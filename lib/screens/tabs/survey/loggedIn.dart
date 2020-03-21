@@ -1,22 +1,10 @@
+/*
+import 'package:covidtrackerbd/model/patientDataModel.dart';
 import 'package:covidtrackerbd/model/users.dart';
 import 'package:covidtrackerbd/services/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'loggedOut.dart';
-
-
-String fullName;
-String gender;
-int age;
-String phoneNumber;
-String isInfected;
-String profession;
-int breathCount;
-int temp;
-int interaction;
-String date;
-String isContacted;
-String location;
 
 class LogInToSubmit extends StatefulWidget {
   @override
@@ -24,7 +12,6 @@ class LogInToSubmit extends StatefulWidget {
 }
 
 class _LogInToSubmitState extends State<LogInToSubmit> {
-
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
@@ -34,7 +21,7 @@ class _LogInToSubmitState extends State<LogInToSubmit> {
     } else {
       return Scaffold(
         body: Container(
-          color: Colors.white,
+//          color: Colors.white,
           child: SingleChildScrollView(
             child: Center(
               child: Column(
@@ -63,7 +50,6 @@ class _COVIDFormState extends State<COVIDForm> {
   @override
   Widget build(BuildContext context) {
     final AuthService auth = AuthService();
-//    PatientDataModel model = PatientDataModel();
     final halfMediaWidth = MediaQuery.of(context).size.width / 2.0;
 
     return Form(
@@ -73,6 +59,7 @@ class _COVIDFormState extends State<COVIDForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            SizedBox(height: 20,),
             Center(
               child: Text(
                 "PLEASE STAY HOME, STAY SAFE",
@@ -122,12 +109,14 @@ class _COVIDFormState extends State<COVIDForm> {
                   width: halfMediaWidth,
                   child: FormField(
                     hintText: "Gender",
-                    /*validator: (String value) {
+                    */
+/*validator: (String value) {
                       if (value.isEmpty) {
                         return "Enter your gender";
                       }
                       return null;
-                    },*/
+                    },*//*
+
                     onSaved: (String value) {
                       gender = value;
                     },
@@ -180,12 +169,14 @@ class _COVIDFormState extends State<COVIDForm> {
               width: halfMediaWidth,
               child: FormField(
                 hintText: "Are you showing any symptoms? (Yes/No)",
-                /*validator: (String value) {
+                */
+/*validator: (String value) {
                   if (value.isEmpty) {
                     return "Enter your response";
                   }
                   return null;
-                },*/
+                },*//*
+
                 onSaved: (String value) {
                   isInfected = value;
                 },
@@ -268,6 +259,7 @@ class _COVIDFormState extends State<COVIDForm> {
                 },
               ),
             ),
+            // Symptoms First Shown
             Container(
               alignment: Alignment.topCenter,
               width: halfMediaWidth,
@@ -278,67 +270,78 @@ class _COVIDFormState extends State<COVIDForm> {
                 },
               ),
             ),
+            // Came in contact w NRB
             Container(
               alignment: Alignment.topCenter,
               width: halfMediaWidth,
               child: FormField(
                 hintText:
                     "Did you come in contact with anyone from abroad? (Yes/No)",
-                /*validator: (bool value) {
+                */
+/*validator: (bool value) {
                   if (value == null) {
                     return "Enter your response";
                   }
                   return null;
-                },*/
+                },*//*
+
                 onSaved: (String value) {
                   isContacted = value;
                 },
               ),
             ),
-            /*SubmitButton(auth: auth),*/
-            Container(
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(
-                  color: Colors.black45,
-                  blurRadius: 10.0, // soften the shadow
-                  spreadRadius: 1.0, //extend the shadow
-                  offset: Offset(
-                    0.0, // Move to right 10  horizontally
-                    2.0, // Move to bottom 10 Vertically
-                  ),
-                )
-              ]),
-              margin: EdgeInsets.all(10),
-              child: FlatButton(
-                padding: EdgeInsets.all(15),
-                child: Text(
-                  'SUBMIT',
-                  style: TextStyle(
-                    fontSize: 25,
+
+            */
+/*SubmitButton(auth: auth),*//*
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Expanded(
+                  child: Container(
+                    width: halfMediaWidth,
+                    margin: EdgeInsets.all(15),
+                    child: FlatButton(
+                      padding: EdgeInsets.all(12),
+                      child: Text(
+                        'GO BACK',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      color: Color(0xFFFF4041),
+                      textColor: Colors.white,
+                      onPressed: () async {
+                        await auth.signOut();
+                      },
+                    ),
                   ),
                 ),
-                color: Colors.red[400],
-                textColor: Colors.white,
-                onPressed: () async {
-                  if (formKey.currentState.validate()) {
-                    formKey.currentState.save();
-                    /* PatientDataModel(
-                        fullName: fullName,
-                        gender: gender,
-                        age: age,
-                        phoneNumber: phoneNumber,
-                        isInfected: isInfected,
-                        profession: profession,
-                        breathCount: breathCount,
-                        temp: temp,
-                        interaction: interaction,
-                        date: date,
-                        isContacted: isContacted);*/
-                    await auth.updateDB();
-                    await auth.signOut();
-                  }
-                },
-              ),
+                Expanded(
+                  child: Container(
+                    width: halfMediaWidth,
+                    margin: EdgeInsets.all(15),
+                    child: FlatButton(
+                      padding: EdgeInsets.all(12),
+                      child: Text(
+                        'SUBMIT',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      color: Color(0xFF303F9F),
+                      textColor: Colors.white,
+                      onPressed: () async {
+                        if (formKey.currentState.validate()) {
+                          formKey.currentState.save();
+                          await auth.updateDB();
+                          await auth.signOut();
+                        }
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
@@ -375,3 +378,4 @@ class FormField extends StatelessWidget {
     );
   }
 }
+*/

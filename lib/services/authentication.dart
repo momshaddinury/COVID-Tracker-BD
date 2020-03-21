@@ -1,5 +1,5 @@
+import 'package:covidtrackerbd/model/patientDataModel.dart';
 import 'package:covidtrackerbd/model/users.dart';
-import 'package:covidtrackerbd/screens/tabs/survey/loggedIn.dart';
 import 'package:covidtrackerbd/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -44,19 +44,18 @@ class AuthService {
 //    print(model.interaction);
     // create a new document for the user with uid
     await DatabaseService(uid: userUID.uid).updateData(
-      fullName,
-      gender,
-      age,
-      phoneNumber,
-      isInfected,
-      profession,
-      breathCount,
-      temp,
-      interaction,
-      date,
-      isContacted,
-      location,
-    );
+        fullName,
+        age,
+        gender,
+        profession,
+        phoneNumber,
+        isContacted,
+        date,
+        breathCount,
+        fever,
+        symptoms,
+        location,
+        riskGroup);
   }
 
   // sign in with email and password

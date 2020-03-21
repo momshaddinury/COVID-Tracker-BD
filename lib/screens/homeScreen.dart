@@ -1,6 +1,6 @@
-import 'package:covidtrackerbd/Screens/tabs/home.dart';
-import 'package:covidtrackerbd/Screens/tabs/global.dart';
 import 'package:covidtrackerbd/Screens/tabs/location.dart';
+import 'package:covidtrackerbd/screens/tabs/developerStory.dart';
+import 'package:covidtrackerbd/screens/tabs/home/home2.dart';
 import 'package:covidtrackerbd/screens/tabs/survey/survey.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,17 +32,20 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget tabs() {
     switch (cIndex) {
       case 0:
-        return Home(goToOnlineTestTab);
+        //return Home(goToOnlineTestTab);
+        return MyHomePage();
         break;
       case 1:
         return Location();
         break;
       case 2:
-        return Global();
-        break;
-      case 3:
         return Survey();
         break;
+      case 3:
+        return DeveloperStory();
+        break;
+      default:
+        return Container();
     }
   }
 
@@ -71,20 +74,23 @@ class _HomeScreenState extends State<HomeScreen> {
           child: BottomNavigationBar(
             backgroundColor: Colors.redAccent,
             currentIndex: cIndex,
-            type: BottomNavigationBarType.shifting,
+            type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.home, color: Colors.white),
-                  title: new Text('Home')),
+                  icon: Icon(Icons.dashboard, color: Colors.white),
+                  title: new Text('Dashboard')),
               BottomNavigationBarItem(
                   icon: Icon(Icons.location_on, color: Colors.white),
                   title: new Text('Location')),
-              BottomNavigationBarItem(
+              /*BottomNavigationBarItem(
                   icon: Icon(Icons.public, color: Colors.white),
-                  title: new Text('Global')),
+                  title: new Text('Global')),*/
               BottomNavigationBarItem(
                   icon: Icon(Icons.rate_review, color: Colors.white),
-                  title: new Text('Online Test')),
+                  title: new Text('COVID Test')),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person, color: Colors.white),
+                  title: new Text('Developer')),
             ],
             onTap: (index) {
               ///onTap change the index to move to respective tab
