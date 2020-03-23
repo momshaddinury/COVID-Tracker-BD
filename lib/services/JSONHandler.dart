@@ -8,18 +8,21 @@ int infected, dead, recovery, dateTime;
 
 class JSONHandler {
   Map<String, dynamic> responseJSONDecode;
+  http.Response response;
 
   fetchData() async {
-    print("fetchData()");
-    //await Future.delayed(Duration(seconds: 1));
-
-    http.Response response = await http.get(apiURL);
+    //print("fetchData()");
+    try {
+      response = await http.get(apiURL);
+    } catch (e) {
+      print(e.toString());
+    }
 
     if (response.statusCode == 200) {
       jsonHandler.decodeJson(response.body);
 
       if (jsonHandler.responseJSONDecode.isNotEmpty) {
-        print("[JOSNs]: $responseJSONDecode");
+        //print("[JOSNs]: $responseJSONDecode");
         infected = responseJSONDecode['infected'];
         dead = responseJSONDecode['death'];
         recovery = responseJSONDecode['recovered'];

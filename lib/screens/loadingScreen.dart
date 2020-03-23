@@ -1,39 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
-LoadingScreen loadingScreen = LoadingScreen();
 
 class LoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final data = MediaQuery.of(context);
     return Scaffold(
-      body: SafeArea(
+      body:  AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light,
         child: Container(
-          height: double.maxFinite,
-          width: double.maxFinite,
           decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/covid.jpg'), fit: BoxFit.fitHeight),
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [0.1, 0.4, 0.7, 0.9],
+              colors: [
+                Color(0xFF3594DD),
+                Color(0xFF4563DB),
+                Color(0xFF5036D5),
+                Color(0xFF5B16D0),
+              ],
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
+              AutoSizeText(
                 'BANGLADESH',
+                maxLines: 1,
                 style: TextStyle(
-                  color: Colors.red,
+                  color: Colors.white,
                   fontSize: 60.0,
                   fontWeight: FontWeight.w700,
                   letterSpacing: data.size.width * 0.01,
                 ),
               ),
               SizedBox(height: 10),
-              Text(
+              AutoSizeText(
                 'COVID-19',
+                maxLines: 1,
                 style: TextStyle(
-                  color: Colors.red,
+                  color: Colors.white,
                   fontSize: 50.0,
                   fontWeight: FontWeight.w700,
                   letterSpacing: data.size.width * 0.01,
@@ -41,27 +52,26 @@ class LoadingScreen extends StatelessWidget {
               ),
               SizedBox(height: 20),
               SpinKitPulse(
-                color: Colors.redAccent,
+                color: Colors.white,
                 size: 60.0,
               ),
               SizedBox(height: 20),
-              Center(
-                child: Text(
-                  "This App Requires Internet Connection & Location Access",
-                  style: TextStyle(
-                    color: Colors.white70,
-                    fontSize: 15.0,
-                  ),
+              AutoSizeText(
+                "This App Requires Internet Connection & Location Access",
+                maxLines: 2,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15.0,
                 ),
               ),
               SizedBox(height: 20),
-              Center(
-                child: Text(
-                  "Developed by Students of EEE | CU",
-                  style: TextStyle(
-                    color: Colors.white70,
-                    fontSize: 15.0,
-                  ),
+              AutoSizeText(
+                "Developed by Students of EEE | CU",
+                maxLines: 1,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15.0,
                 ),
               ),
             ],
@@ -71,3 +81,5 @@ class LoadingScreen extends StatelessWidget {
     );
   }
 }
+
+

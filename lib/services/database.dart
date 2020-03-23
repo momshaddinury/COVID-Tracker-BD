@@ -15,7 +15,10 @@ class DatabaseService {
     String gender,
     String profession,
     String phoneNumber,
+    String nid,
+    String migrant,
     String isContacted,
+    String isAnyoneInFamily,
     List<DateTime> date,
     String breathCount,
     String fever,
@@ -26,19 +29,22 @@ class DatabaseService {
     int temp,
     int interaction,*/
   ) async {
-    return await covidAnalysisReportCollection.document(uid).setData({
-      'a.Name': fullName,
-      'b.Age': age,
-      'c.Gender': gender,
-      'd.Profession': profession,
-      'e.Phone': phoneNumber,
-      'f.Did you come in contact with others': isContacted,
-      'g.Date of First Showing Symptoms': date,
-      'h.Breathing Pattern/Minute': breathCount,
-      'i.Temperature': fever,
-      'j.Symptoms': symptoms,
-      'k.Risk Group': riskGroup,
-      'l.User location': location,
+    return await covidAnalysisReportCollection.document(phoneNumber).setData({
+      'Name': fullName,
+      'Age': age,
+      'Gender': gender,
+      'Profession': profession,
+      'Phone': phoneNumber,
+      'NID': nid,
+      'Migrant': migrant,
+      'Came in Contact with NRB': isContacted,
+      'Anyone in  the Familu Showing Symptoms': isAnyoneInFamily,
+      'Date of First Showing Symptoms': date,
+      'Breathing Pattern/Minute': breathCount,
+      'Temperature': fever,
+      'Symptoms': symptoms,
+      'Risk Group': riskGroup,
+      'User location': location,
     });
   }
 }

@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'loggedOut.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LogInToSubmit extends StatefulWidget {
   @override
@@ -47,28 +48,36 @@ class COVIDForm extends StatefulWidget {
 
 class _COVIDFormState extends State<COVIDForm> {
   final formKey = GlobalKey<FormState>();
+  final AuthService auth = AuthService();
   var data;
   bool autoValidate = true;
   bool readOnly = false;
   bool showSegmentedControl = true;
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
-  final GlobalKey<FormFieldState> _specifyTextFieldKey =
-  GlobalKey<FormFieldState>();
 
   ValueChanged _onChanged = (val) => print(val);
 
   @override
-  Widget build(BuildContext context) {
-    final AuthService auth = AuthService();
-    final halfMediaWidth = MediaQuery.of(context).size.width / 2.0;
+  void dispose() {
+    signOut();
+    super.dispose();
+  }
 
+  signOut() async {
+    await auth.signOut();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Form(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Center(
               child: Text(
                 "PLEASE STAY HOME, STAY SAFE",
@@ -93,6 +102,9 @@ class _COVIDFormState extends State<COVIDForm> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
             FormBuilder(
               // context,
               key: _fbKey,
@@ -111,7 +123,7 @@ class _COVIDFormState extends State<COVIDForm> {
                       filled: true,
                       fillColor: Colors.grey[200],
                     ),
-                    onChanged: _onChanged,
+                    //onChanged: _onChanged,
                     onSaved: (value) => fullName = value,
                   ),
                   // Age
@@ -122,14 +134,13 @@ class _COVIDFormState extends State<COVIDForm> {
                       filled: true,
                       fillColor: Colors.grey[200],
                     ),
-                    onChanged: _onChanged,
+                    //onChanged: _onChanged,
                     valueTransformer: (text) => num.tryParse(text),
                     validators: [
                       FormBuilderValidators.required(),
                       FormBuilderValidators.numeric(),
-                      FormBuilderValidators.max(70),
                     ],
-                    onSaved: (value) => age = value,
+                    //onSaved: (value) => age = value,
                     keyboardType: TextInputType.number,
                   ),
                   //Gender:
@@ -148,7 +159,7 @@ class _COVIDFormState extends State<COVIDForm> {
                       FormBuilderFieldOption(
                           value: 'Female', child: Text('Female')),
                     ],
-                    onChanged: (value) => print(value),
+                    //onChanged: (value) => print(value),
                     onSaved: (value) => gender = value,
                   ),
 
@@ -160,7 +171,7 @@ class _COVIDFormState extends State<COVIDForm> {
                       filled: true,
                       fillColor: Colors.grey[200],
                     ),
-                    onChanged: _onChanged,
+                    //onChanged: _onChanged,
                     onSaved: (value) => profession = value,
                   ),
 
@@ -172,20 +183,44 @@ class _COVIDFormState extends State<COVIDForm> {
                       filled: true,
                       fillColor: Colors.grey[200],
                     ),
-                    onChanged: _onChanged,
+                    //onChanged: _onChanged,
                     keyboardType: TextInputType.number,
                     validators: [
                       FormBuilderValidators.required(),
                       FormBuilderValidators.numeric(),
+                      FormBuilderValidators.minLength(11,
+                          errorText: "Less than 11 digit"),
+                      FormBuilderValidators.maxLength(11,
+                          errorText: "More than 11 digit")
                     ],
                     onSaved: (value) => phoneNumber = value,
                   ),
 
-                  //Came in Contact with NRB:
+                  //NID:
+                  FormBuilderTextField(
+                    attribute: "number",
+                    decoration: InputDecoration(
+                      labelText: "NID",
+                      filled: true,
+                      fillColor: Colors.grey[200],
+                    ),
+                    //onChanged: _onChanged,
+                    keyboardType: TextInputType.number,
+                    validators: [
+                      FormBuilderValidators.numeric(),
+                      FormBuilderValidators.minLength(10,
+                          errorText: "Less than 10 digit"),
+                      FormBuilderValidators.maxLength(10,
+                          errorText: "More than 10 digit")
+                    ],
+                    onSaved: (value) => nid = value,
+                  ),
+
+                  // Migrant:
                   FormBuilderChoiceChip(
                     attribute: 'choice_chip',
                     decoration: InputDecoration(
-                      labelText: 'Did you meet with anyone who came from Abroad?',
+                      labelText: 'Returned from Abroad?',
                       filled: true,
                       fillColor: Colors.grey[200],
                     ),
@@ -194,11 +229,57 @@ class _COVIDFormState extends State<COVIDForm> {
                         value: 'YES',
                         child: Text('YES'),
                       ),
-                      FormBuilderFieldOption(
-                          value: 'NO', child: Text('NO')),
+                      FormBuilderFieldOption(value: 'NO', child: Text('NO')),
                     ],
-                    onChanged: (value) => print(value),
+                    validators: [
+                      FormBuilderValidators.required(),
+                    ],
+                    //onChanged: (value) => print(value),
+                    onSaved: (value) => migrant = value,
+                  ),
+
+                  //Came in Contact with NRB:
+                  FormBuilderChoiceChip(
+                    attribute: 'choice_chip',
+                    decoration: InputDecoration(
+                      labelText: 'Met anyone from Abroad within 14 days?',
+                      filled: true,
+                      fillColor: Colors.grey[200],
+                    ),
+                    options: [
+                      FormBuilderFieldOption(
+                        value: 'YES',
+                        child: Text('YES'),
+                      ),
+                      FormBuilderFieldOption(value: 'NO', child: Text('NO')),
+                    ],
+                    validators: [
+                      FormBuilderValidators.required(),
+                    ],
+                    //onChanged: (value) => print(value),
                     onSaved: (value) => isContacted = value,
+                  ),
+
+                  //Anyone from the family showing symptoms
+                  FormBuilderChoiceChip(
+                    attribute: 'choice_chip',
+                    decoration: InputDecoration(
+                      labelText: 'Anyone in the Family has Symtoms of COVID?',
+                      filled: true,
+                      fillColor: Colors.grey[200],
+                    ),
+                    options: [
+                      FormBuilderFieldOption(
+                        value: 'YES',
+                        child: Text('YES'),
+                      ),
+                      FormBuilderFieldOption(value: 'NO', child: Text('NO')),
+                    ],
+                    validators: [
+                      FormBuilderValidators.required(),
+                    ],
+                    // onChanged: (value) => print(value),
+                    onSaved: (value) => isAnyoneInFamily = value,
                   ),
 
                   // Date of First showing symptoms
@@ -207,28 +288,29 @@ class _COVIDFormState extends State<COVIDForm> {
                     firstDate: DateTime(1970),
                     lastDate: DateTime(2030),
                     format: DateFormat("yyyy-MM-dd"),
-                    onChanged: _onChanged,
+                    //onChanged: _onChanged,
                     onSaved: (value) => date = value,
                     decoration: InputDecoration(
-                      labelText:
-                      "When did you first started showing Symptoms?",
-                      hintText: "Select a Date",
+                      hintText: "When did you first started showing Symptoms?",
+                      hintMaxLines: 2,
                       filled: true,
                       fillColor: Colors.grey[200],
                     ),
+                    validators: [],
                   ),
 
                   //Breathing Pattern
                   FormBuilderTextField(
                     attribute: "number",
                     decoration: InputDecoration(
-                      labelText: "Breathing Pattern/Minute",
-                      hintText: "Start Stopwatch and measure your breath",
+                      hintText:
+                          "Input Breathing Pattern/Minute. Hint: ( Start Stopwatch and measure your breath)",
+                      hintMaxLines: 2,
                       filled: true,
                       fillColor: Colors.grey[200],
                     ),
                     onChanged: _onChanged,
-                    onSaved: (value) => breathCount = value,
+                    //onSaved: (value) => breathCount = value,
                     keyboardType: TextInputType.number,
                   ),
                   //Fever:
@@ -244,10 +326,9 @@ class _COVIDFormState extends State<COVIDForm> {
                         value: 'YES',
                         child: Text('YES'),
                       ),
-                      FormBuilderFieldOption(
-                          value: 'NO', child: Text('NO')),
+                      FormBuilderFieldOption(value: 'NO', child: Text('NO')),
                     ],
-                    onChanged: (value) => print(value),
+                    //onChanged: (value) => print(value),
                     onSaved: (value) => fever = value,
                   ),
 
@@ -286,7 +367,7 @@ class _COVIDFormState extends State<COVIDForm> {
                       FormBuilderFieldOption(
                           value: 'None', child: Text('None')),
                     ],
-                    onChanged: (value) => print(value),
+                    //onChanged: (value) => print(value),
                     onSaved: (value) => symptoms = value,
                   ),
 
@@ -305,8 +386,7 @@ class _COVIDFormState extends State<COVIDForm> {
                       FormBuilderFieldOption(
                           value: 'Pregnant', child: Text('Pregnant')),
                       FormBuilderFieldOption(
-                          value: 'Heart Disease',
-                          child: Text('Heart Disease')),
+                          value: 'Heart Disease', child: Text('Heart Disease')),
                       FormBuilderFieldOption(
                           value: 'Diabetes', child: Text('Diabetes')),
                       FormBuilderFieldOption(
@@ -316,11 +396,9 @@ class _COVIDFormState extends State<COVIDForm> {
                       FormBuilderFieldOption(
                           value: 'None', child: Text('None')),
                     ],
-                    onChanged: (value) => print(value),
+                    //onChanged: (value) => print(value),
                     onSaved: (value) => riskGroup = value,
                   ),
-
-                  ///////////////////////////////////////////////////////////////
                 ],
               ),
             ),
@@ -328,12 +406,20 @@ class _COVIDFormState extends State<COVIDForm> {
               children: <Widget>[
                 Expanded(
                   child: MaterialButton(
-                    color: Theme.of(context).accentColor,
+                    color: Colors.red,
                     child: Text(
                       "Go Back",
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () async {
+                      Fluttertoast.showToast(
+                          msg: "Please Wait",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIos: 1,
+                          backgroundColor: Colors.blueAccent,
+                          textColor: Colors.white,
+                          fontSize: 20.0);
                       _fbKey.currentState.reset();
                       await auth.signOut();
                     },
@@ -350,6 +436,14 @@ class _COVIDFormState extends State<COVIDForm> {
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () {
+                      Fluttertoast.showToast(
+                          msg: "Please Wait",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIos: 1,
+                          backgroundColor: Colors.blueAccent,
+                          textColor: Colors.white,
+                          fontSize: 20.0);
                       _fbKey.currentState.reset();
                     },
                   ),
@@ -359,18 +453,50 @@ class _COVIDFormState extends State<COVIDForm> {
                 ),
                 Expanded(
                   child: MaterialButton(
-                    color: Theme.of(context).accentColor,
+                    color: Colors.green,
                     child: Text(
                       "Submit",
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () async {
+                      Fluttertoast.showToast(
+                          msg: "Please Wait",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIos: 1,
+                          backgroundColor: Colors.blueAccent,
+                          textColor: Colors.white,
+                          fontSize: 16.0);
                       if (_fbKey.currentState.saveAndValidate()) {
+                        Fluttertoast.showToast(
+                            msg: "Processing",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIos: 1,
+                            backgroundColor: Colors.blueAccent,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
                         print(_fbKey.currentState.value);
                         await auth.updateDB();
                         await auth.signOut();
+                        Fluttertoast.showToast(
+                            msg: "Submitted Successfully",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIos: 1,
+                            backgroundColor: Colors.blueAccent,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
                       } else {
                         print(_fbKey.currentState.value);
+                        Fluttertoast.showToast(
+                            msg: "Please Check Your Form Again",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIos: 1,
+                            backgroundColor: Colors.blueAccent,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
                         print("validation failed");
                       }
                     },
@@ -384,4 +510,3 @@ class _COVIDFormState extends State<COVIDForm> {
     );
   }
 }
-

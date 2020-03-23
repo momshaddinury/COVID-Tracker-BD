@@ -1,15 +1,28 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:covidtrackerbd/screens/tabs/home/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:covidtrackerbd/services/authentication.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
 
 class LoggedOut extends StatefulWidget {
   @override
   _LoggedOutState createState() => _LoggedOutState();
 }
 
+bool isLoading = false;
+
 class _LoggedOutState extends State<LoggedOut> {
   final AuthService auth = AuthService();
+
+  @override
+  void initState() {
+    super.initState();
+    task();
+  }
+
+  task() async {
+    auth.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +40,24 @@ class _LoggedOutState extends State<LoggedOut> {
   }
 }
 
-class COVIDTestStartButton extends StatelessWidget {
+class COVIDTestStartButton extends StatefulWidget {
   const COVIDTestStartButton({
     Key key,
     @required this.auth,
   }) : super(key: key);
 
   final AuthService auth;
+
+  @override
+  _COVIDTestStartButtonState createState() => _COVIDTestStartButtonState();
+}
+
+class _COVIDTestStartButtonState extends State<COVIDTestStartButton> {
+  showSpinKit() {
+    setState(() {
+      isLoading = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,40 +72,48 @@ class COVIDTestStartButton extends StatelessWidget {
             width: 250,
           ),
         ),
-        SizedBox(height: 40,),
-        Center(
-          child: Text(
-            "Am I Infected With Coronavirus?",
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 30.0,
-              ),
-          ),
+        SizedBox(
+          height: 40,
         ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-          ),
-          margin: EdgeInsets.all(20),
-          child: FlatButton(
-            padding: EdgeInsets.all(20),
-            child: Text(
-              'COVID-19 Report Submission',
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Center(
+            child: AutoSizeText(
+              "If you are feeling sick and want to let the authority know about your health condition please fill up the form and wait. A health expert will contact you soon.",
+              maxLines: 3,
+              textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 20,
+                fontWeight: FontWeight.w500,
+                fontSize: 20.0,
               ),
             ),
-            color: Colors.red[400],
-            textColor: Colors.white,
-            onPressed: () async {
-              await auth.signInAnon();
-              SpinKitPulse(
-                color: Colors.redAccent,
-                size: 60.0,
-              );
-            },
           ),
         ),
+        SizedBox(
+          height: 20,
+        ),
+        MaterialButton(
+          padding: EdgeInsets.all(10.0),
+          color: kMLight,
+          child: Text(
+            "Click to Submit Report",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
+          ),
+          onPressed: () async {
+            showSpinKit();
+            await widget.auth.signInAnon();
+            isLoading = false;
+          },
+        ),
+        isLoading
+            ? SpinKitPulse(
+                color: Colors.blueAccent,
+                size: 60.0,
+              )
+            : Container(),
       ],
     );
   }

@@ -1,9 +1,10 @@
 import 'package:covidtrackerbd/Screens/tabs/location.dart';
 import 'package:covidtrackerbd/screens/tabs/developerStory.dart';
-import 'package:covidtrackerbd/screens/tabs/home/home2.dart';
+import 'package:covidtrackerbd/screens/tabs/home/my_home_page.dart';
 import 'package:covidtrackerbd/screens/tabs/survey/survey.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -16,16 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    /*totalCases = '$infected';
-    deaths = '$dead';
-    recovered = '$recovery';*/
     super.initState();
-  }
-
-  void goToOnlineTestTab() {
-    setState(() {
-      cIndex = 3;
-    });
   }
 
   ///List of all the tabs
@@ -51,54 +43,101 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('homeScreen');
-    return Scaffold(
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.red[700],
-          title: Text(
+          title: AutoSizeText(
             "COVID 19 - BD",
             style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          bottom: TabBar(
+            tabs: <Widget>[
+              Tab(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.dashboard,
+                      color: Colors.white,
+                    ),
+                    AutoSizeText(
+                      "Dashboard",
+                      style: TextStyle(fontSize: 10.0),
+                      minFontSize: 8,
+                      overflow: TextOverflow.clip,
+                    )
+                  ],
+                ),
+              ),
+              Tab(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.location_on,
+                      color: Colors.white,
+                    ),
+                    AutoSizeText(
+                      "Location",
+                      style: TextStyle(fontSize: 10.0),
+                      minFontSize: 8,
+                      overflow: TextOverflow.clip,
+                    )
+                  ],
+                ),
+              ),
+              Tab(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.rate_review,
+                      color: Colors.white,
+                    ),
+                    AutoSizeText(
+                      "COVID Test",
+                      style: TextStyle(fontSize: 10.0),
+                      minFontSize: 8,
+                      overflow: TextOverflow.clip,
+                    ),
+                  ],
+                ),
+              ),
+              Tab(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.person,
+                      color: Colors.white,
+                    ),
+                    AutoSizeText(
+                      "Dev Story",
+                      style: TextStyle(fontSize: 10.0),
+                      minFontSize: 8,
+                      overflow: TextOverflow.clip,
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
         backgroundColor: Colors.white,
 
         ///Houses all the tabs and changes based on onTap of
         ///bottomNavigationBar items
-        body: tabs(),
-        bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(
-              // sets the background color of the `BottomNavigationBar`
-              canvasColor: Colors.redAccent,
-              // sets the active color of the `BottomNavigationBar` if `Brightness` is light
-              primaryColor: Colors.white),
-          child: BottomNavigationBar(
-            backgroundColor: Colors.redAccent,
-            currentIndex: cIndex,
-            type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.dashboard, color: Colors.white),
-                  title: new Text('Dashboard')),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.location_on, color: Colors.white),
-                  title: new Text('Location')),
-              /*BottomNavigationBarItem(
-                  icon: Icon(Icons.public, color: Colors.white),
-                  title: new Text('Global')),*/
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.rate_review, color: Colors.white),
-                  title: new Text('COVID Test')),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person, color: Colors.white),
-                  title: new Text('Developer')),
-            ],
-            onTap: (index) {
-              ///onTap change the index to move to respective tab
-              setState(() {
-                cIndex = index;
-              });
-            },
-          ),
-        ));
+        body: TabBarView(
+          children: <Widget>[
+            MyHomePage(),
+            Location(),
+            Survey(),
+            DeveloperStory(),
+          ],
+        ),
+      ),
+    );
   }
 }

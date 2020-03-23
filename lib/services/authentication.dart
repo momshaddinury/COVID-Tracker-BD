@@ -34,14 +34,6 @@ class AuthService {
   }
 
   Future updateDB() async {
-//    print("updateDB");
-//    print(model.fullName);
-//    print(model.age);
-//    print(model.phoneNumber);
-//    print(model.profession);
-//    print(model.breathCount);
-//    print(model.temp);
-//    print(model.interaction);
     // create a new document for the user with uid
     await DatabaseService(uid: userUID.uid).updateData(
         fullName,
@@ -49,13 +41,17 @@ class AuthService {
         gender,
         profession,
         phoneNumber,
+        nid,
+        migrant,
         isContacted,
+        isAnyoneInFamily,
         date,
         breathCount,
         fever,
         symptoms,
         location,
         riskGroup);
+
   }
 
   // sign in with email and password

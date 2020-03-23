@@ -12,12 +12,25 @@ App Features:
   4. User can participate in a survey to collect data
  */
 
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'initialize.dart';
+
+// Sets a platform override for desktop to avoid exceptions. See
+// https://flutter.dev/desktop#target-platform-override for more info.
+void _enablePlatformOverrideForDesktop() {
+  if (!kIsWeb && (Platform.isWindows || Platform.isLinux)) {
+    debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
+  }
+}
 
 void main() {
   /*WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIOverlays([]);*/
+  //runApp(DevicePreview(builder: (context) => App()));
+  _enablePlatformOverrideForDesktop();
   runApp(App());
 }
 
@@ -27,11 +40,13 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+//      locale: DevicePreview.of(context).locale, // <--- Add the locale
+//      builder: DevicePreview.appBuilder,
       title: 'Corona',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Quicksand'),
-      home: SafeArea(
-        child: Initialize(),
+      home: Scaffold(
+        body: Initialize(),
       ),
     );
   }

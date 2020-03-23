@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -9,9 +11,11 @@ class Location extends StatefulWidget {
   _LocationState createState() => _LocationState();
 }
 
-class _LocationState extends State<Location> {
+class _LocationState extends State<Location>  with AutomaticKeepAliveClientMixin<Location> {
   bool isLoading;
 
+  @override
+  bool get wantKeepAlive => true;
   @override
   void initState() {
     isLoading = true;
