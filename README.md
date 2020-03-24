@@ -38,7 +38,7 @@ HTTP PATCH [https://firestore.googleapis.com/v1/projects/covid19-bd/databases/(d
 
 ### JSON Structure
 #### Public pull all data
-json
+```json
 {
   "documents": [
     {
@@ -119,10 +119,10 @@ json
     }
   ]
 }
-
+```
 
 #### Public pull single data
-json
+```json
 {
   "name": "projects/covid19-bd/databases/(default)/documents/COVIDARC/01222222222",
   "fields": {
@@ -199,10 +199,11 @@ json
   "createTime": "2020-03-23T09:49:42.538963Z",
   "updateTime": "2020-03-23T10:17:45.371514Z"
 }
+```
 
 
 #### Autorized PATCH single data
-json
+```json
 {"fields": {
     "User location": {
       "stringValue": "lat: 22.440346, lon: 91.8216247, alt: 0.0"
@@ -274,7 +275,8 @@ json
       "stringValue": "Student"
     }
   }
-
+}
+```
 
 Dashboard Was Inspired By:
 https://github.com/spporan/covid19bdApp (Thanks to Shah Poran vai for his contribution)
