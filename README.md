@@ -3,9 +3,10 @@ The initial goal is to create an app that will help in tracking live stats of Co
 
 App Name: COVID-19 Live Tracker (BETA)
 
-Lead Author: Momshad Dinury
+Lead Dveloper: Momshad Dinury
 
 Team members:
+  1. Abdullah J Khan (App)
   1. Mahbubur Rahman (Server and API)
   2. Ibrahim Ullah (Data Logging and Model Analysis)
 
