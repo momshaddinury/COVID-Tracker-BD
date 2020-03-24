@@ -9,13 +9,14 @@ Lead Developer: Momshad Dinury
 * Database: Google Cloud Firestore
 * Backend: Google Cloud Functions
 * Android Application: Flutter & Dart
+* Map Provider: Leaflet
 
-Team members:
+## Team members:
 * Abdullah Z Khan Junaid (App)
 * Mahbubur Rahman (Server and API)
 * Ibrahim Ullah (Data Logging and Model Analysis)
 
-App Features:
+## App Features:
 1. User can check COVID19 Stat update of Bangladesh
 2. User can see other infected people in the location tab
 3. User can check global COVID19 update
