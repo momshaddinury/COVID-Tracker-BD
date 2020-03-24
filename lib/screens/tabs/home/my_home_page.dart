@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:covidtrackerbd/screens/tabs/developerStory.dart';
 import 'package:covidtrackerbd/screens/tabs/home/repository.dart';
 import 'package:covidtrackerbd/screens/tabs/location.dart';
-import 'package:covidtrackerbd/screens/tabs/survey/survey.dart';
+import 'package:covidtrackerbd/screens/tabs/survey/survey_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage>
                         Icons.dashboard,
                         color: Colors.white,
                       ),
-                      ResizableTextWidget(title: title)
+                      ResizableTextWidget(title: "Dashboard")
                     ],
                   ),
                 ),
@@ -168,7 +168,7 @@ class _MyHomePageState extends State<MyHomePage>
                     ),
                   )),
               Location(),
-              Survey(),
+              SurveyPage(),
               DeveloperStory(),
             ],
           )),

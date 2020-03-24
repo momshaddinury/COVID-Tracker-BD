@@ -143,6 +143,7 @@ class _COVIDFormState extends State<COVIDForm> {
                     //onSaved: (value) => age = value,
                     keyboardType: TextInputType.number,
                   ),
+
                   //Gender:
                   FormBuilderChoiceChip(
                     attribute: 'choice_chip',
@@ -167,7 +168,7 @@ class _COVIDFormState extends State<COVIDForm> {
                   FormBuilderTextField(
                     attribute: "profession",
                     decoration: InputDecoration(
-                      labelText: "What is your profession",
+                      labelText: "Profession",
                       filled: true,
                       fillColor: Colors.grey[200],
                     ),
@@ -179,7 +180,7 @@ class _COVIDFormState extends State<COVIDForm> {
                   FormBuilderTextField(
                     attribute: "phonenumber",
                     decoration: InputDecoration(
-                      labelText: "Contact Number",
+                      labelText: "Contact Number [11 Digit]",
                       filled: true,
                       fillColor: Colors.grey[200],
                     ),
@@ -200,7 +201,7 @@ class _COVIDFormState extends State<COVIDForm> {
                   FormBuilderTextField(
                     attribute: "number",
                     decoration: InputDecoration(
-                      labelText: "NID",
+                      labelText: "NID [10 Digit]",
                       filled: true,
                       fillColor: Colors.grey[200],
                     ),
@@ -305,7 +306,7 @@ class _COVIDFormState extends State<COVIDForm> {
                     decoration: InputDecoration(
                       hintText:
                           "Input Breathing Pattern/Minute. Hint: ( Start Stopwatch and measure your breath)",
-                      hintMaxLines: 2,
+                      hintMaxLines: 3,
                       filled: true,
                       fillColor: Colors.grey[200],
                     ),

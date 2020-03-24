@@ -4,12 +4,12 @@ import 'package:covidtrackerbd/services/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Survey extends StatefulWidget {
+class SurveyPage extends StatefulWidget {
   @override
-  _SurveyState createState() => _SurveyState();
+  _SurveyPageState createState() => _SurveyPageState();
 }
 
-class _SurveyState extends State<Survey> {
+class _SurveyPageState extends State<SurveyPage> {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<User>.value(

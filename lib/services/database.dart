@@ -38,7 +38,7 @@ class DatabaseService {
       'NID': nid,
       'Migrant': migrant,
       'Came in Contact with NRB': isContacted,
-      'Anyone in  the Familu Showing Symptoms': isAnyoneInFamily,
+      'Anyone in  the Family Showing Symptoms': isAnyoneInFamily,
       'Date of First Showing Symptoms': date,
       'Breathing Pattern/Minute': breathCount,
       'Temperature': fever,

@@ -2,9 +2,6 @@ import 'dart:async';
 import 'package:covidtrackerbd/screens/loadingScreen.dart';
 import 'package:covidtrackerbd/services/locatioinService.dart';
 import 'package:flutter/material.dart';
-import 'package:covidtrackerbd/services/JSONHandler.dart';
-import 'package:neat_periodic_task/neat_periodic_task.dart';
-import 'dart:io';
 import 'services/connectivity.dart';
 import 'package:covidtrackerbd/screens/tabs/home/my_home_page.dart';
 
@@ -19,7 +16,7 @@ tasks() async {
 }
 
 ///Periodically calls fetchData()
-scheduler() async {
+/*scheduler() async {
   // Create a periodic task that prints 'Hello World' every 30s
   final scheduler = NeatPeriodicTaskScheduler(
     interval: Duration(seconds: 15),
@@ -32,7 +29,7 @@ scheduler() async {
   scheduler.start();
   await ProcessSignal.sigterm.watch().first;
   await scheduler.stop();
-}
+}*/
 
 final StreamController streamController = StreamController();
 
