@@ -14,3 +14,6 @@ App Features:
   2. User can see other infected people in the location tab
   3. User can check global COVID19 update
   4. User can participate in a survey to collect data
+  
+Dashboard Was Inspired By:
+https://github.com/spporan/covid19bdApp (Thanks to Shah Poran vai for his contribution)  
