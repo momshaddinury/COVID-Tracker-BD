@@ -113,6 +113,7 @@ class _MyHomePageState extends State<MyHomePage>
           ),
           backgroundColor: Colors.white,
           body: TabBarView(
+            physics: NeverScrollableScrollPhysics() ,
             children: <Widget>[
               BlocProvider<CovidBloc>(
                   create: (BuildContext context) =>
