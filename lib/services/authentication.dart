@@ -1,15 +1,11 @@
 import 'package:covidtrackerbd/model/patientDataModel.dart';
 import 'package:covidtrackerbd/model/users.dart';
-import 'package:covidtrackerbd/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 FirebaseUser userUID;
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
-//  PatientDataModel model;
-
   // create user obj based on firebase user
   User _userFromFirebaseUser(FirebaseUser user) {
     return user != null ? User(uid: user.uid) : null;
@@ -31,27 +27,6 @@ class AuthService {
       print(e.toString());
       return null;
     }
-  }
-
-  Future updateDB() async {
-    // create a new document for the user with uid
-    await DatabaseService(uid: userUID.uid).updateData(
-        fullName,
-        age,
-        gender,
-        profession,
-        phoneNumber,
-        nid,
-        migrant,
-        isContacted,
-        isAnyoneInFamily,
-        date,
-        breathCount,
-        fever,
-        symptoms,
-        location,
-        riskGroup);
-
   }
 
   // sign in with email and password

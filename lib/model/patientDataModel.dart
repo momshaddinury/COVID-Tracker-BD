@@ -1,23 +1,34 @@
+
+//int age;
+//String gender;
+//String profession;
+//String phoneNumber;
+//String nid;
+//String migrant;
+//String isContacted;
+//String isAnyoneInFamily;
+//List <DateTime> date;
+//String breathCount;
+//String fever;
+//List<dynamic> symptoms;
+//String location;
+//List<dynamic> riskGroup;
+//int temp;
+//String isInfected;
+//int interaction;
+
+String location;
 String fullName;
-int age;
-String gender;
-String profession;
 String phoneNumber;
 String nid;
-String migrant;
-String isContacted;
-String isAnyoneInFamily;
-List <DateTime> date;
-String breathCount;
+String passportID;
+String gender;
+String age;
 String fever;
-List<dynamic> symptoms;
-String location;
-List<dynamic> riskGroup;
-
-
-int temp;
-String isInfected;
-int interaction;
-
-
-
+String coughOrThroatPain;
+String problemBreathing;
+String cameBackFromAbroad;
+String contactWithAnyCOVIDPatient;
+String anyoneCloseWithSymptoms;
+String cameInContactWithPersonHavingCoughOrThroatPain;
+String riskGroup;

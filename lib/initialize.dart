@@ -46,6 +46,8 @@ class _InitializeState extends State<Initialize> {
     dataConnectionService.networkCheck(); //Connectivity.dart
   }
 
+
+
   /// StreamBuilder checks if the Stream has data and builds accordingly
   @override
   Widget build(BuildContext context) {
