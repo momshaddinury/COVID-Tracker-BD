@@ -12,7 +12,7 @@ Lead Developer: Momshad Dinury
 * Map Provider: Leaflet
 
 ## Team members:
-* Abdullah Z Khan Junaid (App)
+* Abdullah Z Khan Junaid (Cloud Functions & App)
 * Mahbubur Rahman (Server and API)
 * Ibrahim Ullah (Data Logging and Model Analysis)
 
