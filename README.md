@@ -29,7 +29,7 @@ Lead Developer: Momshad Dinury
 * [JSON - POST single data](#post-single-data)
 
 ### Public API data
-All POST requests have body text/json. The bodies are listed in [JSON Structure](#json-structure)
+All POST requests have body application/json. The bodies are listed in [JSON Structure](#json-structure)
 
 * HTTP POST [https://us-central1-covid19-bd.cloudfunctions.net/onUserResponseSubmit](https://us-central1-covid19-bd.cloudfunctions.net/onUserResponseSubmit)
 * HTTP POST [https://us-central1-covid19-bd.cloudfunctions.net/getResponsesByUserPhone](https://us-central1-covid19-bd.cloudfunctions.net/getResponsesByUserPhone)
