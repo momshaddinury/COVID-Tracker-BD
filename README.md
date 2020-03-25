@@ -250,6 +250,7 @@ All POST requests have body application/json. The bodies are listed in [JSON Str
 **Success**
 *Same as by phone number*
 #### POST single data
+**Request**
 ```json
 {
     "data": {
@@ -307,6 +308,22 @@ All POST requests have body application/json. The bodies are listed in [JSON Str
         "submitted_at": 15234133213,
         "created_at": 15234133213,
         "updated_at": 15234133213
+    }
+}
+```
+**Success**
+```json
+{
+    "result": {
+        "assessmentMessage": "Extra Urgent",
+        "risk": 5,
+        "uniqueId": "SZZTXTdwpjRDCxoGJGPd",
+        "instructions": "<p><b>5: Immediate</b><br> <b>ফলাফল: আপনার করোনা ভাইরাস বা কোভিড-১৯ এ আক্রান্ত হওয়ার সমূহ সম্ভাবনা রয়েছে।</b><br> অতিসত্তর মোবাইলে আপনার নিকটবর্তী হাসপাতাল বা ৩৩৩, ১৬২৬৩, ১০৬৫৫ অথবা আইইডিসিআর এর হটলাইন নাম্বারে যোগাযোগ করবেন দেরি না করে শ্বাসকষ্টের চিকিৎসার জন্যে হাসপাতালে যান। হাসপাতালে যাওয়ার সময় অবস্যই মাস্ক পরিধান করবেন এবং গণপরিবহন বা ভীড় এড়িয়ে চলবেন। যাতাযাতের সময় আপনার সাথে শুধু একজন সঙ্গী থাকতে পারবে তবে তাঁর সাথে নিরাপদ দূরত্ব ( ৩ ফুট ) বজায় রাখতে হবে।  </p>",
+        "numbers": [
+            "333",
+            "16263",
+            "10655"
+        ]
     }
 }
 ```
