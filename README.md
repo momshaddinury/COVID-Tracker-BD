@@ -29,7 +29,7 @@ Lead Developer: Momshad Dinury
 * [JSON - POST single data](#post-single-data)
 
 ### Public API data
-* HTTP POST [https://us-central1-covid19-bd.cloudfunctions.net/onUserResponseSubmit](https://us-central1-covid19-bd.cloudfunctions.net/onUserResponseSubmit](https://us-central1-covid19-bd.cloudfunctions.net/onUserResponseSubmit)
+* HTTP POST [https://us-central1-covid19-bd.cloudfunctions.net/onUserResponseSubmit](https://us-central1-covid19-bd.cloudfunctions.net/onUserResponseSubmit)
 * HTTP POST [https://us-central1-covid19-bd.cloudfunctions.net/getResponsesByUserPhone](https://us-central1-covid19-bd.cloudfunctions.net/getResponsesByUserPhone)
 * HTTP POST [https://us-central1-covid19-bd.cloudfunctions.net/getResponsesByOrgName](https://us-central1-covid19-bd.cloudfunctions.net/getResponsesByOrgName)
 
