@@ -157,40 +157,40 @@ function getFinalRiskAssessment(symptom_risk: any, is_elder: any, has_diseases_h
 
 	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `0000`) return 0;
 	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `0001`) return 1;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `0002`) return 1;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `0002`) return 2;
 	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `0010`) return 0;
 	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `0011`) return 1;
 	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `0012`) return 2;
 	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `0100`) return 0;
 	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `0101`) return 1;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `0102`) return 3;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `0102`) return 2;
 	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `0110`) return 0;
 	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `0111`) return 2;
 	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `0112`) return 2;
 	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1000`) return 1;
 	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1001`) return 1;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1002`) return 4;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1002`) return 3;
 	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1010`) return 1;
 	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1011`) return 2;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1012`) return 4;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1012`) return 3;
 	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1100`) return 1;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1101`) return 4;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1102`) return 4;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1110`) return 1;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1111`) return 4;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1112`) return 4;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2000`) return 5;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2001`) return 5;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2002`) return 6;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2010`) return 5;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2011`) return 5;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2012`) return 6;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2100`) return 5;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2101`) return 5;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2102`) return 6;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2110`) return 5;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2111`) return 5;
-	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2112`) return 6;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1101`) return 3;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1102`) return 3;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1110`) return 2;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1111`) return 3;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `1112`) return 3;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2000`) return 6;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2001`) return 4;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2002`) return 5;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2010`) return 4;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2011`) return 4;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2012`) return 5;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2100`) return 4;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2101`) return 4;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2102`) return 5;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2110`) return 4;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2111`) return 4;
+	if (`${symptom_risk}${is_elder}${has_diseases_history}${epidemic_risk}` === `2112`) return 5;
 
 	return 0;
 }
@@ -199,10 +199,10 @@ function getAssessmentMessage(risk: number) {
 	if (`${risk}` === `0`) return 'Safe';
 	if (`${risk}` === `1`) return 'Stay Home/Quarantine';
 	if (`${risk}` === `2`) return 'Mandatory Quarantine/Followup';
-	if (`${risk}` === `3`) return 'Request Test';
-	if (`${risk}` === `4`) return 'Urgent/Contact with Covid Facility';
-	if (`${risk}` === `5`) return 'Extra Urgent';
-	if (`${risk}` === `6`) return 'VIP';
+	if (`${risk}` === `3`) return 'Urgent/Contact with Covid Facility';
+	if (`${risk}` === `4`) return 'Extra-Urgent';
+	if (`${risk}` === `5`) return 'VIP';
+	if (`${risk}` === `6`) return 'Only respiratory distress';
 
 	return ''
 }
