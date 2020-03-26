@@ -66,178 +66,81 @@ All POST requests have body application/json. The bodies are listed in [JSON Str
 **Success**
 ```json
 {
-    "result": {
-        "responses": [
-            {
-                "updated_at": 15234133213,
-                "age": {
-                    "type": "number",
-                    "answer": "20",
-                    "question": "আপনার বয়স? "
-                },
-                "nid": "10923921883712932",
-                "is_visited_abroad": {
-                    "type": "boolean",
-                    "answer": "false",
-                    "question": "আপনি কি বিগত ১৪ দিনের ভিতরে বিদেশ হতে এসেছেন?"
-                },
-                "is_feverish": {
-                    "question": "আপনার কি জ্বর আছে বা জ্বরজ্বর অনুভব করছেন?",
-                    "type": "boolean",
-                    "answer": "false"
-                },
-                "is_contacted_with_covid": {
-                    "question": "আপনি কি বিগত ১৪ দিনের ভিতরে করোনা ভাইরাসে ( কোবিড-১৯) আক্রান্ত এরকম কোন ব্যক্তির সংস্পর্শে এসেছিলেন ( একই স্থানে অবস্থান বা ভ্রমন )",
-                    "type": "boolean",
-                    "answer": "false"
-                },
-                "submitted_at": 15234133213,
-                "has_sore_throat": {
-                    "question": "আপনার কি কাশি বা গলাব্যথা বা দুইটাই আছে? ",
-                    "type": "boolean",
-                    "answer": "false"
-                },
-                "organization_id": "X",
-                "has_breathlessness": {
-                    "question": "আপনার কি শ্বাসকষ্ট আছে বা শ্বাস নিতে বা ফেলতে কষ্ট হচ্ছে?",
-                    "type": "boolean",
-                    "answer": "false"
-                },
-                "user_phone": "01222222222",
-                "address": "Lalmatia, Dhaka",
-                "organization_name": "covid19-bd_app",
-                "metadata": {},
-                "is_contacted_with_family_who_cough": {
-                    "question": "আপনার পরিবারের কোন সদস্য / অফিস কলিগ /একই সাথে থাকেন এরকম কোন ব্যক্তির কি জ্বর, কাশি, শ্বাসকষ্ট আছে? ",
-                    "type": "boolean",
-                    "answer": "true"
-                },
-                "high_risk": {
-                    "question": "আপনার কি অন্য কোন অসুখে  ভুগছেন (যেমন : ডায়াবেটিস, এজমা বা হাঁপানি , দীর্ঘমেয়াদি শ্বাসকষ্টের রোগ বা সিওপিডি, কিডনি রোগ, ক্যান্সার বা ক্যান্সারের জন্য কোন চিকিৎসা নিচ্ছেন?",
-                    "type": "boolean",
-                    "answer": "true"
-                },
-                "location": {
-                    "latitude": 22,
-                    "longitude": 91,
-                    "altitude": 0
-                },
-                "created_at": 15234133213
-            },
-            {
-                "metadata": {},
-                "is_contacted_with_family_who_cough": {
-                    "question": "আপনার পরিবারের কোন সদস্য / অফিস কলিগ /একই সাথে থাকেন এরকম কোন ব্যক্তির কি জ্বর, কাশি, শ্বাসকষ্ট আছে? ",
-                    "type": "boolean",
-                    "answer": "true"
-                },
-                "high_risk": {
-                    "question": "আপনার কি অন্য কোন অসুখে  ভুগছেন (যেমন : ডায়াবেটিস, এজমা বা হাঁপানি , দীর্ঘমেয়াদি শ্বাসকষ্টের রোগ বা সিওপিডি, কিডনি রোগ, ক্যান্সার বা ক্যান্সারের জন্য কোন চিকিৎসা নিচ্ছেন?",
-                    "type": "boolean",
-                    "answer": "true"
-                },
-                "location": {
-                    "latitude": 22,
-                    "longitude": 91,
-                    "altitude": 0
-                },
-                "created_at": 15234133213,
-                "updated_at": 15234133213,
-                "age": {
-                    "question": "আপনার বয়স? ",
-                    "type": "number",
-                    "answer": "20"
-                },
-                "nid": "10923921883712932",
-                "is_visited_abroad": {
-                    "question": "আপনি কি বিগত ১৪ দিনের ভিতরে বিদেশ হতে এসেছেন?",
-                    "type": "boolean",
-                    "answer": "false"
-                },
-                "is_feverish": {
-                    "question": "আপনার কি জ্বর আছে বা জ্বরজ্বর অনুভব করছেন?",
-                    "type": "boolean",
-                    "answer": "false"
-                },
-                "is_contacted_with_covid": {
-                    "type": "boolean",
-                    "answer": "false",
-                    "question": "আপনি কি বিগত ১৪ দিনের ভিতরে করোনা ভাইরাসে ( কোবিড-১৯) আক্রান্ত এরকম কোন ব্যক্তির সংস্পর্শে এসেছিলেন ( একই স্থানে অবস্থান বা ভ্রমন )"
-                },
-                "submitted_at": 15234133213,
-                "has_sore_throat": {
-                    "type": "boolean",
-                    "answer": "false",
-                    "question": "আপনার কি কাশি বা গলাব্যথা বা দুইটাই আছে? "
-                },
-                "organization_id": "X",
-                "has_breathlessness": {
-                    "question": "আপনার কি শ্বাসকষ্ট আছে বা শ্বাস নিতে বা ফেলতে কষ্ট হচ্ছে?",
-                    "type": "boolean",
-                    "answer": "false"
-                },
-                "user_phone": "01222222222",
-                "address": "Lalmatia, Dhaka",
-                "organization_name": "covid19-bd_app"
-            },
-            {
-                "is_contacted_with_covid": {
-                    "question": "আপনি কি বিগত ১৪ দিনের ভিতরে করোনা ভাইরাসে ( কোবিড-১৯) আক্রান্ত এরকম কোন ব্যক্তির সংস্পর্শে এসেছিলেন ( একই স্থানে অবস্থান বা ভ্রমন )",
-                    "type": "boolean",
-                    "answer": "false"
-                },
-                "submitted_at": 15234133213,
-                "has_sore_throat": {
-                    "question": "আপনার কি কাশি বা গলাব্যথা বা দুইটাই আছে? ",
-                    "type": "boolean",
-                    "answer": "false"
-                },
-                "organization_id": "X",
-                "has_breathlessness": {
-                    "question": "আপনার কি শ্বাসকষ্ট আছে বা শ্বাস নিতে বা ফেলতে কষ্ট হচ্ছে?",
-                    "type": "boolean",
-                    "answer": "false"
-                },
-                "user_phone": "01222222222",
-                "address": "Lalmatia, Dhaka",
-                "organization_name": "covid19-bd_app",
-                "metadata": {},
-                "is_contacted_with_family_who_cough": {
-                    "question": "আপনার পরিবারের কোন সদস্য / অফিস কলিগ /একই সাথে থাকেন এরকম কোন ব্যক্তির কি জ্বর, কাশি, শ্বাসকষ্ট আছে? ",
-                    "type": "boolean",
-                    "answer": "true"
-                },
-                "high_risk": {
-                    "question": "আপনার কি অন্য কোন অসুখে  ভুগছেন (যেমন : ডায়াবেটিস, এজমা বা হাঁপানি , দীর্ঘমেয়াদি শ্বাসকষ্টের রোগ বা সিওপিডি, কিডনি রোগ, ক্যান্সার বা ক্যান্সারের জন্য কোন চিকিৎসা নিচ্ছেন?",
-                    "type": "boolean",
-                    "answer": "true"
-                },
-                "location": {
-                    "longitude": 91,
-                    "altitude": 0,
-                    "latitude": 22
-                },
-                "created_at": 15234133213,
-                "updated_at": 15234133213,
-                "age": {
-                    "question": "আপনার বয়স? ",
-                    "type": "number",
-                    "answer": "20"
-                },
-                "nid": "10923921883712932",
-                "is_visited_abroad": {
-                    "question": "আপনি কি বিগত ১৪ দিনের ভিতরে বিদেশ হতে এসেছেন?",
-                    "type": "boolean",
-                    "answer": "false"
-                },
-                "is_feverish": {
-                    "question": "আপনার কি জ্বর আছে বা জ্বরজ্বর অনুভব করছেন?",
-                    "type": "boolean",
-                    "answer": "false"
-                }
-            }
-        ]
-    }
+	"result": {
+		"responses": [
+			{
+				"age": {
+					"type": "number",
+					"question_bn": "আপনার বয়স? ",
+					"question_en": "",
+					"answer": "20"
+				},
+                "name": {
+					"type": "number",
+					"question_bn": "",
+					"question_en": "",
+					"answer": "md saifur rahman"
+				},
+				"is_feverish": {
+					"type": "boolean",
+					"question_bn": "আপনার কি জ্বর আছে বা জ্বরজ্বর অনুভব করছেন?",
+					"question_en": "",
+					"answer": "false"
+				},
+				"has_sore_throat": {
+					"type": "boolean",
+					"question_bn": "আপনার কি কাশি বা গলাব্যথা বা দুইটাই আছে? ",
+					"question_en": "",
+					"answer": "false"
+				},
+				"has_breathlessness": {
+					"type": "boolean",
+					"question_bn": "আপনার কি শ্বাসকষ্ট আছে বা শ্বাস নিতে বা ফেলতে কষ্ট হচ্ছে?",
+					"question_en": "",
+					"answer": "false"
+				},
+				"is_visited_abroad": {
+					"type": "boolean",
+					"question_bn": "আপনি কি বিগত ১৪ দিনের ভিতরে বিদেশ হতে এসেছেন?",
+					"question_en": "",
+					"answer": "false"
+				},
+				"is_contacted_with_covid": {
+					"type": "boolean",
+					"question_bn": "আপনি কি বিগত ১৪ দিনের ভিতরে করোনা ভাইরাসে ( কোবিড-১৯) আক্রান্ত এরকম কোন ব্যক্তির সংস্পর্শে এসেছিলেন ( একই স্থানে অবস্থান বা ভ্রমন )",
+					"question_en": "",
+					"answer": "false"
+				},
+				"is_contacted_with_family_who_cough": {
+					"type": "boolean",
+					"question_bn": "আপনার পরিবারের কোন সদস্য / অফিস কলিগ /একই সাথে থাকেন এরকম কোন ব্যক্তির কি জ্বর, কাশি, শ্বাসকষ্ট আছে? ",
+					"question_en": "",
+					"answer": "true"
+				},
+				"high_risk": {
+					"type": "boolean",
+					"question_bn": "আপনার কি অন্য কোন অসুখে  ভুগছেন (যেমন : ডায়াবেটিস, এজমা বা হাঁপানি , দীর্ঘমেয়াদি শ্বাসকষ্টের রোগ বা সিওপিডি, কিডনি রোগ, ক্যান্সার বা ক্যান্সারের জন্য কোন চিকিৎসা নিচ্ছেন?",
+					"question_en": "",
+					"answer": "true"
+				},
+				"location": {
+					"latitude": 22,
+					"longitude": 91,
+					"altitude": 0
+				},
+				"nid": "10923921883712932",
+				"address": "Lalmatia, Dhaka",
+				"is_offline": true,
+				"organization_id": "X",
+				"organization_name": "covid19-bd_app",
+				"user_phone": "01222222222",
+				"metadata": {},
+				"submitted_at": 15234133213,
+				"created_at": 15234133213,
+				"updated_at": 15234133213
+			}
+		]
+	}
 }
 ```
 #### Public pull data by organization
@@ -270,6 +173,12 @@ All POST requests have body application/json. The bodies are listed in [JSON Str
             "question_en" : "",
             "answer": "20"
         },
+        "name": {
+			"type": "number",
+    		"question_bn": "",
+			"question_en": "",
+			"answer": "MD saifur rahman"
+		},
         "is_feverish": {
             "type": "boolean",
             "question_bn": "আপনার কি জ্বর আছে বা জ্বরজ্বর অনুভব করছেন?",
