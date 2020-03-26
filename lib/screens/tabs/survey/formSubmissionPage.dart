@@ -23,6 +23,9 @@ class _LogInToSubmitState extends State<LogInToSubmit> {
 
     if (user == null) {
       return LoggedOut();
+      /*Navigator.push(context, MaterialPageRoute(
+          builder: (context) => LoggedOut()
+      ));*/
     } else {
       return Scaffold(
         body: Container(

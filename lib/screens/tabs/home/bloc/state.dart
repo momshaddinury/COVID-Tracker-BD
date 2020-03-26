@@ -18,6 +18,5 @@ class CovidAllState extends CovidState {}
 
 class CovidErrorState extends CovidState {
   final error;
-
   CovidErrorState({this.error});
 }

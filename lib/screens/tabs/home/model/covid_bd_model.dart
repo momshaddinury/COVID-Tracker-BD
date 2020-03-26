@@ -14,7 +14,7 @@ class CovidBdData {
   int recovered;
   int active;
   int critical;
-  int casesPerOneMillion;
+  double casesPerOneMillion;
 
   CovidBdData({
     this.country,

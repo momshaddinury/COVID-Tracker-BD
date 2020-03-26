@@ -7,6 +7,7 @@ class ApiService {
   Future<Response> getCovidData(String param) async {
     try {
       final result = http.get(BASE_URL + "$param");
+      print(result);
       return result;
     } catch (e) {
       print("Error :${e.toString()}");

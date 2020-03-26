@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           flexibleSpace: Container(
@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
-              Tab(
+              /*Tab(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     //ResizableTextWidget(title: "Location")
                   ],
                 ),
-              ),
+              ),*/
               Tab(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -121,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: <Widget>[
                       Dashboard(state),
                       SurveyPage(),
-                      Location(),
+                      //Location(),
                       DeveloperStory(),
                     ],
                   );
@@ -323,16 +323,18 @@ class _MyHomePageState extends State<MyHomePage> {
       return Container();
     }
     else if (state is CovidErrorState) {
+      print(state.error.toString());
       return Align(
           alignment: Alignment.center,
           child: Container(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SpinKitPulse(
                   color: Colors.blueAccent,
                   size: 60.0,
                 ),
-                Text("Something is Wrong, Check your Data Connection."),
+                Text("Unavailabe in the moment, Check Later"),
               ],
             ),
           ));
