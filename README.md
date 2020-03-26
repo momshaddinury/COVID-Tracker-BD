@@ -5,18 +5,28 @@ App Name: COVID-19 Live Tracker (BETA)
 
 Lead Developer: Momshad Dinury
 
+## Sections
+* [Resources Used](#resources-used)
+* [Team members](#team-members)
+* [App Features](#app-features)
+* [API](#api)
+* [Covid19 Cloud Functions](#covid19-cloud-functions)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+* [Contributors](#contributors)
+
 ## Resources Used
 * Database: Google Cloud Firestore
 * Backend: Google Cloud Functions
 * Android Application: Flutter & Dart
 * Map Provider: Leaflet
 
-## Team members:
+## Team members
 * Abdullah Z Khan Junaid (Cloud Functions & App)
 * Mahbubur Rahman (Server and API)
 * Ibrahim Ullah (Data Logging and Model Analysis)
 
-## App Features:
+## App Features
 1. User can check COVID19 Stat update of Bangladesh
 2. User can see other infected people in the location tab
 3. User can check global COVID19 update
@@ -56,75 +66,178 @@ All POST requests have body application/json. The bodies are listed in [JSON Str
 **Success**
 ```json
 {
-	"result": {
-		"responses": [
-			{
-				"age": {
-					"type": "number",
-					"question_bn": "আপনার বয়স? ",
-					"question_en": "",
-					"answer": "20"
-				},
-				"is_feverish": {
-					"type": "boolean",
-					"question_bn": "আপনার কি জ্বর আছে বা জ্বরজ্বর অনুভব করছেন?",
-					"question_en": "",
-					"answer": "false"
-				},
-				"has_sore_throat": {
-					"type": "boolean",
-					"question_bn": "আপনার কি কাশি বা গলাব্যথা বা দুইটাই আছে? ",
-					"question_en": "",
-					"answer": "false"
-				},
-				"has_breathlessness": {
-					"type": "boolean",
-					"question_bn": "আপনার কি শ্বাসকষ্ট আছে বা শ্বাস নিতে বা ফেলতে কষ্ট হচ্ছে?",
-					"question_en": "",
-					"answer": "false"
-				},
-				"is_visited_abroad": {
-					"type": "boolean",
-					"question_bn": "আপনি কি বিগত ১৪ দিনের ভিতরে বিদেশ হতে এসেছেন?",
-					"question_en": "",
-					"answer": "false"
-				},
-				"is_contacted_with_covid": {
-					"type": "boolean",
-					"question_bn": "আপনি কি বিগত ১৪ দিনের ভিতরে করোনা ভাইরাসে ( কোবিড-১৯) আক্রান্ত এরকম কোন ব্যক্তির সংস্পর্শে এসেছিলেন ( একই স্থানে অবস্থান বা ভ্রমন )",
-					"question_en": "",
-					"answer": "false"
-				},
-				"is_contacted_with_family_who_cough": {
-					"type": "boolean",
-					"question_bn": "আপনার পরিবারের কোন সদস্য / অফিস কলিগ /একই সাথে থাকেন এরকম কোন ব্যক্তির কি জ্বর, কাশি, শ্বাসকষ্ট আছে? ",
-					"question_en": "",
-					"answer": "true"
-				},
-				"high_risk": {
-					"type": "boolean",
-					"question_bn": "আপনার কি অন্য কোন অসুখে  ভুগছেন (যেমন : ডায়াবেটিস, এজমা বা হাঁপানি , দীর্ঘমেয়াদি শ্বাসকষ্টের রোগ বা সিওপিডি, কিডনি রোগ, ক্যান্সার বা ক্যান্সারের জন্য কোন চিকিৎসা নিচ্ছেন?",
-					"question_en": "",
-					"answer": "true"
-				},
-				"location": {
-					"latitude": 22,
-					"longitude": 91,
-					"altitude": 0
-				},
-				"nid": "10923921883712932",
-				"address": "Lalmatia, Dhaka",
-				"is_offline": true,
-				"organization_id": "X",
-				"organization_name": "covid19-bd_app",
-				"user_phone": "01222222222",
-				"metadata": {},
-				"submitted_at": 15234133213,
-				"created_at": 15234133213,
-				"updated_at": 15234133213
-			}
-		]
-	}
+    "result": {
+        "responses": [
+            {
+                "updated_at": 15234133213,
+                "age": {
+                    "type": "number",
+                    "answer": "20",
+                    "question": "আপনার বয়স? "
+                },
+                "nid": "10923921883712932",
+                "is_visited_abroad": {
+                    "type": "boolean",
+                    "answer": "false",
+                    "question": "আপনি কি বিগত ১৪ দিনের ভিতরে বিদেশ হতে এসেছেন?"
+                },
+                "is_feverish": {
+                    "question": "আপনার কি জ্বর আছে বা জ্বরজ্বর অনুভব করছেন?",
+                    "type": "boolean",
+                    "answer": "false"
+                },
+                "is_contacted_with_covid": {
+                    "question": "আপনি কি বিগত ১৪ দিনের ভিতরে করোনা ভাইরাসে ( কোবিড-১৯) আক্রান্ত এরকম কোন ব্যক্তির সংস্পর্শে এসেছিলেন ( একই স্থানে অবস্থান বা ভ্রমন )",
+                    "type": "boolean",
+                    "answer": "false"
+                },
+                "submitted_at": 15234133213,
+                "has_sore_throat": {
+                    "question": "আপনার কি কাশি বা গলাব্যথা বা দুইটাই আছে? ",
+                    "type": "boolean",
+                    "answer": "false"
+                },
+                "organization_id": "X",
+                "has_breathlessness": {
+                    "question": "আপনার কি শ্বাসকষ্ট আছে বা শ্বাস নিতে বা ফেলতে কষ্ট হচ্ছে?",
+                    "type": "boolean",
+                    "answer": "false"
+                },
+                "user_phone": "01222222222",
+                "address": "Lalmatia, Dhaka",
+                "organization_name": "covid19-bd_app",
+                "metadata": {},
+                "is_contacted_with_family_who_cough": {
+                    "question": "আপনার পরিবারের কোন সদস্য / অফিস কলিগ /একই সাথে থাকেন এরকম কোন ব্যক্তির কি জ্বর, কাশি, শ্বাসকষ্ট আছে? ",
+                    "type": "boolean",
+                    "answer": "true"
+                },
+                "high_risk": {
+                    "question": "আপনার কি অন্য কোন অসুখে  ভুগছেন (যেমন : ডায়াবেটিস, এজমা বা হাঁপানি , দীর্ঘমেয়াদি শ্বাসকষ্টের রোগ বা সিওপিডি, কিডনি রোগ, ক্যান্সার বা ক্যান্সারের জন্য কোন চিকিৎসা নিচ্ছেন?",
+                    "type": "boolean",
+                    "answer": "true"
+                },
+                "location": {
+                    "latitude": 22,
+                    "longitude": 91,
+                    "altitude": 0
+                },
+                "created_at": 15234133213
+            },
+            {
+                "metadata": {},
+                "is_contacted_with_family_who_cough": {
+                    "question": "আপনার পরিবারের কোন সদস্য / অফিস কলিগ /একই সাথে থাকেন এরকম কোন ব্যক্তির কি জ্বর, কাশি, শ্বাসকষ্ট আছে? ",
+                    "type": "boolean",
+                    "answer": "true"
+                },
+                "high_risk": {
+                    "question": "আপনার কি অন্য কোন অসুখে  ভুগছেন (যেমন : ডায়াবেটিস, এজমা বা হাঁপানি , দীর্ঘমেয়াদি শ্বাসকষ্টের রোগ বা সিওপিডি, কিডনি রোগ, ক্যান্সার বা ক্যান্সারের জন্য কোন চিকিৎসা নিচ্ছেন?",
+                    "type": "boolean",
+                    "answer": "true"
+                },
+                "location": {
+                    "latitude": 22,
+                    "longitude": 91,
+                    "altitude": 0
+                },
+                "created_at": 15234133213,
+                "updated_at": 15234133213,
+                "age": {
+                    "question": "আপনার বয়স? ",
+                    "type": "number",
+                    "answer": "20"
+                },
+                "nid": "10923921883712932",
+                "is_visited_abroad": {
+                    "question": "আপনি কি বিগত ১৪ দিনের ভিতরে বিদেশ হতে এসেছেন?",
+                    "type": "boolean",
+                    "answer": "false"
+                },
+                "is_feverish": {
+                    "question": "আপনার কি জ্বর আছে বা জ্বরজ্বর অনুভব করছেন?",
+                    "type": "boolean",
+                    "answer": "false"
+                },
+                "is_contacted_with_covid": {
+                    "type": "boolean",
+                    "answer": "false",
+                    "question": "আপনি কি বিগত ১৪ দিনের ভিতরে করোনা ভাইরাসে ( কোবিড-১৯) আক্রান্ত এরকম কোন ব্যক্তির সংস্পর্শে এসেছিলেন ( একই স্থানে অবস্থান বা ভ্রমন )"
+                },
+                "submitted_at": 15234133213,
+                "has_sore_throat": {
+                    "type": "boolean",
+                    "answer": "false",
+                    "question": "আপনার কি কাশি বা গলাব্যথা বা দুইটাই আছে? "
+                },
+                "organization_id": "X",
+                "has_breathlessness": {
+                    "question": "আপনার কি শ্বাসকষ্ট আছে বা শ্বাস নিতে বা ফেলতে কষ্ট হচ্ছে?",
+                    "type": "boolean",
+                    "answer": "false"
+                },
+                "user_phone": "01222222222",
+                "address": "Lalmatia, Dhaka",
+                "organization_name": "covid19-bd_app"
+            },
+            {
+                "is_contacted_with_covid": {
+                    "question": "আপনি কি বিগত ১৪ দিনের ভিতরে করোনা ভাইরাসে ( কোবিড-১৯) আক্রান্ত এরকম কোন ব্যক্তির সংস্পর্শে এসেছিলেন ( একই স্থানে অবস্থান বা ভ্রমন )",
+                    "type": "boolean",
+                    "answer": "false"
+                },
+                "submitted_at": 15234133213,
+                "has_sore_throat": {
+                    "question": "আপনার কি কাশি বা গলাব্যথা বা দুইটাই আছে? ",
+                    "type": "boolean",
+                    "answer": "false"
+                },
+                "organization_id": "X",
+                "has_breathlessness": {
+                    "question": "আপনার কি শ্বাসকষ্ট আছে বা শ্বাস নিতে বা ফেলতে কষ্ট হচ্ছে?",
+                    "type": "boolean",
+                    "answer": "false"
+                },
+                "user_phone": "01222222222",
+                "address": "Lalmatia, Dhaka",
+                "organization_name": "covid19-bd_app",
+                "metadata": {},
+                "is_contacted_with_family_who_cough": {
+                    "question": "আপনার পরিবারের কোন সদস্য / অফিস কলিগ /একই সাথে থাকেন এরকম কোন ব্যক্তির কি জ্বর, কাশি, শ্বাসকষ্ট আছে? ",
+                    "type": "boolean",
+                    "answer": "true"
+                },
+                "high_risk": {
+                    "question": "আপনার কি অন্য কোন অসুখে  ভুগছেন (যেমন : ডায়াবেটিস, এজমা বা হাঁপানি , দীর্ঘমেয়াদি শ্বাসকষ্টের রোগ বা সিওপিডি, কিডনি রোগ, ক্যান্সার বা ক্যান্সারের জন্য কোন চিকিৎসা নিচ্ছেন?",
+                    "type": "boolean",
+                    "answer": "true"
+                },
+                "location": {
+                    "longitude": 91,
+                    "altitude": 0,
+                    "latitude": 22
+                },
+                "created_at": 15234133213,
+                "updated_at": 15234133213,
+                "age": {
+                    "question": "আপনার বয়স? ",
+                    "type": "number",
+                    "answer": "20"
+                },
+                "nid": "10923921883712932",
+                "is_visited_abroad": {
+                    "question": "আপনি কি বিগত ১৪ দিনের ভিতরে বিদেশ হতে এসেছেন?",
+                    "type": "boolean",
+                    "answer": "false"
+                },
+                "is_feverish": {
+                    "question": "আপনার কি জ্বর আছে বা জ্বরজ্বর অনুভব করছেন?",
+                    "type": "boolean",
+                    "answer": "false"
+                }
+            }
+        ]
+    }
 }
 ```
 #### Public pull data by organization
@@ -236,3 +349,80 @@ All POST requests have body application/json. The bodies are listed in [JSON Str
 
 Dashboard Was Inspired By:
 https://github.com/spporan/covid19bdApp (Thanks to Shah Poran vai for his contribution)
+
+## Covid19 Cloud Functions
+
+### Prerequisites
+
+- Learn about [Git](https://git-scm.com/)
+  - Use Git (latest)
+- Learn about [NodeJS](https://nodejs.org/) and [NPM](https://nodejs.org/)
+  - Use Node v11.3.0
+  - Use Npm v6.12.0
+- Learn about [Firebase Tools](https://github.com/firebase/firebase-tools)
+  - User v7.6.1
+- Learn about [TSLint](https://palantir.github.io/tslint/)
+  - Use v5.18.0
+  
+### Installation
+
+Run `npm install -g firebase-tools` For Firebase Tools
+
+Run `npm install -g tslint@5.18.0` for tsLint.
+
+Run `npm install` to grab all project dependencies. (be on the project directory)
+
+Now Run `cd functions` to be at cloud functions directory now run `npm install` to install all the dependencies
+
+#### Build to development
+
+Run  `firebase deploy --project development` to deploy the project to development environment.  
+
+#### Firestore
+
+Modify `firebase.firestore.rules` and `firebase.firestore.indexes.json`.
+
+#### Storage
+
+Modify `firebase.storage.rules`.
+
+#### Hosting
+
+Modify `firebase.json`.
+
+#### Deployment
+
+Run `firebase login` to login to your Firebase Console. Run `firebase deploy` to deploy the project and update firebase rules.
+
+#### Run Firebase function locally
+
+- go to function folder
+
+`cd functions`
+
+ - Start the emulator
+
+`firebase emulator:start`
+
+#### Deploy specific firebase function 
+
+`firebase deploy --only functions:functionName`  
+
+#### To call the firebase functions 
+Note: You must provide the corresponding params
+
+`https://us-central1-covid19-bd.cloudfunctions.net/onUserResponseSubmit`
+
+`https://us-central1-covid19-bd.cloudfunctions.net/getUserByUserPhone`
+
+#### Set Environment Variable  in firebase function
+firebase functions:config:set service.name="your env var name "
+firebase functions:config:set auth.migration_api=""
+
+#### Further help
+
+To get more help on Firebase Tools use `firebase help` or go check out the [Firebase Tools Documentation](https://github.com/firebase/firebase-tools).
+
+## Contributors
+- [nurfarazi](https://github.com/nurfarazi)
+- [tarekahsan709](https://github.com/tarekahsan709)
