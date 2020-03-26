@@ -143,8 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
           size: 60.0,
         ),
       );
-    }
-    else if (state is CovidBdState) {
+    } else if (state is CovidBdState) {
       if (state.covidBdData != null && state.allData != null) {
         dataMap.putIfAbsent(
             "Active", () => state.covidBdData.active.toDouble());
@@ -154,175 +153,160 @@ class _MyHomePageState extends State<MyHomePage> {
             "Deaths", () => state.covidBdData.deaths.toDouble());
         print("CovidBdState ${state.allData}");
         dataMapAll.putIfAbsent(
-            "Confirmed ", () => state.allData.cases.toDouble());
+            "Total Cases ", () => (state.allData.cases - state.allData.recovered - state.allData.deaths).toDouble());
         dataMapAll.putIfAbsent(
             "Recovered", () => state.allData.recovered.toDouble());
         dataMapAll.putIfAbsent("Deaths", () => state.allData.deaths.toDouble());
         return SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                children: <Widget>[
-                  Card(
-                    color: Colors.blue[50],
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                "Bangladesh Covid 19",
-                                style: TextStyle(fontSize: 18),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Align(
-                              alignment: Alignment.topCenter,
-                              child: getChart(dataMap, [
-                                confirmedColor,
-                                recoveredColor,
-                                deathColor
-                              ])),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  _getItem(state.covidBdData.todayCases,
-                                      "Today Confirmed"),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  _getItem(state.covidBdData.active,
-                                      "Active Cases"),
-                                ],
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  _getItem(state.covidBdData.todayDeaths,
-                                      "Today Deaths"),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  _getItem(state.covidBdData.critical,
-                                      "Critical Cases"),
-                                ],
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  _getItem(
-                                      state.covidBdData.deaths +
-                                          state.covidBdData.recovered +
-                                          state.covidBdData.cases,
-                                      "Reported cases"),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  _getItem(
-                                      state.covidBdData.casesPerOneMillion,
-                                      "Cases Per Million"),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+          child: Padding(
+            padding: EdgeInsets.all(10),
+            child: Column(
+              children: <Widget>[
+                Card(
+                  color: Colors.blue[50],
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              "Bangladesh Covid 19",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Align(
+                            alignment: Alignment.topCenter,
+                            child: getChart(dataMap,
+                                [confirmedColor, recoveredColor, deathColor])),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                _getItem(state.covidBdData.todayCases,
+                                    "Today Confirmed"),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                _getItem(
+                                    state.covidBdData.active, "Active Cases"),
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                _getItem(state.covidBdData.todayDeaths,
+                                    "Today Deaths"),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                _getItem(state.covidBdData.critical,
+                                    "Critical Cases"),
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                _getItem(
+                                    state.covidBdData.deaths +
+                                        state.covidBdData.recovered +
+                                        state.covidBdData.cases,
+                                    "Reported cases"),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                _getItem(state.covidBdData.casesPerOneMillion,
+                                    "Cases Per Million"),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                  SizedBox(
-                    height: 35,
-                  ),
-                  Card(
-                    color: Colors.blue[50],
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                "World Covid 19 ",
-                                style: TextStyle(fontSize: 18),
-                              ),
-                              Column(
-                                children: <Widget>[
-                                  Text(
-                                    "Updated on",
-                                    style: TextStyle(
-                                        fontSize: 12, color: Colors.blueGrey),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    " ${formatTimestamp(state.allData.updated)}",
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 40,
-                          ),
-                          Align(
-                              alignment: Alignment.topCenter,
-                              child: getChart(dataMapAll, [
-                                confirmedColor,
-                                recoveredColor,
-                                deathColor
-                              ])),
-                          SizedBox(
-                            height: 40,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              _getItem(state.allData.deaths, "Total Deaths"),
-                              _getItem(
-                                  state.allData.recovered, "Total Recovered"),
-                              _getItem(
-                                  state.allData.deaths +
-                                      state.allData.recovered +
-                                      state.allData.cases,
-                                  "Total Cases"),
-                            ],
-                          ),
-                        ],
-                      ),
+                ),
+                SizedBox(
+                  height: 35,
+                ),
+                Card(
+                  color: Colors.blue[50],
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              "World Covid 19 ",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                            Column(
+                              children: <Widget>[
+                                Text(
+                                  "Updated on",
+                                  style: TextStyle(
+                                      fontSize: 12, color: Colors.blueGrey),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  " ${formatTimestamp(state.allData.updated)}",
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 40,
+                        ),
+                        Align(
+                            alignment: Alignment.topCenter,
+                            child: getChart(dataMapAll,
+                                [confirmedColor, recoveredColor, deathColor])),
+                        SizedBox(
+                          height: 40,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            _getItem(state.allData.deaths, "Total Deaths"),
+                            _getItem(
+                                state.allData.recovered, "Total Recovered"),
+                            _getItem(state.allData.cases, "Total Cases"),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          );
+          ),
+        );
       }
       return Container();
-    }
-    else if (state is CovidErrorState) {
+    } else if (state is CovidErrorState) {
       print(state.error.toString());
       return Align(
           alignment: Alignment.center,
