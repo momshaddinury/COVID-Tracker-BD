@@ -22,7 +22,7 @@ Lead Developer: [Momshad Dinury](https://github.com/dinurymomshad)
 * Map Provider: Leaflet
 
 ## Team members
-* [Abdullah Z Khan Junaid (Cloud Functions & App)](https://github.com/AZKZero)
+* [Abdullah Zowad Khan (Cloud Functions & App)](https://github.com/AZKZero)
 * [Mahbubur Rahman (Server and API)](https://github.com/mahbubcubd)
 * Ibrahim Ullah (Data Logging and Model Analysis)
 
