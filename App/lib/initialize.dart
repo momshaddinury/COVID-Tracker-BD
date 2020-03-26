@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:covidtrackerbd/main_screen.dart';
 import 'package:covidtrackerbd/screens/loadingScreen.dart';
 import 'package:covidtrackerbd/services/locatioinService.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +63,7 @@ class _InitializeState extends State<Initialize> {
             return LoadingScreen();
           }
           ///If fetchData() successfully fetched data
-          return MyHomePage();
+          return HomePage();
         },
       ),
     );

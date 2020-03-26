@@ -67,10 +67,10 @@ class _COVIDTestStartButtonState extends State<COVIDTestStartButton> {
         children: <Widget>[
           Container(
             child: Image.asset(
-              'assets/3337528.jpg',
-              fit: BoxFit.contain,
+              'assets/doc.png',
+              fit: BoxFit.cover,
               height: 250,
-              width: 250,
+              width: 400,
             ),
           ),
           SizedBox(
@@ -80,12 +80,12 @@ class _COVIDTestStartButtonState extends State<COVIDTestStartButton> {
             padding: const EdgeInsets.all(10.0),
             child: Center(
               child: AutoSizeText(
-                "If you are feeling sick and want to let the authority know about your health condition please fill up the form and wait. A health expert will contact you soon.",
+                "আপনি কি করোনা ভাইরাসে ( কোভিড-১৯) আক্রান্ত ?",
                 maxLines: 3,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
-                  fontSize: 20.0,
+                  fontSize: 40.0,
                 ),
               ),
             ),
@@ -95,12 +95,53 @@ class _COVIDTestStartButtonState extends State<COVIDTestStartButton> {
           ),
           MaterialButton(
             padding: EdgeInsets.all(10.0),
-            color: kMLight,
-            child: Text(
-              "Click to Submit Report",
+            minWidth: 50,
+            color: Color(0xFF4575CB),
+            child: AutoSizeText(
+              "শুরু করুন",
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 20,
+                fontSize: 30,
+              ),
+            ),
+            onPressed: () async {
+              showSpinKit();
+              await widget.auth.signInAnon();
+              isLoading = false;
+            },
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          MaterialButton(
+            padding: EdgeInsets.all(10.0),
+            minWidth: 50,
+            color: Colors.lightBlueAccent,
+            child: AutoSizeText(
+              "নিয়মিত আপডেট",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+              ),
+            ),
+            onPressed: () async {
+              showSpinKit();
+              await widget.auth.signInAnon();
+              isLoading = false;
+            },
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          MaterialButton(
+            padding: EdgeInsets.all(10.0),
+            minWidth: 50,
+            color: Color(0xFF40BD45),
+            child: AutoSizeText(
+              "সম্ভাব্য করোনা আক্রান্তের তথ্য দিন",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 30,
               ),
             ),
             onPressed: () async {

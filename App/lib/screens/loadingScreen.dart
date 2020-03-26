@@ -12,7 +12,8 @@ class LoadingScreen extends StatelessWidget {
       body:  AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: Container(
-          decoration: BoxDecoration(
+          color: Color(0xFFF7F7F7),
+/*          decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -24,53 +25,55 @@ class LoadingScreen extends StatelessWidget {
                 Color(0xFF5B16D0),
               ],
             ),
-          ),
+          ),*/
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Image.asset('assets/coronaInfo.png'),
+              SizedBox(height: 100,),
               AutoSizeText(
-                'BANGLADESH',
+                'সংক্রমন প্রতিরোধের উপায়',
                 maxLines: 1,
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 60.0,
-                  fontWeight: FontWeight.w700,
+                  color: Colors.black,
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.w600,
                   letterSpacing: data.size.width * 0.01,
                 ),
               ),
               SizedBox(height: 10),
               AutoSizeText(
-                'COVID-19',
+                'সাবান পানি দিয়ে অন্তত ২০ সেকেন্ড ধরে হাত ধোবেন',
                 maxLines: 1,
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 50.0,
-                  fontWeight: FontWeight.w700,
+                  color: Colors.black,
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.w400,
                   letterSpacing: data.size.width * 0.01,
                 ),
               ),
               SizedBox(height: 20),
               SpinKitPulse(
-                color: Colors.white,
+                color: Colors.blue,
                 size: 60.0,
               ),
               SizedBox(height: 20),
               AutoSizeText(
-                "This App Requires Internet Connection & Location Access",
+                "ডাটা কানেকশন এবং লোকেশন এক্সেস আব্যশক",
                 maxLines: 2,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 15.0,
                 ),
               ),
               SizedBox(height: 20),
               AutoSizeText(
-                "Developed by Students of EEE | CU",
+                "কারিগরি সহযোগিতায় টিম রেড । সিউ",
                 maxLines: 1,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 15.0,
                 ),
               ),

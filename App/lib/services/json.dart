@@ -4,6 +4,7 @@ ParseJson parseJson = ParseJson();
 
 String assessmentMessage;
 String userID;
+String notes;
 class ParseJson {
   Map<String, dynamic> responseJsonDecoded;
 
@@ -25,8 +26,10 @@ class ParseJson {
       print("decodeJson");
       responseJsonDecoded = jsonDecode(responseJson);
       for(dynamic value in responseJsonDecoded.values) {
+        print(value['instructions']);
         assessmentMessage = value['assessmentMessage'];
         userID = value['uniqueId'];
+        notes = value['instructions'];
       }
     } catch (e) {
       print('decodeJson(): $e');

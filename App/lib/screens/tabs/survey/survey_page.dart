@@ -15,6 +15,14 @@ class _SurveyPageState extends State<SurveyPage> {
     return StreamProvider<User>.value(
       value: AuthService().user,
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0.0,
+          brightness: Brightness.light,
+          iconTheme: IconThemeData(
+              color: Colors.black87
+          ),
+        ),
         body: LogInToSubmit(),
       ),
     );

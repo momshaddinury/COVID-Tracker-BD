@@ -197,12 +197,12 @@ class _MyHomePageState extends State<MyHomePage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                _getItem(state.covidBdData.todayCases,
+                                getItem(state.covidBdData.todayCases,
                                     "Today Confirmed"),
                                 SizedBox(
                                   height: 10,
                                 ),
-                                _getItem(
+                                getItem(
                                     state.covidBdData.active, "Active Cases"),
                               ],
                             ),
@@ -210,12 +210,12 @@ class _MyHomePageState extends State<MyHomePage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                _getItem(state.covidBdData.todayDeaths,
+                                getItem(state.covidBdData.todayDeaths,
                                     "Today Deaths"),
                                 SizedBox(
                                   height: 10,
                                 ),
-                                _getItem(state.covidBdData.critical,
+                                getItem(state.covidBdData.critical,
                                     "Critical Cases"),
                               ],
                             ),
@@ -223,7 +223,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                _getItem(
+                                getItem(
                                     state.covidBdData.deaths +
                                         state.covidBdData.recovered +
                                         state.covidBdData.cases,
@@ -231,7 +231,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 SizedBox(
                                   height: 10,
                                 ),
-                                _getItem(state.covidBdData.casesPerOneMillion,
+                                getItem(state.covidBdData.casesPerOneMillion,
                                     "Cases Per Million"),
                               ],
                             ),
@@ -290,10 +290,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            _getItem(state.allData.deaths, "Total Deaths"),
-                            _getItem(
+                            getItem(state.allData.deaths, "Total Deaths"),
+                            getItem(
                                 state.allData.recovered, "Total Recovered"),
-                            _getItem(state.allData.cases, "Total Cases"),
+                            getItem(state.allData.cases, "Total Cases"),
                           ],
                         ),
                       ],
@@ -336,27 +336,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  _getItem(final data, String level) {
-    return Column(
-      children: <Widget>[
-        AutoSizeText(
-          "$data",
-          maxLines: 2,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 18),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        AutoSizeText(
-          "$level",
-          maxLines: 2,
-          textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.black87),
-        )
-      ],
-    );
-  }
+
 
   getChart(var data, var color) {
     return PieChart(
@@ -403,4 +383,36 @@ class ResizableTextWidget extends StatelessWidget {
       overflow: TextOverflow.ellipsis,
     );
   }
+}
+
+getItem(final data, String level) {
+  return Container(
+    width: 150,
+    height: 150,
+    margin: EdgeInsets.only(right: 16),
+    decoration: BoxDecoration(
+      color: Color(0xFFCCECF9),
+      //borderRadius: BorderRadius.circular(24)
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        AutoSizeText(
+          "$data",
+          maxLines: 2,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 25, color: Colors.black),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        AutoSizeText(
+          "$level",
+          maxLines: 2,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 20, color: Color(0xFF3C4C99)),
+        )
+      ],
+    ),
+  );
 }

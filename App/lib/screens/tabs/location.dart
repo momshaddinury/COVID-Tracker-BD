@@ -27,29 +27,39 @@ class _LocationState extends State<Location>  with AutomaticKeepAliveClientMixin
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        WebView(
-          initialUrl:
-              "https://perceptronlab.com/project/covidtrackerbd/heatmap",
-          //initialUrl: "https://coronavirus.app/map",
-          javascriptMode: JavascriptMode.unrestricted,
-          onWebViewCreated: (WebViewController webViewController) {
-            _controller.complete(webViewController);
-            setState(() {
-              isLoading = false;
-            });
-          },
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        brightness: Brightness.light,
+        iconTheme: IconThemeData(
+            color: Colors.black87
         ),
-        isLoading
-            ? Center(
-                child: SpinKitPulse(
-                  color: Colors.redAccent,
-                  size: 60.0,
-                ),
-              )
-            : Container(),
-      ],
+      ),
+      body: Stack(
+        children: <Widget>[
+          WebView(
+            initialUrl:
+                "https://perceptronlab.com/project/covidtrackerbd/heatmap",
+            //initialUrl: "https://coronavirus.app/map",
+            javascriptMode: JavascriptMode.unrestricted,
+            onWebViewCreated: (WebViewController webViewController) {
+              _controller.complete(webViewController);
+              setState(() {
+                isLoading = false;
+              });
+            },
+          ),
+          isLoading
+              ? Center(
+                  child: SpinKitPulse(
+                    color: Colors.redAccent,
+                    size: 60.0,
+                  ),
+                )
+              : Container(),
+        ],
+      ),
     );
   }
 }

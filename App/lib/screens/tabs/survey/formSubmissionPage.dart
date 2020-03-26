@@ -5,6 +5,7 @@ import 'package:covidtrackerbd/services/authentication.dart';
 import 'package:covidtrackerbd/services/json.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:provider/provider.dart';
 import 'loggedOut.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -23,9 +24,9 @@ class _LogInToSubmitState extends State<LogInToSubmit> {
 
     if (user == null) {
       return LoggedOut();
-      /*Navigator.push(context, MaterialPageRoute(
+      Navigator.push(context, MaterialPageRoute(
           builder: (context) => LoggedOut()
-      ));*/
+      ));
     } else {
       return Scaffold(
         body: Container(
@@ -75,7 +76,7 @@ class _COVIDFormState extends State<COVIDForm> {
   Widget build(BuildContext context) {
     return Form(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(18.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -84,12 +85,12 @@ class _COVIDFormState extends State<COVIDForm> {
             ),
             Center(
               child: AutoSizeText(
-                "PLEASE STAY HOME, STAY SAFE",
+                "আমার হাতেই আমার সুরক্ষা",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 30,
                   color: Colors.red,
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),
@@ -98,10 +99,10 @@ class _COVIDFormState extends State<COVIDForm> {
             ),
             Center(
               child: AutoSizeText(
-                "Please fill the form with correct information. If you show any symptoms or if you are at risk you'll be contacted. So make sure your information is correct",
+                "সঠিক তথ্য দিয়ে ফর্মটি পূর্ণ করুন। আপনার মোবাইল নম্বর ঠিক ভাবে দিন। নির্দেশনা মেনে চলুন",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: 20,
                   color: Colors.red,
                 ),
               ),
@@ -140,9 +141,9 @@ class _COVIDFormState extends State<COVIDForm> {
                       FormBuilderValidators.required(),
                       FormBuilderValidators.numeric(),
                       FormBuilderValidators.minLength(11,
-                          errorText: "Less than 11 digit"),
+                          errorText: "১১ ডিজিট"),
                       FormBuilderValidators.maxLength(11,
-                          errorText: "More than 11 digit")
+                          errorText: "১১ ডিজিট")
                     ],
                     onSaved: (value) => phoneNumber = value,
                   ),
@@ -156,9 +157,6 @@ class _COVIDFormState extends State<COVIDForm> {
                       fillColor: Colors.grey[200],
                     ),
                     keyboardType: TextInputType.number,
-                    validators: [
-                      FormBuilderValidators.numeric(),
-                    ],
                     onSaved: (value) => nid = value,
                   ),
 
@@ -171,9 +169,6 @@ class _COVIDFormState extends State<COVIDForm> {
                       fillColor: Colors.grey[200],
                     ),
                     keyboardType: TextInputType.number,
-                    validators: [
-                      FormBuilderValidators.numeric(),
-                    ],
                     onSaved: (value) => passportID = value,
                   ),
 
@@ -392,11 +387,11 @@ class _COVIDFormState extends State<COVIDForm> {
                   child: MaterialButton(
                     color: Colors.red,
                     child: Text(
-                      "Go Back",
+                      "বন্ধ করুন",
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () async {
-                      toast("Please Wait");
+                      toast("অপেক্ষা করুন");
                       _fbKey.currentState.reset();
                       await auth.signOut();
                     },
@@ -409,11 +404,11 @@ class _COVIDFormState extends State<COVIDForm> {
                   child: MaterialButton(
                     color: Theme.of(context).accentColor,
                     child: Text(
-                      "Reset",
+                      "রিসেট",
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () {
-                      toast("Please Wait");
+                      toast("অপেক্ষা করুন");
                       _fbKey.currentState.reset();
                     },
                   ),
@@ -425,19 +420,19 @@ class _COVIDFormState extends State<COVIDForm> {
                   child: MaterialButton(
                     color: Colors.green,
                     child: Text(
-                      "Submit",
+                      "জমা দিন",
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () async {
-                      toast("Please Wait");
+                      toast("অপেক্ষা করুন");
                       if (_fbKey.currentState.saveAndValidate()) {
-                        toast("Processing");
+                        toast("প্রসেসিং");
                         print(_fbKey.currentState.value);
                         await submitResponse();
                         showDialog(
                           context: context,
                           builder: (BuildContext context) => AlertDialog(
-                            title: const Text("Test Result"),
+                            title: const Text("টেস্ট রেজাল্ট"),
                             content: new Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -445,7 +440,7 @@ class _COVIDFormState extends State<COVIDForm> {
                                 Container(
                                     child: RichText(
                                   text: TextSpan(
-                                    text: 'Test Result',
+                                    text: 'ফলাফল: $assessmentMessage\n',
                                     style: TextStyle(
                                       color: Colors.red,
                                       decoration: TextDecoration.none,
@@ -453,7 +448,7 @@ class _COVIDFormState extends State<COVIDForm> {
                                     children: <TextSpan>[
                                       TextSpan(
                                         text:
-                                            "\nResult: $assessmentMessage\nUser ID: $userID",
+                                            "\nআইডি: $userID\n",
                                         style: TextStyle(
                                           color: Colors.red,
                                           decoration: TextDecoration.none,
@@ -461,7 +456,13 @@ class _COVIDFormState extends State<COVIDForm> {
                                       ),
                                     ],
                                   ),
-                                ))
+                                )),
+                                Html(
+                                  data: """$notes""",
+                                  onLinkTap: (url) {
+                                    print("Openning url");
+                                  },
+                                ),
                               ],
                             ),
                             actions: <Widget>[
@@ -470,17 +471,17 @@ class _COVIDFormState extends State<COVIDForm> {
                                   Navigator.of(context).pop();
                                 },
                                 textColor: Theme.of(context).primaryColor,
-                                child: const Text('Okay, got it!'),
+                                child: const Text('ওকে'),
                               ),
                             ],
                           ),
                         );
                         await auth.signOut();
-                        toast("Submitted Successfully");
+                        toast("সফল ভাবে জমা হয়েছে");
                       } else {
                         print(_fbKey.currentState.value);
-                        toast("Please Check Your Form Again");
-                        print("validation failed");
+                        toast("পুনরায় চেক করুন");
+                        print("ভেলিডেশন ফেইল্ড");
                       }
                     },
                   ),
