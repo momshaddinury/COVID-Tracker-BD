@@ -3,7 +3,7 @@ The initial goal is to create an app that will help in tracking live stats of Co
 
 App Name: COVID-19 Live Tracker (BETA)
 
-Lead Developer: Momshad Dinury
+Lead Developer: [Momshad Dinury](https://github.com/dinurymomshad)
 
 ## Sections
 * [Resources Used](#resources-used)
@@ -333,5 +333,6 @@ firebase functions:config:set auth.migration_api=""
 To get more help on Firebase Tools use `firebase help` or go check out the [Firebase Tools Documentation](https://github.com/firebase/firebase-tools).
 
 ## Contributors
-- [nurfarazi](https://github.com/nurfarazi)
-- [tarekahsan709](https://github.com/tarekahsan709)
+- [Shah Poran](https://github.com/spporan)
+- [Nur Farazi](https://github.com/nurfarazi)
+- [Muhammad.Nazmul Ahsan](https://github.com/tarekahsan709)
