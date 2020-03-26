@@ -65,6 +65,12 @@ All POST requests have body application/json. The bodies are listed in [JSON Str
 					"question_en": "",
 					"answer": "20"
 				},
+                "name": {
+					"type": "number",
+					"question_bn": "",
+					"question_en": "",
+					"answer": "md saifur rahman"
+				},
 				"is_feverish": {
 					"type": "boolean",
 					"question_bn": "আপনার কি জ্বর আছে বা জ্বরজ্বর অনুভব করছেন?",
@@ -157,6 +163,12 @@ All POST requests have body application/json. The bodies are listed in [JSON Str
             "question_en" : "",
             "answer": "20"
         },
+        "name": {
+			"type": "number",
+    		"question_bn": "",
+			"question_en": "",
+			"answer": "MD saifur rahman"
+		},
         "is_feverish": {
             "type": "boolean",
             "question_bn": "আপনার কি জ্বর আছে বা জ্বরজ্বর অনুভব করছেন?",
