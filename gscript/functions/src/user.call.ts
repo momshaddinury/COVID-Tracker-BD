@@ -3,10 +3,12 @@ import * as admin from "firebase-admin";
 import Utils from "./util/cf-helper-methods";
 
 const db = admin.firestore();
-const USER_RESPONSE_COLLECTION_PATH = 'corona-user-responses';
 //const COVIDARC_COLLECTION_PATH = 'COVIDARC';
 //const COVIDARC_COLLECTION_REF = db.collection(COVIDARC_COLLECTION_PATH);
+const USER_RESPONSE_COLLECTION_PATH = 'corona-user-responses';
 const USER_RESPONSE_COLLECTION_PATH_REF = db.collection(USER_RESPONSE_COLLECTION_PATH);
+const USER_RECURRING_FIELDS_COLLECTION_PATH = 'corona-user-recurring-responses';
+const USER_RECURRING_FIELDS_COLLECTION_PATH_REF = db.collection(USER_RECURRING_FIELDS_COLLECTION_PATH);
 const ORGANIZATION_COLLECTION_PATH = 'organisations';
 const ORGANIZATION_COLLECTION_REF = db.collection(ORGANIZATION_COLLECTION_PATH);
 
@@ -16,15 +18,41 @@ const ORGANIZATION_COLLECTION_REF = db.collection(ORGANIZATION_COLLECTION_PATH);
  * Warning: User response data type not defined right now.
  */
 
+export const verfiyIfPhoneExists = functions.https.onCall(async (userNum) => {
+	try {
+		
+		if (!('number' in userNum)) return {
+			error: "Invalid parameter"
+		}
+		const phoneNumber = userNum['number'];
+
+		if (!Utils.isValidPhoneNumber(phoneNumber)) return {
+			error: "Not Valid Phone, Example 01719114455"
+		}
+
+		//const responses: any[] = [];
+		//const recurring_data: any[] = [];
+		const querySnap = await USER_RESPONSE_COLLECTION_PATH_REF.where('user_phone', '==', phoneNumber).get();
+		if (querySnap.empty) return false
+		else return true
+
+	} catch (error) {
+		console.error("verfiyIfPhoneExists Error:", error);
+		return error
+	}
+});
+
 export const onUserResponseSubmit = functions.https.onCall(async (userResponse) => {
 	const elderAge = 60;
 	try {
-		//const organisationFromReq = userResponse['organization_name'];
+		const organisationFromReq = userResponse['organization_name'];
 		const organisationIDFromReq = userResponse['organization_id'];
 
 		const organisationFromDB = await ORGANIZATION_COLLECTION_REF.doc(organisationIDFromReq).get();
 
 		if(!organisationFromDB.exists) userResponse['organization_name']='anonymous';
+		
+		if(organisationFromDB.get('organization_name') !== organisationFromReq) userResponse['organization_name']='anonymous';
 
 		//const response = await db.collection(USER_RESPONSE_COLLECTION_PATH).add(userResponse);
 
@@ -39,6 +67,7 @@ export const onUserResponseSubmit = functions.https.onCall(async (userResponse) 
 		userResponse['created_at'] = Date.now();
 
 		const riskData = await db.collection('corona-response-template').doc(finalRiskAssessment.toString()).get();
+		
 		const response = await db.collection(USER_RESPONSE_COLLECTION_PATH).add(userResponse);
 
 		//const numbers: any[]=[];
@@ -57,6 +86,54 @@ export const onUserResponseSubmit = functions.https.onCall(async (userResponse) 
 	}
 });
 
+export const onRecurrentResponseSubmit = functions.https.onCall(async (userResponse) => {
+	const elderAge = 60;
+	try {
+		const organisationFromReq = userResponse['organization_name'];
+		const organisationIDFromReq = userResponse['organization_id'];
+
+		const organisationFromDB = await ORGANIZATION_COLLECTION_REF.doc(organisationIDFromReq).get();
+		
+		if(!organisationFromDB.exists) return {
+			error: "Not Valid Organization"
+		}
+		
+		if(organisationFromDB.get('organization_name') !== organisationFromReq) userResponse['organization_name']='anonymous';
+		
+		const phoneNumber = userResponse['user_phone'];
+
+		const profile = await USER_RESPONSE_COLLECTION_PATH_REF.where('user_phone', '==', phoneNumber).orderBy('created_at', 'desc').limit(1).get();
+		
+		const is_elder = parseInt(profile.docs[0].get('age')['answer']) > elderAge ? '1' : '0';
+		const has_diseases_history = userResponse['high_risk']['answer'].toString() === 'true' ? '1' : '0';
+		const symptom_risk = getSymptomRisk(userResponse);
+		const epidemic_risk = getEpidemicRisk(userResponse);
+		const finalRiskAssessment = getFinalRiskAssessment(symptom_risk, is_elder, has_diseases_history, epidemic_risk);
+		const assessmentMessage = getAssessmentMessage(finalRiskAssessment);
+
+		userResponse['risk']=finalRiskAssessment;
+		userResponse['created_at'] = Date.now();
+
+		const riskData = await db.collection('corona-response-template').doc(finalRiskAssessment.toString()).get();
+		
+		const response = await USER_RECURRING_FIELDS_COLLECTION_PATH_REF.add(userResponse);
+
+		//const numbers: any[]=[];
+
+		return {
+			assessmentMessage,
+			risk: finalRiskAssessment,
+			uniqueId: response.id,
+			instructions: riskData.get('message'),
+			numbers:riskData.get('numbers')
+		};
+
+	} catch (error) {
+		console.error("onRecurrentResponseSubmit Error:", error);
+		return error
+	}
+});
+
 export const getResponsesByUserPhone = functions.https.onCall(async (userNum) => {
 	try {
 		console.log(userNum);
@@ -70,7 +147,9 @@ export const getResponsesByUserPhone = functions.https.onCall(async (userNum) =>
 		}
 
 		const responses: any[] = [];
+		const recurring_data: any[] = [];
 		const querySnap = await USER_RESPONSE_COLLECTION_PATH_REF.where('user_phone', '==', phoneNumber).get();
+		const recurringData = await USER_RECURRING_FIELDS_COLLECTION_PATH_REF.where('user_phone', '==', phoneNumber).get();
 		if (querySnap.empty) return {
 			error: "Phone Number Does Not Exist"
 		}
@@ -80,9 +159,18 @@ export const getResponsesByUserPhone = functions.https.onCall(async (userNum) =>
 			data['organization_id']='************';
 			responses.push(data);
 		}));
+		
+		await Promise.all(recurringData.docs.map(async (doc) => {
+			const data=doc.data();
+			//data['organization_id']='************';
+			delete data.organization_id;
+			delete data.organization_name;
+			recurring_data.push(data);
+		}));
 
 		return {
-			responses
+			responses,
+			recurring_data
 		};
 	} catch (error) {
 		console.error("getResponsesByUserPhone Error:", error);
@@ -113,7 +201,7 @@ export const getResponsesByOrgName = functions.https.onCall(async (orgName) => {
 			responses
 		};
 	} catch (error) {
-		console.error("getResponsesByUserPhone Error:", error);
+		console.error("getResponsesByOrgName Error:", error);
 		return error;
 	}
 });
