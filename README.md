@@ -256,42 +256,50 @@ All POST requests have body application/json. The bodies are listed in [JSON Str
     "data": {
         "age": {
             "type": "number",
-            "question": "আপনার বয়স? ",
+            "question_bn": "আপনার বয়স? ",
+            "question_en" : "",
             "answer": "20"
         },
         "is_feverish": {
             "type": "boolean",
-            "question": "আপনার কি জ্বর আছে বা জ্বরজ্বর অনুভব করছেন?",
+            "question_bn": "আপনার কি জ্বর আছে বা জ্বরজ্বর অনুভব করছেন?",
+            "question_en" : "",
             "answer": "false"
         },
         "has_sore_throat": {
             "type": "boolean",
-            "question": "আপনার কি কাশি বা গলাব্যথা বা দুইটাই আছে? ",
+            "question_bn": "আপনার কি কাশি বা গলাব্যথা বা দুইটাই আছে? ",
+            "question_en" : "",
             "answer": "false"
         },
         "has_breathlessness": {
             "type": "boolean",
-            "question": "আপনার কি শ্বাসকষ্ট আছে বা শ্বাস নিতে বা ফেলতে কষ্ট হচ্ছে?",
+            "question_bn": "আপনার কি শ্বাসকষ্ট আছে বা শ্বাস নিতে বা ফেলতে কষ্ট হচ্ছে?",
+            "question_en" : "",
             "answer": "false"
         },
         "is_visited_abroad": {
             "type": "boolean",
-            "question": "আপনি কি বিগত ১৪ দিনের ভিতরে বিদেশ হতে এসেছেন?",
+            "question_bn": "আপনি কি বিগত ১৪ দিনের ভিতরে বিদেশ হতে এসেছেন?",
+            "question_en" : "",
             "answer": "false"
         },
         "is_contacted_with_covid": {
             "type": "boolean",
-            "question": "আপনি কি বিগত ১৪ দিনের ভিতরে করোনা ভাইরাসে ( কোবিড-১৯) আক্রান্ত এরকম কোন ব্যক্তির সংস্পর্শে এসেছিলেন ( একই স্থানে অবস্থান বা ভ্রমন )",
+            "question_bn": "আপনি কি বিগত ১৪ দিনের ভিতরে করোনা ভাইরাসে ( কোবিড-১৯) আক্রান্ত এরকম কোন ব্যক্তির সংস্পর্শে এসেছিলেন ( একই স্থানে অবস্থান বা ভ্রমন )",
+            "question_en" : "",
             "answer": "false"
         },
         "is_contacted_with_family_who_cough": {
             "type": "boolean",
-            "question": "আপনার পরিবারের কোন সদস্য / অফিস কলিগ /একই সাথে থাকেন এরকম কোন ব্যক্তির কি জ্বর, কাশি, শ্বাসকষ্ট আছে? ",
+            "question_bn": "আপনার পরিবারের কোন সদস্য / অফিস কলিগ /একই সাথে থাকেন এরকম কোন ব্যক্তির কি জ্বর, কাশি, শ্বাসকষ্ট আছে? ",
+            "question_en" : "",
             "answer": "true"
         },
         "high_risk": {
             "type": "boolean",
-            "question": "আপনার কি অন্য কোন অসুখে  ভুগছেন (যেমন : ডায়াবেটিস, এজমা বা হাঁপানি , দীর্ঘমেয়াদি শ্বাসকষ্টের রোগ বা সিওপিডি, কিডনি রোগ, ক্যান্সার বা ক্যান্সারের জন্য কোন চিকিৎসা নিচ্ছেন?",
+            "question_bn": "আপনার কি অন্য কোন অসুখে  ভুগছেন (যেমন : ডায়াবেটিস, এজমা বা হাঁপানি , দীর্ঘমেয়াদি শ্বাসকষ্টের রোগ বা সিওপিডি, কিডনি রোগ, ক্যান্সার বা ক্যান্সারের জন্য কোন চিকিৎসা নিচ্ছেন?",
+            "question_en" : "",
             "answer": "true"
         },
         "location": {
@@ -301,6 +309,7 @@ All POST requests have body application/json. The bodies are listed in [JSON Str
         },
         "nid":"10923921883712932",
         "address":"Lalmatia, Dhaka",
+        "is_offline": true,
         "organization_id":"X",
         "organization_name":"covid19-bd_app",
         "user_phone":"01222222222",
