@@ -227,7 +227,7 @@ All POST requests have body application/json. The bodies are listed in [JSON Str
             "longitude": 91,
             "altitude": 0
         },
-		"is_self", true,
+		"is_self": true,
         "nid":"10923921883712932",
         "address":"Lalmatia, Dhaka",
         "is_offline": true,
