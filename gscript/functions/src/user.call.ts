@@ -38,7 +38,7 @@ const ORGANIZATION_COLLECTION_REF = db.collection(ORGANIZATION_COLLECTION_PATH);
  * Warning: User response data type not defined right now.
  */
 
-export const verfiyIfPhoneExists = functions.https.onCall(async (userNum) => {
+export const verifyIfPhoneExists = functions.https.onCall(async (userNum) => {
 	try {
 		
 		if (!('number' in userNum)) return {
@@ -57,7 +57,7 @@ export const verfiyIfPhoneExists = functions.https.onCall(async (userNum) => {
 		else return true
 
 	} catch (error) {
-		console.error("verfiyIfPhoneExists Error:", error);
+		console.error("verifyIfPhoneExists Error:", error);
 		return error
 	}
 });
