@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:covidtrackerbd/model/patientDataModel.dart';
 import 'package:covidtrackerbd/screens/tabs/Report/doctors_report.dart';
+import 'package:covidtrackerbd/screens/tabs/Report/neighbours_report.dart';
 import 'package:covidtrackerbd/services/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -140,7 +141,7 @@ class _PossibleAffectedState extends State<PossibleAffected> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                LogInToSubmit()));
+                                                NeighboursReport()));
                                   }
                                 }
                               },

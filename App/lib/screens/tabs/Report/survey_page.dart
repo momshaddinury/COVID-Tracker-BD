@@ -118,9 +118,6 @@ class _SurveyPageState extends State<SurveyPage> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => PossibleAffected()));
-                        /*showSpinKit();
-              await widget.auth.signInAnon();
-              isLoading = false;*/
                       },
                     ),
                   ],

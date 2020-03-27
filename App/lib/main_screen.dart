@@ -123,6 +123,7 @@ class _HomePageState extends State<HomePage> {
                 height: 5,
               ),
               Material(
+                elevation: 10,
                 color: Color(0xFFBD202E),
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 24),
@@ -363,6 +364,7 @@ class HeatMapTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      elevation: 10,
       color: Color(0xFFCCECF9),
       child: InkWell(
         onTap: () {

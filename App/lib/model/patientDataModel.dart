@@ -7,7 +7,7 @@
 //String migrant;
 //String isContacted;
 //String isAnyoneInFamily;
-//List <DateTime> date;
+
 //String breathCount;
 //String fever;
 //List<dynamic> symptoms;
@@ -26,6 +26,11 @@ String location;
 String reporterType;
 String notSelf;
 String fullName;
+String patientFatherName;
+List <DateTime> dateofReturnNRB;
+String countryNRB;
+String union;
+String village;
 String phoneNumber;
 String nid;
 String passportID;
