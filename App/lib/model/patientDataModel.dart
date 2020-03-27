@@ -16,8 +16,14 @@
 //int temp;
 //String isInfected;
 //int interaction;
-
+String bmdc;
+String division;
+String district;
+String upazila;
+String address;
+String sympotoms;
 String location;
+String reporterType;
 String notSelf;
 String fullName;
 String phoneNumber;

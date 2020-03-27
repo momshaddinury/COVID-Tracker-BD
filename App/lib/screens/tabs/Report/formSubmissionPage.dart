@@ -1,13 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:covidtrackerbd/model/patientDataModel.dart';
-import 'package:covidtrackerbd/model/users.dart';
 import 'package:covidtrackerbd/services/authentication.dart';
 import 'package:covidtrackerbd/services/json.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:provider/provider.dart';
-import 'loggedOut.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:covidtrackerbd/services/api.dart';
@@ -44,16 +41,6 @@ class _LogInToSubmitState extends State<LogInToSubmit> {
         ),
       ),
     );
-    /*final user = Provider.of<User>(context);
-
-    if (user == null) {
-      return LoggedOut();
-      *//*Navigator.push(context, MaterialPageRoute(
-          builder: (context) => LoggedOut()
-      ));*//*
-    } else {
-
-    }*/
   }
 }
 
@@ -73,13 +60,9 @@ class _COVIDFormState extends State<COVIDForm> {
 
   @override
   void dispose() {
-    //_fbKey.currentState.reset();
     super.dispose();
   }
 
-  /*signOut() async {
-    await auth.signOut();
-  }*/
 
   @override
   Widget build(BuildContext context) {

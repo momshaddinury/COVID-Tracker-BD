@@ -1,3 +1,5 @@
+
+BDModel bdModel = BDModel();
 class BDModel {
 //  returns division list in bangla
   List<String> getDivisionListBn(){

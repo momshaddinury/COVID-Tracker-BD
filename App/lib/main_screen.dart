@@ -7,7 +7,7 @@ import 'package:covidtrackerbd/screens/tabs/home/bloc/event.dart';
 import 'package:covidtrackerbd/screens/tabs/home/bloc/state.dart';
 import 'package:covidtrackerbd/screens/tabs/home/repository.dart';
 import 'package:covidtrackerbd/screens/tabs/location.dart';
-import 'package:covidtrackerbd/screens/tabs/survey/survey_page.dart';
+import 'package:covidtrackerbd/screens/tabs/Report//survey_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
