@@ -21,6 +21,8 @@ class _DoctorsReportState extends State<DoctorsReport> {
   bool autoValidate = true;
   bool readOnly = false;
   bool showSegmentedControl = true;
+  BDModel bdModel = new BDModel();
+  String selectedDivision, selectedDistrict;
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
 
   @override
@@ -153,10 +155,15 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           hint: Text('   বিভাগ নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
                           onSaved: (value) => division = value,
-                          items: []
+                          items: bdModel.getDivisionListBn()
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("$value")))
                               .toList(),
+                          onChanged: (value){
+                            setState(() {
+                              selectedDivision = value.toString().trim();
+                            });
+                          },
                         ),
                         // জেলা
                         FormBuilderDropdown(
@@ -166,10 +173,15 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           hint: Text('   জেলা নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
                           onSaved: (value) => district = value,
-                          items: []
+                          items: bdModel.getDistrictListBn(selectedDivision)
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("$value")))
                               .toList(),
+                          onChanged: (value){
+                            setState(() {
+                              selectedDistrict = value.toString().trim();
+                            });
+                          },
                         ),
 
 
@@ -181,7 +193,7 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           hint: Text('   উপজেলা নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
                           onSaved: (value) => upazila = value,
-                          items: []
+                          items: bdModel.getSubDistrictListBn(selectedDistrict)
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("$value")))
                               .toList(),

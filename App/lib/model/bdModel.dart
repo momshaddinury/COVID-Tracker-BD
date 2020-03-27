@@ -407,7 +407,7 @@ class BDModel {
 
   List<String> getRangpurDistrictListBn(){
     List<String> districtList = ['লালমনিরহাট', 'রংপুর', 'পঞ্চগড়', 'নীলফামারি', 'দিনাজপুর',
-      'ঠাকুরগাঁও', 'গাইবান্ধা', 'কুড়িগ্রাম'];
+      'ঠাকুরগাঁও', 'গাইবান্ধা', 'কুড়িগ্রাম'];
     return districtList;
   }
 
