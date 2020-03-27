@@ -12,6 +12,26 @@ const USER_RECURRING_FIELDS_COLLECTION_PATH_REF = db.collection(USER_RECURRING_F
 const ORGANIZATION_COLLECTION_PATH = 'organisations';
 const ORGANIZATION_COLLECTION_REF = db.collection(ORGANIZATION_COLLECTION_PATH);
 
+//development function
+/*export const addIfSelfToAllCollections = functions.https.onCall(async (userNum) => {
+	try {
+		const querySnap = await USER_RESPONSE_COLLECTION_PATH_REF.get();
+		
+		const responses: any[] = [];
+		await Promise.all(querySnap.docs.map(async (doc) => {
+			await USER_RESPONSE_COLLECTION_PATH_REF.doc(doc.id).update({ is_self: true });
+			responses.push(doc.id);
+		}));
+		
+		return {
+			responses
+		}
+	} catch (error) {
+		console.error("verfiyIfPhoneExists Error:", error);
+		return error
+	}
+});*/
+
 /**
  * Details: https://docs.google.com/spreadsheets/d/13x-6koKiqRnIK6_trJX-abLJyi65OzqV621u9iwM1qw/edit#gid=2008915096
  * Note: tslint:disable-next-line:radix
@@ -86,6 +106,8 @@ export const onUserResponseSubmit = functions.https.onCall(async (userResponse) 
 	}
 });
 
+
+
 export const onRecurrentResponseSubmit = functions.https.onCall(async (userResponse) => {
 	const elderAge = 60;
 	try {
@@ -147,29 +169,40 @@ export const getResponsesByUserPhone = functions.https.onCall(async (userNum) =>
 		}
 
 		const responses: any[] = [];
+		const familyResponses: any[] = [];
 		const recurring_data: any[] = [];
-		const querySnap = await USER_RESPONSE_COLLECTION_PATH_REF.where('user_phone', '==', phoneNumber).get();
+		
+		const userProfileQuery = await USER_RESPONSE_COLLECTION_PATH_REF.where('user_phone', '==', phoneNumber);
+		
+		const userProfile = await userProfileQuery.where('is_self', '==', true).get();
+		const familyProfiles = await userProfileQuery.where('is_self', '==', false).get();
+		
 		const recurringData = await USER_RECURRING_FIELDS_COLLECTION_PATH_REF.where('user_phone', '==', phoneNumber).get();
-		if (querySnap.empty) return {
+		if (userProfile.empty) return {
 			error: "Phone Number Does Not Exist"
 		}
 
-		await Promise.all(querySnap.docs.map(async (doc) => {
+		await Promise.all(userProfile.docs.map(async (doc) => {
 			const data=doc.data();
 			data['organization_id']='************';
 			responses.push(data);
 		}));
 		
+		await Promise.all(familyProfiles.docs.map(async (doc) => {
+			const data=doc.data();
+			delete data.organization_name;
+			familyResponses.push(data);
+		}));
+		
 		await Promise.all(recurringData.docs.map(async (doc) => {
 			const data=doc.data();
-			//data['organization_id']='************';
-			delete data.organization_id;
 			delete data.organization_name;
 			recurring_data.push(data);
 		}));
 
 		return {
 			responses,
+			familyResponses,
 			recurring_data
 		};
 	} catch (error) {

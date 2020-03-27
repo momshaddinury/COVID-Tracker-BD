@@ -37,6 +37,7 @@ Lead Developer: [Momshad Dinury](https://github.com/dinurymomshad)
 * [JSON - Public pull data by number](#public-pull-data-by-number)
 * [JSON - Public pull data by organization](#public-pull-data-by-organization)
 * [JSON - POST single data](#post-single-data)
+* [JSON - POST recurring user data](#post-recurring-user-data)
 
 ### Public API data
 All POST requests have body application/json. The bodies are listed in [JSON Structure](#json-structure)
@@ -226,8 +227,148 @@ All POST requests have body application/json. The bodies are listed in [JSON Str
             "longitude": 91,
             "altitude": 0
         },
+		"is_self", true,
         "nid":"10923921883712932",
         "address":"Lalmatia, Dhaka",
+        "is_offline": true,
+        "organization_id":"X",
+        "organization_name":"covid19-bd_app",
+        "user_phone":"01222222222",
+        "metadata":{},
+        "submitted_at": 15234133213,
+        "created_at": 15234133213,
+        "updated_at": 15234133213
+    }
+}
+```
+**Success**
+```json
+{
+    "result": {
+        "assessmentMessage": "Extra Urgent",
+        "risk": 5,
+        "uniqueId": "SZZTXTdwpjRDCxoGJGPd",
+        "instructions": "<p><b>5: Immediate</b><br> <b>ফলাফল: আপনার করোনা ভাইরাস বা কোভিড-১৯ এ আক্রান্ত হওয়ার সমূহ সম্ভাবনা রয়েছে।</b><br> অতিসত্তর মোবাইলে আপনার নিকটবর্তী হাসপাতাল বা ৩৩৩, ১৬২৬৩, ১০৬৫৫ অথবা আইইডিসিআর এর হটলাইন নাম্বারে যোগাযোগ করবেন দেরি না করে শ্বাসকষ্টের চিকিৎসার জন্যে হাসপাতালে যান। হাসপাতালে যাওয়ার সময় অবস্যই মাস্ক পরিধান করবেন এবং গণপরিবহন বা ভীড় এড়িয়ে চলবেন। যাতাযাতের সময় আপনার সাথে শুধু একজন সঙ্গী থাকতে পারবে তবে তাঁর সাথে নিরাপদ দূরত্ব ( ৩ ফুট ) বজায় রাখতে হবে।  </p>",
+        "numbers": [
+            "333",
+            "16263",
+            "10655"
+        ]
+    }
+}
+```
+
+#### POST recurring user data
+**Request**
+```json
+{
+    "data": {
+        "is_feverish": {
+            "type": "boolean",
+            "question_bn": "আপনার কি জ্বর আছে বা জ্বরজ্বর অনুভব করছেন?",
+            "question_en" : "",
+            "answer": "false"
+        },
+        "has_sore_throat": {
+            "type": "boolean",
+            "question_bn": "আপনার কি কাশি বা গলাব্যথা বা দুইটাই আছে? ",
+            "question_en" : "",
+            "answer": "false"
+        },
+        "has_breathlessness": {
+            "type": "boolean",
+            "question_bn": "আপনার কি শ্বাসকষ্ট আছে বা শ্বাস নিতে বা ফেলতে কষ্ট হচ্ছে?",
+            "question_en" : "",
+            "answer": "false"
+        },
+        "is_visited_abroad": {
+            "type": "boolean",
+            "question_bn": "আপনি কি বিগত ১৪ দিনের ভিতরে বিদেশ হতে এসেছেন?",
+            "question_en" : "",
+            "answer": "false"
+        },
+        "is_contacted_with_covid": {
+            "type": "boolean",
+            "question_bn": "আপনি কি বিগত ১৪ দিনের ভিতরে করোনা ভাইরাসে ( কোবিড-১৯) আক্রান্ত এরকম কোন ব্যক্তির সংস্পর্শে এসেছিলেন ( একই স্থানে অবস্থান বা ভ্রমন )",
+            "question_en" : "",
+            "answer": "false"
+        },
+        "is_contacted_with_family_who_cough": {
+            "type": "boolean",
+            "question_bn": "আপনার পরিবারের কোন সদস্য / অফিস কলিগ /একই সাথে থাকেন এরকম কোন ব্যক্তির কি জ্বর, কাশি, শ্বাসকষ্ট আছে? ",
+            "question_en" : "",
+            "answer": "true"
+        },
+        "high_risk": {
+            "type": "boolean",
+            "question_bn": "আপনার কি অন্য কোন অসুখে  ভুগছেন (যেমন : ডায়াবেটিস, এজমা বা হাঁপানি , দীর্ঘমেয়াদি শ্বাসকষ্টের রোগ বা সিওপিডি, কিডনি রোগ, ক্যান্সার বা ক্যান্সারের জন্য কোন চিকিৎসা নিচ্ছেন?",
+            "question_en" : "",
+            "answer": "true"
+        },
+		"event_of_contact": {
+            "type": "string",
+            "question_bn": "<question_help>",
+            "question_en" : "",
+            "answer": ""
+        },
+		"number_of_event_of_exposure": {
+            "type": "double",
+            "question_bn": "<question_help>",
+            "question_en" : "",
+            "answer": 1
+        },
+		"history_of_travel_in_2_weeks": {
+			"type": "string",
+            "question_bn": "<question_help>",
+            "question_en" : "",
+            "answer": "true",
+			"additional": ""
+		},
+		"exposures": [
+			{
+				"duration":	{
+					"type": "int",
+					"question_bn": "<question_help>(মিনিট)",
+					"question_en" : "",
+					"answer": 2
+				},
+				"relation":	{
+					"type": "string",
+					"question_bn": "সম্পর্ক",
+					"question_en" : "",
+					"answer": ""
+				},
+				"contact_type":	{
+					"type": "string",
+					"question_bn": "<question_help>",
+					"question_en" : "",
+					"answer": ""
+				},
+				"contact_categorization": {
+					"type": "string",
+					"question_bn": "<question_help>",
+					"question_en" : "",
+					"answer": ""
+				},
+				"contact_first": {
+					"type": "string",
+					"question_bn": "সংস্পর্শে আসার প্রথম দিন",
+					"question_en" : "",
+					"answer": "Mar 27, 2019"
+				},
+				"contact_last":	{
+					"type": "string",
+					"question_bn": "সংস্পর্শে আসার শেষ দিন",
+					"question_en" : "",
+					"answer": "Mar 27, 2019"
+				}
+			}
+		],
+        "location": {
+            "latitude": 22,
+            "longitude": 91,
+            "altitude": 0
+        },
         "is_offline": true,
         "organization_id":"X",
         "organization_name":"covid19-bd_app",
