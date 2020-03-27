@@ -18,6 +18,7 @@
 //int interaction;
 
 String location;
+String notSelf;
 String fullName;
 String phoneNumber;
 String nid;

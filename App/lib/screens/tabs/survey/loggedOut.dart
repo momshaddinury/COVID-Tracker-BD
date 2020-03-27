@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:covidtrackerbd/screens/tabs/home/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:covidtrackerbd/services/authentication.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:covidtrackerbd/screens/tabs/survey/self_reporting_page.dart';
 
 class LoggedOut extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class _LoggedOutState extends State<LoggedOut> {
   @override
   void initState() {
     super.initState();
-    task();
+    //task();
   }
 
   task() async {
@@ -105,9 +105,13 @@ class _COVIDTestStartButtonState extends State<COVIDTestStartButton> {
               ),
             ),
             onPressed: () async {
-              showSpinKit();
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SelfReportingPage()));
+              /*showSpinKit();
               await widget.auth.signInAnon();
-              isLoading = false;
+              isLoading = false;*/
             },
           ),
           SizedBox(

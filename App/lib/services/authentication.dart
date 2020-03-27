@@ -1,4 +1,3 @@
-import 'package:covidtrackerbd/model/patientDataModel.dart';
 import 'package:covidtrackerbd/model/users.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

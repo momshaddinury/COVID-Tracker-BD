@@ -5,10 +5,8 @@ import 'package:covidtrackerbd/screens/tabs/home/api_service.dart';
 import 'package:covidtrackerbd/screens/tabs/home/bloc/bloc.dart';
 import 'package:covidtrackerbd/screens/tabs/home/bloc/event.dart';
 import 'package:covidtrackerbd/screens/tabs/home/bloc/state.dart';
-import 'package:covidtrackerbd/screens/tabs/home/my_home_page.dart';
 import 'package:covidtrackerbd/screens/tabs/home/repository.dart';
 import 'package:covidtrackerbd/screens/tabs/location.dart';
-import 'package:covidtrackerbd/screens/tabs/survey/formSubmissionPage.dart';
 import 'package:covidtrackerbd/screens/tabs/survey/survey_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -241,7 +239,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                 height: 166,
                 child: ListView.builder(
-                    itemCount: 9,
+                    itemCount: 1,
                     shrinkWrap: true,
                     physics: ClampingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
@@ -276,7 +274,6 @@ class _HomePageState extends State<HomePage> {
     if (state is CovidLoadingState) {
       return Align(
         alignment: Alignment.center,
-
         /// Loading Screen Here
         child: SpinKitPulse(
           color: Colors.blueAccent,
@@ -302,7 +299,7 @@ class _HomePageState extends State<HomePage> {
             "Recovered", () => state.allData.recovered.toDouble());
         dataMapAll.putIfAbsent("Deaths", () => state.allData.deaths.toDouble());
         return ListView.builder(
-            itemCount: 9,
+            itemCount: 1,
             shrinkWrap: true,
             physics: ClampingScrollPhysics(),
             scrollDirection: Axis.horizontal,
@@ -419,4 +416,55 @@ class HeatMapTile extends StatelessWidget {
       ),
     );
   }
+}
+
+class ResizableTextWidget extends StatelessWidget {
+  const ResizableTextWidget({
+    Key key,
+    @required this.title,
+  }) : super(key: key);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return AutoSizeText(
+      "$title",
+      style: TextStyle(fontSize: 13.0),
+      minFontSize: 10,
+      overflow: TextOverflow.ellipsis,
+    );
+  }
+}
+
+getItem(final data, String level) {
+  return Container(
+    width: 150,
+    height: 150,
+    margin: EdgeInsets.only(right: 16),
+    decoration: BoxDecoration(
+      color: Color(0xFFCCECF9),
+      //borderRadius: BorderRadius.circular(24)
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        AutoSizeText(
+          "$data",
+          maxLines: 2,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 25, color: Colors.black),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        AutoSizeText(
+          "$level",
+          maxLines: 2,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 20, color: Color(0xFF3C4C99)),
+        )
+      ],
+    ),
+  );
 }

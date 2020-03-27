@@ -20,31 +20,40 @@ class LogInToSubmit extends StatefulWidget {
 class _LogInToSubmitState extends State<LogInToSubmit> {
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User>(context);
-
-    if (user == null) {
-      return LoggedOut();
-      Navigator.push(context, MaterialPageRoute(
-          builder: (context) => LoggedOut()
-      ));
-    } else {
-      return Scaffold(
-        body: Container(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        brightness: Brightness.light,
+        iconTheme: IconThemeData(
+            color: Colors.black87
+        ),
+      ),
+      body: Container(
 //          color: Colors.white,
-          child: SingleChildScrollView(
-            child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  COVIDForm(),
-                ],
-              ),
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                COVIDForm(),
+              ],
             ),
           ),
         ),
-      );
-    }
+      ),
+    );
+    /*final user = Provider.of<User>(context);
+
+    if (user == null) {
+      return LoggedOut();
+      *//*Navigator.push(context, MaterialPageRoute(
+          builder: (context) => LoggedOut()
+      ));*//*
+    } else {
+
+    }*/
   }
 }
 
@@ -64,13 +73,13 @@ class _COVIDFormState extends State<COVIDForm> {
 
   @override
   void dispose() {
-    signOut();
+    //_fbKey.currentState.reset();
     super.dispose();
   }
 
-  signOut() async {
+  /*signOut() async {
     await auth.signOut();
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -393,7 +402,8 @@ class _COVIDFormState extends State<COVIDForm> {
                     onPressed: () async {
                       toast("অপেক্ষা করুন");
                       _fbKey.currentState.reset();
-                      await auth.signOut();
+                     // await auth.signOut();
+                      Navigator.pop(context);
                     },
                   ),
                 ),
@@ -476,7 +486,7 @@ class _COVIDFormState extends State<COVIDForm> {
                             ],
                           ),
                         );
-                        await auth.signOut();
+                        //await auth.signOut();
                         toast("সফল ভাবে জমা হয়েছে");
                       } else {
                         print(_fbKey.currentState.value);

@@ -4,7 +4,6 @@ import 'package:covidtrackerbd/screens/loadingScreen.dart';
 import 'package:covidtrackerbd/services/locatioinService.dart';
 import 'package:flutter/material.dart';
 import 'services/connectivity.dart';
-import 'package:covidtrackerbd/screens/tabs/home/my_home_page.dart';
 
 /// Initializes fetchData() to fetch data, to  show in Home Tab
 /// Starts Scheduler to periodically call fetchData()

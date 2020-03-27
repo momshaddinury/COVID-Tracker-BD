@@ -1,4 +1,4 @@
-import 'package:auto_size_text/auto_size_text.dart';
+/*import 'package:auto_size_text/auto_size_text.dart';
 import 'package:covidtrackerbd/screens/tabs/developerStory.dart';
 import 'package:covidtrackerbd/screens/tabs/home/repository.dart';
 import 'package:covidtrackerbd/screens/tabs/location.dart';
@@ -16,8 +16,9 @@ import 'package:covidtrackerbd/screens/tabs/home/bloc/state.dart';
 import 'package:covidtrackerbd/screens/tabs/home/constants.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
-import 'package:pie_chart/pie_chart.dart';
+import 'package:pie_chart/pie_chart.dart';*/
 
+/*
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -132,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget Dashboard(CovidState state) {
+  /*Widget Dashboard(CovidState state) {
     if (state is CovidLoadingState) {
       return Align(
         alignment: Alignment.center,
@@ -334,11 +335,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
-  }
+  }*/
 
-
-
-  getChart(var data, var color) {
+  /*getChart(var data, var color) {
     return PieChart(
       dataMap: data,
       animationDuration: Duration(milliseconds: 800),
@@ -363,56 +362,7 @@ class _MyHomePageState extends State<MyHomePage> {
     var format = new DateFormat("MMM d, yyyy");
     var date = new DateTime.fromMillisecondsSinceEpoch(timestamp);
     return format.format(date);
-  }
-}
+  }*/
+} */
 
-class ResizableTextWidget extends StatelessWidget {
-  const ResizableTextWidget({
-    Key key,
-    @required this.title,
-  }) : super(key: key);
 
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return AutoSizeText(
-      "$title",
-      style: TextStyle(fontSize: 13.0),
-      minFontSize: 10,
-      overflow: TextOverflow.ellipsis,
-    );
-  }
-}
-
-getItem(final data, String level) {
-  return Container(
-    width: 150,
-    height: 150,
-    margin: EdgeInsets.only(right: 16),
-    decoration: BoxDecoration(
-      color: Color(0xFFCCECF9),
-      //borderRadius: BorderRadius.circular(24)
-    ),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        AutoSizeText(
-          "$data",
-          maxLines: 2,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 25, color: Colors.black),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        AutoSizeText(
-          "$level",
-          maxLines: 2,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20, color: Color(0xFF3C4C99)),
-        )
-      ],
-    ),
-  );
-}
