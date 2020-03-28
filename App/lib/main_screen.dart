@@ -440,6 +440,13 @@ class ResizableTextWidget extends StatelessWidget {
 }
 
 getItem(final data, String level) {
+  const english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  const farsi = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+  String dataInBengali = data.toString();
+  for (int i = 0; i < english.length; i++) {
+    dataInBengali = dataInBengali.replaceAll(english[i], farsi[i]);
+  }
+
   return Container(
     width: 150,
     height: 150,
@@ -452,7 +459,7 @@ getItem(final data, String level) {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         AutoSizeText(
-          "$data",
+          "$dataInBengali",
           maxLines: 2,
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 25, color: Colors.black),

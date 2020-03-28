@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:covidtrackerbd/model/bdModel.dart';
 import 'package:covidtrackerbd/model/patientDataModel.dart';
 import 'package:covidtrackerbd/services/api.dart';
 import 'package:covidtrackerbd/services/json.dart';
@@ -20,6 +21,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
   bool autoValidate = true;
   bool readOnly = false;
   bool showSegmentedControl = true;
+  BDModel bdModel = new BDModel();
+  String selectedDivision, selectedDistrict;
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
 
   @override
@@ -145,23 +148,21 @@ class _NeighboursReportState extends State<NeighboursReport> {
                         ),
 
                         // যে দেশ থেকে ফিরেছেন
-                        FormBuilderDropdown(
-                          attribute: "dropdown",
-                          //decoration: InputDecoration(labelText: "Gender"),
-                          // initialValue: 'Male',
-                          hint: Text('   যে দেশ থেকে ফিরেছেন'),
-                          validators: [FormBuilderValidators.required()],
+                        FormBuilderTextField(
+                          attribute: "name",
+                          decoration: InputDecoration(
+                            labelText: "   যে দেশ থেকে ফিরেছেন",
+                            filled: true,
+                            fillColor: Colors.grey[200],
+                          ),
                           onSaved: (value) => countryNRB = value,
-                          items: []
-                              .map((value) => DropdownMenuItem(
-                                  value: value, child: Text("$value")))
-                              .toList(),
                         ),
                         Divider(
                           thickness: 10,
                           height: 50.0,
                           color: Colors.black45,
                         ),
+
                         // বিভাগ
                         FormBuilderDropdown(
                           attribute: "dropdown",
@@ -170,10 +171,16 @@ class _NeighboursReportState extends State<NeighboursReport> {
                           hint: Text('   বিভাগ নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
                           onSaved: (value) => division = value,
-                          items: []
+                          items: bdModel
+                              .getDivisionListBn()
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("$value")))
                               .toList(),
+                          onChanged: (value) {
+                            setState(() {
+                              selectedDivision = value.toString().trim();
+                            });
+                          },
                         ),
                         // জেলা
                         FormBuilderDropdown(
@@ -183,10 +190,16 @@ class _NeighboursReportState extends State<NeighboursReport> {
                           hint: Text('   জেলা নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
                           onSaved: (value) => district = value,
-                          items: []
+                          items: bdModel
+                              .getDistrictListBn(selectedDivision)
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("$value")))
                               .toList(),
+                          onChanged: (value) {
+                            setState(() {
+                              selectedDistrict = value.toString().trim();
+                            });
+                          },
                         ),
 
                         // উপজেলা
@@ -197,7 +210,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
                           hint: Text('   উপজেলা নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
                           onSaved: (value) => upazila = value,
-                          items: []
+                          items: bdModel
+                              .getSubDistrictListBn(selectedDistrict)
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("$value")))
                               .toList(),
@@ -235,8 +249,6 @@ class _NeighboursReportState extends State<NeighboursReport> {
                           ),
                           onSaved: (value) => address = value,
                         ),
-
-
 
                         //রোগীর মোবাইল
                         FormBuilderTextField(
