@@ -1,0 +1,268 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.tne.covidtrackerbd"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="16"
+9        android:targetSdkVersion="28" />
+10    <!--
+11         Flutter needs it to communicate with the running application
+12         to allow setting breakpoints, to provide hot reload, etc.
+13    -->
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:3:5-66
+14-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:3:22-64
+15    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+15-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:4:5-79
+15-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:4:22-76
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:24:5-79
+16-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:24:22-76
+17    <uses-permission android:name="android.permission.WAKE_LOCK" />
+17-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:25:5-68
+17-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:25:22-65
+18    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+18-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:26:5-110
+18-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:26:22-107
+19    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+19-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:26:5-82
+19-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:26:22-79
+20    <!--
+21 io.flutter.app.FlutterApplication is an android.app.Application that
+22         calls FlutterMain.startInitialization(this); in its onCreate method.
+23         In most cases you can leave this as-is, but you if you want to provide
+24         additional functionality it is fine to subclass or reimplement
+25         FlutterApplication and put your custom class here.
+26    -->
+27    <application
+27-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:10:5-31:19
+28        android:name="io.flutter.app.FlutterApplication"
+28-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:11:9-57
+29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+29-->[androidx.core:core:1.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\0f4e70c3eb44d56c0073302bdec04405\core-1.1.0\AndroidManifest.xml:24:18-86
+30        android:debuggable="true"
+31        android:icon="@mipmap/ic_launcher"
+31-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:13:9-43
+32        android:label="C19BD" >
+32-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:12:9-30
+33        <activity
+33-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:14:9-25:20
+34            android:name="com.tne.covidtrackerbd.MainActivity"
+34-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:15:13-41
+35            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+35-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:18:13-163
+36            android:hardwareAccelerated="true"
+36-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:19:13-47
+37            android:launchMode="singleTop"
+37-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:16:13-43
+38            android:theme="@style/LaunchTheme"
+38-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:17:13-47
+39            android:windowSoftInputMode="adjustResize" >
+39-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:20:13-55
+40            <intent-filter>
+40-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:21:13-24:29
+41                <action android:name="android.intent.action.MAIN" />
+41-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:22:17-68
+41-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:22:25-66
+42
+43                <category android:name="android.intent.category.LAUNCHER" />
+43-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:23:17-76
+43-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:23:27-74
+44            </intent-filter>
+45        </activity>
+46        <!--
+47             Don't delete the meta-data below.
+48             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+49        -->
+50        <meta-data
+50-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:28:9-30:33
+51            android:name="flutterEmbedding"
+51-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:29:13-44
+52            android:value="2" />
+52-->C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:30:13-30
+53
+54        <service
+54-->[:cloud_firestore] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+55            android:name="com.google.firebase.components.ComponentDiscoveryService"
+55-->[:cloud_firestore] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
+56            android:directBootAware="true"
+56-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
+57            android:exported="false" >
+57-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:35:13-37
+58            <meta-data
+58-->[:cloud_firestore] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+59                android:name="com.google.firebase.components:io.flutter.plugins.firebase.cloudfirestore.FlutterFirebaseAppRegistrar"
+59-->[:cloud_firestore] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-133
+60                android:value="com.google.firebase.components.ComponentRegistrar" />
+60-->[:cloud_firestore] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+61            <meta-data
+61-->[:firebase_auth] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+62                android:name="com.google.firebase.components:io.flutter.plugins.firebaseauth.FlutterFirebaseAppRegistrar"
+62-->[:firebase_auth] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-122
+63                android:value="com.google.firebase.components.ComponentRegistrar" />
+63-->[:firebase_auth] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+64            <meta-data
+64-->[:firebase_core] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+65                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseAppRegistrar"
+65-->[:firebase_core] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-123
+66                android:value="com.google.firebase.components.ComponentRegistrar" />
+66-->[:firebase_core] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+67            <meta-data
+67-->[:firebase_crashlytics] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_crashlytics\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+68                android:name="com.google.firebase.components:io.flutter.plugins.firebase.crashlytics.firebasecrashlytics.FlutterFirebaseAppRegistrar"
+68-->[:firebase_crashlytics] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_crashlytics\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-150
+69                android:value="com.google.firebase.components.ComponentRegistrar" />
+69-->[:firebase_crashlytics] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_crashlytics\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+70            <meta-data
+70-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:36:13-38:85
+71                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+71-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:37:17-109
+72                android:value="com.google.firebase.components.ComponentRegistrar" />
+72-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:38:17-82
+73            <meta-data
+73-->[com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:30:13-32:85
+74                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+74-->[com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:31:17-139
+75                android:value="com.google.firebase.components.ComponentRegistrar" />
+75-->[com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:32:17-82
+76            <meta-data
+76-->[com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:20:13-22:85
+77                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+77-->[com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:21:17-111
+78                android:value="com.google.firebase.components.ComponentRegistrar" />
+78-->[com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:22:17-82
+79            <meta-data
+79-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:32:13-34:85
+80                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+80-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:33:17-96
+81                android:value="com.google.firebase.components.ComponentRegistrar" />
+81-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:34:17-82
+82        </service>
+83
+84        <activity
+84-->[:url_launcher] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
+85            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+85-->[:url_launcher] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
+86            android:exported="false"
+86-->[:url_launcher] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+87            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+87-->[:url_launcher] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
+88        <activity
+88-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:24:9-31:50
+89            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+89-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:25:13-85
+90            android:excludeFromRecents="true"
+90-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:26:13-46
+91            android:exported="true"
+91-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:27:13-36
+92            android:launchMode="singleTask"
+92-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:28:13-44
+93            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+93-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:29:13-102
+94            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+94-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:30:13-72
+95
+96        <receiver
+96-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:29:9-33:20
+97            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+97-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:30:13-85
+98            android:enabled="true"
+98-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:31:13-35
+99            android:exported="false" >
+99-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:32:13-37
+100        </receiver>
+101        <receiver
+101-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:34:9-42:20
+102            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+102-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:35:13-100
+103            android:enabled="true"
+103-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:36:13-35
+104            android:exported="true"
+104-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:37:13-36
+105            android:permission="android.permission.INSTALL_PACKAGES" >
+105-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:38:13-69
+106            <intent-filter>
+106-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:39:13-41:29
+107                <action android:name="com.android.vending.INSTALL_REFERRER" />
+107-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:40:17-79
+107-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:40:25-76
+108            </intent-filter>
+109        </receiver>
+110
+111        <service
+111-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:44:9-47:40
+112            android:name="com.google.android.gms.measurement.AppMeasurementService"
+112-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:45:13-84
+113            android:enabled="true"
+113-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:46:13-35
+114            android:exported="false" />
+114-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:47:13-37
+115        <service
+115-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:48:9-52:72
+116            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+116-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:49:13-87
+117            android:enabled="true"
+117-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:50:13-35
+118            android:exported="false"
+118-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:51:13-37
+119            android:permission="android.permission.BIND_JOB_SERVICE" />
+119-->[com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:52:13-69
+120
+121        <receiver
+121-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:37:9-44:20
+122            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+122-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:38:13-78
+123            android:exported="true"
+123-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:39:13-36
+124            android:permission="com.google.android.c2dm.permission.SEND" >
+124-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:40:13-73
+125            <intent-filter>
+125-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:41:13-43:29
+126                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+126-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:42:17-81
+126-->[com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:42:25-78
+127            </intent-filter>
+128        </receiver>
+129
+130        <provider
+130-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
+131            android:name="com.google.firebase.provider.FirebaseInitProvider"
+131-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
+132            android:authorities="com.tne.covidtrackerbd.firebaseinitprovider"
+132-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
+133            android:exported="false"
+133-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
+134            android:initOrder="100" />
+134-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
+135
+136        <activity
+136-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7523fccef74893d8e1c8f9c6fe7f933f\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+137            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+137-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7523fccef74893d8e1c8f9c6fe7f933f\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+138            android:exported="false"
+138-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7523fccef74893d8e1c8f9c6fe7f933f\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+139            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+139-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7523fccef74893d8e1c8f9c6fe7f933f\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+140
+141        <meta-data
+141-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\fd6ca4a64addf83d90850efce1877526\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+142            android:name="com.google.android.gms.version"
+142-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\fd6ca4a64addf83d90850efce1877526\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+143            android:value="@integer/google_play_services_version" />
+143-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\fd6ca4a64addf83d90850efce1877526\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+144
+145        <provider
+145-->[com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:12:9-16:38
+146            android:name="com.crashlytics.android.CrashlyticsInitProvider"
+146-->[com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:13:13-75
+147            android:authorities="com.tne.covidtrackerbd.crashlyticsinitprovider"
+147-->[com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:14:13-75
+148            android:exported="false"
+148-->[com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:15:13-37
+149            android:initOrder="90" />
+149-->[com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:16:13-35
+150    </application>
+151
+152</manifest>

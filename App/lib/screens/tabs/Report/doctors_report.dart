@@ -24,6 +24,15 @@ class _DoctorsReportState extends State<DoctorsReport> {
   BDModel bdModel = new BDModel();
   String selectedDivision, selectedDistrict;
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+  List<String> districtList = [],
+      subDistrictList = [],
+      divisionList = [];
+
+
+  @override
+  void initState() {
+    divisionList = bdModel.getDivisionListBn();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +40,6 @@ class _DoctorsReportState extends State<DoctorsReport> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.black87),
       ),
       body: Container(
@@ -146,54 +154,106 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           height: 50.0,
                           color: Colors.black45,
                         ),
+
                         // বিভাগ
                         FormBuilderDropdown(
-                          attribute: "dropdown",
+                          attribute: "divisionDropdown",
                           //decoration: InputDecoration(labelText: "Gender"),
                           // initialValue: 'Male',
                           hint: Text('   বিভাগ নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
                           onSaved: (value) => division = value,
-                          items: bdModel.getDivisionListBn().map((value) => DropdownMenuItem(value: value, child: Text("$value"))).toList(),
+                          items: divisionList
+                              .map((value) => DropdownMenuItem(
+                              value: value, child: Text("$value")))
+                              .toList(),
                           onChanged: (value) {
-                            setState(() {
-                              selectedDivision = value.toString().trim();
-                            });
+                            _fbKey.currentState.fields["districtDropdown"]
+                                .currentState.reset();
+                            _fbKey.currentState.fields["subDistrictDropdown"]
+                                .currentState.reset();
+                            if (value == null) {
+                              setState(() {
+                                divisionList = bdModel.getDivisionListBn();
+                              });
+                            } else {
+                              setState(() {
+                                divisionList = [];
+                                selectedDivision = value.toString().trim();
+                                districtList =
+                                    bdModel.getDistrictListBn(selectedDivision);
+                              });
+                            }
                           },
+                          allowClear: true,
                         ),
                         // জেলা
                         FormBuilderDropdown(
-                          attribute: "dropdown",
+                          attribute: "districtDropdown",
                           //decoration: InputDecoration(labelText: "Gender"),
                           // initialValue: 'Male',
                           hint: Text('   জেলা নির্বাচন করুন'),
+                          allowClear: true,
                           validators: [FormBuilderValidators.required()],
                           onSaved: (value) => district = value,
-                          items: bdModel
-                              .getDistrictListBn(selectedDivision)
-                              .map((value) => DropdownMenuItem(
+                          items: districtList
+                              .map((value) =>
+                              DropdownMenuItem(
                                   value: value, child: Text("$value")))
                               .toList(),
                           onChanged: (value) {
-                            setState(() {
-                              selectedDistrict = value.toString().trim();
-                            });
+                            _fbKey.currentState.fields["subDistrictDropdown"]
+                                .currentState.reset();
+                            if (value == null) {
+                              if (selectedDivision != "" &&
+                                  selectedDivision != null) {
+                                setState(() {
+                                  districtList = bdModel.getDistrictListBn(
+                                      selectedDivision);
+                                });
+                              }
+                            }
+                            else {
+                              setState(() {
+                                districtList = [];
+                                selectedDistrict = value.toString().trim();
+                                subDistrictList = bdModel.getSubDistrictListBn(
+                                    selectedDistrict);
+                              });
+                            }
                           },
                         ),
 
                         // উপজেলা
                         FormBuilderDropdown(
-                          attribute: "dropdown",
+                          attribute: "subDistrictDropdown",
                           //decoration: InputDecoration(labelText: "Gender"),
                           // initialValue: 'Male',
                           hint: Text('   উপজেলা নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
+                          allowClear: true,
                           onSaved: (value) => upazila = value,
-                          items: bdModel
-                              .getSubDistrictListBn(selectedDistrict)
-                              .map((value) => DropdownMenuItem(
+                          items: subDistrictList
+                              .map((value) =>
+                              DropdownMenuItem(
                                   value: value, child: Text("$value")))
                               .toList(),
+                          onChanged: (value) {
+                            if (value == null) {
+                              if (selectedDistrict != "" &&
+                                  selectedDistrict != null) {
+                                setState(() {
+                                  subDistrictList =
+                                      bdModel.getSubDistrictListBn(
+                                          selectedDistrict);
+                                });
+                              }
+                            } else {
+                              setState(() {
+                                subDistrictList = [];
+                              });
+                            }
+                          },
                         ),
 
                         //রোগীর ঠিকানা
@@ -280,7 +340,7 @@ class _DoctorsReportState extends State<DoctorsReport> {
                             FormBuilderValidators.required(),
                           ],
                           onSaved: (value) =>
-                              contactWithAnyCOVIDPatient = value,
+                          contactWithAnyCOVIDPatient = value,
                         ),
                         Divider(
                           thickness: 10,
@@ -439,7 +499,9 @@ class _DoctorsReportState extends State<DoctorsReport> {
                       ),
                       Expanded(
                         child: MaterialButton(
-                          color: Theme.of(context).accentColor,
+                          color: Theme
+                              .of(context)
+                              .accentColor,
                           child: Text(
                             "রিসেট",
                             style: TextStyle(color: Colors.white),
@@ -468,50 +530,55 @@ class _DoctorsReportState extends State<DoctorsReport> {
                               await submitResponse();
                               showDialog(
                                 context: context,
-                                builder: (BuildContext context) => AlertDialog(
-                                  title: const Text("টেস্ট রেজাল্ট"),
-                                  content: new Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
+                                builder: (BuildContext context) =>
+                                    AlertDialog(
+                                      title: const Text("টেস্ট রেজাল্ট"),
+                                      content: new Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Container(
-                                          child: RichText(
-                                        text: TextSpan(
-                                          text: 'ফলাফল: $assessmentMessage\n',
-                                          style: TextStyle(
-                                            color: Colors.red,
-                                            decoration: TextDecoration.none,
+                                        children: <Widget>[
+                                          Container(
+                                              child: RichText(
+                                                text: TextSpan(
+                                                  text: 'ফলাফল: $assessmentMessage\n',
+                                                  style: TextStyle(
+                                                    color: Colors.red,
+                                                    decoration: TextDecoration
+                                                        .none,
+                                                  ),
+                                                  children: <TextSpan>[
+                                                    TextSpan(
+                                                      text: "\nআইডি: $userID\n",
+                                                      style: TextStyle(
+                                                        color: Colors.red,
+                                                        decoration: TextDecoration
+                                                            .none,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              )),
+                                          Html(
+                                            data: """$notes""",
+                                            onLinkTap: (url) {
+                                              print("Openning url");
+                                            },
                                           ),
-                                          children: <TextSpan>[
-                                            TextSpan(
-                                              text: "\nআইডি: $userID\n",
-                                              style: TextStyle(
-                                                color: Colors.red,
-                                                decoration: TextDecoration.none,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      )),
-                                      Html(
-                                        data: """$notes""",
-                                        onLinkTap: (url) {
-                                          print("Openning url");
-                                        },
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                  actions: <Widget>[
-                                    new FlatButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      textColor: Theme.of(context).primaryColor,
-                                      child: const Text('ওকে'),
+                                      actions: <Widget>[
+                                        new FlatButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          textColor: Theme
+                                              .of(context)
+                                              .primaryColor,
+                                          child: const Text('ওকে'),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
                               );
                               //await auth.signOut();
                               toast("সফল ভাবে জমা হয়েছে");

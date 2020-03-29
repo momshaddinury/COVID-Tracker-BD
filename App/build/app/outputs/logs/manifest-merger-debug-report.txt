@@ -1,0 +1,621 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:1:1-32:12
+INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:1:1-32:12
+INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:1:1-32:12
+INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:1:1-32:12
+MERGED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:1:1-32:12
+MERGED from [:path_provider] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:path_provider_macos] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\path_provider_macos\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:cloud_firestore] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:geolocator] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:google_api_availability] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\google_api_availability\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:firebase_auth] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:cloud_firestore_web] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:firebase_core] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:firebase_core_web] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:firebase_auth_web] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:firebase_crashlytics] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_crashlytics\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:flutter_keyboard_visibility] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\flutter_keyboard_visibility\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:webview_flutter] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\webview_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
+MERGED from [:url_launcher_macos] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher_macos\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher_web] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:fluttertoast] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:location_permissions] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\location_permissions\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7811ca2c4eac1bd2f5f6c5f6da6a08ad\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\38c8de7249181933bc92c3efe75e93d3\jetified-firebase-analytics-17.2.2\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:17:1-42:12
+MERGED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:17:1-55:12
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:17:1-36:12
+MERGED from [com.google.android.gms:play-services-measurement-sdk:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\65dd57b5f7a3e0e7fb949e906349eb72\jetified-play-services-measurement-sdk-17.2.2\AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:2:1-26:12
+MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:17:1-47:12
+MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\8cd3fac289efe38ecb97b9e3eda697b1\jetified-firebase-auth-interop-19.0.0\AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:15:1-39:12
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\50f895a9f124cbf040b62f52f3514a3f\jetified-play-services-location-17.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\58fa03c5bfdff04bd94e204f0b5801d0\jetified-play-services-measurement-impl-17.2.2\AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\73baf8357dc879a16bccd62f8639e768\jetified-play-services-measurement-sdk-api-17.2.2\AndroidManifest.xml:17:1-27:12
+MERGED from [com.google.android.gms:play-services-measurement-base:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\139dfae6fbdf9ac66074340d8eade0dd\jetified-play-services-measurement-base-17.2.2\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\abe32e89e7530c8cb0ccd98f1c15e0a5\jetified-play-services-stats-17.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\c079638bdc8b712d5e92cd5564267195\jetified-firebase-iid-interop-17.0.0\AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7523fccef74893d8e1c8f9c6fe7f933f\jetified-play-services-base-17.1.0\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\01a9b8ba1de19d4992b4b8d692126f12\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b1d88a80d0b9d62646d56758226af652\jetified-firebase-measurement-connector-18.0.0\AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\0e82f2d13cb680babdca277835cc82de\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\781a95d57d80f2c206571c9939c8ce36\jetified-play-services-ads-identifier-17.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\fd6ca4a64addf83d90850efce1877526\jetified-play-services-basement-17.0.0\AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.fragment:fragment:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\23a9457860a1ef8247c668fb3931643e\fragment-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\23b15ce6e7e4a2d11401ce6bac0ac815\webkit-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9adee61d15e8137bdbbb48f740bd7536\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\6879cfcd14a8f84aecf9c0c93982ee6c\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\ca571f261d855d827cbef15e62c693ec\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\3d8049409232aa4f2a63551056851e58\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\94bf9f327b2b75f16ccc2748d3003aff\coordinatorlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\d250eabdadfa8dbbe7c4c23d4de31c1b\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f75e12c27a5bc4b98460a16a81609a6d\slidingpanelayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\2cf02e0b77cfc015a49ce293ee965cff\customview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\5ab08895e3825d455d4f730b8a15f4f3\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\64f8beb1b6a00060ba159e3770689a1a\asynclayoutinflater-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\0f4e70c3eb44d56c0073302bdec04405\core-1.1.0\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\e31d68925a5d562dd3f106e971bfc753\lifecycle-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\0ec6252778853766a63b8699497c3613\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\899c86119cc2816678212d135bc4bee6\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\13a558d74321a62e0ea884a5dfd2a058\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\830bc58c271be6de02da11c8a80a4319\lifecycle-viewmodel-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f40e8478c1ad00f450bb976a3c2fb63b\versionedparcelable-1.1.0\AndroidManifest.xml:17:1-27:12
+MERGED from [com.google.firebase:firebase-components:16.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\da558a37871107b177bf44563c0ed9a2\jetified-firebase-components-16.0.0\AndroidManifest.xml:15:1-23:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\26473fc671f5d9830f4b594050ca6ba9\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\3cf1a00836767e64e53bdf7a3d0958db\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7834c2a020bc583e7cf09e7bc5879a2f\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b23b9fd57148915eaf191fc22d92378c\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b38c4ce1a4335e7fa9447f48f3160f26\print-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [io.grpc:grpc-android:1.21.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\64065ec5bd2204af78d44a291989eaa9\jetified-grpc-android-1.21.0\AndroidManifest.xml:2:1-13:12
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:2:1-19:12
+MERGED from [com.google.firebase:firebase-database-collection:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\c36434f676f748c6846f28d93dd34187\jetified-firebase-database-collection-17.0.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.firebase:protolite-well-known-types:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7f19ae643ead157793931b73d02db541\jetified-protolite-well-known-types-17.0.0\AndroidManifest.xml:2:1-11:12
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.6.8] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\85169e339dfe316d76d86bf07a67fe47\jetified-crashlytics-core-2.6.8\AndroidManifest.xml:45:1-56:12
+MERGED from [com.crashlytics.sdk.android:answers:1.4.7] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\68a6f9508ce8cefd71bc36d690f31c60\jetified-answers-1.4.7\AndroidManifest.xml:2:1-13:12
+MERGED from [io.fabric.sdk.android:fabric:1.4.8] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\098d1c1f491ce91352800c39548ddf22\jetified-fabric-1.4.8\AndroidManifest.xml:22:1-33:12
+MERGED from [com.crashlytics.sdk.android:beta:1.2.10] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b205b20cf8b670b84be1129e65e89309\jetified-beta-1.2.10\AndroidManifest.xml:2:1-13:12
+INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\debug\AndroidManifest.xml:1:1-7:12
+	package
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:2:5-37
+		INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\debug\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:1:1-32:12
+		INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\debug\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:1:1-32:12
+		INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\debug\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:3:5-66
+MERGED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:3:5-66
+MERGED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:3:5-66
+MERGED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:22:5-67
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:14:5-67
+MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:14:5-67
+MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\58fa03c5bfdff04bd94e204f0b5801d0\jetified-play-services-measurement-impl-17.2.2\AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\58fa03c5bfdff04bd94e204f0b5801d0\jetified-play-services-measurement-impl-17.2.2\AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\73baf8357dc879a16bccd62f8639e768\jetified-play-services-measurement-sdk-api-17.2.2\AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\73baf8357dc879a16bccd62f8639e768\jetified-play-services-measurement-sdk-api-17.2.2\AndroidManifest.xml:23:5-67
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:9:5-67
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:9:5-67
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.6.8] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\85169e339dfe316d76d86bf07a67fe47\jetified-crashlytics-core-2.6.8\AndroidManifest.xml:52:5-67
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.6.8] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\85169e339dfe316d76d86bf07a67fe47\jetified-crashlytics-core-2.6.8\AndroidManifest.xml:52:5-67
+MERGED from [com.crashlytics.sdk.android:answers:1.4.7] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\68a6f9508ce8cefd71bc36d690f31c60\jetified-answers-1.4.7\AndroidManifest.xml:9:5-67
+MERGED from [com.crashlytics.sdk.android:answers:1.4.7] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\68a6f9508ce8cefd71bc36d690f31c60\jetified-answers-1.4.7\AndroidManifest.xml:9:5-67
+MERGED from [io.fabric.sdk.android:fabric:1.4.8] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\098d1c1f491ce91352800c39548ddf22\jetified-fabric-1.4.8\AndroidManifest.xml:29:5-67
+MERGED from [io.fabric.sdk.android:fabric:1.4.8] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\098d1c1f491ce91352800c39548ddf22\jetified-fabric-1.4.8\AndroidManifest.xml:29:5-67
+MERGED from [com.crashlytics.sdk.android:beta:1.2.10] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b205b20cf8b670b84be1129e65e89309\jetified-beta-1.2.10\AndroidManifest.xml:9:5-67
+MERGED from [com.crashlytics.sdk.android:beta:1.2.10] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b205b20cf8b670b84be1129e65e89309\jetified-beta-1.2.10\AndroidManifest.xml:9:5-67
+	android:name
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:3:22-64
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:4:5-79
+MERGED from [:geolocator] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-79
+MERGED from [:geolocator] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-79
+	android:name
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:4:22-76
+application
+ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:10:5-31:19
+MERGED from [:cloud_firestore] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:cloud_firestore] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_auth] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_auth] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_core] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_core] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_crashlytics] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_crashlytics\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_crashlytics] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_crashlytics\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:url_launcher] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\38c8de7249181933bc92c3efe75e93d3\jetified-firebase-analytics-17.2.2\AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\38c8de7249181933bc92c3efe75e93d3\jetified-firebase-analytics-17.2.2\AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:23:5-40:19
+MERGED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:23:5-40:19
+MERGED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:28:5-53:19
+MERGED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:28:5-53:19
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:26:5-34:19
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:26:5-34:19
+MERGED from [com.google.android.gms:play-services-measurement-sdk:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\65dd57b5f7a3e0e7fb949e906349eb72\jetified-play-services-measurement-sdk-17.2.2\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-measurement-sdk:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\65dd57b5f7a3e0e7fb949e906349eb72\jetified-play-services-measurement-sdk-17.2.2\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:16:5-24:19
+MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:16:5-24:19
+MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:28:5-45:19
+MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:28:5-45:19
+MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\8cd3fac289efe38ecb97b9e3eda697b1\jetified-firebase-auth-interop-19.0.0\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\8cd3fac289efe38ecb97b9e3eda697b1\jetified-firebase-auth-interop-19.0.0\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:25:5-37:19
+MERGED from [com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:25:5-37:19
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\50f895a9f124cbf040b62f52f3514a3f\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\50f895a9f124cbf040b62f52f3514a3f\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\58fa03c5bfdff04bd94e204f0b5801d0\jetified-play-services-measurement-impl-17.2.2\AndroidManifest.xml:28:5-38:19
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\58fa03c5bfdff04bd94e204f0b5801d0\jetified-play-services-measurement-impl-17.2.2\AndroidManifest.xml:28:5-38:19
+MERGED from [com.google.android.gms:play-services-measurement-base:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\139dfae6fbdf9ac66074340d8eade0dd\jetified-play-services-measurement-base-17.2.2\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-measurement-base:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\139dfae6fbdf9ac66074340d8eade0dd\jetified-play-services-measurement-base-17.2.2\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\abe32e89e7530c8cb0ccd98f1c15e0a5\jetified-play-services-stats-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\abe32e89e7530c8cb0ccd98f1c15e0a5\jetified-play-services-stats-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\c079638bdc8b712d5e92cd5564267195\jetified-firebase-iid-interop-17.0.0\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\c079638bdc8b712d5e92cd5564267195\jetified-firebase-iid-interop-17.0.0\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7523fccef74893d8e1c8f9c6fe7f933f\jetified-play-services-base-17.1.0\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7523fccef74893d8e1c8f9c6fe7f933f\jetified-play-services-base-17.1.0\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\01a9b8ba1de19d4992b4b8d692126f12\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\01a9b8ba1de19d4992b4b8d692126f12\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b1d88a80d0b9d62646d56758226af652\jetified-firebase-measurement-connector-18.0.0\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b1d88a80d0b9d62646d56758226af652\jetified-firebase-measurement-connector-18.0.0\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\0e82f2d13cb680babdca277835cc82de\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\0e82f2d13cb680babdca277835cc82de\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\781a95d57d80f2c206571c9939c8ce36\jetified-play-services-ads-identifier-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\781a95d57d80f2c206571c9939c8ce36\jetified-play-services-ads-identifier-17.0.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\fd6ca4a64addf83d90850efce1877526\jetified-play-services-basement-17.0.0\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\fd6ca4a64addf83d90850efce1877526\jetified-play-services-basement-17.0.0\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.core:core:1.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\0f4e70c3eb44d56c0073302bdec04405\core-1.1.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\0f4e70c3eb44d56c0073302bdec04405\core-1.1.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f40e8478c1ad00f450bb976a3c2fb63b\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f40e8478c1ad00f450bb976a3c2fb63b\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:11:5-17:19
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:11:5-17:19
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.6.8] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\85169e339dfe316d76d86bf07a67fe47\jetified-crashlytics-core-2.6.8\AndroidManifest.xml:54:5-20
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.6.8] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\85169e339dfe316d76d86bf07a67fe47\jetified-crashlytics-core-2.6.8\AndroidManifest.xml:54:5-20
+MERGED from [com.crashlytics.sdk.android:answers:1.4.7] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\68a6f9508ce8cefd71bc36d690f31c60\jetified-answers-1.4.7\AndroidManifest.xml:11:5-20
+MERGED from [com.crashlytics.sdk.android:answers:1.4.7] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\68a6f9508ce8cefd71bc36d690f31c60\jetified-answers-1.4.7\AndroidManifest.xml:11:5-20
+MERGED from [io.fabric.sdk.android:fabric:1.4.8] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\098d1c1f491ce91352800c39548ddf22\jetified-fabric-1.4.8\AndroidManifest.xml:31:5-20
+MERGED from [io.fabric.sdk.android:fabric:1.4.8] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\098d1c1f491ce91352800c39548ddf22\jetified-fabric-1.4.8\AndroidManifest.xml:31:5-20
+MERGED from [com.crashlytics.sdk.android:beta:1.2.10] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b205b20cf8b670b84be1129e65e89309\jetified-beta-1.2.10\AndroidManifest.xml:11:5-20
+MERGED from [com.crashlytics.sdk.android:beta:1.2.10] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b205b20cf8b670b84be1129e65e89309\jetified-beta-1.2.10\AndroidManifest.xml:11:5-20
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\0f4e70c3eb44d56c0073302bdec04405\core-1.1.0\AndroidManifest.xml:24:18-86
+	android:label
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:12:9-30
+	android:icon
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:13:9-43
+	android:name
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:11:9-57
+activity#com.tne.covidtrackerbd.MainActivity
+ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:14:9-25:20
+	android:launchMode
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:16:13-43
+	android:hardwareAccelerated
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:19:13-47
+	android:windowSoftInputMode
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:20:13-55
+	android:configChanges
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:18:13-163
+	android:theme
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:17:13-47
+	android:name
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:15:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:21:13-24:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:22:17-68
+	android:name
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:22:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:23:17-76
+	android:name
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:23:27-74
+meta-data#flutterEmbedding
+ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:28:9-30:33
+	android:value
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:30:13-30
+	android:name
+		ADDED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml:29:13-44
+uses-sdk
+INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml
+MERGED from [:path_provider] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_macos] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\path_provider_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_macos] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\path_provider_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:cloud_firestore] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:cloud_firestore] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:geolocator] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:geolocator] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:google_api_availability] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\google_api_availability\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:google_api_availability] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\google_api_availability\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_auth] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_auth] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:cloud_firestore_web] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:cloud_firestore_web] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_core] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_core] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_core_web] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_core_web] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_auth_web] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_auth_web] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_crashlytics] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_crashlytics\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_crashlytics] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_crashlytics\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_keyboard_visibility] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\flutter_keyboard_visibility\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_keyboard_visibility] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\flutter_keyboard_visibility\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\webview_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\webview_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_macos] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_macos] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_web] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_web] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:location_permissions] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\location_permissions\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:location_permissions] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\location_permissions\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7811ca2c4eac1bd2f5f6c5f6da6a08ad\multidex-2.0.0\AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7811ca2c4eac1bd2f5f6c5f6da6a08ad\multidex-2.0.0\AndroidManifest.xml:20:5-43
+MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\38c8de7249181933bc92c3efe75e93d3\jetified-firebase-analytics-17.2.2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\38c8de7249181933bc92c3efe75e93d3\jetified-firebase-analytics-17.2.2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:21:5-44
+MERGED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:21:5-44
+MERGED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-sdk:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\65dd57b5f7a3e0e7fb949e906349eb72\jetified-play-services-measurement-sdk-17.2.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-sdk:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\65dd57b5f7a3e0e7fb949e906349eb72\jetified-play-services-measurement-sdk-17.2.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\8cd3fac289efe38ecb97b9e3eda697b1\jetified-firebase-auth-interop-19.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\8cd3fac289efe38ecb97b9e3eda697b1\jetified-firebase-auth-interop-19.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\50f895a9f124cbf040b62f52f3514a3f\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\50f895a9f124cbf040b62f52f3514a3f\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\58fa03c5bfdff04bd94e204f0b5801d0\jetified-play-services-measurement-impl-17.2.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\58fa03c5bfdff04bd94e204f0b5801d0\jetified-play-services-measurement-impl-17.2.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\73baf8357dc879a16bccd62f8639e768\jetified-play-services-measurement-sdk-api-17.2.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\73baf8357dc879a16bccd62f8639e768\jetified-play-services-measurement-sdk-api-17.2.2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\139dfae6fbdf9ac66074340d8eade0dd\jetified-play-services-measurement-base-17.2.2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\139dfae6fbdf9ac66074340d8eade0dd\jetified-play-services-measurement-base-17.2.2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\abe32e89e7530c8cb0ccd98f1c15e0a5\jetified-play-services-stats-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\abe32e89e7530c8cb0ccd98f1c15e0a5\jetified-play-services-stats-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\c079638bdc8b712d5e92cd5564267195\jetified-firebase-iid-interop-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\c079638bdc8b712d5e92cd5564267195\jetified-firebase-iid-interop-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7523fccef74893d8e1c8f9c6fe7f933f\jetified-play-services-base-17.1.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7523fccef74893d8e1c8f9c6fe7f933f\jetified-play-services-base-17.1.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\01a9b8ba1de19d4992b4b8d692126f12\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\01a9b8ba1de19d4992b4b8d692126f12\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b1d88a80d0b9d62646d56758226af652\jetified-firebase-measurement-connector-18.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:18.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b1d88a80d0b9d62646d56758226af652\jetified-firebase-measurement-connector-18.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\0e82f2d13cb680babdca277835cc82de\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\0e82f2d13cb680babdca277835cc82de\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\781a95d57d80f2c206571c9939c8ce36\jetified-play-services-ads-identifier-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\781a95d57d80f2c206571c9939c8ce36\jetified-play-services-ads-identifier-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\fd6ca4a64addf83d90850efce1877526\jetified-play-services-basement-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\fd6ca4a64addf83d90850efce1877526\jetified-play-services-basement-17.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\23a9457860a1ef8247c668fb3931643e\fragment-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\23a9457860a1ef8247c668fb3931643e\fragment-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\23b15ce6e7e4a2d11401ce6bac0ac815\webkit-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\23b15ce6e7e4a2d11401ce6bac0ac815\webkit-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9adee61d15e8137bdbbb48f740bd7536\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9adee61d15e8137bdbbb48f740bd7536\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\6879cfcd14a8f84aecf9c0c93982ee6c\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\6879cfcd14a8f84aecf9c0c93982ee6c\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\ca571f261d855d827cbef15e62c693ec\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\ca571f261d855d827cbef15e62c693ec\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\3d8049409232aa4f2a63551056851e58\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\3d8049409232aa4f2a63551056851e58\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\94bf9f327b2b75f16ccc2748d3003aff\coordinatorlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\94bf9f327b2b75f16ccc2748d3003aff\coordinatorlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\d250eabdadfa8dbbe7c4c23d4de31c1b\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\d250eabdadfa8dbbe7c4c23d4de31c1b\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f75e12c27a5bc4b98460a16a81609a6d\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f75e12c27a5bc4b98460a16a81609a6d\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\2cf02e0b77cfc015a49ce293ee965cff\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\2cf02e0b77cfc015a49ce293ee965cff\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\5ab08895e3825d455d4f730b8a15f4f3\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\5ab08895e3825d455d4f730b8a15f4f3\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\64f8beb1b6a00060ba159e3770689a1a\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\64f8beb1b6a00060ba159e3770689a1a\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\0f4e70c3eb44d56c0073302bdec04405\core-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\0f4e70c3eb44d56c0073302bdec04405\core-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\e31d68925a5d562dd3f106e971bfc753\lifecycle-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\e31d68925a5d562dd3f106e971bfc753\lifecycle-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\0ec6252778853766a63b8699497c3613\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\0ec6252778853766a63b8699497c3613\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\899c86119cc2816678212d135bc4bee6\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\899c86119cc2816678212d135bc4bee6\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\13a558d74321a62e0ea884a5dfd2a058\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\13a558d74321a62e0ea884a5dfd2a058\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\830bc58c271be6de02da11c8a80a4319\lifecycle-viewmodel-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\830bc58c271be6de02da11c8a80a4319\lifecycle-viewmodel-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f40e8478c1ad00f450bb976a3c2fb63b\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f40e8478c1ad00f450bb976a3c2fb63b\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-components:16.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\da558a37871107b177bf44563c0ed9a2\jetified-firebase-components-16.0.0\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-components:16.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\da558a37871107b177bf44563c0ed9a2\jetified-firebase-components-16.0.0\AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\26473fc671f5d9830f4b594050ca6ba9\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\26473fc671f5d9830f4b594050ca6ba9\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\3cf1a00836767e64e53bdf7a3d0958db\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\3cf1a00836767e64e53bdf7a3d0958db\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7834c2a020bc583e7cf09e7bc5879a2f\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7834c2a020bc583e7cf09e7bc5879a2f\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b23b9fd57148915eaf191fc22d92378c\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b23b9fd57148915eaf191fc22d92378c\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b38c4ce1a4335e7fa9447f48f3160f26\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b38c4ce1a4335e7fa9447f48f3160f26\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [io.grpc:grpc-android:1.21.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\64065ec5bd2204af78d44a291989eaa9\jetified-grpc-android-1.21.0\AndroidManifest.xml:7:5-9:41
+MERGED from [io.grpc:grpc-android:1.21.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\64065ec5bd2204af78d44a291989eaa9\jetified-grpc-android-1.21.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:7:5-43
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:7:5-43
+MERGED from [com.google.firebase:firebase-database-collection:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\c36434f676f748c6846f28d93dd34187\jetified-firebase-database-collection-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-database-collection:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\c36434f676f748c6846f28d93dd34187\jetified-firebase-database-collection-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:protolite-well-known-types:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7f19ae643ead157793931b73d02db541\jetified-protolite-well-known-types-17.0.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:protolite-well-known-types:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7f19ae643ead157793931b73d02db541\jetified-protolite-well-known-types-17.0.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.6.8] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\85169e339dfe316d76d86bf07a67fe47\jetified-crashlytics-core-2.6.8\AndroidManifest.xml:50:5-43
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.6.8] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\85169e339dfe316d76d86bf07a67fe47\jetified-crashlytics-core-2.6.8\AndroidManifest.xml:50:5-43
+MERGED from [com.crashlytics.sdk.android:answers:1.4.7] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\68a6f9508ce8cefd71bc36d690f31c60\jetified-answers-1.4.7\AndroidManifest.xml:7:5-43
+MERGED from [com.crashlytics.sdk.android:answers:1.4.7] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\68a6f9508ce8cefd71bc36d690f31c60\jetified-answers-1.4.7\AndroidManifest.xml:7:5-43
+MERGED from [io.fabric.sdk.android:fabric:1.4.8] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\098d1c1f491ce91352800c39548ddf22\jetified-fabric-1.4.8\AndroidManifest.xml:27:5-43
+MERGED from [io.fabric.sdk.android:fabric:1.4.8] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\098d1c1f491ce91352800c39548ddf22\jetified-fabric-1.4.8\AndroidManifest.xml:27:5-43
+MERGED from [com.crashlytics.sdk.android:beta:1.2.10] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b205b20cf8b670b84be1129e65e89309\jetified-beta-1.2.10\AndroidManifest.xml:7:5-43
+MERGED from [com.crashlytics.sdk.android:beta:1.2.10] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b205b20cf8b670b84be1129e65e89309\jetified-beta-1.2.10\AndroidManifest.xml:7:5-43
+INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\debug\AndroidManifest.xml
+INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\debug\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\debug\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\android\app\src\debug\AndroidManifest.xml
+service#com.google.firebase.components.ComponentDiscoveryService
+ADDED from [:cloud_firestore] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_auth] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_auth] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_core] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_core] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_crashlytics] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_crashlytics\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_crashlytics] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_crashlytics\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:33:9-39:19
+MERGED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:33:9-39:19
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:27:9-33:19
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:27:9-33:19
+MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:17:9-23:19
+MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:17:9-23:19
+MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:32:9-36:35
+MERGED from [com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:32:9-36:35
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:35:13-37
+	tools:targetApi
+		ADDED from [com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:36:13-32
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
+	android:name
+		ADDED from [:cloud_firestore] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.cloudfirestore.FlutterFirebaseAppRegistrar
+ADDED from [:cloud_firestore] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:cloud_firestore] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:cloud_firestore] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-133
+meta-data#com.google.firebase.components:io.flutter.plugins.firebaseauth.FlutterFirebaseAppRegistrar
+ADDED from [:firebase_auth] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_auth] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_auth] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-122
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseAppRegistrar
+ADDED from [:firebase_core] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_core] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_core] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-123
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.crashlytics.firebasecrashlytics.FlutterFirebaseAppRegistrar
+ADDED from [:firebase_crashlytics] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_crashlytics\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_crashlytics] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_crashlytics\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_crashlytics] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\firebase_crashlytics\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-150
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
+	android:exported
+		ADDED from [:url_launcher] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
+	android:name
+		ADDED from [:url_launcher] C:\Users\Momshad\Documents\GitHub\COVID-Tracker-BD-master\COVID-Tracker-BD-master\App\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
+activity#com.google.firebase.auth.internal.FederatedSignInActivity
+ADDED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:24:9-31:50
+	android:excludeFromRecents
+		ADDED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:26:13-46
+	android:launchMode
+		ADDED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:28:13-44
+	android:exported
+		ADDED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:27:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:29:13-102
+	android:theme
+		ADDED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:30:13-72
+	tools:replace
+		ADDED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:31:13-47
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:25:13-85
+meta-data#com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar
+ADDED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:36:13-38:85
+	android:value
+		ADDED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:38:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-auth:19.2.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\79f77bb97a8aa8fe8a12ed8b56180678\jetified-firebase-auth-19.2.0\AndroidManifest.xml:37:17-109
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:13:5-79
+MERGED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:13:5-79
+MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\58fa03c5bfdff04bd94e204f0b5801d0\jetified-play-services-measurement-impl-17.2.2\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\58fa03c5bfdff04bd94e204f0b5801d0\jetified-play-services-measurement-impl-17.2.2\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\73baf8357dc879a16bccd62f8639e768\jetified-play-services-measurement-sdk-api-17.2.2\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\73baf8357dc879a16bccd62f8639e768\jetified-play-services-measurement-sdk-api-17.2.2\AndroidManifest.xml:24:5-79
+MERGED from [io.grpc:grpc-android:1.21.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\64065ec5bd2204af78d44a291989eaa9\jetified-grpc-android-1.21.0\AndroidManifest.xml:11:5-79
+MERGED from [io.grpc:grpc-android:1.21.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\64065ec5bd2204af78d44a291989eaa9\jetified-grpc-android-1.21.0\AndroidManifest.xml:11:5-79
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:24:22-76
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:25:5-68
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:24:5-68
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:24:5-68
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\58fa03c5bfdff04bd94e204f0b5801d0\jetified-play-services-measurement-impl-17.2.2\AndroidManifest.xml:25:5-68
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\58fa03c5bfdff04bd94e204f0b5801d0\jetified-play-services-measurement-impl-17.2.2\AndroidManifest.xml:25:5-68
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\73baf8357dc879a16bccd62f8639e768\jetified-play-services-measurement-sdk-api-17.2.2\AndroidManifest.xml:25:5-68
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\73baf8357dc879a16bccd62f8639e768\jetified-play-services-measurement-sdk-api-17.2.2\AndroidManifest.xml:25:5-68
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:25:22-65
+uses-permission#com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
+ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:26:5-110
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\58fa03c5bfdff04bd94e204f0b5801d0\jetified-play-services-measurement-impl-17.2.2\AndroidManifest.xml:26:5-110
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\58fa03c5bfdff04bd94e204f0b5801d0\jetified-play-services-measurement-impl-17.2.2\AndroidManifest.xml:26:5-110
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:26:22-107
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:29:9-33:20
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:31:13-35
+	android:exported
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:32:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:30:13-85
+receiver#com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
+ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:34:9-42:20
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\58fa03c5bfdff04bd94e204f0b5801d0\jetified-play-services-measurement-impl-17.2.2\AndroidManifest.xml:29:9-37:20
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\58fa03c5bfdff04bd94e204f0b5801d0\jetified-play-services-measurement-impl-17.2.2\AndroidManifest.xml:29:9-37:20
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:36:13-35
+	android:exported
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:37:13-36
+	android:permission
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:38:13-69
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:35:13-100
+intent-filter#action:name:com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:39:13-41:29
+action#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:40:17-79
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:40:25-76
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:44:9-47:40
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:46:13-35
+	android:exported
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:47:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:45:13-84
+service#com.google.android.gms.measurement.AppMeasurementJobService
+ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:48:9-52:72
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:50:13-35
+	android:exported
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:51:13-37
+	android:permission
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:52:13-69
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\4a10eb9bdb09ca10e6203a414ecc0a8f\jetified-play-services-measurement-17.2.2\AndroidManifest.xml:49:13-87
+meta-data#com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar
+ADDED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:30:13-32:85
+	android:value
+		ADDED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:32:17-82
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement-api:17.2.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\9e1995329124406eb71386fb1319a4f4\jetified-play-services-measurement-api-17.2.2\AndroidManifest.xml:31:17-139
+meta-data#com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar
+ADDED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:20:13-22:85
+	android:value
+		ADDED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:22:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-firestore:21.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\42917a8ddae3eaabdfb47e0c8a55f79e\jetified-firebase-firestore-21.3.0\AndroidManifest.xml:21:17-111
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:26:5-82
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:26:22-79
+meta-data#com.google.firebase.components:com.google.firebase.iid.Registrar
+ADDED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:32:13-34:85
+	android:value
+		ADDED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:34:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:33:17-96
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:37:9-44:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:39:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:40:13-73
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:38:13-78
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:41:13-43:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:42:17-81
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:20.0.2] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\096039647dda08a11f27a95d922b6501\jetified-firebase-iid-20.0.2\AndroidManifest.xml:42:25-78
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:19.3.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\b6fa883d0564f39485d50c02d96caf89\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7523fccef74893d8e1c8f9c6fe7f933f\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7523fccef74893d8e1c8f9c6fe7f933f\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7523fccef74893d8e1c8f9c6fe7f933f\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\7523fccef74893d8e1c8f9c6fe7f933f\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\fd6ca4a64addf83d90850efce1877526\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\fd6ca4a64addf83d90850efce1877526\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\fd6ca4a64addf83d90850efce1877526\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+provider#com.crashlytics.android.CrashlyticsInitProvider
+ADDED from [com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:12:9-16:38
+	android:authorities
+		ADDED from [com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:14:13-75
+	android:exported
+		ADDED from [com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:15:13-37
+	android:initOrder
+		ADDED from [com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:16:13-35
+	android:name
+		ADDED from [com.crashlytics.sdk.android:crashlytics:2.9.9] C:\Users\Momshad\.gradle\caches\transforms-2\files-2.1\f093c58759872722d472b728203c2568\jetified-crashlytics-2.9.9\AndroidManifest.xml:13:13-75

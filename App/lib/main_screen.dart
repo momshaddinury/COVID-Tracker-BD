@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:covidtrackerbd/screens/tabs/developerStory.dart';
 import 'package:covidtrackerbd/screens/tabs/home/api_service.dart';
@@ -11,8 +10,10 @@ import 'package:covidtrackerbd/screens/tabs/Report//survey_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-String selectedCategorie = "Adults";
+//String selectedCategorie = "Adults";
+String title;
 
 class HomePage extends StatefulWidget {
   @override
@@ -51,12 +52,15 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                 color: Color(0x0F571783),
               ),
-              child: Image.asset('assets/corona.png'),
+              child: Image.asset('assets/images.png'),
             ),
             Container(
               decoration: new BoxDecoration(color: Color(0x0F2A76DE)),
               child: ListTile(
-                title: Text("এবাউট আস"),
+                title: Text(
+                  "এবাউট আস",
+                  textScaleFactor: 1.0,
+                ),
                 onTap: () {
                   Navigator.push(
                       context,
@@ -69,7 +73,10 @@ class _HomePageState extends State<HomePage> {
             Container(
               decoration: new BoxDecoration(color: Color(0x0F2A76DE)),
               child: ListTile(
-                title: Text("ফিডব্যাক"),
+                title: Text(
+                  "ফিডব্যাক",
+                  textScaleFactor: 1.0,
+                ),
                 onTap: () {
                   Navigator.pop(context);
                 },
@@ -88,12 +95,12 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 10,
               ),
-              Image.asset('assets/coronaInfo.png'),
-              /*RichText(
+              //Image.asset('assets/coronaInfo.png'),
+              RichText(
                 text: TextSpan(
                   text: 'করোনা',
                   style: TextStyle(
-                      //color: Colors.black87.withOpacity(0.8), #95268D
+                    //color: Colors.black87.withOpacity(0.8), #95268D
                       color: Color(0xFF95268D),
                       fontSize: 40,
                       fontWeight: FontWeight.w900),
@@ -101,19 +108,20 @@ class _HomePageState extends State<HomePage> {
                     TextSpan(
                         text: " ইনফো",
                         style: TextStyle(
-                            //textBaseline: TextBaseline.alphabetic,
-                            //color: Colors.black87.withOpacity(0.8), #95268D
+                          //textBaseline: TextBaseline.alphabetic,
+                          //color: Colors.black87.withOpacity(0.8), #95268D
                             color: Color(0xFF4CB856),
                             fontSize: 35,
                             fontWeight: FontWeight.w700)),
                   ],
                 ),
-              ),*/
+              ),
               SizedBox(
                 height: 35,
               ),
               AutoSizeText(
                 "আপনি কি আক্রান্ত?",
+                textScaleFactor: 1.0,
                 style: TextStyle(
                     color: Colors.black87.withOpacity(0.8),
                     fontSize: 30,
@@ -122,45 +130,56 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 5,
               ),
-              Material(
+              MaterialButton(
                 elevation: 10,
+                shape:  StadiumBorder(),
                 color: Color(0xFFBD202E),
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 24),
-                  height: 50,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SurveyPage()));
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(
-                          Icons.check,
-                          color: Colors.white,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        AutoSizeText(
-                          "করোনার সম্ভাব্যতা যাচাই করুন",
-                          style: TextStyle(color: Colors.white, fontSize: 19),
-                        ),
-                      ],
+                padding: EdgeInsets.all(30),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SurveyPage()));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.touch_app,
+                      size: 50,
+                      color: Colors.white,
                     ),
-                  ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    AutoSizeText(
+                      "করোনার সম্ভাব্যতা যাচাই করুন",
+                      textScaleFactor: 1.0,
+                      style: TextStyle(color: Colors.white, fontSize: 22),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 24),
-                height: 50,
-                color: Color(0xFFBD202E),
+              HeatMapTile(),
+              SizedBox(
+                height: 20,
+              ),
+              MaterialButton(
+                padding: EdgeInsets.all(20),
+                elevation: 10,
+                shape:  StadiumBorder(),
+                color: Colors.indigo,
+                // color: Color(0xFFBD202E),
+                onPressed: () async {
+                  if (await canLaunch("tel:333")) {
+                    await launch("tel:333");
+                  } else {
+                    throw 'Could not launch';
+                  }
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -173,7 +192,11 @@ class _HomePageState extends State<HomePage> {
                     ),
                     AutoSizeText(
                       "যোগাযোগ হটলাইন ৩৩৩ | ১০৬৫৫ | ১৬২৬৩",
-                      style: TextStyle(color: Colors.white, fontSize: 19),
+                      textScaleFactor: 1.0,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 19,
+                      ),
                     ),
                   ],
                 ),
@@ -182,7 +205,8 @@ class _HomePageState extends State<HomePage> {
                 height: 30,
               ),
               AutoSizeText(
-                "সর্বশেষ তথ্য \nতথ্যসূত্র: DGHS",
+                "সর্বশেষ তথ্য \nতথ্যসূত্র: WorldoMeter",
+                textScaleFactor: 1.0,
                 style: TextStyle(
                     color: Colors.black87.withOpacity(0.8),
                     fontSize: 25,
@@ -213,10 +237,10 @@ class _HomePageState extends State<HomePage> {
                   height: 170,
                   child: BlocProvider<CovidBloc>(
                       create: (BuildContext context) =>
-                          CovidBloc(repository: Repository())
-                            ..add(CovidBdDataEvent(
-                                param: "countries/bangladesh",
-                                paramAll: "all")),
+                      CovidBloc(repository: Repository())
+                        ..add(CovidBdDataEvent(
+                            param: "countries/bangladesh",
+                            paramAll: "all")),
                       child: Container(
                         child: BlocBuilder<CovidBloc, CovidState>(
                           builder: (context, state) {
@@ -229,6 +253,7 @@ class _HomePageState extends State<HomePage> {
               ),
               AutoSizeText(
                 "(কোভিড-১৯) এর ঝুঁকি রোধে করনীয়",
+                textScaleFactor: 1.0,
                 style: TextStyle(
                     color: Colors.black87.withOpacity(0.8),
                     fontSize: 25,
@@ -245,14 +270,27 @@ class _HomePageState extends State<HomePage> {
                     physics: ClampingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return Column(
+                      return Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Row(
                             children: <Widget>[
-                              Image.asset('assets/tod.png'),
+                              /*Image.asset('assets/tod.png'),*/
+                              todo(instruction: "ঘন ঘন দুইহাত সবান পানি দিয়ে ভালোভাবে ধুয়ে নিন(কমপক্ষে ২০ সেকেন্ড)",),
                               SizedBox(
-                                width: 100,
+                                width: 10,
+                              ),
+                              todo(instruction: "ঘন ঘন দুইহাত সবান পানি দিয়ে ভালোভাবে ধুয়ে নিন(কমপক্ষে ২০ সেকেন্ড)",),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              todo(instruction: "ঘন ঘন দুইহাত সবান পানি দিয়ে ভালোভাবে ধুয়ে নিন(কমপক্ষে ২০ সেকেন্ড)",),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              todo(instruction: "ঘন ঘন দুইহাত সবান পানি দিয়ে ভালোভাবে ধুয়ে নিন(কমপক্ষে ২০ সেকেন্ড)",),
+                              SizedBox(
+                                width: 10,
                               ),
                             ],
                           ),
@@ -263,7 +301,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 40,
               ),
-              HeatMapTile(),
+
             ],
           ),
         ),
@@ -275,6 +313,7 @@ class _HomePageState extends State<HomePage> {
     if (state is CovidLoadingState) {
       return Align(
         alignment: Alignment.center,
+
         /// Loading Screen Here
         child: SpinKitPulse(
           color: Colors.blueAccent,
@@ -291,11 +330,7 @@ class _HomePageState extends State<HomePage> {
             "Deaths", () => state.covidBdData.deaths.toDouble());
         print("CovidBdState ${state.allData}");
         dataMapAll.putIfAbsent(
-            "Total Cases ",
-            () => (state.allData.cases -
-                    state.allData.recovered -
-                    state.allData.deaths)
-                .toDouble());
+            "Total Cases ", () => (state.allData.cases).toDouble());
         dataMapAll.putIfAbsent(
             "Recovered", () => state.allData.recovered.toDouble());
         dataMapAll.putIfAbsent("Deaths", () => state.allData.deaths.toDouble());
@@ -314,13 +349,10 @@ class _HomePageState extends State<HomePage> {
                           state.covidBdData.todayCases, "২৪ ঘন্টায় আক্রান্ত"),
                       getItem(
                           state.covidBdData.todayDeaths, "২৪ ঘন্টায় মৃত্যু"),
-                      //getItem(state.covidBdData.critical, "Critical Cases"),
-                      getItem(state.covidBdData.active, "একটিভ কেইসেস"),
                       getItem(
-                          state.covidBdData.deaths +
-                              state.covidBdData.recovered +
-                              state.covidBdData.cases,
-                          "মোট আক্রান্ত"),
+                          state.covidBdData.deaths, "মোট মৃত্যু"),
+                      getItem(state.covidBdData.recovered, "মোট সুস্থ"),
+                      getItem(state.covidBdData.cases, "মোট আক্রান্ত"),
                       //getItem(state.covidBdData.casesPerOneMillion, "Cases Per Million"),
                     ],
                   ),
@@ -360,61 +392,99 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+class todo extends StatelessWidget {
+  const todo({
+    Key key,
+    @required this.instruction
+  }) : super(key: key);
+
+  final String instruction;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 150,
+      height: 150,
+      margin: EdgeInsets.only(right: 16),
+      decoration: BoxDecoration(
+        color: Color(0xFFCCECF9),
+        //borderRadius: BorderRadius.circular(24)
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          AutoSizeText(
+            "$instruction",
+            textScaleFactor: 1.0,
+            maxLines: 2,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 25, color: Colors.black),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class HeatMapTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Material(
+    return MaterialButton(
       elevation: 10,
+      shape:  StadiumBorder(),
+      padding: EdgeInsets.all(20),
       color: Color(0xFFCCECF9),
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Location()));
-        },
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 18),
-          child: Row(
+      onPressed: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Location()));
+      },
+      child: Row(
+        children: <Widget>[
+          Image.asset(
+            "assets/covid.png",
+            height: 50,
+          ),
+          SizedBox(
+            width: 17,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Image.asset(
-                "assets/covid.png",
-                height: 50,
+              AutoSizeText(
+                "গুগল ম্যাপ",
+                textScaleFactor: 1.0,
+                style: TextStyle(color: Color(0xffFC9535), fontSize: 19),
               ),
               SizedBox(
-                width: 17,
+                height: 2,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  AutoSizeText(
-                    "গুগল ম্যাপ",
-                    style: TextStyle(color: Color(0xffFC9535), fontSize: 19),
-                  ),
-                  SizedBox(
-                    height: 2,
-                  ),
-                  AutoSizeText(
-                    "করোনা হিট ম্যাপ",
-                    style: TextStyle(fontSize: 15),
-                  )
-                ],
-              ),
-              Spacer(),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 9),
-                decoration: BoxDecoration(
-                    color: Color(0xFFBD202E),
-                    borderRadius: BorderRadius.circular(13)),
-                child: AutoSizeText(
-                  "ক্লিক",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500),
-                ),
+              AutoSizeText(
+                "করোনা হিট ম্যাপ",
+                textScaleFactor: 1.0,
+                style: TextStyle(fontSize: 15),
               )
             ],
           ),
-        ),
+          Spacer(),
+          Icon(
+            Icons.touch_app,
+            size: 50,
+            color: Colors.red,
+          ),
+          /*Container(
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 9),
+            decoration: BoxDecoration(
+                color: Color(0xFFBD202E),
+               *//* borderRadius: BorderRadius.(13)*//*),
+            child: AutoSizeText(
+              "ক্লিক",
+              textScaleFactor: 1.0,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w500),
+            ),
+          )*/
+        ],
       ),
     );
   }
@@ -448,30 +518,34 @@ getItem(final data, String level) {
   }
 
   return Container(
+    padding: EdgeInsets.all(5),
     width: 150,
     height: 150,
     margin: EdgeInsets.only(right: 16),
     decoration: BoxDecoration(
-      color: Color(0xFFCCECF9),
-      //borderRadius: BorderRadius.circular(24)
+      color: Colors.indigo[400],
+      //color: Color(0xFFCCECF9),
+      borderRadius: BorderRadius.circular(24),
     ),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         AutoSizeText(
           "$dataInBengali",
+          textScaleFactor: 1.0,
           maxLines: 2,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 25, color: Colors.black),
+          style: TextStyle(fontSize: 25, color: Colors.white),
         ),
         SizedBox(
           height: 10,
         ),
         AutoSizeText(
           "$level",
+          textScaleFactor: 1.0,
           maxLines: 2,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20, color: Color(0xFF3C4C99)),
+          style: TextStyle(fontSize: 20, color: Colors.white),
         )
       ],
     ),

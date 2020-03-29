@@ -24,6 +24,9 @@ class _NeighboursReportState extends State<NeighboursReport> {
   BDModel bdModel = new BDModel();
   String selectedDivision, selectedDistrict;
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+  List<String> districtList = [],
+      subDistrictList = [],
+      divisionList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,6 @@ class _NeighboursReportState extends State<NeighboursReport> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
-        brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.black87),
       ),
       body: Container(
@@ -151,7 +153,7 @@ class _NeighboursReportState extends State<NeighboursReport> {
                         FormBuilderTextField(
                           attribute: "name",
                           decoration: InputDecoration(
-                            labelText: "   যে দেশ থেকে ফিরেছেন",
+                            labelText: "যে দেশ থেকে ফিরেছেন",
                             filled: true,
                             fillColor: Colors.grey[200],
                           ),
@@ -165,56 +167,103 @@ class _NeighboursReportState extends State<NeighboursReport> {
 
                         // বিভাগ
                         FormBuilderDropdown(
-                          attribute: "dropdown",
+                          attribute: "divisionDropdown",
                           //decoration: InputDecoration(labelText: "Gender"),
                           // initialValue: 'Male',
                           hint: Text('   বিভাগ নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
                           onSaved: (value) => division = value,
-                          items: bdModel
-                              .getDivisionListBn()
+                          items: divisionList
                               .map((value) => DropdownMenuItem(
-                                  value: value, child: Text("$value")))
+                              value: value, child: Text("$value")))
                               .toList(),
                           onChanged: (value) {
-                            setState(() {
-                              selectedDivision = value.toString().trim();
-                            });
+                            _fbKey.currentState.fields["districtDropdown"]
+                                .currentState.reset();
+                            _fbKey.currentState.fields["subDistrictDropdown"]
+                                .currentState.reset();
+                            if (value == null) {
+                              setState(() {
+                                divisionList = bdModel.getDivisionListBn();
+                              });
+                            } else {
+                              setState(() {
+                                divisionList = [];
+                                selectedDivision = value.toString().trim();
+                                districtList =
+                                    bdModel.getDistrictListBn(selectedDivision);
+                              });
+                            }
                           },
+                          allowClear: true,
                         ),
                         // জেলা
                         FormBuilderDropdown(
-                          attribute: "dropdown",
+                          attribute: "districtDropdown",
                           //decoration: InputDecoration(labelText: "Gender"),
                           // initialValue: 'Male',
                           hint: Text('   জেলা নির্বাচন করুন'),
+                          allowClear: true,
                           validators: [FormBuilderValidators.required()],
                           onSaved: (value) => district = value,
-                          items: bdModel
-                              .getDistrictListBn(selectedDivision)
-                              .map((value) => DropdownMenuItem(
+                          items: districtList
+                              .map((value) =>
+                              DropdownMenuItem(
                                   value: value, child: Text("$value")))
                               .toList(),
                           onChanged: (value) {
-                            setState(() {
-                              selectedDistrict = value.toString().trim();
-                            });
+                            _fbKey.currentState.fields["subDistrictDropdown"]
+                                .currentState.reset();
+                            if (value == null) {
+                              if (selectedDivision != "" &&
+                                  selectedDivision != null) {
+                                setState(() {
+                                  districtList = bdModel.getDistrictListBn(
+                                      selectedDivision);
+                                });
+                              }
+                            }
+                            else {
+                              setState(() {
+                                districtList = [];
+                                selectedDistrict = value.toString().trim();
+                                subDistrictList = bdModel.getSubDistrictListBn(
+                                    selectedDistrict);
+                              });
+                            }
                           },
                         ),
 
                         // উপজেলা
                         FormBuilderDropdown(
-                          attribute: "dropdown",
+                          attribute: "subDistrictDropdown",
                           //decoration: InputDecoration(labelText: "Gender"),
                           // initialValue: 'Male',
                           hint: Text('   উপজেলা নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
+                          allowClear: true,
                           onSaved: (value) => upazila = value,
-                          items: bdModel
-                              .getSubDistrictListBn(selectedDistrict)
-                              .map((value) => DropdownMenuItem(
+                          items: subDistrictList
+                              .map((value) =>
+                              DropdownMenuItem(
                                   value: value, child: Text("$value")))
                               .toList(),
+                          onChanged: (value) {
+                            if (value == null) {
+                              if (selectedDistrict != "" &&
+                                  selectedDistrict != null) {
+                                setState(() {
+                                  subDistrictList =
+                                      bdModel.getSubDistrictListBn(
+                                          selectedDistrict);
+                                });
+                              }
+                            } else {
+                              setState(() {
+                                subDistrictList = [];
+                              });
+                            }
+                          },
                         ),
 
                         //ইউনিয়ন/পৌরসভা/মেট্রোপলিটন

@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\Momshad\\Documents\\GitHub\\COVID-Tracker-BD-master\\COVID-Tracker-BD-master\\App\\build\\url_launcher\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Momshad\\.gradle\\caches\\transforms-2\\files-2.1\\9886ed1513d5edbb06d808b177a529e6\\core-1.0.0\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "C:\\Users\\Momshad\\Documents\\GitHub\\COVID-Tracker-BD-master\\COVID-Tracker-BD-master\\App\\build\\url_launcher\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\Momshad\\.gradle\\caches\\transforms-2\\files-2.1\\9886ed1513d5edbb06d808b177a529e6\\core-1.0.0\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "C:\\Users\\Momshad\\Documents\\GitHub\\COVID-Tracker-BD-master\\COVID-Tracker-BD-master\\App\\build\\url_launcher\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
+        "source": "C:\\Users\\Momshad\\.gradle\\caches\\transforms-2\\files-2.1\\9886ed1513d5edbb06d808b177a529e6\\core-1.0.0\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\Momshad\\Documents\\GitHub\\COVID-Tracker-BD-master\\COVID-Tracker-BD-master\\App\\build\\url_launcher\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Momshad\\.gradle\\caches\\transforms-2\\files-2.1\\9886ed1513d5edbb06d808b177a529e6\\core-1.0.0\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\Users\\Momshad\\Documents\\GitHub\\COVID-Tracker-BD-master\\COVID-Tracker-BD-master\\App\\build\\url_launcher\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\Momshad\\.gradle\\caches\\transforms-2\\files-2.1\\9886ed1513d5edbb06d808b177a529e6\\core-1.0.0\\res\\layout\\notification_template_part_time.xml"
+    }
+]
