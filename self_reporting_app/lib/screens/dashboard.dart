@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0.0,
+        elevation: 2.0,
         brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.black87),
       ),
@@ -205,7 +205,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: 50,
               ),
               AutoSizeText(
                 "সর্বশেষ তথ্য \nতথ্যসূত্র: WorldoMeter",
@@ -215,9 +215,7 @@ class _HomePageState extends State<HomePage> {
                     fontSize: 25,
                     fontWeight: FontWeight.w600),
               ),
-              /*SizedBox(
-                height: 20,
-              ),*/
+
               /*Container(
                 height: 30,
                 child: ListView.builder(
@@ -252,7 +250,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ))),
               SizedBox(
-                height: 20,
+                height: 45,
               ),
               AutoSizeText(
                 "(কোভিড-১৯) এর ঝুঁকি রোধে করনীয়",

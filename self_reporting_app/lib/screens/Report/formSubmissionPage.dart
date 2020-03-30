@@ -149,7 +149,7 @@ class _COVIDFormState extends State<COVIDForm> {
                   ),
 
                   // Passport:
-                  FormBuilderTextField(
+                  /*FormBuilderTextField(
                     attribute: "number",
                     decoration: InputDecoration(
                       labelText: "পাসপোর্ট আইডি [৯ ডিজিট]",
@@ -158,7 +158,7 @@ class _COVIDFormState extends State<COVIDForm> {
                     ),
                     keyboardType: TextInputType.number,
                     onSaved: (value) => passportID = value,
-                  ),
+                  ),*/
 
                   // Gender:
                   Padding(
@@ -179,7 +179,7 @@ class _COVIDFormState extends State<COVIDForm> {
                       FormBuilderFieldOption(
                         value: 'মহিলা',
                         child: Text('মহিলা'),
-                      ),
+                      )
                     ],
                     onSaved: (value) => gender = value,
                   ),
@@ -219,7 +219,13 @@ class _COVIDFormState extends State<COVIDForm> {
                       ),
                       FormBuilderFieldOption(value: 'না', child: Text('না')),
                     ],
-                    onSaved: (value) => fever = value,
+                    onSaved: (value) {
+                      if (value == "হ্যাঁ") {
+                        fever = true;
+                      } else {
+                        fever = false;
+                      }
+                    },
                   ),
 
                   // কাশি বা গলাব্যথা বা দুইটাই:
@@ -241,7 +247,13 @@ class _COVIDFormState extends State<COVIDForm> {
                       ),
                       FormBuilderFieldOption(value: 'না', child: Text('না')),
                     ],
-                    onSaved: (value) => coughOrThroatPain = value,
+                    onSaved: (value) {
+                      if (value == "হ্যাঁ") {
+                        coughOrThroatPain = true;
+                      } else {
+                        coughOrThroatPain = false;
+                      }
+                    },
                   ),
 
                   // শ্বাসকষ্ট:
@@ -263,7 +275,13 @@ class _COVIDFormState extends State<COVIDForm> {
                       ),
                       FormBuilderFieldOption(value: 'না', child: Text('না')),
                     ],
-                    onSaved: (value) => problemBreathing = value,
+                    onSaved: (value) {
+                      if (value == "হ্যাঁ") {
+                        problemBreathing = true;
+                      } else {
+                        problemBreathing = false;
+                      }
+                    },
                   ),
 
                   // Migrant:
@@ -288,7 +306,13 @@ class _COVIDFormState extends State<COVIDForm> {
                     validators: [
                       FormBuilderValidators.required(),
                     ],
-                    onSaved: (value) => cameBackFromAbroad = value,
+                    onSaved: (value) {
+                      if (value == "হ্যাঁ") {
+                        cameBackFromAbroad = true;
+                      } else {
+                        cameBackFromAbroad = false;
+                      }
+                    },
                   ),
 
                   //Came in Contact with NRB:
@@ -313,7 +337,13 @@ class _COVIDFormState extends State<COVIDForm> {
                     validators: [
                       FormBuilderValidators.required(),
                     ],
-                    onSaved: (value) => contactWithAnyCOVIDPatient = value,
+                    onSaved: (value) {
+                      if (value == "হ্যাঁ") {
+                        contactWithAnyCOVIDPatient = true;
+                      } else {
+                        contactWithAnyCOVIDPatient = false;
+                      }
+                    },
                   ),
 
                   // আপনি কি বিগত ১৪ দিনের ভিতরে শ্বাসকষ্ট বা কাশিতে  আক্রান্ত এরকম কোন ব্যক্তির সংস্পর্শে এসেছিলেন?
@@ -338,8 +368,13 @@ class _COVIDFormState extends State<COVIDForm> {
                     validators: [
                       FormBuilderValidators.required(),
                     ],
-                    onSaved: (value) =>
-                        cameInContactWithPersonHavingCoughOrThroatPain = value,
+                    onSaved: (value) {
+                      if (value == "হ্যাঁ") {
+                        cameInContactWithPersonHavingCoughOrThroatPain = true;
+                      } else {
+                        cameInContactWithPersonHavingCoughOrThroatPain = false;
+                      }
+                    },
                   ),
 
                   //  আপনার কি অন্য কোন অসুখে  ভুগছেন (যেমন : ডায়াবেটিস, এজমা বা হাঁপানি , দীর্ঘমেয়াদি শ্বাসকষ্টের রোগ বা সিওপিডি, কিডনি রোগ, ক্যান্সার বা ক্যান্সারের জন্য কোন চিকিৎসা নিচ্ছেন?
@@ -364,7 +399,13 @@ class _COVIDFormState extends State<COVIDForm> {
                     validators: [
                       FormBuilderValidators.required(),
                     ],
-                    onSaved: (value) => riskGroup = value,
+                    onSaved: (value) {
+                      if (value == "হ্যাঁ") {
+                        riskGroup = true;
+                      } else {
+                        riskGroup = false;
+                      }
+                    },
                   ),
                 ],
               ),
@@ -416,6 +457,17 @@ class _COVIDFormState extends State<COVIDForm> {
                       toast("অপেক্ষা করুন");
                       if (_fbKey.currentState.saveAndValidate()) {
                         toast("প্রসেসিং");
+                        print(age);
+                        print(phoneNumber);
+                        print(fullName);
+                        print(gender);
+                        print(fever);
+                        print(coughOrThroatPain);
+                        print(problemBreathing);
+                        print(cameBackFromAbroad);
+                        print(contactWithAnyCOVIDPatient);
+                        print(cameInContactWithPersonHavingCoughOrThroatPain);
+                        print(riskGroup);
                         print(_fbKey.currentState.value);
                         await submitResponse();
                         showDialog(
