@@ -140,7 +140,7 @@ class _COVIDFormState extends State<COVIDForm> {
                   FormBuilderTextField(
                     attribute: "number",
                     decoration: InputDecoration(
-                      labelText: "এন আই ডি [১০ ডিজিট]",
+                      labelText: "এন আই ডি [১০ ডিজিট এবং অপশনাল]",
                       filled: true,
                       fillColor: Colors.grey[200],
                     ),
@@ -179,6 +179,10 @@ class _COVIDFormState extends State<COVIDForm> {
                       FormBuilderFieldOption(
                         value: 'মহিলা',
                         child: Text('মহিলা'),
+                      ),
+                      FormBuilderFieldOption(
+                        value: 'অন্যান্য',
+                        child: Text('অন্যান্য'),
                       )
                     ],
                     onSaved: (value) => gender = value,

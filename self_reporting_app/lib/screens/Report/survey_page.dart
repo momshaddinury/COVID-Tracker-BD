@@ -20,6 +20,7 @@ class _SurveyPageState extends State<SurveyPage> {
         brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.black87),
       ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -29,7 +30,7 @@ class _SurveyPageState extends State<SurveyPage> {
               SizedBox(height: 100),
               Container(
                 child: Image.asset(
-                  'assets/doc.png',
+                  'assets/checkPatient.jpg',
                   fit: BoxFit.cover,
                   height: 250,
                   width: 400,
@@ -47,7 +48,7 @@ class _SurveyPageState extends State<SurveyPage> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
-                      fontSize: 40.0,
+                      fontSize: 35.0,
                     ),
                   ),
                 ),
@@ -70,7 +71,7 @@ class _SurveyPageState extends State<SurveyPage> {
                         "শুরু করুন",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 30,
+                          fontSize: 20,
                         ),
                       ),
                       onPressed: () async {
@@ -93,7 +94,7 @@ class _SurveyPageState extends State<SurveyPage> {
                         "নিয়মিত আপডেট",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 30,
+                          fontSize: 20,
                         ),
                       ),
                       onPressed: () async {
@@ -108,7 +109,8 @@ class _SurveyPageState extends State<SurveyPage> {
                     ),
                     // Possible Affected
                     MaterialButton(
-                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
                       //minWidth: 50,
                       color: Color(0xFF40BD45),
                       shape: StadiumBorder(),
@@ -117,7 +119,7 @@ class _SurveyPageState extends State<SurveyPage> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 30,
+                          fontSize: 20,
                         ),
                       ),
                       onPressed: () async {

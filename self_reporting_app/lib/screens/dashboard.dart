@@ -51,10 +51,8 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           children: <Widget>[
             DrawerHeader(
-              decoration: BoxDecoration(
-                color: Color(0x0F571783),
-              ),
-              child: Image.asset('assets/teamlogo.png'),
+              decoration: BoxDecoration(color: Colors.white),
+              child: Image.asset('assets/checkPatient.jpg'),
             ),
             Container(
               decoration: new BoxDecoration(color: Color(0x0F2A76DE)),
@@ -71,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
-            SizedBox(height: 5),
+            /*SizedBox(height: 5),
             Container(
               decoration: new BoxDecoration(color: Color(0x0F2A76DE)),
               child: ListTile(
@@ -83,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                   Navigator.pop(context);
                 },
               ),
-            )
+            )*/
           ],
         ),
       ),
@@ -99,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                 height: 10,
               ),
               //Image.asset('assets/coronaInfo.png'),
-              RichText(
+              /*RichText(
                 text: TextSpan(
                   text: 'করোনা',
                   style: TextStyle(
@@ -118,9 +116,16 @@ class _HomePageState extends State<HomePage> {
                             fontWeight: FontWeight.w700)),
                   ],
                 ),
+              ),*/
+              FittedBox(
+                child: Image.asset(
+                  "assets/doc.png",
+                  fit: BoxFit.cover,
+                  width: 300,
+                ),
               ),
               SizedBox(
-                height: 35,
+                height: 10,
               ),
               AutoSizeText(
                 "আপনি কি আক্রান্ত?",

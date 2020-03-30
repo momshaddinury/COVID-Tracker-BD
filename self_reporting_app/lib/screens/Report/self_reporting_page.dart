@@ -87,6 +87,9 @@ class _InitialCheckState extends State<InitialCheck> {
                                 fontSize: 20,
                               ),
                             ),
+                            SizedBox(
+                              height: 10,
+                            ),
                             FormBuilderDropdown(
                               attribute: "dropdown",
                               //decoration: InputDecoration(labelText: "Gender"),
@@ -101,6 +104,9 @@ class _InitialCheckState extends State<InitialCheck> {
                             ),
                           ],
                         ),
+                      ),
+                      SizedBox(
+                        height: 20,
                       ),
                       Row(
                         children: <Widget>[

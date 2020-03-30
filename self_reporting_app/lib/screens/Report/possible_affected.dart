@@ -25,11 +25,12 @@ class _PossibleAffectedState extends State<PossibleAffected> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0.0,
+        elevation: 2.0,
         brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.black87),
       ),
       body: Container(
+        color: Colors.white,
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,28 +41,16 @@ class _PossibleAffectedState extends State<PossibleAffected> {
                   padding: const EdgeInsets.all(18.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(
-                        height: 20,
+                      Container(
+                        height: 200,
+                        child: Image.asset("assets/people.jpg"),
                       ),
-                      /*Center(
-                      child: AutoSizeText(
-                        "আমার হাতেই আমার সুরক্ষা",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.red,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),*/
                       Center(
                         child: AutoSizeText(
-                          "যদি পরিবারের কোন সদস্যের ব্যাক্তিগত মোবাইল নম্বর না থাকে তবে আপনি নিজের বা পরিবারের অন্য কারো ফোন নম্বর ব্যবহার করে তথ্য প্রদান করতে পারবেন। এই ক্ষেত্রে অপশন থেকে 'পরিবারের সদস্যর জন্য' এই অপশন টি সিলেক্ট করার অনুরোধ করা যাচ্ছে। ধন্যবাদ",
-                          textAlign: TextAlign.justify,
+                          "আপনি চাইলে সন্দেহভাজন ব্যাক্তি সম্পর্কে তথ্য দিয়ে সরকার কে সাহায্য করতে পারেন। তবে সাবধান ভুল তথ্য প্রদানে শাস্তির ব্যবস্থা আছে।",
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.red,
@@ -86,6 +75,9 @@ class _PossibleAffectedState extends State<PossibleAffected> {
                                 fontSize: 20,
                               ),
                             ),
+                            SizedBox(
+                              height: 10,
+                            ),
                             FormBuilderDropdown(
                               attribute: "dropdown",
                               //decoration: InputDecoration(labelText: "Gender"),
@@ -101,6 +93,9 @@ class _PossibleAffectedState extends State<PossibleAffected> {
                             ),
                           ],
                         ),
+                      ),
+                      SizedBox(
+                        height: 20,
                       ),
                       Row(
                         children: <Widget>[

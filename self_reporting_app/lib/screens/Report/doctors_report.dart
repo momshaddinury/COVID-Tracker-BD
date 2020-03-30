@@ -144,6 +144,10 @@ class _DoctorsReportState extends State<DoctorsReport> {
                               value: 'মহিলা',
                               child: Text('মহিলা'),
                             ),
+                            FormBuilderFieldOption(
+                              value: 'অন্যান্য',
+                              child: Text('অন্যান্য'),
+                            ),
                           ],
                           onSaved: (value) => gender = value,
                         ),
