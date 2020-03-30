@@ -29,6 +29,11 @@ class _NeighboursReportState extends State<NeighboursReport> {
       divisionList = [];
 
   @override
+  void initState() {
+    divisionList = bdModel.getDivisionListBn();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

@@ -130,34 +130,36 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 5,
               ),
-              MaterialButton(
-                elevation: 10,
-                shape:  StadiumBorder(),
-                color: Color(0xFFBD202E),
-                padding: EdgeInsets.all(30),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SurveyPage()));
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Icon(
-                      Icons.touch_app,
-                      size: 50,
-                      color: Colors.white,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    AutoSizeText(
-                      "করোনার সম্ভাব্যতা যাচাই করুন",
-                      textScaleFactor: 1.0,
-                      style: TextStyle(color: Colors.white, fontSize: 22),
-                    ),
-                  ],
+              FittedBox(
+                child: MaterialButton(
+                  elevation: 10,
+                  shape:  StadiumBorder(),
+                  color: Color(0xFFBD202E),
+                  padding: EdgeInsets.all(20),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SurveyPage()));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        Icons.touch_app,
+                        size: 50,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      AutoSizeText(
+                        "করোনার সম্ভাব্যতা যাচাই করুন",
+                        textScaleFactor: 1.0,
+                        style: TextStyle(color: Colors.white, fontSize: 22),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
@@ -167,38 +169,40 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 20,
               ),
-              MaterialButton(
-                padding: EdgeInsets.all(20),
-                elevation: 10,
-                shape:  StadiumBorder(),
-                color: Colors.indigo,
-                // color: Color(0xFFBD202E),
-                onPressed: () async {
-                  if (await canLaunch("tel:333")) {
-                    await launch("tel:333");
-                  } else {
-                    throw 'Could not launch';
-                  }
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Icon(
-                      Icons.call,
-                      color: Colors.white,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    AutoSizeText(
-                      "যোগাযোগ হটলাইন ৩৩৩ | ১০৬৫৫ | ১৬২৬৩",
-                      textScaleFactor: 1.0,
-                      style: TextStyle(
+              FittedBox(
+                child: MaterialButton(
+                  padding: EdgeInsets.all(20),
+                  elevation: 10,
+                  shape:  StadiumBorder(),
+                  color: Colors.indigo,
+                  // color: Color(0xFFBD202E),
+                  onPressed: () async {
+                    if (await canLaunch("tel:333")) {
+                      await launch("tel:333");
+                    } else {
+                      throw 'Could not launch';
+                    }
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        Icons.call,
                         color: Colors.white,
-                        fontSize: 19,
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        width: 10,
+                      ),
+                      AutoSizeText(
+                        "যোগাযোগ হটলাইন ৩৩৩ | ১০৬৫৫ | ১৬২৬৩",
+                        textScaleFactor: 1.0,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 19,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(

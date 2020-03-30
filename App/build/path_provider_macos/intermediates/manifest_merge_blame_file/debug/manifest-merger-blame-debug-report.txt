@@ -3,6 +3,6 @@
 3    package="com.example.path_provider" >
 4
 5    <uses-sdk android:minSdkVersion="16" />
-5-->C:\src\flutter\.pub-cache\hosted\pub.flutter-io.cn\path_provider_macos-0.0.4\android\src\main\AndroidManifest.xml
+5-->C:\Users\MHNavid\AppData\Roaming\Pub\Cache\hosted\pub.dartlang.org\path_provider_macos-0.0.4\android\src\main\AndroidManifest.xml
 6
 7</manifest>

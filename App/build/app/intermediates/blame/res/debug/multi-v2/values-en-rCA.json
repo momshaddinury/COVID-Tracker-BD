@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Momshad\\Documents\\GitHub\\COVID-Tracker-BD-master\\COVID-Tracker-BD-master\\App\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rCA\\values-en-rCA.xml",
+            "outputFile": "D:\\Office\\HeadBlocks\\covid-19\\COVID-Tracker-BD\\App\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rCA\\values-en-rCA.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Momshad\\.gradle\\caches\\transforms-2\\files-2.1\\0f4e70c3eb44d56c0073302bdec04405\\core-1.1.0\\res\\values-en-rCA\\values-en-rCA.xml",
+                    "source": "C:\\Users\\MHNavid\\.gradle\\caches\\transforms-2\\files-2.1\\0f4e70c3eb44d56c0073302bdec04405\\core-1.1.0\\res\\values-en-rCA\\values-en-rCA.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

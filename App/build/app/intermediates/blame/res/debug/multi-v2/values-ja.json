@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Momshad\\Documents\\GitHub\\COVID-Tracker-BD-master\\COVID-Tracker-BD-master\\App\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ja\\values-ja.xml",
+            "outputFile": "D:\\Office\\HeadBlocks\\covid-19\\COVID-Tracker-BD\\App\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ja\\values-ja.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Momshad\\.gradle\\caches\\transforms-2\\files-2.1\\0f4e70c3eb44d56c0073302bdec04405\\core-1.1.0\\res\\values-ja\\values-ja.xml",
+                    "source": "C:\\Users\\MHNavid\\.gradle\\caches\\transforms-2\\files-2.1\\0f4e70c3eb44d56c0073302bdec04405\\core-1.1.0\\res\\values-ja\\values-ja.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Momshad\\.gradle\\caches\\transforms-2\\files-2.1\\fd6ca4a64addf83d90850efce1877526\\jetified-play-services-basement-17.0.0\\res\\values-ja\\values.xml",
+                    "source": "C:\\Users\\MHNavid\\.gradle\\caches\\transforms-2\\files-2.1\\fd6ca4a64addf83d90850efce1877526\\jetified-play-services-basement-17.0.0\\res\\values-ja\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Momshad\\.gradle\\caches\\transforms-2\\files-2.1\\7523fccef74893d8e1c8f9c6fe7f933f\\jetified-play-services-base-17.1.0\\res\\values-ja\\values.xml",
+                    "source": "C:\\Users\\MHNavid\\.gradle\\caches\\transforms-2\\files-2.1\\7523fccef74893d8e1c8f9c6fe7f933f\\jetified-play-services-base-17.1.0\\res\\values-ja\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
