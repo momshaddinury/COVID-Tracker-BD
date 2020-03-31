@@ -8,6 +8,7 @@ import 'package:selfreportingapp/bloc/event.dart';
 import 'package:selfreportingapp/bloc/state.dart';
 import 'package:selfreportingapp/model/world_o_meter_repo.dart';
 import 'package:selfreportingapp/screens/heatmap.dart';
+import 'package:selfreportingapp/screens/support_page.dart';
 import 'package:selfreportingapp/services/world_o_meter_api.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -42,6 +43,26 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: RichText(
+          text: TextSpan(
+            text: 'করোনা',
+            style: TextStyle(
+                //color: Colors.black87.withOpacity(0.8), #95268D
+                color: Color(0xFF95268D),
+                fontSize: 25,
+                fontWeight: FontWeight.w700),
+            children: <TextSpan>[
+              TextSpan(
+                  text: " ইনফো",
+                  style: TextStyle(
+                      //textBaseline: TextBaseline.alphabetic,
+                      //color: Colors.black87.withOpacity(0.8), #95268D
+                      color: Color(0xFF4CB856),
+                      fontSize: 25,
+                      fontWeight: FontWeight.w700)),
+            ],
+          ),
+        ),
         backgroundColor: Colors.white,
         elevation: 2.0,
         brightness: Brightness.light,
@@ -52,7 +73,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(color: Colors.white),
-              child: Image.asset('assets/checkPatient.jpg'),
+              child: Image.asset('assets/0th-I.png'),
             ),
             Container(
               decoration: new BoxDecoration(color: Color(0x0F2A76DE)),
@@ -69,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
-            /*SizedBox(height: 5),
+            SizedBox(height: 5),
             Container(
               decoration: new BoxDecoration(color: Color(0x0F2A76DE)),
               child: ListTile(
@@ -78,17 +99,18 @@ class _HomePageState extends State<HomePage> {
                   textScaleFactor: 1.0,
                 ),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Support()));
                 },
               ),
-            )*/
+            )
           ],
         ),
       ),
       body: SingleChildScrollView(
         child: Container(
           //color: Colors.white,
-          color: Color(0xFFF9F9F9),
+          color: Colors.white,
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -119,9 +141,10 @@ class _HomePageState extends State<HomePage> {
               ),*/
               FittedBox(
                 child: Image.asset(
-                  "assets/doc.png",
-                  fit: BoxFit.cover,
-                  width: 300,
+                  "assets/3623963.jpg",
+                  fit: BoxFit.contain,
+                  width: 350,
+                  height: 350,
                 ),
               ),
               SizedBox(
@@ -319,7 +342,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               todo(
                                 instruction:
-                                    "স্বাস্থ্য পরামর্শ পেতে ১৬২৬৩ অথবা ৩৩৩ নম্বরে কর করুন",
+                                    "স্বাস্থ্য পরামর্শ পেতে ১৬২৬৩ অথবা ৩৩৩ নম্বরে কল করুন",
                               ),
                             ],
                           ),

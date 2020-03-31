@@ -5,9 +5,12 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:selfreportingapp/model/patient_data.dart';
+import 'package:selfreportingapp/screens/Report/possible_affected.dart';
+import 'package:selfreportingapp/screens/Report/survey_page.dart';
 import 'package:selfreportingapp/services/api.dart';
 import 'package:selfreportingapp/services/firebase_auth.dart';
 import 'package:selfreportingapp/services/json_handle.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LogInToSubmit extends StatefulWidget {
   @override
@@ -110,10 +113,13 @@ class _COVIDFormState extends State<COVIDForm> {
                   FormBuilderTextField(
                     attribute: "name",
                     decoration: InputDecoration(
-                      labelText: "আপনার নাম?",
+                      labelText: "নাম?",
                       filled: true,
                       fillColor: Colors.grey[200],
                     ),
+                    validators: [
+                      FormBuilderValidators.required(),
+                    ],
                     onSaved: (value) => fullName = value,
                   ),
 
@@ -185,6 +191,9 @@ class _COVIDFormState extends State<COVIDForm> {
                         child: Text('অন্যান্য'),
                       )
                     ],
+                    validators: [
+                      FormBuilderValidators.required(),
+                    ],
                     onSaved: (value) => gender = value,
                   ),
 
@@ -223,6 +232,9 @@ class _COVIDFormState extends State<COVIDForm> {
                       ),
                       FormBuilderFieldOption(value: 'না', child: Text('না')),
                     ],
+                    validators: [
+                      FormBuilderValidators.required(),
+                    ],
                     onSaved: (value) {
                       if (value == "হ্যাঁ") {
                         fever = true;
@@ -251,6 +263,9 @@ class _COVIDFormState extends State<COVIDForm> {
                       ),
                       FormBuilderFieldOption(value: 'না', child: Text('না')),
                     ],
+                    validators: [
+                      FormBuilderValidators.required(),
+                    ],
                     onSaved: (value) {
                       if (value == "হ্যাঁ") {
                         coughOrThroatPain = true;
@@ -278,6 +293,9 @@ class _COVIDFormState extends State<COVIDForm> {
                         child: Text('হ্যাঁ'),
                       ),
                       FormBuilderFieldOption(value: 'না', child: Text('না')),
+                    ],
+                    validators: [
+                      FormBuilderValidators.required(),
                     ],
                     onSaved: (value) {
                       if (value == "হ্যাঁ") {
@@ -323,7 +341,7 @@ class _COVIDFormState extends State<COVIDForm> {
                   Padding(
                     padding: const EdgeInsets.only(left: 10.0, top: 10),
                     child: AutoSizeText(
-                        "আপনি কি বিগত ১৪ দিনের ভিতরে করোনা ভাইরাসে ( কোবিড-১৯) আক্রান্ত এরকম কোন ব্যক্তির সংস্পর্শে এসেছিলেন ( একই স্থানে অবস্থান বা ভ্রমন )?"),
+                        "আপনি কি বিগত ১৪ দিনের ভিতরে করোনা ভাইরাসে ( কোভিড -১৯) আক্রান্ত এরকম কোন ব্যক্তির সংস্পর্শে এসেছিলেন ( একই স্থানে অবস্থান বা ভ্রমন )?"),
                   ),
                   FormBuilderChoiceChip(
                     attribute: 'choice_chip',
@@ -354,7 +372,7 @@ class _COVIDFormState extends State<COVIDForm> {
                   Padding(
                     padding: const EdgeInsets.only(left: 10.0, top: 10),
                     child: AutoSizeText(
-                        "বিগত ১৪ দিনে জর, কাশি, শ্বাসকষ্ট আছে এমন কারোর সংস্পর্শে কি আপনি এসেছিলেন ( পরিবার সদস্য / অফিস কলিগ )"),
+                        "বিগত ১৪ দিনে জর, কাশি, শ্বাসকষ্ট আছে এমন কারোর সংস্পর্শে কি আপনি এসেছিলেন ( পরিবার সদস্য / অফিস কলিগ ) ?"),
                   ),
                   FormBuilderChoiceChip(
                     attribute: 'choice_chip',
@@ -414,13 +432,16 @@ class _COVIDFormState extends State<COVIDForm> {
                 ],
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
             Row(
               children: <Widget>[
                 Expanded(
                   child: MaterialButton(
                     color: Colors.red,
                     child: Text(
-                      "বন্ধ করুন",
+                      "ফিরে যান",
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () async {
@@ -461,58 +482,56 @@ class _COVIDFormState extends State<COVIDForm> {
                       toast("অপেক্ষা করুন");
                       if (_fbKey.currentState.saveAndValidate()) {
                         toast("প্রসেসিং");
-                        print(age);
-                        print(phoneNumber);
-                        print(fullName);
-                        print(gender);
-                        print(fever);
-                        print(coughOrThroatPain);
-                        print(problemBreathing);
-                        print(cameBackFromAbroad);
-                        print(contactWithAnyCOVIDPatient);
-                        print(cameInContactWithPersonHavingCoughOrThroatPain);
-                        print(riskGroup);
+
                         print(_fbKey.currentState.value);
+                        //await orgLoginResponse();
                         await submitResponse();
                         showDialog(
                           context: context,
                           builder: (BuildContext context) => AlertDialog(
                             title: const Text("টেস্ট রেজাল্ট"),
-                            content: new Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                    child: RichText(
-                                  text: TextSpan(
-                                    text: 'ফলাফল: $assessmentMessage\n',
-                                    style: TextStyle(
-                                      color: Colors.red,
-                                      decoration: TextDecoration.none,
-                                    ),
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                        text: "\nআইডি: $userID\n",
-                                        style: TextStyle(
-                                          color: Colors.red,
-                                          decoration: TextDecoration.none,
-                                        ),
+                            content: SingleChildScrollView(
+                              child: new Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Container(
+                                      child: RichText(
+                                    text: TextSpan(
+                                      text: 'ফলাফল: $assessmentMessage\n',
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        decoration: TextDecoration.none,
                                       ),
-                                    ],
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: "\nআইডি: $userID\n",
+                                          style: TextStyle(
+                                            color: Colors.red,
+                                            decoration: TextDecoration.none,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )),
+                                  Html(
+                                    data: """$notes""",
+                                    onLinkTap: (url) async {
+                                      if (await canLaunch(url)) {
+                                        await launch(url);
+                                      } else {
+                                        throw 'Could not launch $url';
+                                      }
+                                    },
                                   ),
-                                )),
-                                Html(
-                                  data: """$notes""",
-                                  onLinkTap: (url) {
-                                    print("Openning url");
-                                  },
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                             actions: <Widget>[
                               new FlatButton(
                                 onPressed: () {
-                                  Navigator.of(context).pop();
+                                  Navigator.of(context)
+                                      .popUntil((route) => route.isFirst);
                                 },
                                 textColor: Theme.of(context).primaryColor,
                                 child: const Text('ওকে'),

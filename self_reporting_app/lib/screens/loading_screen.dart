@@ -8,69 +8,86 @@ class LoadingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final data = MediaQuery.of(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
-        child: Container(
-          color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Image.asset(
-                  'assets/bd.jpg',
-                  height: 200,
-                ),
-                SizedBox(
-                  height: 100,
-                ),
-                AutoSizeText(
-                  'সংক্রমন প্রতিরোধের উপায়',
-                  maxLines: 1,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: data.size.width * 0.01,
+        child: SingleChildScrollView(
+          child: Container(
+            color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    height: 200,
                   ),
-                ),
-                SizedBox(height: 10),
-                AutoSizeText(
-                  'সাবান পানি দিয়ে অন্তত ২০ সেকেন্ড ধরে হাত ধুবেন',
-                  maxLines: 1,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.w400,
-                    letterSpacing: data.size.width * 0.01,
+                  Image.asset(
+                    'assets/bd.jpg',
+                    height: 200,
                   ),
-                ),
-                SizedBox(height: 20),
-                SpinKitPulse(
-                  color: Colors.blue,
-                  size: 60.0,
-                ),
-                SizedBox(height: 20),
-                AutoSizeText(
-                  "ডাটা কানেকশন এবং লোকেশন এক্সেস আব্যশক",
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15.0,
+                  SizedBox(
+                    height: 100,
                   ),
-                ),
-                SizedBox(height: 20),
-                AutoSizeText(
-                  "কারিগরি সহযোগিতায় টিম রেড । সিউ",
-                  maxLines: 1,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15.0,
+                  AutoSizeText(
+                    'সংক্রমণ প্রতিরোধের উপায়',
+                    maxLines: 1,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: data.size.width * 0.01,
+                    ),
                   ),
-                ),
-              ],
+                  SizedBox(height: 10),
+                  AutoSizeText(
+                    'সাবান পানি দিয়ে অন্তত ২০ সেকেন্ড ধরে হাত ধোবেন',
+                    maxLines: 1,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.w400,
+                      letterSpacing: data.size.width * 0.01,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  SpinKitPulse(
+                    color: Colors.blue,
+                    size: 60.0,
+                  ),
+                  SizedBox(height: 20),
+                  AutoSizeText(
+                    "ডাটা কানেকশন এবং লোকেশন এক্সেস আব্যশক",
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15.0,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  AutoSizeText(
+                    "কারিগরি সহযোগিতায় টিম Zeroth Index, ইইই, চট্টগ্রাম বিশ্ববিদ্যালয়",
+                    maxLines: 1,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15.0,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  AutoSizeText(
+                    "Visit: https://www.facebook.com/zeroth.index/",
+                    maxLines: 1,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15.0,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Image.asset('assets/0th-I.png')
+                ],
+              ),
             ),
           ),
         ),

@@ -61,7 +61,7 @@ class _InitialCheckState extends State<InitialCheck> {
                       ),
                       Center(
                         child: AutoSizeText(
-                          "যদি পরিবারের কোন সদস্যের ব্যাক্তিগত মোবাইল নম্বর না থাকে তবে আপনি নিজের বা পরিবারের অন্য কারো ফোন নম্বর ব্যবহার করে তথ্য প্রদান করতে পারবেন। এই ক্ষেত্রে অপশন থেকে 'পরিবারের সদস্যর জন্য' এই অপশন টি সিলেক্ট করার অনুরোধ করা যাচ্ছে। ধন্যবাদ",
+                          "যদি পরিবারের কোন সদস্যের ব্যাক্তিগত মোবাইল নম্বর না থাকে তবে আপনি নিজের বা পরিবারের অন্য কারো ফোন নম্বর ব্যবহার করে তথ্য প্রদান করতে পারবেন। এই ক্ষেত্রে অপশন থেকে 'পরিবারের সদস্যর জন্য' এই অপশন টি সিলেক্ট করার জন্য অনুরোধ করা যাচ্ছে। ধন্যবাদ",
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                             fontSize: 20,
@@ -134,10 +134,13 @@ class _InitialCheckState extends State<InitialCheck> {
                               ),
                               onPressed: () async {
                                 //toast("অপেক্ষা করুন");
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => LogInToSubmit()));
+                                if (_fbKey.currentState.saveAndValidate()) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              LogInToSubmit()));
+                                }
                               },
                             ),
                           ),

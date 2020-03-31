@@ -484,7 +484,7 @@ class _DoctorsReportState extends State<DoctorsReport> {
                         child: MaterialButton(
                           color: Colors.red,
                           child: Text(
-                            "বন্ধ করুন",
+                            "ফিরে যান",
                             style: TextStyle(color: Colors.white),
                           ),
                           onPressed: () async {

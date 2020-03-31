@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:intl/intl.dart';
 import 'package:selfreportingapp/model/country_data.dart';
 import 'package:selfreportingapp/model/patient_data.dart';
@@ -83,12 +82,15 @@ class _NeighboursReportState extends State<NeighboursReport> {
                             filled: true,
                             fillColor: Colors.grey[200],
                           ),
+                          validators: [
+                            FormBuilderValidators.required(),
+                          ],
                           onSaved: (value) => fullName = value,
                         ),
 
                         //রোগীর পিতার নাম
                         FormBuilderTextField(
-                          attribute: "name",
+                          attribute: "fathername",
                           decoration: InputDecoration(
                             labelText: "পিতার নাম",
                             filled: true,
@@ -151,6 +153,9 @@ class _NeighboursReportState extends State<NeighboursReport> {
                           lastDate: DateTime(2030),
                           format: DateFormat("yyyy-MM-dd"),
                           onSaved: (value) => dateofReturnNRB = value,
+                          validators: [
+                            FormBuilderValidators.required(),
+                          ],
                           decoration: InputDecoration(
                             labelText: "   দেশে ফেরার তারিখ",
                           ),
@@ -164,6 +169,9 @@ class _NeighboursReportState extends State<NeighboursReport> {
                             filled: true,
                             fillColor: Colors.grey[200],
                           ),
+                          validators: [
+                            FormBuilderValidators.required(),
+                          ],
                           onSaved: (value) => countryNRB = value,
                         ),
                         Divider(
@@ -302,6 +310,9 @@ class _NeighboursReportState extends State<NeighboursReport> {
                             filled: true,
                             fillColor: Colors.grey[200],
                           ),
+                          validators: [
+                            FormBuilderValidators.required(),
+                          ],
                           onSaved: (value) => address = value,
                         ),
 
@@ -336,7 +347,7 @@ class _NeighboursReportState extends State<NeighboursReport> {
                         child: MaterialButton(
                           color: Colors.red,
                           child: Text(
-                            "বন্ধ করুন",
+                            "ফিরে যান",
                             style: TextStyle(color: Colors.white),
                           ),
                           onPressed: () async {
@@ -378,11 +389,11 @@ class _NeighboursReportState extends State<NeighboursReport> {
                             if (_fbKey.currentState.saveAndValidate()) {
                               toast("প্রসেসিং");
                               print(_fbKey.currentState.value);
-                              await submitResponse();
+                              await submitCitizenResponse();
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) => AlertDialog(
-                                  title: const Text("টেস্ট রেজাল্ট"),
+                                  title: const Text("ফলাফল"),
                                   content: new Column(
                                     mainAxisSize: MainAxisSize.min,
                                     crossAxisAlignment:
@@ -391,14 +402,14 @@ class _NeighboursReportState extends State<NeighboursReport> {
                                       Container(
                                           child: RichText(
                                         text: TextSpan(
-                                          text: 'ফলাফল: $assessmentMessage\n',
+                                          text: 'ফলাফল: $message\n',
                                           style: TextStyle(
                                             color: Colors.red,
                                             decoration: TextDecoration.none,
                                           ),
                                           children: <TextSpan>[
                                             TextSpan(
-                                              text: "\nআইডি: $userID\n",
+                                              text: "\nআইডি: $id\n",
                                               style: TextStyle(
                                                 color: Colors.red,
                                                 decoration: TextDecoration.none,
@@ -407,18 +418,19 @@ class _NeighboursReportState extends State<NeighboursReport> {
                                           ],
                                         ),
                                       )),
-                                      Html(
+                                      /*Html(
                                         data: """$notes""",
                                         onLinkTap: (url) {
                                           print("Openning url");
                                         },
-                                      ),
+                                      ),*/
                                     ],
                                   ),
                                   actions: <Widget>[
                                     new FlatButton(
                                       onPressed: () {
-                                        Navigator.of(context).pop();
+                                        Navigator.of(context)
+                                            .popUntil((route) => route.isFirst);
                                       },
                                       textColor: Theme.of(context).primaryColor,
                                       child: const Text('ওকে'),

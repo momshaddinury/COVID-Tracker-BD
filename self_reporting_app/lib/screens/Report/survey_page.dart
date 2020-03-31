@@ -27,7 +27,7 @@ class _SurveyPageState extends State<SurveyPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 100),
+              SizedBox(height: 70),
               Container(
                 child: Image.asset(
                   'assets/checkPatient.jpg',
@@ -44,6 +44,7 @@ class _SurveyPageState extends State<SurveyPage> {
                 child: Center(
                   child: AutoSizeText(
                     "আপনি কি করোনা ভাইরাসে ( কোভিড-১৯) আক্রান্ত ?",
+                    textScaleFactor: 1,
                     maxLines: 3,
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -81,7 +82,7 @@ class _SurveyPageState extends State<SurveyPage> {
                                 builder: (context) => SelfReportingPage()));
                       },
                     ),
-                    SizedBox(
+                    /*SizedBox(
                       height: 20,
                     ),
                     // Recurring Update
@@ -103,7 +104,7 @@ class _SurveyPageState extends State<SurveyPage> {
                             MaterialPageRoute(
                                 builder: (context) => RecurringUpdate()));
                       },
-                    ),
+                    ),*/
                     SizedBox(
                       height: 20,
                     ),
