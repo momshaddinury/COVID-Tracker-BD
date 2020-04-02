@@ -156,6 +156,72 @@ export const onRecurrentResponseSubmit = functions.https.onCall(async (userRespo
 	}
 });
 
+export const getMinimalList = functions.https.onCall(async (keyObject) => {
+	try {
+		const responses: any[] = [];
+		const querySnap = await USER_RESPONSE_COLLECTION_PATH_REF.get();
+		if (querySnap.empty) return {
+			error: "Data Does Not Exist"
+		}
+
+		await Promise.all(querySnap.docs.map(async (doc) => {
+			const data=doc.data();
+			const minimal={
+				Name:data['name']['answer'],
+				Age:data['age']['answer'],
+				Phone:data['user_phone'],
+				Address:data['address'],
+				Status:data['risk'],
+			};
+			responses.push(minimal);
+		}));
+
+		return {
+			responses,
+		};
+	} catch (error) {
+		console.error("getMinimalList Error:", error);
+		return error;
+	}
+});
+
+export const getDataByKeyValueFromResponses = functions.https.onCall(async (keyObject) => {
+	try {
+		
+		const keyName = keyObject['key'];
+		const keyValue = keyObject['value'];
+
+		const responses: any[] = [];
+		const recurringResponses: any[] = [];
+		const querySnap = await USER_RESPONSE_COLLECTION_PATH_REF.where(keyName, '==', keyValue).get();
+		if (querySnap.empty) return {
+			error: "Data Does Not Exist"
+		}
+
+		const querySnap2 = await USER_RECURRING_FIELDS_COLLECTION_PATH_REF.where(keyName, '==', keyValue).get();
+
+		await Promise.all(querySnap.docs.map(async (doc) => {
+			const data=doc.data();
+			delete data.organization_id;
+			responses.push(data);
+		}));
+
+		await Promise.all(querySnap2.docs.map(async (doc) => {
+			const data=doc.data();
+			delete data.organization_id;
+			recurringResponses.push(data);
+		}));
+
+		return {
+			responses,
+			recurringResponses
+		};
+	} catch (error) {
+		console.error("getDataByKeyValueFromResponses Error:", error);
+		return error;
+	}
+});
+
 export const getResponsesByUserPhone = functions.https.onCall(async (userNum) => {
 	try {
 		console.log(userNum);
