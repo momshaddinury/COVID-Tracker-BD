@@ -14,9 +14,11 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'Report/survey_page.dart';
 import 'about_us.dart';
+import 'dart:io' show Platform;
 
 //String selectedCategorie = "Adults";
 String title;
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -24,6 +26,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  static const platform = const MethodChannel(
+      'com.tne.selfreportingapp/MAP_CHANNEL');
   ApiService apiService;
   Map<String, double> dataMap = new Map();
   Map<String, double> dataMapAll = new Map();
@@ -47,7 +51,7 @@ class _HomePageState extends State<HomePage> {
           text: TextSpan(
             text: 'করোনা',
             style: TextStyle(
-                //color: Colors.black87.withOpacity(0.8), #95268D
+              //color: Colors.black87.withOpacity(0.8), #95268D
                 color: Color(0xFF95268D),
                 fontSize: 25,
                 fontWeight: FontWeight.w700),
@@ -55,8 +59,8 @@ class _HomePageState extends State<HomePage> {
               TextSpan(
                   text: " ইনফো",
                   style: TextStyle(
-                      //textBaseline: TextBaseline.alphabetic,
-                      //color: Colors.black87.withOpacity(0.8), #95268D
+                    //textBaseline: TextBaseline.alphabetic,
+                    //color: Colors.black87.withOpacity(0.8), #95268D
                       color: Color(0xFF4CB856),
                       fontSize: 25,
                       fontWeight: FontWeight.w700)),
@@ -266,10 +270,10 @@ class _HomePageState extends State<HomePage> {
                   height: 170,
                   child: BlocProvider<CovidBloc>(
                       create: (BuildContext context) =>
-                          CovidBloc(repository: Repository())
-                            ..add(CovidBdDataEvent(
-                                param: "countries/bangladesh",
-                                paramAll: "all")),
+                      CovidBloc(repository: Repository())
+                        ..add(CovidBdDataEvent(
+                            param: "countries/bangladesh",
+                            paramAll: "all")),
                       child: Container(
                         child: BlocBuilder<CovidBloc, CovidState>(
                           builder: (context, state) {
@@ -307,42 +311,42 @@ class _HomePageState extends State<HomePage> {
                               /*Image.asset('assets/tod.png'),*/
                               todo(
                                 instruction:
-                                    "ঘন ঘন দুইহাত সবান পানি দিয়ে ভালোভাবে ধুয়ে নিন(কমপক্ষে ২০ সেকেন্ড)",
+                                "ঘন ঘন দুইহাত সবান পানি দিয়ে ভালোভাবে ধুয়ে নিন(কমপক্ষে ২০ সেকেন্ড)",
                               ),
                               SizedBox(
                                 width: 10,
                               ),
                               todo(
                                 instruction:
-                                    "হাঁচি-কাশির সময় টিস্যু/কাপড়/বাহুর ভাঁজে নাক-মুখ ঢেকে ফেলুন",
+                                "হাঁচি-কাশির সময় টিস্যু/কাপড়/বাহুর ভাঁজে নাক-মুখ ঢেকে ফেলুন",
                               ),
                               SizedBox(
                                 width: 10,
                               ),
                               todo(
                                 instruction:
-                                    "অসুস্থ হলে বা অসুস্থ ব্যক্তির সংস্পর্শে আসলে বা আক্রান্ত দেশ থেকে আসলে মাস্ক ব্যবহার করুন",
+                                "অসুস্থ হলে বা অসুস্থ ব্যক্তির সংস্পর্শে আসলে বা আক্রান্ত দেশ থেকে আসলে মাস্ক ব্যবহার করুন",
                               ),
                               SizedBox(
                                 width: 10,
                               ),
                               todo(
                                 instruction:
-                                    "স্বাস্থ্য সেবায় নিয়োজিত সকলে মাস্ক ব্যবহার করুন",
+                                "স্বাস্থ্য সেবায় নিয়োজিত সকলে মাস্ক ব্যবহার করুন",
                               ),
                               SizedBox(
                                 width: 10,
                               ),
                               todo(
                                 instruction:
-                                    "জরুরী প্রয়োজন ছাড়া ভিড় ও ভ্রমন এড়িয়ে চলুন",
+                                "জরুরী প্রয়োজন ছাড়া ভিড় ও ভ্রমন এড়িয়ে চলুন",
                               ),
                               SizedBox(
                                 width: 10,
                               ),
                               todo(
                                 instruction:
-                                    "স্বাস্থ্য পরামর্শ পেতে ১৬২৬৩ অথবা ৩৩৩ নম্বরে কল করুন",
+                                "স্বাস্থ্য পরামর্শ পেতে ১৬২৬৩ অথবা ৩৩৩ নম্বরে কল করুন",
                               ),
                             ],
                           ),
@@ -446,6 +450,7 @@ class todo extends StatelessWidget {
   const todo({Key key, @required this.instruction}) : super(key: key);
 
   final String instruction;
+
   @override
   Widget build(BuildContext context) {
     return FittedBox(
@@ -478,6 +483,12 @@ class todo extends StatelessWidget {
 }
 
 class HeatMapTile extends StatelessWidget {
+  Future<void> _startMap() async {
+    try {
+      final String result = await platform.invokeMethod('map');
+    } on PlatformException catch (e) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -486,8 +497,12 @@ class HeatMapTile extends StatelessWidget {
       padding: EdgeInsets.all(20),
       color: Color(0xFFCCECF9),
       onPressed: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Location()));
+        if (Platform.isAndroid) {
+          _startMap();
+        } else {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Location()));
+        }
       },
       child: Row(
         children: <Widget>[
