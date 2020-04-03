@@ -275,13 +275,13 @@ public class MapActivity extends Activity implements OnMapReadyCallback {
                 fillLayerQ.setProperties(
                         visibility(Property.VISIBLE),
                         fillColor(Color.parseColor("#ff0000")),
-                        fillOpacity(.7f));
+                        fillOpacity(.5f));
                 FillLayer fillLayerR = new FillLayer(centers.get(i).name + "r",
                         centers.get(i).name + "r");
                 fillLayerR.setProperties(
                         visibility(Property.VISIBLE),
                         fillColor(Color.parseColor("#00ff00")),
-                        fillOpacity(.7f));
+                        fillOpacity(.5f));
                 /*if(i>0) {
                     style.addLayerAbove(fillLayerQ, centers.get(i - 1).name + "r");
                 } else {
