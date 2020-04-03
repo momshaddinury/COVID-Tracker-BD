@@ -1,6 +1,8 @@
-import 'package:auto_size_text/auto_size_text.dart';
+import 'dart:io' show Platform;
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:selfreportingapp/bloc/bloc.dart';
@@ -14,11 +16,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'Report/survey_page.dart';
 import 'about_us.dart';
-import 'dart:io' show Platform;
 
 //String selectedCategorie = "Adults";
 String title;
-
 
 class HomePage extends StatefulWidget {
   @override
@@ -26,8 +26,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  static const platform = const MethodChannel(
-      'com.tne.selfreportingapp/MAP_CHANNEL');
   ApiService apiService;
   Map<String, double> dataMap = new Map();
   Map<String, double> dataMapAll = new Map();
@@ -484,6 +482,8 @@ class todo extends StatelessWidget {
 
 class HeatMapTile extends StatelessWidget {
   Future<void> _startMap() async {
+    const platform =
+    const MethodChannel('com.tne.selfreportingapp/MAP_CHANNEL');
     try {
       final String result = await platform.invokeMethod('map');
     } on PlatformException catch (e) {}

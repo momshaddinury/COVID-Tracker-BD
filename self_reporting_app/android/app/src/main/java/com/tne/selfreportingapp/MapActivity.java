@@ -1,7 +1,8 @@
 package com.tne.selfreportingapp;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.app.Activity;
+import android.graphics.Color;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
@@ -10,20 +11,20 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.mapbox.android.core.location.LocationEngineCallback;
 import com.mapbox.android.core.location.LocationEngineProvider;
 import com.mapbox.android.core.location.LocationEngineRequest;
 import com.mapbox.android.core.location.LocationEngineResult;
 import com.mapbox.geojson.Feature;
+import com.mapbox.geojson.LineString;
+import com.mapbox.geojson.Point;
+import com.mapbox.geojson.Polygon;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -38,10 +39,13 @@ import com.mapbox.mapboxsdk.maps.Style;
 import com.mapbox.mapboxsdk.maps.UiSettings;
 import com.mapbox.mapboxsdk.plugins.annotation.Circle;
 import com.mapbox.mapboxsdk.plugins.annotation.CircleManager;
-import com.mapbox.mapboxsdk.plugins.annotation.CircleOptions;
-import com.mapbox.mapboxsdk.plugins.annotation.OnCircleClickListener;
 import com.mapbox.mapboxsdk.plugins.annotation.Symbol;
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager;
+import com.mapbox.mapboxsdk.style.layers.FillLayer;
+import com.mapbox.mapboxsdk.style.layers.Property;
+import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
+import com.mapbox.turf.TurfMeta;
+import com.mapbox.turf.TurfTransformation;
 import com.tne.selfreportingapp.databinding.ActivityMapBinding;
 
 import org.json.JSONArray;
@@ -51,11 +55,17 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.fillColor;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.fillOpacity;
+import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility;
+import static com.mapbox.turf.TurfConstants.UNIT_METERS;
+
+public class MapActivity extends Activity implements OnMapReadyCallback {
 
     ActivityMapBinding activityMapBinding;
     String TAG = "MapActivity";
-
+    private static final String TURF_CALCULATION_FILL_LAYER_GEOJSON_SOURCE_ID
+            = "TURF_CALCULATION_FILL_LAYER_GEOJSON_SOURCE_ID";
     Geocoder geocoder;
     private MapView mapView;
     MapboxMap map;
@@ -98,9 +108,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 JSONArray latLngArray = jsonObject.getJSONArray("data");
                 for (int i = 0; i < latLngArray.length(); i++) {
                     centers.add(new LatLngQR(
-                            new LatLng(latLngArray.getJSONObject(i).getJSONArray("lat_lng").getDouble(0), latLngArray.getJSONObject(i).getJSONArray("lat_lng").getDouble(1)),
+                            new LatLng(latLngArray.getJSONObject(i).getJSONArray("lat_lng").getJSONArray(0).getDouble(0), latLngArray.getJSONObject(i).getJSONArray("lat_lng").getJSONArray(0).getDouble(1)),
                             latLngArray.getJSONObject(i).getInt("quarentine"),
-                            latLngArray.getJSONObject(i).getInt("release")
+                            latLngArray.getJSONObject(i).getInt("release"),
+                            latLngArray.getJSONObject(i).getString("region")
                     ));
                 }
                 initMap(savedInstanceState);
@@ -120,7 +131,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             Location lastKnownLocation = map.getLocationComponent().getLastKnownLocation();
 
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                    new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude()), 16.5), new MapboxMap.CancelableCallback() {
+                    new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude()), 13.5), new MapboxMap.CancelableCallback() {
                 @Override
                 public void onCancel() {
 
@@ -156,6 +167,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                             symbolManager = new SymbolManager(mapView, mapboxMap, style);
                             circleManager = new CircleManager(mapView, mapboxMap, style);
 
+
                             UiSettings uiSettings = mapboxMap.getUiSettings();
                             uiSettings.setAllGesturesEnabled(true);
                             uiSettings.setZoomGesturesEnabled(true);
@@ -168,29 +180,49 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                             locationComponent.setLocationComponentEnabled(true);
                             locationComponent.setRenderMode(RenderMode.NORMAL);
 
-                            for (LatLngQR x :
+                            /*for (LatLngQR x :
                                     centers) {
                                 JsonObject dataQ = new JsonObject();
                                 JsonObject dataR = new JsonObject();
                                 dataQ.addProperty("count", "Quarantine: "+x.quarantine);
                                 dataR.addProperty("count", "Release: "+x.release);
-                                circleArrayListQuarantine.add(circleManager.create(new CircleOptions().withCircleRadius(x.quarantine*3.0f).withLatLng(x.center).withCircleColor("#FF0000").withCircleOpacity(0.4f).withData(dataQ)));
-                                circleArrayListRelease.add(circleManager.create(new CircleOptions().withCircleRadius(x.release*3.0f).withLatLng(x.center).withCircleColor("#00FF00").withCircleOpacity(0.4f).withData(dataR)));
-                            }
+                                circleArrayListQuarantine.add(circleManager.create(new CircleOptions().withCircleRadius(x.quarantine*0.03f).withLatLng(x.center).withCircleColor("#FF0000").withCircleOpacity(0.4f).withData(dataQ)));
+                                circleArrayListRelease.add(circleManager.create(new CircleOptions().withCircleRadius(x.release*0.03f).withLatLng(x.center).withCircleColor("#00FF00").withCircleOpacity(0.4f).withData(dataR)));
+                            }*/
 
-                            map.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                    new LatLng(map.getLocationComponent().getLastKnownLocation().getLatitude(), map.getLocationComponent().getLastKnownLocation().getLongitude()), 14), new MapboxMap.CancelableCallback() {
-                                @Override
-                                public void onCancel() {
+//                            initPolygonCircleFillLayer();
 
-                                }
+                            drawPolygonCircle();
 
-                                @Override
-                                public void onFinish() {
-                                }
-                            });
+                            initPolygonCircleFillLayer();
 
-                            circleManager.addClickListener(circle -> {
+                            /*try {
+                                map.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                                        new LatLng(map.getLocationComponent().getLastKnownLocation().getLatitude(), map.getLocationComponent().getLastKnownLocation().getLongitude()), 14), new MapboxMap.CancelableCallback() {
+                                    @Override
+                                    public void onCancel() {
+
+                                    }
+
+                                    @Override
+                                    public void onFinish() {
+                                    }
+                                });
+                            } catch (Exception e) {*/
+                                map.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                                        new LatLng(23.770264, 90.320395), 6), new MapboxMap.CancelableCallback() {
+                                    @Override
+                                    public void onCancel() {
+
+                                    }
+
+                                    @Override
+                                    public void onFinish() {
+                                    }
+                                });
+//                            }
+
+                            /*circleManager.addClickListener(circle -> {
                                 JsonObject jsonObject;
                                 JsonElement jsonElement = circle.getData();
                                 String count="";
@@ -199,7 +231,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                                     count=jsonObject.get("count").getAsString();
                                 }
                                 Log.i(TAG, "onMapReady: "+count);
-                            });
+                            });*/
 
 
                             locationComponent.setLocationEngine(LocationEngineProvider.getBestLocationEngine(MapActivity.this));
@@ -235,6 +267,73 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         map = mapboxMap;
     }
 
+    private void initPolygonCircleFillLayer() {
+        map.getStyle(style -> {
+            for (int i = 0; i < centers.size(); i++) {
+                FillLayer fillLayerQ = new FillLayer(centers.get(i).name + "q",
+                        centers.get(i).name + "q");
+                fillLayerQ.setProperties(
+                        visibility(Property.VISIBLE),
+                        fillColor(Color.parseColor("#ff0000")),
+                        fillOpacity(.7f));
+                FillLayer fillLayerR = new FillLayer(centers.get(i).name + "r",
+                        centers.get(i).name + "r");
+                fillLayerR.setProperties(
+                        visibility(Property.VISIBLE),
+                        fillColor(Color.parseColor("#00ff00")),
+                        fillOpacity(.7f));
+                /*if(i>0) {
+                    style.addLayerAbove(fillLayerQ, centers.get(i - 1).name + "r");
+                } else {
+                    style.addLayer(fillLayerQ);
+                }
+                style.addLayerAbove(fillLayerR, centers.get(i).name + "q");*/
+                style.addLayer(fillLayerQ);
+                style.addLayer(fillLayerR);
+
+            }
+        });
+    }
+
+    private void drawPolygonCircle() {
+        map.getStyle(style -> {
+            for (LatLngQR lnQR :
+                    centers) {
+                Polygon polygonAreaQ = getTurfPolygon(Point.fromLngLat(lnQR.center.getLongitude(), lnQR.center.getLatitude()), lnQR.quarantine * 3f, 380, UNIT_METERS);
+                GeoJsonSource polygonCircleSourceQ = style.getSourceAs(lnQR.name + "q");
+                if (polygonCircleSourceQ != null) {
+                    polygonCircleSourceQ.setGeoJson(Polygon.fromOuterInner(
+                            LineString.fromLngLats(TurfMeta.coordAll(polygonAreaQ, false))));
+                } else {
+                    polygonCircleSourceQ = new GeoJsonSource(lnQR.name + "q", Polygon.fromOuterInner(
+                            LineString.fromLngLats(TurfMeta.coordAll(polygonAreaQ, false))));
+                    style.addSource(polygonCircleSourceQ);
+                }
+
+                Polygon polygonAreaR = getTurfPolygon(Point.fromLngLat(lnQR.center.getLongitude(), lnQR.center.getLatitude()), lnQR.release * 3f, 380, UNIT_METERS);
+                GeoJsonSource polygonCircleSourceR = style.getSourceAs(lnQR.name + "r");
+                if (polygonCircleSourceR != null) {
+                    polygonCircleSourceR.setGeoJson(Polygon.fromOuterInner(
+                            LineString.fromLngLats(TurfMeta.coordAll(polygonAreaR, false))));
+                    Log.i(TAG, "drawPolygonCircle: " + polygonAreaR.toString());
+                    style.addSource(polygonCircleSourceR);
+                } else {
+                    polygonCircleSourceR = new GeoJsonSource(lnQR.name + "r", Polygon.fromOuterInner(
+                            LineString.fromLngLats(TurfMeta.coordAll(polygonAreaR, false))));
+                    style.addSource(polygonCircleSourceR);
+                }
+
+            }
+// Use Turf to calculate the Polygon's coordinates
+
+        });
+    }
+
+    private Polygon getTurfPolygon(@NonNull Point centerPoint, @NonNull double radius,
+                                   @NonNull int steps, @NonNull String units) {
+        return TurfTransformation.circle(centerPoint, radius, steps, units);
+    }
+
     /*public static void drawCircle(MapboxMap map, LatLng position, int color, double radiusMeters) {
         PolylineOptions polylineOptions = new PolylineOptions();
         polylineOptions.color(color);
@@ -267,5 +366,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         polygons.add(polygons.get(0));
         return polygons;
     }*/
+
 
 }
