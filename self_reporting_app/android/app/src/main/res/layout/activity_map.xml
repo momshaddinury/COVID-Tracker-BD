@@ -35,16 +35,19 @@
                     android:padding="10dp"
                     android:src="@drawable/ic_arrow_back_black_24dp"/>
 
-                <ImageView
-                    android:layout_width="32dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_height="32dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     android:layout_margin="10dp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="@color/Color_Black"
                     android:id="@+id/covidImage"
-                    android:src="@drawable/covid" />
+                    android:text="@string/maptexttitle" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.Toolbar>
 
@@ -52,17 +55,97 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/statusLayout"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/regionT"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="Dhaka"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/Color_Black" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/qLayout"
+                android:padding="5dp"
+                app:layout_constraintRight_toLeftOf="@id/rLayout"
+                app:layout_constraintTop_toBottomOf="@id/regionT"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/statusProgress">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textColor="@color/Color_Black"
+                    android:id="@+id/qTitle"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:text="@string/quarantined" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/Color_Black"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@id/qTitle"
+                    android:id="@+id/qText" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/rLayout"
+                android:padding="5dp"
+                app:layout_constraintTop_toBottomOf="@id/regionT"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/qLayout"
+                app:layout_constraintBottom_toTopOf="@id/statusProgress">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/Color_Black"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:id="@+id/rTitle"
+                    android:text="@string/released" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/Color_Black"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/rTitle"
+                    android:id="@+id/rText" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ProgressBar
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="10dp"
                 android:indeterminate="false"
                 app:layout_constraintBottom_toBottomOf="parent"
-
-                android:progressTint="@color/Color_Red"
-                android:progress="50"
+                android:progressDrawable="@drawable/progressasset"
+                android:progress="60"
+                android:id="@+id/statusProgress"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close_black_16p"
+                app:layout_constraintRight_toRightOf="parent"
+                android:padding="2dp"
+                android:id="@+id/closeStatus"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.mapbox.mapboxsdk.maps.MapView

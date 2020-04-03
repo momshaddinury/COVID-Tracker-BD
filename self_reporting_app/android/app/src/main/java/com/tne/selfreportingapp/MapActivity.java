@@ -3,12 +3,16 @@ package com.tne.selfreportingapp;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Color;
+import android.graphics.PointF;
+import android.graphics.RectF;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -60,7 +64,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.fillOpacity;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility;
 import static com.mapbox.turf.TurfConstants.UNIT_METERS;
 
-public class MapActivity extends Activity implements OnMapReadyCallback {
+public class MapActivity extends Activity implements OnMapReadyCallback, MapboxMap.OnMapClickListener {
 
     ActivityMapBinding activityMapBinding;
     String TAG = "MapActivity";
@@ -98,6 +102,14 @@ public class MapActivity extends Activity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         Mapbox.getInstance(this, getString(R.string.access_token));
         activityMapBinding = DataBindingUtil.setContentView(this, R.layout.activity_map);
+
+        activityMapBinding.backButton.setOnClickListener(view -> {
+            finish();
+        });
+
+        activityMapBinding.closeStatus.setOnClickListener(view -> {
+            activityMapBinding.statusLayout.setVisibility(View.GONE);
+        });
 
         requestQueue = Volley.newRequestQueue(this);
 
@@ -145,6 +157,15 @@ public class MapActivity extends Activity implements OnMapReadyCallback {
         });
     }
 
+    private void showStats(LatLngQR lnQR) {
+        activityMapBinding.statusLayout.setVisibility(View.VISIBLE);
+        activityMapBinding.regionT.setText(lnQR.name);
+        activityMapBinding.qText.setText(String.valueOf( lnQR.quarantine));
+        activityMapBinding.rText.setText(String.valueOf(lnQR.release));
+        activityMapBinding.statusProgress.setProgress(lnQR.quarantine * 100 / (lnQR.quarantine + lnQR.release));
+
+    }
+
     private void initMap(Bundle savedInstanceState) {
         LatLng source = new LatLng(23, 90), destination = new LatLng(23, 90);
         mapView = activityMapBinding.coronaMap;
@@ -163,6 +184,8 @@ public class MapActivity extends Activity implements OnMapReadyCallback {
                         , style -> {
 
                             activityMapBinding.locationFab.show();
+
+                            mapboxMap.addOnMapClickListener(MapActivity.this);
 
                             symbolManager = new SymbolManager(mapView, mapboxMap, style);
                             circleManager = new CircleManager(mapView, mapboxMap, style);
@@ -209,17 +232,17 @@ public class MapActivity extends Activity implements OnMapReadyCallback {
                                     }
                                 });
                             } catch (Exception e) {*/
-                                map.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                        new LatLng(23.770264, 90.320395), 6), new MapboxMap.CancelableCallback() {
-                                    @Override
-                                    public void onCancel() {
+                            map.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                                    new LatLng(23.770264, 90.320395), 6), new MapboxMap.CancelableCallback() {
+                                @Override
+                                public void onCancel() {
 
-                                    }
+                                }
 
-                                    @Override
-                                    public void onFinish() {
-                                    }
-                                });
+                                @Override
+                                public void onFinish() {
+                                }
+                            });
 //                            }
 
                             /*circleManager.addClickListener(circle -> {
@@ -327,6 +350,29 @@ public class MapActivity extends Activity implements OnMapReadyCallback {
 // Use Turf to calculate the Polygon's coordinates
 
         });
+    }
+
+    @Override
+    public boolean onMapClick(@NonNull LatLng point) {
+        PointF pointf = map.getProjection().toScreenLocation(point);
+        RectF rectF = new RectF(pointf.x - 10, pointf.y - 10, pointf.x + 10, pointf.y + 10);
+        for (LatLngQR lnQR :
+                centers) {
+            List<Feature> featureList;
+            if ((featureList = map.queryRenderedFeatures(rectF, lnQR.name + "q")).size() > 0) {
+                Log.i(TAG, "onMapClick: " + featureList.get(0).toJson());
+//                Toast.makeText(MapActivity.this, "Clicked " + lnQR.name, Toast.LENGTH_LONG).show();
+                showStats(lnQR);
+            }
+        }
+        /*List<Feature> featureList = map.queryRenderedFeatures(rectF, geoJsonLayerId);
+        if (featureList.size() > 0) {
+            for (Feature feature : featureList) {
+
+            }
+            return true;
+        }*/
+        return false;
     }
 
     private Polygon getTurfPolygon(@NonNull Point centerPoint, @NonNull double radius,
