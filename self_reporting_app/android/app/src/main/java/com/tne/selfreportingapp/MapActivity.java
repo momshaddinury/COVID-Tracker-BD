@@ -176,64 +176,51 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
 
         List<Feature> symbolLayerIconFeatureList = new ArrayList<>();
 
-        mapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(@NonNull final MapboxMap mapboxMap) {
-                map = mapboxMap;
-                map.setStyle(new Style.Builder().fromUri(/*"mapbox://styles/mapbox/cjf4m44iw0uza2spb3q0a7s41"*/ /*"mapbox://styles/mapbox/light-v10"*/ /*"mapbox://styles/mapbox/navigation-preview-day-v4"*/ "mapbox://styles/mapbox/streets-v11")
-                        , style -> {
+        mapView.getMapAsync(mapboxMap -> {
+            map = mapboxMap;
+            map.setStyle(new Style.Builder().fromUri(/*"mapbox://styles/mapbox/cjf4m44iw0uza2spb3q0a7s41"*/ /*"mapbox://styles/mapbox/light-v10"*/ /*"mapbox://styles/mapbox/navigation-preview-day-v4"*/ "mapbox://styles/mapbox/streets-v11")
+                    , style -> {
 
-                            activityMapBinding.locationFab.show();
+                        activityMapBinding.locationFab.show();
+                        activityMapBinding.mapLoading.setVisibility(View.GONE);
 
-                            mapboxMap.addOnMapClickListener(MapActivity.this);
+                        mapboxMap.addOnMapClickListener(MapActivity.this);
 
-                            symbolManager = new SymbolManager(mapView, mapboxMap, style);
-                            circleManager = new CircleManager(mapView, mapboxMap, style);
+                        symbolManager = new SymbolManager(mapView, mapboxMap, style);
+                        circleManager = new CircleManager(mapView, mapboxMap, style);
 
 
-                            UiSettings uiSettings = mapboxMap.getUiSettings();
-                            uiSettings.setAllGesturesEnabled(true);
-                            uiSettings.setZoomGesturesEnabled(true);
-                            uiSettings.setQuickZoomGesturesEnabled(true);
-                            uiSettings.setCompassEnabled(true);
+                        UiSettings uiSettings = mapboxMap.getUiSettings();
+                        uiSettings.setAllGesturesEnabled(true);
+                        uiSettings.setZoomGesturesEnabled(true);
+                        uiSettings.setQuickZoomGesturesEnabled(true);
+                        uiSettings.setCompassEnabled(true);
 
-                            locationComponent = mapboxMap.getLocationComponent();
-                            locationComponent.activateLocationComponent(locationComponentActivationOptions = LocationComponentActivationOptions.builder(MapActivity.this, style).build());
+                        locationComponent = mapboxMap.getLocationComponent();
+                        locationComponent.activateLocationComponent(locationComponentActivationOptions = LocationComponentActivationOptions.builder(MapActivity.this, style).build());
 
-                            locationComponent.setLocationComponentEnabled(true);
-                            locationComponent.setRenderMode(RenderMode.NORMAL);
+                        locationComponent.setLocationComponentEnabled(true);
+                        locationComponent.setRenderMode(RenderMode.NORMAL);
 
-                            /*for (LatLngQR x :
-                                    centers) {
-                                JsonObject dataQ = new JsonObject();
-                                JsonObject dataR = new JsonObject();
-                                dataQ.addProperty("count", "Quarantine: "+x.quarantine);
-                                dataR.addProperty("count", "Release: "+x.release);
-                                circleArrayListQuarantine.add(circleManager.create(new CircleOptions().withCircleRadius(x.quarantine*0.03f).withLatLng(x.center).withCircleColor("#FF0000").withCircleOpacity(0.4f).withData(dataQ)));
-                                circleArrayListRelease.add(circleManager.create(new CircleOptions().withCircleRadius(x.release*0.03f).withLatLng(x.center).withCircleColor("#00FF00").withCircleOpacity(0.4f).withData(dataR)));
-                            }*/
+                        /*for (LatLngQR x :
+                                centers) {
+                            JsonObject dataQ = new JsonObject();
+                            JsonObject dataR = new JsonObject();
+                            dataQ.addProperty("count", "Quarantine: "+x.quarantine);
+                            dataR.addProperty("count", "Release: "+x.release);
+                            circleArrayListQuarantine.add(circleManager.create(new CircleOptions().withCircleRadius(x.quarantine*0.03f).withLatLng(x.center).withCircleColor("#FF0000").withCircleOpacity(0.4f).withData(dataQ)));
+                            circleArrayListRelease.add(circleManager.create(new CircleOptions().withCircleRadius(x.release*0.03f).withLatLng(x.center).withCircleColor("#00FF00").withCircleOpacity(0.4f).withData(dataR)));
+                        }*/
 
 //                            initPolygonCircleFillLayer();
 
-                            drawPolygonCircle();
+                        drawPolygonCircle();
 
-                            initPolygonCircleFillLayer();
+                        initPolygonCircleFillLayer();
 
-                            /*try {
-                                map.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                        new LatLng(map.getLocationComponent().getLastKnownLocation().getLatitude(), map.getLocationComponent().getLastKnownLocation().getLongitude()), 14), new MapboxMap.CancelableCallback() {
-                                    @Override
-                                    public void onCancel() {
-
-                                    }
-
-                                    @Override
-                                    public void onFinish() {
-                                    }
-                                });
-                            } catch (Exception e) {*/
+                        /*try {
                             map.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                    new LatLng(23.770264, 90.320395), 6), new MapboxMap.CancelableCallback() {
+                                    new LatLng(map.getLocationComponent().getLastKnownLocation().getLatitude(), map.getLocationComponent().getLastKnownLocation().getLongitude()), 14), new MapboxMap.CancelableCallback() {
                                 @Override
                                 public void onCancel() {
 
@@ -243,45 +230,56 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
                                 public void onFinish() {
                                 }
                             });
+                        } catch (Exception e) {*/
+                        map.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                                new LatLng(23.770264, 90.320395), 6), new MapboxMap.CancelableCallback() {
+                            @Override
+                            public void onCancel() {
+
+                            }
+
+                            @Override
+                            public void onFinish() {
+                            }
+                        });
 //                            }
 
-                            /*circleManager.addClickListener(circle -> {
-                                JsonObject jsonObject;
-                                JsonElement jsonElement = circle.getData();
-                                String count="";
-                                if (jsonElement != null && jsonElement.isJsonObject()) {
-                                    jsonObject = jsonElement.getAsJsonObject();
-                                    count=jsonObject.get("count").getAsString();
-                                }
-                                Log.i(TAG, "onMapReady: "+count);
-                            });*/
+                        /*circleManager.addClickListener(circle -> {
+                            JsonObject jsonObject;
+                            JsonElement jsonElement = circle.getData();
+                            String count="";
+                            if (jsonElement != null && jsonElement.isJsonObject()) {
+                                jsonObject = jsonElement.getAsJsonObject();
+                                count=jsonObject.get("count").getAsString();
+                            }
+                            Log.i(TAG, "onMapReady: "+count);
+                        });*/
 
 
-                            locationComponent.setLocationEngine(LocationEngineProvider.getBestLocationEngine(MapActivity.this));
+                        locationComponent.setLocationEngine(LocationEngineProvider.getBestLocationEngine(MapActivity.this));
 
-                            locationComponent.getLocationEngine().requestLocationUpdates(
-                                    new LocationEngineRequest
-                                            .Builder(1000)
-                                            .setMaxWaitTime(5000)
-                                            .setPriority(LocationEngineRequest.PRIORITY_HIGH_ACCURACY)
-                                            .build(),
-                                    new LocationEngineCallback<LocationEngineResult>() {
-                                        @Override
-                                        public void onSuccess(LocationEngineResult result) {
-                                            currentLocation = result.getLastLocation();
-                                            LatLng current = new LatLng(currentLocation);
-                                        }
+                        locationComponent.getLocationEngine().requestLocationUpdates(
+                                new LocationEngineRequest
+                                        .Builder(1000)
+                                        .setMaxWaitTime(5000)
+                                        .setPriority(LocationEngineRequest.PRIORITY_HIGH_ACCURACY)
+                                        .build(),
+                                new LocationEngineCallback<LocationEngineResult>() {
+                                    @Override
+                                    public void onSuccess(LocationEngineResult result) {
+                                        currentLocation = result.getLastLocation();
+                                        LatLng current = new LatLng(currentLocation);
+                                    }
 
-                                        @Override
-                                        public void onFailure(@NonNull Exception exception) {
+                                    @Override
+                                    public void onFailure(@NonNull Exception exception) {
 
-                                        }
-                                    },
-                                    getMainLooper()
-                            );
-                            // Move the camera instantly to Sydney with a zoom of 15.
-                        });
-            }
+                                    }
+                                },
+                                getMainLooper()
+                        );
+                        // Move the camera instantly to Sydney with a zoom of 15.
+                    });
         });
     }
 

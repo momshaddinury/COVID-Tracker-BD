@@ -156,6 +156,18 @@
             app:layout_constraintTop_toBottomOf="@id/statusLayout"
             app:layout_constraintBottom_toBottomOf="parent" />
 
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:progress="60"
+            android:id="@+id/mapLoading"
+            android:progressTint="@color/Color_DarkGreen" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
