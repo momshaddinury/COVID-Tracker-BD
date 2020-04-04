@@ -1,9 +1,8 @@
 import 'dart:convert';
 
 import 'package:selfreportingapp/model/patient_data.dart';
-import 'package:selfreportingapp/services/geo_locator.dart';
 
-String data = jsonEncode({
+String relativeData = jsonEncode({
   "age": {
     "type": "text",
     "question_bn": "আপনার বয়স? ",
@@ -74,12 +73,11 @@ String data = jsonEncode({
     "answer": riskGroup
   },
   "location": {"latitude": "", "longitude": "", "altitude": ""},
-  "relationship": "",
+  "relationship": reporterType,
   "relationship_id": "",
   "nid": nid,
   "address": "",
   "is_offline": false,
-  "offline_response": "",
   "metadata": {},
   "submitted_at": DateTime.now().millisecondsSinceEpoch
 });

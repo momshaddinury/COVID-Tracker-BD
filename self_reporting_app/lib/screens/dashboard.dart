@@ -14,7 +14,7 @@ import 'package:selfreportingapp/screens/support_page.dart';
 import 'package:selfreportingapp/services/world_o_meter_api.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'Report/survey_page.dart';
+import 'Report/report_main.dart';
 import 'about_us.dart';
 
 //String selectedCategorie = "Adults";
@@ -120,27 +120,6 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 10,
               ),
-              //Image.asset('assets/coronaInfo.png'),
-              /*RichText(
-                text: TextSpan(
-                  text: 'করোনা',
-                  style: TextStyle(
-                      //color: Colors.black87.withOpacity(0.8), #95268D
-                      color: Color(0xFF95268D),
-                      fontSize: 40,
-                      fontWeight: FontWeight.w900),
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: " ইনফো",
-                        style: TextStyle(
-                            //textBaseline: TextBaseline.alphabetic,
-                            //color: Colors.black87.withOpacity(0.8), #95268D
-                            color: Color(0xFF4CB856),
-                            fontSize: 35,
-                            fontWeight: FontWeight.w700)),
-                  ],
-                ),
-              ),*/
               FittedBox(
                 child: Image.asset(
                   "assets/3623963.jpg",
@@ -171,7 +150,7 @@ class _HomePageState extends State<HomePage> {
                   padding: EdgeInsets.all(20),
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SurveyPage()));
+                        MaterialPageRoute(builder: (context) => ReportMain()));
                   },
                   child: Row(
                     children: <Widget>[

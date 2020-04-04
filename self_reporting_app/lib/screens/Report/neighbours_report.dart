@@ -7,7 +7,7 @@ import 'package:selfreportingapp/model/patient_data.dart';
 import 'package:selfreportingapp/services/api.dart';
 import 'package:selfreportingapp/services/json_handle.dart';
 
-import 'formSubmissionPage.dart';
+import 'self_report_submission_page.dart';
 
 class NeighboursReport extends StatefulWidget {
   @override

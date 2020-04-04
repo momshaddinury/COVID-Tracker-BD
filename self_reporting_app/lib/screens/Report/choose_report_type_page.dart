@@ -3,9 +3,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:selfreportingapp/model/patient_data.dart';
+import 'package:selfreportingapp/screens/Report/relative_report_submission_.dart';
 import 'package:selfreportingapp/services/firebase_auth.dart';
 
-import 'formSubmissionPage.dart';
+import 'self_report_submission_page.dart';
 
 class SelfReportingPage extends StatefulWidget {
   @override
@@ -108,8 +109,11 @@ class _InitialCheckState extends State<InitialCheck> {
                       SizedBox(
                         height: 20,
                       ),
+
+                      /// BUTTON ROW
                       Row(
                         children: <Widget>[
+                          /// BACK BUTTON
                           Expanded(
                             child: MaterialButton(
                               color: Colors.red,
@@ -125,6 +129,8 @@ class _InitialCheckState extends State<InitialCheck> {
                           SizedBox(
                             width: 20,
                           ),
+
+                          /// NEXT BUTTON
                           Expanded(
                             child: MaterialButton(
                               color: Colors.green,
@@ -135,11 +141,20 @@ class _InitialCheckState extends State<InitialCheck> {
                               onPressed: () async {
                                 //toast("অপেক্ষা করুন");
                                 if (_fbKey.currentState.saveAndValidate()) {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              LogInToSubmit()));
+                                  if (notSelf == "নিজের জন্য") {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                SelfReportPage()));
+                                  } else if (notSelf ==
+                                      "পরিবারের সদস্যর জন্য") {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                RelativeReportSubmission()));
+                                  }
                                 }
                               },
                             ),

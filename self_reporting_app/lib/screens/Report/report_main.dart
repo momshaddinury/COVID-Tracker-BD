@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:selfreportingapp/screens/Report/possible_affected.dart';
 import 'package:selfreportingapp/screens/Report/recurringUpdate.dart';
-import 'package:selfreportingapp/screens/Report/self_reporting_page.dart';
+import 'package:selfreportingapp/screens/Report/choose_report_type_page.dart';
 
-class SurveyPage extends StatefulWidget {
+class ReportMain extends StatefulWidget {
   @override
-  _SurveyPageState createState() => _SurveyPageState();
+  _ReportMainState createState() => _ReportMainState();
 }
 
-class _SurveyPageState extends State<SurveyPage> {
+class _ReportMainState extends State<ReportMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
