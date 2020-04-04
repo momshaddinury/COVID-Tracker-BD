@@ -44,9 +44,7 @@ class App extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);*/
     return MaterialApp(
-      locale: DevicePreview
-          .of(context)
-          .locale,
+      locale: DevicePreview.of(context).locale,
       // <--- Add the locale
       builder: DevicePreview.appBuilder,
       title: 'Corona',
