@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:selfreportingapp/screens/dashboard.dart';
 import 'package:selfreportingapp/screens/loading_screen.dart';
+import 'package:selfreportingapp/screens/onboarding_screen.dart';
 import 'package:selfreportingapp/services/geo_locator.dart';
 import 'services/connectivity.dart';
 
@@ -62,7 +63,7 @@ class _InitializeState extends State<Initialize> {
           }
 
           ///If fetchData() successfully fetched data
-          return HomePage();
+          return OnBoardingScreen();
         },
       ),
     );

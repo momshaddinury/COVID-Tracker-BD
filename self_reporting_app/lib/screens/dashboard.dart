@@ -154,11 +154,13 @@ class _HomePageState extends State<HomePage> {
               ),
               AutoSizeText(
                 "আপনি কি আক্রান্ত?",
-                textScaleFactor: 1.0,
+                textScaleFactor: 1,
                 style: TextStyle(
-                    color: Colors.black87.withOpacity(0.8),
-                    fontSize: 30,
-                    fontWeight: FontWeight.w600),
+                  color: Colors.black,
+                  fontFamily: 'CM Sans Serif',
+                  fontSize: 26.0,
+                  height: 1.5,
+                ),
               ),
               SizedBox(
                 height: 5,
@@ -239,11 +241,12 @@ class _HomePageState extends State<HomePage> {
               ),
               AutoSizeText(
                 "সর্বশেষ তথ্য \nতথ্যসূত্র: WorldoMeter",
-                textScaleFactor: 1.0,
+                textScaleFactor: 1,
                 style: TextStyle(
-                    color: Colors.black87.withOpacity(0.8),
-                    fontSize: 25,
-                    fontWeight: FontWeight.w600),
+                  color: Colors.black,
+                  fontFamily: 'CM Sans Serif',
+                  fontSize: 26.0,
+                ),
               ),
 
               /*Container(
@@ -284,11 +287,12 @@ class _HomePageState extends State<HomePage> {
               ),
               AutoSizeText(
                 "(কোভিড-১৯) এর ঝুঁকি রোধে করনীয়",
-                textScaleFactor: 1.0,
+                textScaleFactor: 1,
                 style: TextStyle(
-                    color: Colors.black87.withOpacity(0.8),
-                    fontSize: 25,
-                    fontWeight: FontWeight.w600),
+                  color: Colors.black,
+                  fontFamily: 'CM Sans Serif',
+                  fontSize: 26.0,
+                ),
               ),
               SizedBox(
                 height: 10,
