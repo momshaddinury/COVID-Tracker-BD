@@ -90,8 +90,6 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
     private Symbol testSymSS;
     private CircleManager circleManager;
 
-    private String mapUrl = "https://perceptronlab.com/covidtrackerbd/mapdata";
-
     private RequestQueue requestQueue;
 
     private ArrayList<LatLngQR> centers = new ArrayList<>();
@@ -113,6 +111,7 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
 
         requestQueue = Volley.newRequestQueue(this);
 
+        String mapUrl = "https://zerothindex.org/mapdata";
         requestQueue.add(new StringRequest(Request.Method.GET, mapUrl, response -> {
             Log.i(TAG, "onResponse: " + response);
             try {
