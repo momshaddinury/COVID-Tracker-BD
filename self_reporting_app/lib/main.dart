@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:device_preview/device_preview.dart';
+//import 'package:device_preview/device_preview.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:selfreportingapp/screens/Report/survey_page.dart';
 import 'package:selfreportingapp/screens/dashboard.dart';
 import 'package:selfreportingapp/screens/heatmap.dart';
@@ -41,6 +42,9 @@ void main() {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return MaterialApp(
 //      locale: DevicePreview.of(context).locale, // <--- Add the locale
 //      builder: DevicePreview.appBuilder,
