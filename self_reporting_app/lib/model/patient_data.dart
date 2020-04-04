@@ -1,20 +1,3 @@
-//int age;
-//String gender;
-//String profession;
-//String phoneNumber;
-//String nid;
-//String migrant;
-//String isContacted;
-//String isAnyoneInFamily;
-
-//String breathCount;
-//String fever;
-//List<dynamic> symptoms;
-//String location;
-//List<dynamic> riskGroup;
-//int temp;
-//String isInfected;
-//int interaction;
 String bmdc;
 String division;
 String district;
@@ -43,3 +26,4 @@ bool contactWithAnyCOVIDPatient;
 String anyoneCloseWithSymptoms;
 bool cameInContactWithPersonHavingCoughOrThroatPain;
 bool riskGroup;
+String relationType;

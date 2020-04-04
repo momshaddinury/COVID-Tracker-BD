@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:selfreportingapp/screens/Report/report_main.dart';
 import 'package:selfreportingapp/screens/dashboard.dart';
+import 'package:selfreportingapp/screens/heatmap.dart';
 import 'package:selfreportingapp/screens/loading_screen.dart';
 import 'package:selfreportingapp/screens/onboarding_screen.dart';
-
 import 'initialize.dart';
 
 void _enablePlatformOverrideForDesktop() {
@@ -21,10 +23,6 @@ void main() {
   runApp(DevicePreview(builder: (context) => App()));
 //  _enablePlatformOverrideForDesktop();
 
-  // Set `enableInDevMode` to true to see reports while in debug mode
-  // This is only to be used for confirming that reports are being
-  // submitted as expected. It is not intended to be used for everyday
-  // development.
   //Crashlytics.instance.enableInDevMode = true;
 
   // Pass all uncaught errors to Crashlytics.
@@ -44,8 +42,8 @@ class App extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);*/
     return MaterialApp(
-      locale: DevicePreview.of(context).locale,
-      // <--- Add the locale
+
+      locale: DevicePreview.of(context).locale, // <--- Add the locale
       builder: DevicePreview.appBuilder,
       title: 'Corona',
       debugShowCheckedModeBanner: false,

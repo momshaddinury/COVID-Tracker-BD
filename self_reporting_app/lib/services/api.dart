@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:selfreportingapp/model/citizen_reporting_qa.dart';
-import 'package:selfreportingapp/model/self_reporting_qa.dart';
+import 'package:selfreportingapp/model/self_report_qa.dart';
 
 import 'json_handle.dart';
 
