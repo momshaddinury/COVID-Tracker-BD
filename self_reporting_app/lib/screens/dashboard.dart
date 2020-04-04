@@ -1,6 +1,8 @@
-import 'package:auto_size_text/auto_size_text.dart';
+import 'dart:io' show Platform;
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:selfreportingapp/bloc/bloc.dart';
@@ -478,6 +480,14 @@ class todo extends StatelessWidget {
 }
 
 class HeatMapTile extends StatelessWidget {
+  Future<void> _startMap() async {
+    const platform =
+        const MethodChannel('com.tne.selfreportingapp/MAP_CHANNEL');
+    try {
+      final String result = await platform.invokeMethod('map');
+    } on PlatformException catch (e) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -486,8 +496,12 @@ class HeatMapTile extends StatelessWidget {
       padding: EdgeInsets.all(20),
       color: Color(0xFFCCECF9),
       onPressed: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Location()));
+        if (Platform.isAndroid) {
+          _startMap();
+        } else {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Location()));
+        }
       },
       child: Row(
         children: <Widget>[
