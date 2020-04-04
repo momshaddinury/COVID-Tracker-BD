@@ -2,8 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'dashboard.dart';
-
 class OnBoardingScreen extends StatefulWidget {
   @override
   _OnBoardingScreenState createState() => _OnBoardingScreenState();
@@ -55,7 +53,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 40.0),
+            padding: EdgeInsets.symmetric(vertical: 10.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
@@ -65,7 +63,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     onPressed: () {
                       Navigator.of(context).pushReplacementNamed('/HomePage');
                     },
-                    child: Text(
+                    child: AutoSizeText(
                       'স্কীপ',
                       textScaleFactor: 1,
                       style: TextStyle(
@@ -75,8 +73,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     ),
                   ),
                 ),
+                (MediaQuery.of(context).size.height < 700)?
                 Container(
-                  height: 600.0,
+                  height: MediaQuery.of(context).size.height * .8 - 20,
                   child: PageView(
                     physics: ClampingScrollPhysics(),
                     controller: _pageController,
@@ -91,40 +90,32 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Expanded(
-                              child: Center(
-                                child: Image(
-                                  image: AssetImage(
-                                    'assets/people.jpg',
-                                  ),
-//                                height: 300.0,
-//                                width: 300.0,
+                            Center(
+                              child: Image(
+                                image: AssetImage(
+                                  'assets/people.jpg',
                                 ),
+//                                  height: 300.0,
+//                                  width: 300.0,
                               ),
                             ),
-                            SizedBox(height: 30.0),
-                            Expanded(
-                              child: Text(
-                                'আমার নিরাপত্তা \nআমার হাতে',
-                                textScaleFactor: 1,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'CM Sans Serif',
-                                  fontSize: 26.0,
-                                  height: 1.5,
-                                ),
+                            SizedBox(height: 10.0),
+                            AutoSizeText(
+                              'আমার নিরাপত্তা \nআমার হাতে',
+                              textScaleFactor: 1,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 26.0,
+                                height: 1.5,
                               ),
                             ),
                             SizedBox(height: 5.0),
-                            Expanded(
-                              child: Text(
-                                'অসুস্থ হলে বা অসুস্থ ব্যক্তির সংস্পর্শে আসলে বা আক্রান্ত দেশ থেকে আসলে মাস্ক ব্যবহার করুন',
-                                textScaleFactor: 1,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18.0,
-                                  height: 1.2,
-                                ),
+                            AutoSizeText(
+                              'অসুস্থ হলে বা অসুস্থ ব্যক্তির সংস্পর্শে আসলে বা আক্রান্ত দেশ থেকে আসলে মাস্ক ব্যবহার করুন',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18.0,
+                                height: 1.2,
                               ),
                             ),
                           ],
@@ -135,40 +126,123 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Expanded(
-                              child: Center(
-                                child: Image(
-                                  image: AssetImage(
-                                    'assets/people.jpg',
-                                  ),
-                                  height: 300.0,
-                                  width: 300.0,
+                            Center(
+                              child: Image(
+                                image: AssetImage(
+                                  'assets/people.jpg',
                                 ),
+//                                  height: 300.0,
+//                                  width: 300.0,
+                              ),
+                            ),
+                            SizedBox(height: 10.0),
+                            AutoSizeText(
+                              'জরুরী প্রয়োজন ছাড়া ভিড় এবং ভ্রমন এড়িয়ে চলুন',
+                              textScaleFactor: 1,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 24.0,
+                                height: 1.5,
+                              ),
+                            ),
+                            SizedBox(height: 5.0),
+                            AutoSizeText(
+                              'স্বাস্থ্য পরামর্শ পেতে ১৬২৬৩ অথবা ৩৩৩ নম্বরে কল করুন',
+                              textScaleFactor: 1,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18.0,
+                                height: 1.2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+                    :
+
+//                      for large phone
+                Container(
+                  height: 600,
+                  child: PageView(
+                    physics: ClampingScrollPhysics(),
+                    controller: _pageController,
+                    onPageChanged: (int page) {
+                      setState(() {
+                        _currentPage = page;
+                      });
+                    },
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(40.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Center(
+                              child: Image(
+                                image: AssetImage(
+                                  'assets/people.jpg',
+                                ),
+                                height: 300.0,
+                                width: 300.0,
                               ),
                             ),
                             SizedBox(height: 30.0),
-                            Expanded(
-                              child: Text(
-                                'জরুরী প্রয়োজন ছাড়া ভিড় এবং \nভ্রমন এড়িয়ে চলুন',
-                                textScaleFactor: 1,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: 'CM Sans Serif',
-                                  fontSize: 26.0,
-                                  height: 1.5,
-                                ),
+                            AutoSizeText(
+                              'আমার নিরাপত্তা \nআমার হাতে',
+                              textScaleFactor: 1,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 26.0,
+                                height: 1.5,
                               ),
                             ),
                             SizedBox(height: 15.0),
-                            Expanded(
-                              child: Text(
-                                'স্বাস্থ্য পরামর্শ পেতে ১৬২৬৩ অথবা ৩৩৩ নম্বরে কল করুন',
-                                textScaleFactor: 1,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18.0,
-                                  height: 1.2,
+                            AutoSizeText(
+                              'অসুস্থ হলে বা অসুস্থ ব্যক্তির সংস্পর্শে আসলে বা আক্রান্ত দেশ থেকে আসলে মাস্ক ব্যবহার করুন',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18.0,
+                                height: 1.2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(40.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Center(
+                              child: Image(
+                                image: AssetImage(
+                                  'assets/people.jpg',
                                 ),
+                                  height: 300.0,
+                                  width: 300.0,
+                              ),
+                            ),
+                            SizedBox(height: 30.0),
+                            AutoSizeText(
+                              'জরুরী প্রয়োজন ছাড়া ভিড় এবং ভ্রমন এড়িয়ে চলুন',
+                              textScaleFactor: 1,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 26.0,
+                                height: 1.5,
+                              ),
+                            ),
+                            SizedBox(height: 30.0),
+                            AutoSizeText(
+                              'স্বাস্থ্য পরামর্শ পেতে ১৬২৬৩ অথবা ৩৩৩ নম্বরে কল করুন',
+                              textScaleFactor: 1,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18.0,
+                                height: 1.2,
                               ),
                             ),
                           ],
@@ -182,39 +256,37 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   children: _buildPageIndicator(),
                 ),
                 _currentPage != _numPages - 1
-                    ? Expanded(
-                        child: Align(
-                          alignment: FractionalOffset.bottomRight,
-                          child: FlatButton(
-                            onPressed: () {
-                              _pageController.nextPage(
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.ease,
-                              );
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Text(
-                                  'Next',
-                                  textScaleFactor: 1,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 22.0,
-                                  ),
-                                ),
-                                SizedBox(width: 10.0),
-                                Icon(
-                                  Icons.arrow_forward,
-                                  color: Colors.black,
-                                  size: 30.0,
-                                ),
-                              ],
-                            ),
+                    ? Align(
+                  alignment: FractionalOffset.bottomRight,
+                  child: FlatButton(
+                    onPressed: () {
+                      _pageController.nextPage(
+                        duration: Duration(milliseconds: 500),
+                        curve: Curves.ease,
+                      );
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        AutoSizeText(
+                          'Next',
+                          textScaleFactor: 1,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 22.0,
                           ),
                         ),
-                      )
+                        SizedBox(width: 10.0),
+                        Icon(
+                          Icons.arrow_forward,
+                          color: Colors.black,
+                          size: 30.0,
+                        ),
+                      ],
+                    ),
+                  ),
+                )
                     : Text(''),
               ],
             ),
