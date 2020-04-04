@@ -1,8 +1,6 @@
-import 'dart:async';
 import 'dart:io';
 
 import 'package:device_preview/device_preview.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -44,6 +42,7 @@ class App extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);*/
     return MaterialApp(
+
       locale: DevicePreview.of(context).locale, // <--- Add the locale
       builder: DevicePreview.appBuilder,
       title: 'Corona',
