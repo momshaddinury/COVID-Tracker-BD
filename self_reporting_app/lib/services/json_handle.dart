@@ -8,6 +8,7 @@ String userID;
 String notes;
 String id;
 String message;
+String version;
 
 class ParseJson {
   Map<String, dynamic> responseJsonDecoded;
@@ -20,6 +21,7 @@ class ParseJson {
       responseJsonDecoded = jsonDecode(response);
       print("decodeJson: ${responseJsonDecoded.values}");
       //for (dynamic value in responseJsonDecoded.values) {
+      version = responseJsonDecoded['version'];
       assessmentMessage = responseJsonDecoded['assessmentMessage'];
       risk = responseJsonDecoded['risk'];
       userID = responseJsonDecoded['uniqueId'];
@@ -28,7 +30,7 @@ class ParseJson {
       id = responseJsonDecoded['id'];
       //}
     } catch (e) {
-      print('decodeJson(): $e');
+      print('error decodeJson(): $e');
     }
   }
 }

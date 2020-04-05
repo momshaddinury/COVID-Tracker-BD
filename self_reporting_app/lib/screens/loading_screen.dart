@@ -32,7 +32,9 @@ class LoadingScreen extends StatelessWidget {
                   ),
                   AutoSizeText(
                     'সংক্রমণ প্রতিরোধের উপায়',
+                    textScaleFactor: 1,
                     maxLines: 1,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 30.0,
@@ -43,7 +45,9 @@ class LoadingScreen extends StatelessWidget {
                   SizedBox(height: 10),
                   AutoSizeText(
                     'সাবান পানি দিয়ে অন্তত ২০ সেকেন্ড ধরে হাত ধোবেন',
+                    textScaleFactor: 1,
                     maxLines: 1,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 30.0,
@@ -59,6 +63,7 @@ class LoadingScreen extends StatelessWidget {
                   SizedBox(height: 20),
                   AutoSizeText(
                     "ডাটা কানেকশন এবং লোকেশন এক্সেস আব্যশক",
+                    textScaleFactor: 1,
                     maxLines: 2,
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -69,6 +74,7 @@ class LoadingScreen extends StatelessWidget {
                   SizedBox(height: 20),
                   AutoSizeText(
                     "কারিগরি সহযোগিতায় টিম Zeroth Index, ইইই, চট্টগ্রাম বিশ্ববিদ্যালয়",
+                    textScaleFactor: 1,
                     maxLines: 1,
                     style: TextStyle(
                       color: Colors.black,
@@ -78,6 +84,7 @@ class LoadingScreen extends StatelessWidget {
                   SizedBox(height: 10),
                   AutoSizeText(
                     "Visit: https://www.facebook.com/zeroth.index/",
+                    textScaleFactor: 1,
                     maxLines: 1,
                     style: TextStyle(
                       color: Colors.black,

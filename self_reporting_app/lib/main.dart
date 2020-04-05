@@ -1,7 +1,4 @@
-import 'dart:io';
-
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
+// import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:selfreportingapp/screens/Report/report_main.dart';
@@ -9,28 +6,25 @@ import 'package:selfreportingapp/screens/dashboard.dart';
 import 'package:selfreportingapp/screens/heatmap.dart';
 import 'package:selfreportingapp/screens/loading_screen.dart';
 import 'package:selfreportingapp/screens/onboarding_screen.dart';
+import 'package:selfreportingapp/services/app_update.dart';
 import 'initialize.dart';
 
-void _enablePlatformOverrideForDesktop() {
-  if (!kIsWeb && (Platform.isWindows || Platform.isLinux)) {
-    debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
-  }
-}
-
 void main() {
-  /*WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setEnabledSystemUIOverlays([]);*/
-  runApp(DevicePreview(builder: (context) => App()));
-//  _enablePlatformOverrideForDesktop();
+  /// Device Preview
+  //runApp(DevicePreview(builder: (context) => App()));
 
-  //Crashlytics.instance.enableInDevMode = true;
+  /// Flutter Crashlytics
+  /*Crashlytics.instance.enableInDevMode = true;
 
-  // Pass all uncaught errors to Crashlytics.
-//  FlutterError.onError = Crashlytics.instance.recordFlutterError;
+  /// Pass all uncaught errors to Crashlytics.
+  FlutterError.onError = Crashlytics.instance.recordFlutterError;
 
-//  runZoned(() {
-//  runApp(App());
-//  }, onError: Crashlytics.instance.recordError);
+  runZoned(() {
+    runApp(App());
+  }, onError: Crashlytics.instance.recordError);*/
+
+  /// Default runApp()
+  runApp(App());
 }
 
 /// App starts from here
@@ -38,13 +32,12 @@ void main() {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    /*SystemChrome.setPreferredOrientations([
+    SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
-    ]);*/
+    ]);
     return MaterialApp(
-
-      locale: DevicePreview.of(context).locale, // <--- Add the locale
-      builder: DevicePreview.appBuilder,
+      // locale: DevicePreview.of(context).locale, // <--- Add the locale
+      // builder: DevicePreview.appBuilder,
       title: 'Corona',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Quicksand'),

@@ -78,7 +78,6 @@ String data = jsonEncode({
   "nid": nid,
   "address": "",
   "is_offline": false,
-  "offline_response": "",
   "metadata": {},
   "submitted_at": DateTime.now().millisecondsSinceEpoch
 });
