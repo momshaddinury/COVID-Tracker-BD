@@ -127,13 +127,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
-  fancy_on_boarding:
-    dependency: "direct main"
-    description:
-      name: fancy_on_boarding
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.5.0"
   firebase:
     dependency: transitive
     description:
@@ -265,13 +258,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.1.2+1"
-  flutter_svg:
-    dependency: transitive
-    description:
-      name: flutter_svg
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.17.3+1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -436,20 +422,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.4"
-  path_drawing:
-    dependency: transitive
-    description:
-      name: path_drawing
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.1"
-  path_parsing:
-    dependency: transitive
-    description:
-      name: path_parsing
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.4"
   pedantic:
     dependency: transitive
     description:
