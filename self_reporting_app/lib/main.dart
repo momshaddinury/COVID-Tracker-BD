@@ -7,11 +7,13 @@ import 'package:selfreportingapp/screens/heatmap.dart';
 import 'package:selfreportingapp/screens/loading_screen.dart';
 import 'package:selfreportingapp/screens/onboarding_screen.dart';
 import 'package:selfreportingapp/services/app_update.dart';
+import 'package:device_preview/device_preview.dart';
+
 import 'initialize.dart';
 
 void main() {
   /// Device Preview
-  //runApp(DevicePreview(builder: (context) => App()));
+  runApp(DevicePreview(builder: (context) => App()));
 
   /// Flutter Crashlytics
   /*Crashlytics.instance.enableInDevMode = true;
@@ -24,7 +26,7 @@ void main() {
   }, onError: Crashlytics.instance.recordError);*/
 
   /// Default runApp()
-  runApp(App());
+//  runApp(App());
 }
 
 /// App starts from here
@@ -32,12 +34,12 @@ void main() {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
+//    SystemChrome.setPreferredOrientations([
+//      DeviceOrientation.portraitUp,
+//    ]);
     return MaterialApp(
-      // locale: DevicePreview.of(context).locale, // <--- Add the locale
-      // builder: DevicePreview.appBuilder,
+       locale: DevicePreview.of(context).locale, // <--- Add the locale
+       builder: DevicePreview.appBuilder,
       title: 'Corona',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Quicksand'),
