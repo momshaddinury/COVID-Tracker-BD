@@ -8,8 +8,7 @@ import 'package:selfreportingapp/model/country_data.dart';
 import 'package:selfreportingapp/model/patient_data.dart';
 import 'package:selfreportingapp/services/api.dart';
 import 'package:selfreportingapp/services/json_handle.dart';
-
-import 'self_report_submission_page.dart';
+import 'package:selfreportingapp/widgets/toast.dart';
 
 class DoctorsReport extends StatefulWidget {
   @override

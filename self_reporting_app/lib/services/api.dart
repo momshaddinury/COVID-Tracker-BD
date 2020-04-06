@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:selfreportingapp/model/citizen_reporting_qa.dart';
 import 'package:selfreportingapp/model/self_report_qa.dart';
@@ -31,6 +29,7 @@ Future<http.Response> submitResponse() async {
   var response =
       await http.post(productionBaseUrl, body: data, headers: headers);
   print(response.statusCode);
+  print(response);
   print("submitResponse() - ${response.body}");
   parseJson.decodeJson(response.body.toString());
   return response;
