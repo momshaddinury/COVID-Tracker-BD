@@ -72,31 +72,11 @@ class ActionButton extends StatelessWidget {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) => AlertDialog(
-                    title: const Text("টেস্ট রেজাল্ট"),
                     content: SingleChildScrollView(
                       child: new Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Container(
-                              child: RichText(
-                            text: TextSpan(
-                              text: 'ফলাফল: $assessmentMessage\n',
-                              style: TextStyle(
-                                color: Colors.red,
-                                decoration: TextDecoration.none,
-                              ),
-                              children: <TextSpan>[
-                                TextSpan(
-                                  text: "\nআইডি: $userID\n",
-                                  style: TextStyle(
-                                    color: Colors.red,
-                                    decoration: TextDecoration.none,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )),
                           Html(
                             data: """$notes""",
                             onLinkTap: (url) async {
