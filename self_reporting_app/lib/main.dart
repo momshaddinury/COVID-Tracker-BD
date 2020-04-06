@@ -1,12 +1,8 @@
-// import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:selfreportingapp/screens/Report/report_main.dart';
 import 'package:selfreportingapp/screens/dashboard.dart';
-import 'package:selfreportingapp/screens/heatmap.dart';
 import 'package:selfreportingapp/screens/loading_screen.dart';
 import 'package:selfreportingapp/screens/onboarding_screen.dart';
-import 'package:selfreportingapp/services/app_update.dart';
 import 'initialize.dart';
 
 void main() {

@@ -11,11 +11,9 @@ class _RecurringUpdateState extends State<RecurringUpdate> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0.0,
+        elevation: 2.0,
         brightness: Brightness.light,
-        iconTheme: IconThemeData(
-            color: Colors.black87
-        ),
+        iconTheme: IconThemeData(color: Colors.black87),
       ),
       body: Container(
         child: Center(

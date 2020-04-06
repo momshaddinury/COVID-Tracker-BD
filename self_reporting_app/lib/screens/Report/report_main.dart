@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:selfreportingapp/screens/Report/possible_affected.dart';
-import 'package:selfreportingapp/screens/Report/recurringUpdate.dart';
 import 'package:selfreportingapp/screens/Report/choose_report_type_page.dart';
+import 'package:selfreportingapp/screens/Report/volunteer_report_submission.dart';
 
 class ReportMain extends StatefulWidget {
   @override
@@ -82,7 +82,7 @@ class _ReportMainState extends State<ReportMain> {
                                 builder: (context) => SelfReportingPage()));
                       },
                     ),
-                    /*SizedBox(
+                    SizedBox(
                       height: 20,
                     ),
                     // Recurring Update
@@ -92,7 +92,7 @@ class _ReportMainState extends State<ReportMain> {
                       color: Colors.lightBlueAccent,
                       shape: StadiumBorder(),
                       child: AutoSizeText(
-                        "নিয়মিত আপডেট",
+                        "কমিউনিটি সার্ভিস",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -102,9 +102,9 @@ class _ReportMainState extends State<ReportMain> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => RecurringUpdate()));
+                                builder: (context) => VolunteerUpdate()));
                       },
-                    ),*/
+                    ),
                     SizedBox(
                       height: 20,
                     ),

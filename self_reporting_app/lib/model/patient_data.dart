@@ -27,3 +27,4 @@ String anyoneCloseWithSymptoms;
 bool cameInContactWithPersonHavingCoughOrThroatPain;
 bool riskGroup;
 String relationType;
+String volunteerAccessToken;

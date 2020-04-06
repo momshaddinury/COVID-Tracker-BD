@@ -257,7 +257,7 @@ class _HomePageState extends State<HomePage> {
                       child: Container(
                         child: BlocBuilder<CovidBloc, CovidState>(
                           builder: (context, state) {
-                            return Dashboard(state);
+                            return dashboard(state);
                           },
                         ),
                       ))),
@@ -290,42 +290,42 @@ class _HomePageState extends State<HomePage> {
                           Row(
                             children: <Widget>[
                               /*Image.asset('assets/tod.png'),*/
-                              todo(
+                              ToDo(
                                 instruction:
                                     "ঘন ঘন দুইহাত সবান পানি দিয়ে ভালোভাবে ধুয়ে নিন(কমপক্ষে ২০ সেকেন্ড)",
                               ),
                               SizedBox(
                                 width: 10,
                               ),
-                              todo(
+                              ToDo(
                                 instruction:
                                     "হাঁচি-কাশির সময় টিস্যু/কাপড়/বাহুর ভাঁজে নাক-মুখ ঢেকে ফেলুন",
                               ),
                               SizedBox(
                                 width: 10,
                               ),
-                              todo(
+                              ToDo(
                                 instruction:
                                     "অসুস্থ হলে বা অসুস্থ ব্যক্তির সংস্পর্শে আসলে বা আক্রান্ত দেশ থেকে আসলে মাস্ক ব্যবহার করুন",
                               ),
                               SizedBox(
                                 width: 10,
                               ),
-                              todo(
+                              ToDo(
                                 instruction:
                                     "স্বাস্থ্য সেবায় নিয়োজিত সকলে মাস্ক ব্যবহার করুন",
                               ),
                               SizedBox(
                                 width: 10,
                               ),
-                              todo(
+                              ToDo(
                                 instruction:
                                     "জরুরী প্রয়োজন ছাড়া ভিড় ও ভ্রমন এড়িয়ে চলুন",
                               ),
                               SizedBox(
                                 width: 10,
                               ),
-                              todo(
+                              ToDo(
                                 instruction:
                                     "স্বাস্থ্য পরামর্শ পেতে ১৬২৬৩ অথবা ৩৩৩ নম্বরে কল করুন",
                               ),
@@ -345,7 +345,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget Dashboard(CovidState state) {
+  Widget dashboard(CovidState state) {
     if (state is CovidLoadingState) {
       return Align(
         alignment: Alignment.center,
@@ -427,8 +427,8 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class todo extends StatelessWidget {
-  const todo({Key key, @required this.instruction}) : super(key: key);
+class ToDo extends StatelessWidget {
+  const ToDo({Key key, @required this.instruction}) : super(key: key);
 
   final String instruction;
   @override

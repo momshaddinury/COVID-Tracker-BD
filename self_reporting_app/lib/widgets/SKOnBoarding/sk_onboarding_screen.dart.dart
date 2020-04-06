@@ -111,24 +111,24 @@ class SKOnboardingScreenState extends State<SKOnboardingScreen> {
                   ),
                   _currentPage != widget.pages.length - 1
                       ? Align(
-                      alignment: FractionalOffset.bottomRight,
-                      child: Container(
-                        padding: EdgeInsets.only(right: 20, bottom: 10),
-                        child: FloatingActionButton(
-                          backgroundColor: widget.bgColor,
-                          child: Icon(
-                            Icons.arrow_forward,
-                            color: widget.themeColor,
+                          alignment: FractionalOffset.bottomRight,
+                          child: Container(
+                            padding: EdgeInsets.only(right: 20, bottom: 10),
+                            child: FloatingActionButton(
+                              backgroundColor: widget.bgColor,
+                              child: Icon(
+                                Icons.arrow_forward,
+                                color: widget.themeColor,
+                              ),
+                              onPressed: () {
+                                _pageController.nextPage(
+                                  duration: Duration(milliseconds: 500),
+                                  curve: Curves.ease,
+                                );
+                              },
+                            ),
                           ),
-                          onPressed: () {
-                            _pageController.nextPage(
-                              duration: Duration(milliseconds: 500),
-                              curve: Curves.ease,
-                            );
-                          },
-                        ),
-                      ),
-                    )
+                        )
                       : Text(''),
                 ],
               ),
@@ -155,21 +155,27 @@ class SKOnboardingScreenState extends State<SKOnboardingScreen> {
               width: 250.0,
             ),
           ),
-          Text(
-            page.title,
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-              color: page.titleColor,
-              fontSize: 20,
+          Center(
+            child: Text(
+              page.title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                color: page.titleColor,
+                fontSize: 20,
+              ),
             ),
           ),
           SizedBox(height: 15.0),
-          Text(
-            page.description,
-            style: TextStyle(
-              fontWeight: FontWeight.w400,
-              color: page.descripColor,
-              fontSize: 16,
+          Center(
+            child: Text(
+              page.description,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.w400,
+                color: page.descripColor,
+                fontSize: 16,
+              ),
             ),
           ),
         ],
@@ -199,7 +205,7 @@ class SKOnboardingScreenState extends State<SKOnboardingScreen> {
 
     return new Padding(
         padding:
-        EdgeInsets.only(left: 20.0, right: 20.0, top: 5.0, bottom: 30.0),
+            EdgeInsets.only(left: 20.0, right: 20.0, top: 5.0, bottom: 30.0),
         child: loginButtonWithGesture);
   }
 
