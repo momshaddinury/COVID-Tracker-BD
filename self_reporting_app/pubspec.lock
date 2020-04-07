@@ -504,6 +504,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.0+1"
+  smooth_page_indicator:
+    dependency: "direct main"
+    description:
+      name: smooth_page_indicator
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.5"
   source_span:
     dependency: transitive
     description:

@@ -8,10 +8,12 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:selfreportingapp/bloc/bloc.dart';
 import 'package:selfreportingapp/bloc/event.dart';
 import 'package:selfreportingapp/bloc/state.dart';
+import 'package:selfreportingapp/model/todo_list.dart';
 import 'package:selfreportingapp/model/world_o_meter_repo.dart';
 import 'package:selfreportingapp/screens/heatmap.dart';
 import 'package:selfreportingapp/screens/support_page.dart';
 import 'package:selfreportingapp/services/world_o_meter_api.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'Report/report_main.dart';
@@ -29,6 +31,8 @@ class _HomePageState extends State<HomePage> {
   ApiService apiService;
   Map<String, double> dataMap = new Map();
   Map<String, double> dataMapAll = new Map();
+  final controller = PageController(viewportFraction: 0.5);
+  final controller2 = PageController(viewportFraction: 0.5);
 
   //List<String> categories = ["Online Covid Test","Childrens","Womens","Mens"];
 
@@ -247,7 +251,7 @@ class _HomePageState extends State<HomePage> {
                 height: 20,
               ),*/
               Container(
-                  height: 170,
+                  height: 300,
                   child: BlocProvider<CovidBloc>(
                       create: (BuildContext context) =>
                           CovidBloc(repository: Repository())
@@ -276,64 +280,66 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 10,
               ),
-              Container(
-                height: 166,
-                child: ListView.builder(
-                    itemCount: 1,
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              /*Image.asset('assets/tod.png'),*/
-                              ToDo(
-                                instruction:
-                                    "ঘন ঘন দুইহাত সবান পানি দিয়ে ভালোভাবে ধুয়ে নিন(কমপক্ষে ২০ সেকেন্ড)",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              ToDo(
-                                instruction:
-                                    "হাঁচি-কাশির সময় টিস্যু/কাপড়/বাহুর ভাঁজে নাক-মুখ ঢেকে ফেলুন",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              ToDo(
-                                instruction:
-                                    "অসুস্থ হলে বা অসুস্থ ব্যক্তির সংস্পর্শে আসলে বা আক্রান্ত দেশ থেকে আসলে মাস্ক ব্যবহার করুন",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              ToDo(
-                                instruction:
-                                    "স্বাস্থ্য সেবায় নিয়োজিত সকলে মাস্ক ব্যবহার করুন",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              ToDo(
-                                instruction:
-                                    "জরুরী প্রয়োজন ছাড়া ভিড় ও ভ্রমন এড়িয়ে চলুন",
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              ToDo(
-                                instruction:
-                                    "স্বাস্থ্য পরামর্শ পেতে ১৬২৬৩ অথবা ৩৩৩ নম্বরে কল করুন",
-                              ),
-                            ],
-                          ),
-                        ],
-                      );
-                    }),
+              Center(
+                child: Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(height: 16),
+                      SizedBox(
+                        height: 200,
+                        child: PageView(
+                            controller: controller,
+                            children: List.generate(6, (i) {
+                              return Center(
+                                child: Card(
+                                  color: Color(0xFFBD202E),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16)),
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 4),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      height: 166,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          AutoSizeText(
+                                            todo[i],
+                                            textScaleFactor: 1.25,
+                                            maxLines: 5,
+                                            textAlign: TextAlign.center,
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            })),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      SmoothPageIndicator(
+                          controller: controller,
+                          count: 6,
+                          effect: ScrollingDotsEffect(
+                            activeDotColor: Color(0xFFBD202E),
+                            dotColor: Colors.indigo[50],
+                            activeStrokeWidth: 2.6,
+                            activeDotScale: .4,
+                            radius: 8,
+                            spacing: 10,
+                          )),
+                    ],
+                  ),
+                ),
               ),
               SizedBox(
                 height: 40,
@@ -370,30 +376,68 @@ class _HomePageState extends State<HomePage> {
         dataMapAll.putIfAbsent(
             "Recovered", () => state.allData.recovered.toDouble());
         dataMapAll.putIfAbsent("Deaths", () => state.allData.deaths.toDouble());
-        return ListView.builder(
-            itemCount: 1,
-            shrinkWrap: true,
-            physics: ClampingScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      getItem(
-                          state.covidBdData.todayCases, "২৪ ঘন্টায় আক্রান্ত"),
-                      getItem(
-                          state.covidBdData.todayDeaths, "২৪ ঘন্টায় মৃত্যু"),
-                      getItem(state.covidBdData.deaths, "মোট মৃত্যু"),
-                      getItem(state.covidBdData.recovered, "মোট সুস্থ"),
-                      getItem(state.covidBdData.cases, "মোট আক্রান্ত"),
-                      //getItem(state.covidBdData.casesPerOneMillion, "Cases Per Million"),
-                    ],
-                  ),
-                ],
-              );
-            });
+
+        List<Widget> getItemWidget = [
+          getItem(state.covidBdData.recovered, "মোট সুস্থ"),
+          getItem(state.covidBdData.cases, "মোট আক্রান্ত"),
+          getItem(state.covidBdData.deaths, "মোট মৃত্যু"),
+          getItem(state.covidBdData.todayDeaths, "২৪ ঘন্টায় মৃত্যু"),
+          getItem(state.covidBdData.todayCases, "২৪ ঘন্টায় আক্রান্ত"),
+        ];
+
+        return Center(
+          child: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(height: 16),
+                SizedBox(
+                  height: 200,
+                  child: PageView(
+                      controller: controller2,
+                      children: List.generate(5, (i) {
+                        return Center(
+                          child: Card(
+                            color: Colors.indigo[400],
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16)),
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 4),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                height: 166,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    getItemWidget[i],
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      })),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                SmoothPageIndicator(
+                    controller: controller2,
+                    count: 6,
+                    effect: ScrollingDotsEffect(
+                      activeDotColor: Colors.indigo,
+                      dotColor: Colors.indigo[50],
+                      activeStrokeWidth: 2.6,
+                      activeDotScale: .4,
+                      radius: 8,
+                      spacing: 10,
+                    )),
+              ],
+            ),
+          ),
+        );
       }
       return Container();
     } else if (state is CovidErrorState) {
@@ -422,41 +466,6 @@ class _HomePageState extends State<HomePage> {
             size: 60.0,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ToDo extends StatelessWidget {
-  const ToDo({Key key, @required this.instruction}) : super(key: key);
-
-  final String instruction;
-  @override
-  Widget build(BuildContext context) {
-    return FittedBox(
-      child: Container(
-        width: 150,
-        height: 150,
-        margin: EdgeInsets.only(right: 16),
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          //color: Color(0xFFCCECF9),
-          //color: Colors.red[400],
-          color: Color(0xFFBD202E),
-          borderRadius: BorderRadius.circular(24),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            AutoSizeText(
-              "$instruction",
-              textScaleFactor: 1.25,
-              maxLines: 5,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white),
-            ),
-          ],
-        ),
       ),
     );
   }
