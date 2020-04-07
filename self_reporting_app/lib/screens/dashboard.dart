@@ -117,164 +117,184 @@ class _HomePageState extends State<HomePage> {
         child: Container(
           //color: Colors.white,
           color: Colors.white,
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 24),
+          padding: EdgeInsets.symmetric(vertical: 10),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               SizedBox(
                 height: 10,
               ),
-              FittedBox(
-                child: Image.asset(
-                  "assets/3623963.jpg",
-                  fit: BoxFit.contain,
-                  width: 350,
-                  height: 350,
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  FittedBox(
+                    child: Image.asset(
+                      "assets/3623963.jpg",
+                      fit: BoxFit.contain,
+                      width: 350,
+                      height: 350,
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
                 height: 10,
               ),
-              AutoSizeText(
-                "আপনি কি আক্রান্ত?",
-                textScaleFactor: 1,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'CM Sans Serif',
-                  fontSize: 26.0,
-                  height: 1.5,
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              FittedBox(
-                child: MaterialButton(
-                  elevation: 10,
-                  shape: StadiumBorder(),
-                  color: Color(0xFFBD202E),
-                  padding: EdgeInsets.all(20),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ReportMain()));
-                  },
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.touch_app,
-                        color: Colors.white,
+
+              Container(
+                color: Colors.white,
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    /// আপনি কি আক্রান্ত?
+                    AutoSizeText(
+                      "আপনি কি আক্রান্ত?",
+                      textScaleFactor: 1,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'CM Sans Serif',
+                        fontSize: 26.0,
+                        height: 1.5,
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      AutoSizeText(
-                        "করোনার সম্ভাব্যতা যাচাই করুন",
-                        textScaleFactor: 1.0,
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              HeatMapTile(),
-              SizedBox(
-                height: 20,
-              ),
-              FittedBox(
-                child: MaterialButton(
-                  padding: EdgeInsets.all(20),
-                  elevation: 10,
-                  shape: StadiumBorder(),
-                  color: Colors.indigo,
-                  // color: Color(0xFFBD202E),
-                  onPressed: () async {
-                    if (await canLaunch("tel:333")) {
-                      await launch("tel:333");
-                    } else {
-                      throw 'Could not launch';
-                    }
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        Icons.call,
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      AutoSizeText(
-                        "যোগাযোগ হটলাইন ৩৩৩ | ১০৬৫৫ | ১৬২৬৩",
-                        textScaleFactor: 1.0,
-                        style: TextStyle(
-                          color: Colors.white,
-                          //fontSize: 19,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+
+                    /// করোনার সম্ভাব্যতা যাচাই করুন
+                    FittedBox(
+                      child: MaterialButton(
+                        elevation: 10,
+                        shape: StadiumBorder(),
+                        color: Color(0xFFBD202E),
+                        padding: EdgeInsets.all(20),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ReportMain()));
+                        },
+                        child: Row(
+                          children: <Widget>[
+                            Icon(
+                              Icons.touch_app,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            AutoSizeText(
+                              "করোনার সম্ভাব্যতা যাচাই করুন",
+                              textScaleFactor: 1.0,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              AutoSizeText(
-                "সর্বশেষ তথ্য \nতথ্যসূত্র: WorldoMeter",
-                textScaleFactor: 1,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'CM Sans Serif',
-                  fontSize: 26.0,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+
+                    /// করোনা হিট ম্যাপ
+                    HeatMapTile(),
+                    SizedBox(
+                      height: 20,
+                    ),
+
+                    /// যোগাযোগ হটলাইন
+                    FittedBox(
+                      child: MaterialButton(
+                        padding: EdgeInsets.all(20),
+                        elevation: 10,
+                        shape: StadiumBorder(),
+                        color: Colors.indigo,
+                        // color: Color(0xFFBD202E),
+                        onPressed: () async {
+                          if (await canLaunch("tel:333")) {
+                            await launch("tel:333");
+                          } else {
+                            throw 'Could not launch';
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(
+                              Icons.call,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            AutoSizeText(
+                              "যোগাযোগ হটলাইন ৩৩৩ | ১০৬৫৫ | ১৬২৬৩",
+                              textScaleFactor: 1.0,
+                              style: TextStyle(
+                                color: Colors.white,
+                                //fontSize: 19,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
-              /*Container(
-                height: 30,
-                child: ListView.builder(
-                itemCount: categories.length,
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index){
-                  return CategorieTile(
-                    categorie: categories[index],
-                    isSelected: selectedCategorie == categories[index],
-                    context: this,
-                  );
-                    }),
-              ),*/
-              /*SizedBox(
-                height: 20,
-              ),*/
-              Container(
-                  height: 300,
-                  child: BlocProvider<CovidBloc>(
-                      create: (BuildContext context) =>
-                          CovidBloc(repository: Repository())
-                            ..add(CovidBdDataEvent(
-                                param: "countries/bangladesh",
-                                paramAll: "all")),
-                      child: Container(
-                        child: BlocBuilder<CovidBloc, CovidState>(
-                          builder: (context, state) {
-                            return dashboard(state);
-                          },
-                        ),
-                      ))),
               SizedBox(
-                height: 45,
+                height: 50,
               ),
-              AutoSizeText(
-                "(কোভিড-১৯) এর ঝুঁকি রোধে করনীয়",
-                textScaleFactor: 1,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'CM Sans Serif',
-                  fontSize: 26.0,
+
+              /// সর্বশেষ তথ্য
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: AutoSizeText(
+                  "সর্বশেষ তথ্য \nতথ্যসূত্র: WorldoMeter",
+                  textScaleFactor: 1,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'CM Sans Serif',
+                    fontSize: 26.0,
+                  ),
+                ),
+              ),
+              Container(
+                height: 250,
+                child: BlocProvider<CovidBloc>(
+                  create: (BuildContext context) =>
+                      CovidBloc(repository: Repository())
+                        ..add(CovidBdDataEvent(
+                            param: "countries/bangladesh", paramAll: "all")),
+                  child: Center(
+                    child: Container(
+                      child: BlocBuilder<CovidBloc, CovidState>(
+                        builder: (context, state) {
+                          return dashboard(state);
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              SizedBox(
+                height: 30,
+              ),
+
+              /// ঝুঁকি রোধে করনীয়
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: AutoSizeText(
+                  "(কোভিড-১৯) এর ঝুঁকি রোধে করনীয়",
+                  textScaleFactor: 1,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'CM Sans Serif',
+                    fontSize: 26.0,
+                  ),
                 ),
               ),
               SizedBox(
@@ -408,6 +428,7 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 height: 166,
+                                width: 200,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
@@ -561,37 +582,26 @@ getItem(final data, String level) {
     dataInBengali = dataInBengali.replaceAll(english[i], farsi[i]);
   }
 
-  return Container(
-    padding: EdgeInsets.all(5),
-    width: 150,
-    height: 150,
-    margin: EdgeInsets.only(right: 16),
-    decoration: BoxDecoration(
-      color: Colors.indigo[400],
-      //color: Color(0xFFCCECF9),
-      borderRadius: BorderRadius.circular(24),
-    ),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        AutoSizeText(
-          "$dataInBengali",
-          textScaleFactor: 1.0,
-          maxLines: 2,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 25, color: Colors.white),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        AutoSizeText(
-          "$level",
-          textScaleFactor: 1.0,
-          maxLines: 2,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20, color: Colors.white),
-        )
-      ],
-    ),
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: <Widget>[
+      AutoSizeText(
+        "$dataInBengali",
+        textScaleFactor: 1.0,
+        maxLines: 2,
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 25, color: Colors.white),
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      AutoSizeText(
+        "$level",
+        textScaleFactor: 1.0,
+        maxLines: 2,
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 20, color: Colors.white),
+      )
+    ],
   );
 }
