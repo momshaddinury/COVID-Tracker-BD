@@ -388,7 +388,7 @@ class _NeighboursReportState extends State<NeighboursReport> {
                             if (_fbKey.currentState.saveAndValidate()) {
                               toast("প্রসেসিং");
                               print(_fbKey.currentState.value);
-                              await submitCitizenResponse();
+                              await postCitizenReport();
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) => AlertDialog(

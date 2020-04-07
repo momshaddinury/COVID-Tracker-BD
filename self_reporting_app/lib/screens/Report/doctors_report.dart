@@ -525,7 +525,7 @@ class _DoctorsReportState extends State<DoctorsReport> {
                             if (_fbKey.currentState.saveAndValidate()) {
                               toast("প্রসেসিং");
                               print(_fbKey.currentState.value);
-                              await submitResponse();
+                              await postMainCaseReport();
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) => AlertDialog(
