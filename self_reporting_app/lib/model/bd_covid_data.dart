@@ -1,7 +1,7 @@
-
 import 'dart:convert';
 
-CovidBdData covidBdDataFromJson(String str) => CovidBdData.fromJson(json.decode(str));
+CovidBdData covidBdDataFromJson(String str) =>
+    CovidBdData.fromJson(json.decode(str));
 
 String covidBdDataToJson(CovidBdData data) => json.encode(data.toJson());
 
@@ -14,7 +14,7 @@ class CovidBdData {
   int recovered;
   int active;
   int critical;
-  double casesPerOneMillion;
+  //double casesPerOneMillion;
 
   CovidBdData({
     this.country,
@@ -24,31 +24,31 @@ class CovidBdData {
     this.todayDeaths,
     this.recovered,
     this.active,
-    this.critical,
-    this.casesPerOneMillion,
+    //this.critical,
+    //this.casesPerOneMillion,
   });
 
   factory CovidBdData.fromJson(Map<String, dynamic> json) => CovidBdData(
-    country: json["country"],
-    cases: json["cases"],
-    todayCases: json["todayCases"],
-    deaths: json["deaths"],
-    todayDeaths: json["todayDeaths"],
-    recovered: json["recovered"],
-    active: json["active"],
-    critical: json["critical"],
-    casesPerOneMillion: json["casesPerOneMillion"],
-  );
+        country: json["country"],
+        cases: json["cases"],
+        todayCases: json["todayCases"],
+        deaths: json["deaths"],
+        todayDeaths: json["todayDeaths"],
+        recovered: json["recovered"],
+        active: json["active"],
+        //critical: json["critical"],
+        //casesPerOneMillion: json["casesPerOneMillion"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "country": country,
-    "cases": cases,
-    "todayCases": todayCases,
-    "deaths": deaths,
-    "todayDeaths": todayDeaths,
-    "recovered": recovered,
-    "active": active,
-    "critical": critical,
-    "casesPerOneMillion": casesPerOneMillion,
-  };
+        "country": country,
+        "cases": cases,
+        "todayCases": todayCases,
+        "deaths": deaths,
+        "todayDeaths": todayDeaths,
+        "recovered": recovered,
+        "active": active,
+        //"critical": critical,
+        //"casesPerOneMillion": casesPerOneMillion,
+      };
 }

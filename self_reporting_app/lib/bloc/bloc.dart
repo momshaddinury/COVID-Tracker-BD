@@ -1,4 +1,3 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:selfreportingapp/bloc/state.dart';
 import 'package:selfreportingapp/model/bd_covid_data.dart';
@@ -25,7 +24,6 @@ class CovidBloc extends Bloc<CovidEvent, CovidState> {
         final result = repository.getCovidBdData(event.param);
         var results = await Future.wait([result1, result]);
         print("size response :${results.length}");
-        print(results);
         if (results[0].statusCode != 200) throw Exception();
         AllData allData = allDataFromJson(results[0].body);
         if (results[1].statusCode != 200) throw Exception();
