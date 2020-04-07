@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:selfreportingapp/services/app_update.dart';
+import 'package:selfreportingapp/widgets/update_popup.dart';
 import '../widgets/SKOnBoarding/sk_onboarding_model.dart';
 import '../widgets/SKOnBoarding/sk_onboarding_screen.dart.dart';
 
@@ -47,10 +48,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           themeColor: Color(0xFF7B51D3),
           pages: pageList,
           skipClicked: (value) {
-            Navigator.of(context).pushReplacementNamed('/HomePage');
+            (needsUpdate)
+                ? buildShowDialog(context)
+                : Navigator.of(context).pushReplacementNamed('/HomePage');
           },
           getStartedClicked: (value) {
-            Navigator.of(context).pushReplacementNamed('/HomePage');
+            (needsUpdate)
+                ? buildShowDialog(context)
+                : Navigator.of(context).pushReplacementNamed('/HomePage');
           },
         ),
       ),

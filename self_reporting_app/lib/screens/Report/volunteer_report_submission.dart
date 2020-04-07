@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:selfreportingapp/model/patient_data.dart';
 import 'package:selfreportingapp/model/question_list.dart';
-import 'package:selfreportingapp/widgets/report%20page%20widgets/action_button.dart';
-import 'package:selfreportingapp/widgets/report%20page%20widgets/personal_information.dart';
-import 'package:selfreportingapp/widgets/report%20page%20widgets/triage_question.dart';
+import 'package:selfreportingapp/widgets/report_page_widgets/action_button.dart';
+import 'package:selfreportingapp/widgets/report_page_widgets/personal_information.dart';
+import 'package:selfreportingapp/widgets/report_page_widgets/triage_question.dart';
 
 class VolunteerUpdate extends StatefulWidget {
   @override
