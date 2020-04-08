@@ -228,13 +228,60 @@ class _HomePageState extends State<HomePage> {
                             SizedBox(
                               width: 10,
                             ),
-                            AutoSizeText(
-                              "যোগাযোগ হটলাইন ৩৩৩ | ১০৬৫৫ | ১৬২৬৩",
-                              textScaleFactor: 1.0,
-                              style: TextStyle(
-                                color: Colors.white,
-                                //fontSize: 19,
-                              ),
+                            Row(
+                              children: <Widget>[
+                                InkWell(
+                                  child: AutoSizeText(
+                                    "যোগাযোগ হটলাইন ৩৩৩ |",
+                                    textScaleFactor: 1.0,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      //fontSize: 19,
+                                    ),
+                                  ),
+                                  onTap: () async {
+                                    if (await canLaunch("tel:333")) {
+                                      await launch("tel:333");
+                                    } else {
+                                      throw 'Could not launch';
+                                    }
+                                  },
+                                ),
+                                InkWell(
+                                  child: AutoSizeText(
+                                    " ১০৬৫৫ ",
+                                    textScaleFactor: 1.0,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      //fontSize: 19,
+                                    ),
+                                  ),
+                                  onTap: () async {
+                                    if (await canLaunch("tel:10655")) {
+                                      await launch("tel:10655");
+                                    } else {
+                                      throw 'Could not launch';
+                                    }
+                                  },
+                                ),
+                                InkWell(
+                                  child: AutoSizeText(
+                                    "| ১৬২৬৩",
+                                    textScaleFactor: 1.0,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      //fontSize: 19,
+                                    ),
+                                  ),
+                                  onTap: () async {
+                                    if (await canLaunch("tel:16263")) {
+                                      await launch("tel:16263");
+                                    } else {
+                                      throw 'Could not launch';
+                                    }
+                                  },
+                                )
+                              ],
                             ),
                           ],
                         ),
