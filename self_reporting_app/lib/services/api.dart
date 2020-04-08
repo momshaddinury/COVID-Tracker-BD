@@ -4,14 +4,11 @@ import 'package:selfreportingapp/model/self_report_qa.dart';
 
 import 'json_handle.dart';
 
-String productionBaseUrl = "https://corona-dghs.xyz/api/response";
-String productionOrgLoginUrl =
-    "https://corona-dghs.xyz/api/organizations/login";
+String productionBaseUrl = "https://corona-dghs.xyz/api/";
+//String productionOrgLoginUrl =
+//    "https://corona-dghs.xyz/api/organizations/login";
 String productionAccessToken =
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTgyMWUxMDdjOTMyMTFkOWMxMDJkYTYiLCJuYW1lIjoiTW9tc2hhZCBEaW51cnkiLCJlbWFpbCI6Im1kLmRpbnVyeUBnbWFpbC5jb20iLCJpYXQiOjE1ODU2NTkxNDksImV4cCI6MTYwMTIxMTE0OSwiaXNzIjoiNWU4MjFlMTA3YzkzMjExZDljMTAyZGE2In0.SrPTrtpLiVZhmnhbwrRpjovZ-hNugr19N0Jt1voGAQU";
-
-String proCitizenReportSubmissionUrl =
-    "https://corona-dghs.xyz/api/response/citizen";
 
 String developmentBaseUrl = "http://dev.corona-dghs.xyz/api/response";
 String developmentOrgUrl = "http://dev.corona-dghs.xyz/api/organizations/login";
@@ -21,15 +18,60 @@ String devAccessToken =
 String devCitizenReportSubmissionUrl =
     "https://dev.corona-dghs.xyz/api/response/citizen";
 
-Future<http.Response> submitResponse() async {
+//GET Methods
+
+//Get all Questions
+Future<http.Response> getAllQuestions() async {
+  Map<String, String> headers = {
+    'Authorization': '$productionAccessToken',
+  };
+  var response =
+      await http.get(productionBaseUrl + "questions", headers: headers);
+  print("submitResponse() - ${response.body}");
+  return response;
+}
+
+//Get all Districts
+Future<http.Response> getAllDistricts() async {
+  Map<String, String> headers = {
+    'Authorization': '$productionAccessToken',
+  };
+  var response =
+      await http.get(productionBaseUrl + "districts", headers: headers);
+  return response;
+}
+
+//Get all Division
+Future<http.Response> getAllDivision() async {
+  Map<String, String> headers = {
+    'Authorization': '$productionAccessToken',
+  };
+  var response =
+      await http.get(productionBaseUrl + "divisions", headers: headers);
+  return response;
+}
+
+//Get all Upazila
+Future<http.Response> getAllUpazila() async {
   Map<String, String> headers = {
     'Authorization': '$productionAccessToken',
     'Content-type': 'application/json',
   };
   var response =
-      await http.post(productionBaseUrl, body: data, headers: headers);
-  print(response.statusCode);
-  print(response);
+      await http.get(productionBaseUrl + "upazilas", headers: headers);
+  return response;
+}
+
+//POST Methods
+
+//Main Case Report submission API
+Future<http.Response> postMainCaseReport() async {
+  Map<String, String> headers = {
+    'Authorization': '$productionAccessToken',
+    'Content-type': 'application/json',
+  };
+  var response = await http.post(productionBaseUrl + "response",
+      body: data, headers: headers);
   print("submitResponse() - ${response.body}");
   parseJson.decodeJson(response.body.toString());
   return response;
@@ -52,12 +94,13 @@ Future<http.Response> submitResponse() async {
 String logInCredentials =
     '{"email": "md.dinury@gmail.com", "password": "passwordpassword?"}';*/
 
-Future<http.Response> submitCitizenResponse() async {
+//Citizen report submission API
+Future<http.Response> postCitizenReport() async {
   Map<String, String> headers = {
     'Authorization': '$productionAccessToken',
     'Content-type': 'application/json',
   };
-  var response = await http.post(proCitizenReportSubmissionUrl,
+  var response = await http.post(productionBaseUrl + "response/citizen",
       body: citizenData, headers: headers);
 
   print("submitCitizenResponse() - ${response.body}");

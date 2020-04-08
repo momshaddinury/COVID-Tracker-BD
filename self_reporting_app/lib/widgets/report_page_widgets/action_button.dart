@@ -68,7 +68,7 @@ class ActionButton extends StatelessWidget {
 
                 print(_fbKey.currentState.value);
                 //await orgLoginResponse();
-                await submitResponse();
+                await postMainCaseReport();
                 showDialog(
                   context: context,
                   builder: (BuildContext context) => AlertDialog(
