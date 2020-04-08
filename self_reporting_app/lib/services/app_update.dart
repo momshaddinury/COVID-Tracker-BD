@@ -23,7 +23,7 @@ Future<http.Response> checkForAppVersionAPI() async {
   return _response;
 }
 
-checkForUpdate() async {
+checkForUpdate() {
   getInfo().then((value) {
     if (int.parse(currentVersion[0]) < int.parse(updatedVersion[0])) {
       print(needsUpdate);

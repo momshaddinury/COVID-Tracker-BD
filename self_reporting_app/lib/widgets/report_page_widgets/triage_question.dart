@@ -33,7 +33,10 @@ class TriageQuestion extends StatelessWidget {
               value: 'হ্যাঁ',
               child: Text('হ্যাঁ'),
             ),
-            FormBuilderFieldOption(value: 'না', child: Text('না')),
+            FormBuilderFieldOption(
+              value: 'না',
+              child: Text('না'),
+            ),
           ],
           validators: [
             FormBuilderValidators.required(),

@@ -18,13 +18,15 @@ String nid;
 String passportID;
 String gender;
 String age;
-bool fever;
-bool coughOrThroatPain;
-bool problemBreathing;
-bool cameBackFromAbroad;
-bool contactWithAnyCOVIDPatient;
+bool fever,
+    coughOrThroatPain,
+    problemBreathing,
+    cameBackFromAbroad,
+    contactWithAnyCOVIDPatient,
+    cameInContactWithPersonHavingCoughOrThroatPain,
+    riskGroup;
+
 String anyoneCloseWithSymptoms;
-bool cameInContactWithPersonHavingCoughOrThroatPain;
-bool riskGroup;
+
 String relationType;
 String volunteerAccessToken;

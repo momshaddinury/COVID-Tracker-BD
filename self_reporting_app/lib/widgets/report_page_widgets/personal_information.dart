@@ -85,7 +85,15 @@ class PersonalInformation extends StatelessWidget {
           validators: [
             FormBuilderValidators.required(),
           ],
-          onSaved: (value) => gender = value,
+          onSaved: (value) {
+            if (value == 'পুরুষ') {
+              gender = "Male";
+            } else if (value == 'মহিলা') {
+              gender = "Female";
+            } else if (value == 'অন্যান্য') {
+              gender = "Others";
+            }
+          },
         ),
 
         // Age
@@ -102,6 +110,19 @@ class PersonalInformation extends StatelessWidget {
           ],
           onSaved: (value) => age = value,
           keyboardType: TextInputType.number,
+        ),
+
+        FormBuilderTextField(
+          attribute: "name",
+          decoration: InputDecoration(
+            labelText: "বাড়ির নম্বর/ঠিকানা",
+            filled: true,
+            fillColor: Colors.grey[200],
+          ),
+          validators: [
+            FormBuilderValidators.required(),
+          ],
+          onSaved: (value) => address = value,
         ),
       ],
     );

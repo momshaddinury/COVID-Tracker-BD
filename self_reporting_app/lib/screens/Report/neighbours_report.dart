@@ -67,11 +67,6 @@ class _NeighboursReportState extends State<NeighboursReport> {
                         SizedBox(
                           height: 20,
                         ),
-                        Divider(
-                          thickness: 10,
-                          height: 50.0,
-                          color: Colors.black45,
-                        ),
 
                         //রোগীর নাম
                         FormBuilderTextField(
@@ -172,11 +167,6 @@ class _NeighboursReportState extends State<NeighboursReport> {
                             FormBuilderValidators.required(),
                           ],
                           onSaved: (value) => countryNRB = value,
-                        ),
-                        Divider(
-                          thickness: 10,
-                          height: 50.0,
-                          color: Colors.black45,
                         ),
 
                         // বিভাগ

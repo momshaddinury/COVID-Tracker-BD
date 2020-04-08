@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:selfreportingapp/screens/Report/possible_affected.dart';
-import 'package:selfreportingapp/screens/Report/choose_report_type_page.dart';
+import 'package:selfreportingapp/screens/Report/main_case_report_submission_page.dart';
 import 'package:selfreportingapp/screens/Report/volunteer_report_submission.dart';
+
+import 'neighbours_report.dart';
 
 class ReportMain extends StatefulWidget {
   @override
@@ -79,10 +81,10 @@ class _ReportMainState extends State<ReportMain> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SelfReportingPage()));
+                                builder: (context) => MainCaseReport()));
                       },
                     ),
-                    SizedBox(
+                    /*SizedBox(
                       height: 20,
                     ),
                     // Recurring Update
@@ -104,7 +106,7 @@ class _ReportMainState extends State<ReportMain> {
                             MaterialPageRoute(
                                 builder: (context) => VolunteerUpdate()));
                       },
-                    ),
+                    ),*/
                     SizedBox(
                       height: 20,
                     ),
@@ -116,7 +118,7 @@ class _ReportMainState extends State<ReportMain> {
                       color: Color(0xFF40BD45),
                       shape: StadiumBorder(),
                       child: AutoSizeText(
-                        "সম্ভাব্য করোনা আক্রান্তের তথ্য দিন",
+                        "সম্ভাব্য করোনা আক্রান্ত ব্যাক্তির তথ্য দিন",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
@@ -127,7 +129,7 @@ class _ReportMainState extends State<ReportMain> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => PossibleAffected()));
+                                builder: (context) => NeighboursReport()));
                       },
                     ),
                   ],

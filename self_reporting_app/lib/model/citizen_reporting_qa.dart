@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:selfreportingapp/model/patient_data.dart';
+import 'package:selfreportingapp/services/geo_locator.dart';
 
 String citizenData = jsonEncode({
   "name": {
@@ -45,7 +46,7 @@ String citizenData = jsonEncode({
     "question_en": "",
     "answer": countryNRB
   },
-  "district": {
+  "division": {
     "type": "text",
     "question_bn": "বিভাগ",
     "question_en": "",
@@ -81,7 +82,11 @@ String citizenData = jsonEncode({
     "question_en": "",
     "answer": address
   },
-  "location": {"latitude": 22, "longitude": 91, "altitude": 0},
+  "location": {
+    "latitude": position.latitude,
+    "longitude": position.longitude,
+    "altitude": position.altitude
+  },
   "relationship": "neighbor",
   "metadata": {},
   "submitted_at": DateTime.now().millisecondsSinceEpoch
