@@ -45,8 +45,10 @@ import com.mapbox.mapboxsdk.plugins.annotation.Circle;
 import com.mapbox.mapboxsdk.plugins.annotation.CircleManager;
 import com.mapbox.mapboxsdk.plugins.annotation.Symbol;
 import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager;
+import com.mapbox.mapboxsdk.style.expressions.Expression;
 import com.mapbox.mapboxsdk.style.layers.FillLayer;
 import com.mapbox.mapboxsdk.style.layers.Property;
+import com.mapbox.mapboxsdk.style.layers.PropertyFactory;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 import com.mapbox.turf.TurfMeta;
 import com.mapbox.turf.TurfTransformation;
@@ -56,9 +58,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.mapbox.mapboxsdk.style.expressions.Expression.downcase;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.eq;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.fillColor;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.fillOpacity;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility;
@@ -212,10 +219,30 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
                         }*/
 
 //                            initPolygonCircleFillLayer();
+                        // NOTE: SEPARATE PROJECT TEST WILL DELETE WHEN MOVED
+                        try {
+                            URI uri = new URI("asset://geojson/bangladesh.geojson");
+                            Log.i(TAG, "onStyleLoaded: " + uri);
+                            style.addSource(new GeoJsonSource("bangladesh", uri));
 
-                        drawPolygonCircle();
+                            Log.i(TAG, "onStyleLoaded: " + style.getSources());
+                        } catch (NullPointerException | URISyntaxException e) {
+                            e.printStackTrace();
+                        }
 
-                        initPolygonCircleFillLayer();
+                        for (LatLngQR latLngQR: centers) {
+                            FillLayer layer = new FillLayer(latLngQR.name, "bangladesh");
+                            layer.setFilter(Expression.any(eq(downcase(get("NAME_2")), latLngQR.name), eq(downcase(get("NAME_3")), latLngQR.name)));
+                            int colorRed = latLngQR.quarantine * 255 / (latLngQR.quarantine + latLngQR.release);
+                            int colorGreen = latLngQR.release * 255 / (latLngQR.quarantine + latLngQR.release);
+                            layer.setProperties(PropertyFactory.fillColor(Color.rgb(colorRed, colorGreen, 0)), PropertyFactory.fillOpacity(0.5f));
+                            style.addLayer(layer);
+                        }
+
+
+//                        drawPolygonCircle();
+
+//                        initPolygonCircleFillLayer();
 
                         /*try {
                             map.animateCamera(CameraUpdateFactory.newLatLngZoom(

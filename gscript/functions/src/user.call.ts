@@ -11,6 +11,8 @@ const USER_RECURRING_FIELDS_COLLECTION_PATH = 'corona-user-recurring-responses';
 const USER_RECURRING_FIELDS_COLLECTION_PATH_REF = db.collection(USER_RECURRING_FIELDS_COLLECTION_PATH);
 const ORGANIZATION_COLLECTION_PATH = 'organisations';
 const ORGANIZATION_COLLECTION_REF = db.collection(ORGANIZATION_COLLECTION_PATH);
+const VOLUNTEER_COLLECTION_PATH = 'volunteers';
+const VOLUNTEER_COLLECTION_REF = db.collection(VOLUNTEER_COLLECTION_PATH);
 
 //development function
 /*export const addIfSelfToAllCollections = functions.https.onCall(async (userNum) => {
@@ -106,10 +108,146 @@ export const onUserResponseSubmit = functions.https.onCall(async (userResponse) 
 	}
 });
 
+export const getMinimalList = functions.https.onCall(async (keyObject) => {
+	try {
+		const responses: any[] = [];
+		const querySnap = await USER_RESPONSE_COLLECTION_PATH_REF.get();
+		if (querySnap.empty) return {
+			error: "Data Does Not Exist"
+		}
 
+		await Promise.all(querySnap.docs.map(async (doc) => {
+			const data=doc.data();
+			const minimal={
+				Name:"X",
+				Age:"X",
+				Phone:data['user_phone'],
+				Address:"X",
+				SelfSubmission:true,
+				OrganizationName:"Anonymous",
+				Status:0
+			};
+			if (!('name' in data)) minimal['Name'] = "TestName";
+			else minimal['Name']=data['name']['answer'];
+			if (!('age' in data)) minimal['Age'] = "0";
+			else minimal['Age']=data['age']['answer'];
+			if (!('address' in data)) minimal['Address'] = "None";
+			else minimal['Address']=data['address']['answer'];
+			if (!('risk' in data)) minimal['Status'] = 0;
+			else minimal['Status']=data['risk'];
+			
+			if('is_self' in data) minimal['SelfSubmission'] = data['is_self'];
+			if('organization_name' in data) minimal['OrganizationName'] = data['organization_name'];
+			
+			responses.push(minimal);
+		}));
+
+		return {
+			responses,
+		};
+	} catch (error) {
+		console.error("getMinimalList Error:", error);
+		return error;
+	}
+});
+
+export const getDataByKeyValueFromResponses = functions.https.onCall(async (keyObject) => {
+	try {
+		
+		const keyName = keyObject['key'];
+		const keyValue = keyObject['value'];
+		let sendMinimal = false;
+		
+		if ('minimal' in keyObject) sendMinimal =keyObject['minimal'];
+
+		const responses: any[] = [];
+		const recurringResponses: any[] = [];
+		const querySnap = await USER_RESPONSE_COLLECTION_PATH_REF.where(keyName, '==', keyValue).get();
+		if (querySnap.empty) return {
+			error: "Data Does Not Exist"
+		}
+
+		const querySnap2 = await USER_RECURRING_FIELDS_COLLECTION_PATH_REF.where(keyName, '==', keyValue).get();
+
+		if(sendMinimal) {
+			await Promise.all(querySnap.docs.map(async (doc) => {
+				const data=doc.data();
+				delete data.organization_id;
+				const minimal={
+					Name:"X",
+					Age:"X",
+					Phone:data['user_phone'],
+					Address:"X",
+					SelfSubmission:true,
+					OrganizationName:"Anonymous",
+					Status:0
+				};
+				if (!('name' in data)) minimal['Name'] = "TestName";
+				else minimal['Name']=data['name']['answer'];
+				if (!('age' in data)) minimal['Age'] = "0";
+				else minimal['Age']=data['age']['answer'];
+				if (!('address' in data)) minimal['Address'] = "None";
+				else minimal['Address']=data['address']['answer'];
+				if (!('risk' in data)) minimal['Status'] = 0;
+				else minimal['Status']=data['risk'];
+				
+				if('is_self' in data) minimal['SelfSubmission'] = data['is_self'];
+				if('organization_name' in data) minimal['OrganizationName'] = data['organization_name'];
+				
+				responses.push(minimal);
+			}));
+		} else {
+			await Promise.all(querySnap.docs.map(async (doc) => {
+				const data=doc.data();
+				delete data.organization_id;
+				responses.push(data);
+			}));
+		}
+
+		if(sendMinimal) {
+			await Promise.all(querySnap2.docs.map(async (doc) => {
+				const data=doc.data();
+				delete data.organization_id;
+				const minimalRecurring={
+					Phone:data['user_phone']
+				};
+				recurringResponses.push(minimalRecurring);
+			}));
+		} else {
+			await Promise.all(querySnap2.docs.map(async (doc) => {
+				const data=doc.data();
+				delete data.organization_id;
+				recurringResponses.push(data);
+			}));
+		}
+
+		return {
+			responses,
+			recurringResponses
+		};
+	} catch (error) {
+		console.error("getDataByKeyValueFromResponses Error:", error);
+		return error;
+	}
+});
+
+export const validateToken = functions.https.onCall(async (token) => {
+	try {
+		if (!('access_token' in token)) return {
+			error: "Invalid parameter"
+		}
+		const volunteerIDFromReq = token['access_token'];
+
+		const volunteerFromDB = await VOLUNTEER_COLLECTION_REF.doc(volunteerIDFromReq).get();
+		
+		return volunteerFromDB.exists;
+	} catch (error) {
+		console.error("validateToken Error:", error);
+		return error;
+	}
+});
 
 export const onRecurrentResponseSubmit = functions.https.onCall(async (userResponse) => {
-	const elderAge = 60;
 	try {
 		const organisationFromReq = userResponse['organization_name'];
 		const organisationIDFromReq = userResponse['organization_id'];
@@ -122,9 +260,9 @@ export const onRecurrentResponseSubmit = functions.https.onCall(async (userRespo
 		
 		if(organisationFromDB.get('organization_name') !== organisationFromReq) userResponse['organization_name']='anonymous';
 		
-		const phoneNumber = userResponse['user_phone'];
+		//const phoneNumber = userResponse['user_phone'];
 
-		const profile = await USER_RESPONSE_COLLECTION_PATH_REF.where('user_phone', '==', phoneNumber).orderBy('created_at', 'desc').limit(1).get();
+		/*const profile = await USER_RESPONSE_COLLECTION_PATH_REF.where('user_phone', '==', phoneNumber).orderBy('created_at', 'desc').limit(1).get();
 		
 		const is_elder = parseInt(profile.docs[0].get('age')['answer']) > elderAge ? '1' : '0';
 		const has_diseases_history = userResponse['high_risk']['answer'].toString() === 'true' ? '1' : '0';
@@ -148,8 +286,13 @@ export const onRecurrentResponseSubmit = functions.https.onCall(async (userRespo
 			uniqueId: response.id,
 			instructions: riskData.get('message'),
 			numbers:riskData.get('numbers')
+		};*/
+		
+		const response = await USER_RECURRING_FIELDS_COLLECTION_PATH_REF.add(userResponse);
+		
+		return {
+			uniqueId: response.id
 		};
-
 	} catch (error) {
 		console.error("onRecurrentResponseSubmit Error:", error);
 		return error
