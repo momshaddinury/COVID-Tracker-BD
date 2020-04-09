@@ -34,7 +34,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0.0,
+        elevation: 2.0,
+        brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.black87),
       ),
       body: Container(
@@ -107,6 +108,9 @@ class _NeighboursReportState extends State<NeighboursReport> {
                             filled: true,
                             fillColor: Colors.grey[200],
                           ),
+                          validators: [
+                            FormBuilderValidators.required(),
+                          ],
                           options: [
                             FormBuilderFieldOption(
                               value: 'পুরুষ',
@@ -245,7 +249,7 @@ class _NeighboursReportState extends State<NeighboursReport> {
                           //decoration: InputDecoration(labelText: "Gender"),
                           // initialValue: 'Male',
                           hint: Text('   উপজেলা নির্বাচন করুন'),
-                          validators: [FormBuilderValidators.required()],
+                          /*validators: [FormBuilderValidators.required()],*/
                           allowClear: true,
                           onSaved: (value) => upazila = value,
                           items: subDistrictList

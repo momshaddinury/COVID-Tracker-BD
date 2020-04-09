@@ -113,7 +113,7 @@ class PersonalInformation extends StatelessWidget {
         ),
 
         FormBuilderTextField(
-          attribute: "name",
+          attribute: "text",
           decoration: InputDecoration(
             labelText: "বাড়ির নম্বর/ঠিকানা",
             filled: true,
