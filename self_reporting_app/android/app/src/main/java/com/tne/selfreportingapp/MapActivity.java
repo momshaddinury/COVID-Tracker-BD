@@ -91,12 +91,21 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
     private Symbol testSymSS;
     private CircleManager circleManager;
 
+    private static final String mapMetaKey = "map_meta";
+    private static final String mapUrlKey = "mapBoxUrl";
+    private static final String mapCircleRadiusKey = "circleRadius";
+    private static final String mapCircleRadiusScalingKey = "circleRadiusScaling";
+    private static final String mapCircleStrokeKey = "strokedCircleLayout";
+
     private static final boolean IS_STROKED_CIRCLE = true;
     private static final float FIXED_RADIUS = 18000;
+    private static final float FIXED_RADIUS_SCALE = 1.5f;
 
     private boolean isStrokedCircle = IS_STROKED_CIRCLE;
 
     private String mapBoxUrl;
+    private float radius=FIXED_RADIUS;
+    private float radiusScaling=FIXED_RADIUS_SCALE;
 
     private RequestQueue requestQueue;
 
@@ -138,8 +147,15 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
             Log.i(TAG, "onResponse: " + response);
             try {
                 JSONObject jsonObject = new JSONObject(response);
-                if (jsonObject.has("mapBoxUrl")) mapBoxUrl = jsonObject.getString("mapBoxUrl");
-                if (jsonObject.has("strokedCircleLayout")) isStrokedCircle = jsonObject.getBoolean("strokedCircleLayout");
+
+                if (jsonObject.has(mapMetaKey)) {
+                    JSONObject mapMeta = jsonObject.getJSONObject(mapMetaKey);
+                    if (mapMeta.has(mapUrlKey)) mapBoxUrl=mapMeta.getString(mapUrlKey);
+                    if (mapMeta.has(mapCircleRadiusKey)) radius= (float) mapMeta.getDouble(mapCircleRadiusKey);
+                    if (mapMeta.has(mapCircleRadiusScalingKey)) radiusScaling= (float) mapMeta.getDouble(mapCircleRadiusScalingKey);
+                    if (mapMeta.has(mapCircleStrokeKey)) isStrokedCircle=mapMeta.getBoolean(mapCircleStrokeKey);
+                }
+
                 JSONArray latLngArray = jsonObject.getJSONArray("data");
                 for (int i = 0; i < latLngArray.length(); i++) {
                     centers.add(new LatLngQR(
@@ -364,7 +380,7 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
                     style.addSource(polygonCircleSourceQ);
                 }*/
 
-                Polygon polygonAreaQ = getTurfPolygon(Point.fromLngLat(lnQR.center.getLongitude(), lnQR.center.getLatitude()), isStrokedCircle ? ((lnQR.quarantine + lnQR.release) * 1.5f) : FIXED_RADIUS, 400, UNIT_METERS);
+                Polygon polygonAreaQ = getTurfPolygon(Point.fromLngLat(lnQR.center.getLongitude(), lnQR.center.getLatitude()), isStrokedCircle ? ((lnQR.quarantine + lnQR.release) * radiusScaling) : radius*radiusScaling, 400, UNIT_METERS);
                 GeoJsonSource polygonCircleSourceQ = style.getSourceAs(lnQR.name + "q");
                 if (polygonCircleSourceQ != null) {
                     polygonCircleSourceQ.setGeoJson(Polygon.fromOuterInner(
@@ -376,7 +392,7 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
                 }
 
 
-                Polygon polygonAreaR = getTurfPolygon(Point.fromLngLat(isStrokedCircle ? lnQR.center.getLongitude() : (lnQR.center.getLongitude() + TurfConversion.lengthToDegrees(FIXED_RADIUS * 1.5 * 2, UNIT_METERS)), lnQR.center.getLatitude()), isStrokedCircle ? lnQR.release * 1.5f : FIXED_RADIUS, 400, UNIT_METERS);
+                Polygon polygonAreaR = getTurfPolygon(Point.fromLngLat(isStrokedCircle ? lnQR.center.getLongitude() : (lnQR.center.getLongitude() + TurfConversion.lengthToDegrees(radius * radiusScaling * 2, UNIT_METERS)), lnQR.center.getLatitude()), isStrokedCircle ? lnQR.release * radiusScaling : radius*radiusScaling, 400, UNIT_METERS);
                 GeoJsonSource polygonCircleSourceR = style.getSourceAs(lnQR.name + "r");
                 if (polygonCircleSourceR != null) {
                     polygonCircleSourceR.setGeoJson(Polygon.fromOuterInner(
