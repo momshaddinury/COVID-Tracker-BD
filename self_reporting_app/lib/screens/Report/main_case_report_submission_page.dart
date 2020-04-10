@@ -229,14 +229,13 @@ class _MainCaseReportState extends State<MainCaseReport> {
                             }
                           },
                         ),
-
                         // উপজেলা
                         FormBuilderDropdown(
                           attribute: "subDistrictDropdown",
                           //decoration: InputDecoration(labelText: "Gender"),
                           // initialValue: 'Male',
                           hint: Text('   উপজেলা নির্বাচন করুন'),
-                          validators: [FormBuilderValidators.required()],
+                          /*validators: [FormBuilderValidators.required()],*/
                           allowClear: true,
                           onSaved: (value) => upazila = value,
                           items: subDistrictList

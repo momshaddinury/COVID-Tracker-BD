@@ -1,5 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'package:selfreportingapp/model/citizen_reporting_qa.dart';
+import 'package:selfreportingapp/model/main_case_report_qa.dart';
 import 'package:selfreportingapp/model/self_report_qa.dart';
 
 import 'json_handle.dart';
@@ -71,7 +72,7 @@ Future<http.Response> postMainCaseReport() async {
     'Content-type': 'application/json',
   };
   var response = await http.post(productionBaseUrl + "response",
-      body: data, headers: headers);
+      body: mainCaseData, headers: headers);
   print("submitResponse() - ${response.body}");
   parseJson.decodeJson(response.body.toString());
   return response;

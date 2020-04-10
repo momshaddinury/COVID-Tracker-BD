@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:selfreportingapp/screens/dashboard.dart';
+import 'package:selfreportingapp/screens/homepage.dart';
 import 'package:selfreportingapp/screens/loading_screen.dart';
 import 'package:selfreportingapp/screens/onboarding_screen.dart';
 import 'initialize.dart';

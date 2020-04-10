@@ -29,7 +29,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   ApiService apiService;
-  Map<String, double> dataMap = new Map();
+  Map<String, int> dataMap = new Map();
   Map<String, double> dataMapAll = new Map();
   final controller = PageController(viewportFraction: 0.5);
   final controller2 = PageController(viewportFraction: 0.5);
@@ -121,19 +121,14 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              SizedBox(
-                height: 10,
-              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  FittedBox(
-                    child: Image.asset(
-                      "assets/3623963.jpg",
-                      fit: BoxFit.contain,
-                      width: 350,
-                      height: 350,
-                    ),
+                  Image.asset(
+                    "assets/3623963.jpg",
+                    fit: BoxFit.contain,
+                    width: 400,
+                    height: 400,
                   ),
                 ],
               ),
@@ -143,151 +138,153 @@ class _HomePageState extends State<HomePage> {
 
               Container(
                 color: Colors.white,
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 24),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    /// আপনি কি আক্রান্ত?
-                    AutoSizeText(
-                      "আপনি কি আক্রান্ত?",
-                      textScaleFactor: 1,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'CM Sans Serif',
-                        fontSize: 26.0,
-                        height: 1.5,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-
-                    /// করোনার সম্ভাব্যতা যাচাই করুন
-                    FittedBox(
-                      child: MaterialButton(
-                        elevation: 10,
-                        shape: StadiumBorder(),
-                        color: Color(0xFFBD202E),
-                        padding: EdgeInsets.all(20),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ReportMain()));
-                        },
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.touch_app,
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            AutoSizeText(
-                              "করোনার সম্ভাব্যতা যাচাই করুন",
-                              textScaleFactor: 1.0,
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ],
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      /// আপনি কি আক্রান্ত?
+                      AutoSizeText(
+                        "আপনি কি আক্রান্ত?",
+                        textScaleFactor: 1,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'CM Sans Serif',
+                          fontSize: 26.0,
+                          height: 1.5,
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
+                      SizedBox(
+                        height: 5,
+                      ),
 
-                    /// করোনা হিট ম্যাপ
-                    HeatMapTile(),
-                    SizedBox(
-                      height: 20,
-                    ),
-
-                    /// যোগাযোগ হটলাইন
-                    FittedBox(
-                      child: MaterialButton(
-                        padding: EdgeInsets.all(20),
-                        elevation: 10,
-                        shape: StadiumBorder(),
-                        color: Colors.indigo,
-                        // color: Color(0xFFBD202E),
-                        onPressed: () async {
-                          if (await canLaunch("tel:333")) {
-                            await launch("tel:333");
-                          } else {
-                            throw 'Could not launch';
-                          }
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(
-                              Icons.call,
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Row(
-                              children: <Widget>[
-                                InkWell(
-                                  child: AutoSizeText(
-                                    "যোগাযোগ হটলাইন ৩৩৩ |",
-                                    textScaleFactor: 1.0,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      //fontSize: 19,
-                                    ),
-                                  ),
-                                  onTap: () async {
-                                    if (await canLaunch("tel:333")) {
-                                      await launch("tel:333");
-                                    } else {
-                                      throw 'Could not launch';
-                                    }
-                                  },
-                                ),
-                                InkWell(
-                                  child: AutoSizeText(
-                                    " ১০৬৫৫ ",
-                                    textScaleFactor: 1.0,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      //fontSize: 19,
-                                    ),
-                                  ),
-                                  onTap: () async {
-                                    if (await canLaunch("tel:10655")) {
-                                      await launch("tel:10655");
-                                    } else {
-                                      throw 'Could not launch';
-                                    }
-                                  },
-                                ),
-                                InkWell(
-                                  child: AutoSizeText(
-                                    "| ১৬২৬৩",
-                                    textScaleFactor: 1.0,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      //fontSize: 19,
-                                    ),
-                                  ),
-                                  onTap: () async {
-                                    if (await canLaunch("tel:16263")) {
-                                      await launch("tel:16263");
-                                    } else {
-                                      throw 'Could not launch';
-                                    }
-                                  },
-                                )
-                              ],
-                            ),
-                          ],
+                      /// করোনার সম্ভাব্যতা যাচাই করুন
+                      FittedBox(
+                        child: MaterialButton(
+                          elevation: 10,
+                          shape: StadiumBorder(),
+                          color: Color(0xFFBD202E),
+                          padding: EdgeInsets.all(20),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ReportMain()));
+                          },
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.touch_app,
+                                color: Colors.white,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              AutoSizeText(
+                                "করোনার সম্ভাব্যতা যাচাই করুন",
+                                textScaleFactor: 1.0,
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        height: 20,
+                      ),
+
+                      /// করোনা হিট ম্যাপ
+                      HeatMapTile(),
+                      SizedBox(
+                        height: 20,
+                      ),
+
+                      /// যোগাযোগ হটলাইন
+                      FittedBox(
+                        child: MaterialButton(
+                          padding: EdgeInsets.all(20),
+                          elevation: 10,
+                          shape: StadiumBorder(),
+                          color: Colors.indigo,
+                          // color: Color(0xFFBD202E),
+                          onPressed: () async {
+                            if (await canLaunch("tel:333")) {
+                              await launch("tel:333");
+                            } else {
+                              throw 'Could not launch';
+                            }
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                Icons.call,
+                                color: Colors.white,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  InkWell(
+                                    child: AutoSizeText(
+                                      "যোগাযোগ হটলাইন ৩৩৩ |",
+                                      textScaleFactor: 1.0,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        //fontSize: 19,
+                                      ),
+                                    ),
+                                    onTap: () async {
+                                      if (await canLaunch("tel:333")) {
+                                        await launch("tel:333");
+                                      } else {
+                                        throw 'Could not launch';
+                                      }
+                                    },
+                                  ),
+                                  InkWell(
+                                    child: AutoSizeText(
+                                      " ১০৬৫৫ ",
+                                      textScaleFactor: 1.0,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        //fontSize: 19,
+                                      ),
+                                    ),
+                                    onTap: () async {
+                                      if (await canLaunch("tel:10655")) {
+                                        await launch("tel:10655");
+                                      } else {
+                                        throw 'Could not launch';
+                                      }
+                                    },
+                                  ),
+                                  InkWell(
+                                    child: AutoSizeText(
+                                      "| ১৬২৬৩",
+                                      textScaleFactor: 1.0,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        //fontSize: 19,
+                                      ),
+                                    ),
+                                    onTap: () async {
+                                      if (await canLaunch("tel:16263")) {
+                                        await launch("tel:16263");
+                                      } else {
+                                        throw 'Could not launch';
+                                      }
+                                    },
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
 
@@ -361,6 +358,7 @@ class _HomePageState extends State<HomePage> {
                             children: List.generate(6, (i) {
                               return Center(
                                 child: Card(
+                                  elevation: 2.0,
                                   color: Color(0xFFBD202E),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(16)),
@@ -430,19 +428,17 @@ class _HomePageState extends State<HomePage> {
         ),
       );
     } else if (state is CovidBdState) {
-      if (state.covidBdData != null && state.allData != null) {
+      if (state.covidBdData != null /*&& state.allData != null*/) {
+        dataMap.putIfAbsent("Active", () => state.covidBdData.active.toInt());
         dataMap.putIfAbsent(
-            "Active", () => state.covidBdData.active.toDouble());
-        dataMap.putIfAbsent(
-            "Recovered", () => state.covidBdData.recovered.toDouble());
-        dataMap.putIfAbsent(
-            "Deaths", () => state.covidBdData.deaths.toDouble());
-        print("CovidBdState ${state.allData}");
+            "Recovered", () => state.covidBdData.recovered.toInt());
+        dataMap.putIfAbsent("Deaths", () => state.covidBdData.deaths.toInt());
+        /*print("CovidBdState ${state.covidBdData}");
         dataMapAll.putIfAbsent(
             "Total Cases ", () => (state.allData.cases).toDouble());
         dataMapAll.putIfAbsent(
             "Recovered", () => state.allData.recovered.toDouble());
-        dataMapAll.putIfAbsent("Deaths", () => state.allData.deaths.toDouble());
+        dataMapAll.putIfAbsent("Deaths", () => state.allData.deaths.toDouble());*/
 
         List<Widget> getItemWidget = [
           getItem(state.covidBdData.recovered, "মোট সুস্থ"),
@@ -466,6 +462,7 @@ class _HomePageState extends State<HomePage> {
                       children: List.generate(5, (i) {
                         return Center(
                           child: Card(
+                            elevation: 3.0,
                             color: Colors.indigo[400],
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16)),
@@ -623,10 +620,10 @@ class ResizableTextWidget extends StatelessWidget {
 
 getItem(final data, String level) {
   const english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  const farsi = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+  const bangla = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
   String dataInBengali = data.toString();
   for (int i = 0; i < english.length; i++) {
-    dataInBengali = dataInBengali.replaceAll(english[i], farsi[i]);
+    dataInBengali = dataInBengali.replaceAll(english[i], bangla[i]);
   }
 
   return Column(

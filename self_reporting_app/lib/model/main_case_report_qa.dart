@@ -3,6 +3,10 @@ import 'dart:convert';
 import 'package:selfreportingapp/model/patient_data.dart';
 import 'package:selfreportingapp/services/geo_locator.dart';
 
+double lat = position.latitude;
+double lon = position.longitude;
+double alt = position.altitude;
+
 String mainCaseData = jsonEncode({
   "age": {"answer": "$age"},
   "phone": {"answer": "$phoneNumber"},
@@ -20,11 +24,7 @@ String mainCaseData = jsonEncode({
   "division": {"answer": division},
   "district": {"answer": district},
   "upazila": {"answer": upazila},
-  "location": {
-    "latitude": position.latitude,
-    "longitude": position.longitude,
-    "altitude": position.altitude
-  },
+  "location": {"latitude": lat, "longitude": lon, "altitude": alt},
   "relationship_id": relationType,
   "nid": nid,
   "address": address,
