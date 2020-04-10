@@ -12,6 +12,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -93,13 +94,27 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
     private static final boolean IS_STROKED_CIRCLE = true;
     private static final float FIXED_RADIUS = 18000;
 
-    private boolean isStrokedCircle=IS_STROKED_CIRCLE;
+    private boolean isStrokedCircle = IS_STROKED_CIRCLE;
 
     private String mapBoxUrl;
 
     private RequestQueue requestQueue;
 
     private ArrayList<LatLngQR> centers = new ArrayList<>();
+
+    StringRequest mapRequest;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        requestQueue.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        requestQueue.stop();
+    }
 
     @SuppressLint("LogNotTimber")
     @Override
@@ -119,12 +134,12 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
         requestQueue = Volley.newRequestQueue(this);
 
         String mapUrl = "https://zerothindex.org/mapdata";
-        requestQueue.add(new StringRequest(Request.Method.GET, mapUrl, response -> {
+        requestQueue.add(mapRequest = new StringRequest(Request.Method.GET, mapUrl, response -> {
             Log.i(TAG, "onResponse: " + response);
             try {
                 JSONObject jsonObject = new JSONObject(response);
-                if (jsonObject.has("mapBoxUrl")) mapBoxUrl=jsonObject.getString("mapBoxUrl");
-                if (jsonObject.has("strokedCircleLayout")) isStrokedCircle=jsonObject.getBoolean("strokedCircleLayout");
+                if (jsonObject.has("mapBoxUrl")) mapBoxUrl = jsonObject.getString("mapBoxUrl");
+                if (jsonObject.has("strokedCircleLayout")) isStrokedCircle = jsonObject.getBoolean("strokedCircleLayout");
                 JSONArray latLngArray = jsonObject.getJSONArray("data");
                 for (int i = 0; i < latLngArray.length(); i++) {
                     centers.add(new LatLngQR(
@@ -139,7 +154,8 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
                 e.printStackTrace();
             }
         }, error -> {
-
+            Toast.makeText(MapActivity.this, "Possible Connection Issue, Retrying...", Toast.LENGTH_SHORT).show();
+            requestQueue.add(mapRequest);
         }));
 
 
@@ -186,7 +202,7 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
 
         mapView.getMapAsync(mapboxMap -> {
             map = mapboxMap;
-            map.setStyle(new Style.Builder().fromUri(/*"mapbox://styles/mapbox/cjf4m44iw0uza2spb3q0a7s41"*/ /*"mapbox://styles/mapbox/light-v10"*/ /*"mapbox://styles/mapbox/navigation-preview-day-v4"*/ mapBoxUrl==null? "mapbox://styles/mapbox/streets-v11":mapBoxUrl)
+            map.setStyle(new Style.Builder().fromUri(/*"mapbox://styles/mapbox/cjf4m44iw0uza2spb3q0a7s41"*/ /*"mapbox://styles/mapbox/light-v10"*/ /*"mapbox://styles/mapbox/navigation-preview-day-v4"*/ mapBoxUrl == null ? "mapbox://styles/mapbox/streets-v11" : mapBoxUrl)
                     , style -> {
 
                         activityMapBinding.locationFab.show();
