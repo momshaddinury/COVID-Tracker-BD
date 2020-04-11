@@ -20,8 +20,8 @@ class ParseJson {
     try {
       //print("decodeJson");
       responseJsonDecoded = jsonDecode(response);
-      print("decodeJson: $responseJsonDecoded");
-      print("decodeJson: ${responseJsonDecoded.values}");
+      //print("decodeJson: $responseJsonDecoded");
+      //print("decodeJson: ${responseJsonDecoded.values}");
       //for (dynamic value in responseJsonDecoded.values) {
       version = responseJsonDecoded['version'];
       assessmentMessage = responseJsonDecoded['assessmentMessage'];

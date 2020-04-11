@@ -101,9 +101,10 @@ Future<http.Response> postMainCaseReport() async {
     "metadata": {},
     "submitted_at": DateTime.now().millisecondsSinceEpoch
   });
+  print(mainCaseData);
   var response = await http.post(productionBaseUrl + "response",
       body: "$mainCaseData", headers: headers);
-  print("submitResponse() - ${response.body}");
+  // print("submitResponse() - ${response.body}");
   parseJson.decodeJson(response.body.toString());
   return response;
 }
@@ -131,6 +132,7 @@ Future<http.Response> postCitizenReport() async {
     'Authorization': '$productionAccessToken',
     'Content-type': 'application/json',
   };
+  print(citizenData);
   var response = await http.post(productionBaseUrl + "response/citizen",
       body: citizenData, headers: headers);
 
