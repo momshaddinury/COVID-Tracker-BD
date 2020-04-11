@@ -87,19 +87,19 @@ class _ReportMainState extends State<ReportMain> {
                         ),
                       ),
                       // Community Service
-                      /*Expanded(
+                      Expanded(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: MaterialButton(
                             padding: EdgeInsets.symmetric(vertical: 10.0),
                             //minWidth: 50,
-                            color: Colors.lightBlueAccent,
+                            color: Colors.redAccent,
                             shape: StadiumBorder(),
                             child: AutoSizeText(
                               "কমিউনিটি সার্ভিস",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 20,
+                                fontSize: 25,
                               ),
                             ),
                             onPressed: () async {
@@ -110,7 +110,7 @@ class _ReportMainState extends State<ReportMain> {
                             },
                           ),
                         ),
-                      ),*/
+                      ),
                       // Possible Affected
                       Expanded(
                         child: Padding(

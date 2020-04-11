@@ -70,15 +70,15 @@ class PersonalInformation extends StatelessWidget {
           ),
           options: [
             FormBuilderFieldOption(
-              value: 'পুরুষ',
+              value: 'Male',
               child: Text('পুরুষ'),
             ),
             FormBuilderFieldOption(
-              value: 'মহিলা',
+              value: 'Female',
               child: Text('মহিলা'),
             ),
             FormBuilderFieldOption(
-              value: 'অন্যান্য',
+              value: 'Others',
               child: Text('অন্যান্য'),
             )
           ],
@@ -86,13 +86,7 @@ class PersonalInformation extends StatelessWidget {
             FormBuilderValidators.required(),
           ],
           onSaved: (value) {
-            if (value == 'পুরুষ') {
-              gender = "Male";
-            } else if (value == 'মহিলা') {
-              gender = "Female";
-            } else if (value == 'অন্যান্য') {
-              gender = "Others";
-            }
+            gender = value;
           },
         ),
 

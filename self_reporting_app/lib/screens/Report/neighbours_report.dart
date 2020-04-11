@@ -382,43 +382,12 @@ class _NeighboursReportState extends State<NeighboursReport> {
                             if (_fbKey.currentState.saveAndValidate()) {
                               toast("প্রসেসিং");
                               print(_fbKey.currentState.value);
-                              await postMainCaseReport();
+                              await postCitizenReport();
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) => AlertDialog(
                                   title: const Text("ফলাফল"),
-                                  content: new Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Container(
-                                          child: RichText(
-                                        text: TextSpan(
-                                          text: 'ফলাফল: $message\n',
-                                          style: TextStyle(
-                                            color: Colors.red,
-                                            decoration: TextDecoration.none,
-                                          ),
-                                          children: <TextSpan>[
-                                            TextSpan(
-                                              text: "\nআইডি: $id\n",
-                                              style: TextStyle(
-                                                color: Colors.red,
-                                                decoration: TextDecoration.none,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      )),
-                                      /*Html(
-                                        data: """$notes""",
-                                        onLinkTap: (url) {
-                                          print("Openning url");
-                                        },
-                                      ),*/
-                                    ],
-                                  ),
+                                  content: Text("$message"),
                                   actions: <Widget>[
                                     new FlatButton(
                                       onPressed: () {

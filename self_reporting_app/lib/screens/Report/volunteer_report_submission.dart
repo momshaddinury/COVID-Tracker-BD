@@ -2,11 +2,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:selfreportingapp/model/patient_data.dart';
-import 'package:selfreportingapp/model/question_list.dart';
 import 'package:selfreportingapp/screens/Report/main_case_report_submission_page.dart';
-import 'package:selfreportingapp/widgets/report_page_widgets/action_button.dart';
-import 'package:selfreportingapp/widgets/report_page_widgets/personal_information.dart';
-import 'package:selfreportingapp/widgets/report_page_widgets/triage_question.dart';
+import 'package:selfreportingapp/services/api.dart';
+import 'package:selfreportingapp/services/json_handle.dart';
+import 'package:selfreportingapp/widgets/toast.dart';
 
 class VolunteerUpdate extends StatefulWidget {
   @override
@@ -83,6 +82,8 @@ class _VolunteerUpdateState extends State<VolunteerUpdate> {
                                 FormBuilderValidators.required(),
                               ],
                               onSaved: (value) => volunteerAccessToken = value,
+                              onChanged: (value) =>
+                                  volunteerAccessToken = value,
                             ),
                           ],
                         ),
@@ -119,14 +120,18 @@ class _VolunteerUpdateState extends State<VolunteerUpdate> {
                                 "পরবর্তী ধাপ",
                                 style: TextStyle(color: Colors.white),
                               ),
-                              onPressed: () async {
-                                //toast("অপেক্ষা করুন");
+                              onPressed: () {
+                                toast("অপেক্ষা করুন");
                                 if (_fbKey.currentState.saveAndValidate()) {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              MainCaseReport()));
+                                  postVolunteerToken().then((onValue) {
+                                    if (tokenStatus) {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  MainCaseReport()));
+                                    }
+                                  });
                                 }
                               },
                             ),
