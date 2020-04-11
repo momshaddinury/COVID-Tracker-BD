@@ -1,7 +1,9 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:selfreportingapp/model/citizen_reporting_qa.dart';
 import 'package:selfreportingapp/model/main_case_report_qa.dart';
-import 'package:selfreportingapp/model/self_report_qa.dart';
+import 'package:selfreportingapp/model/patient_data.dart';
 
 import 'json_handle.dart';
 
@@ -18,6 +20,9 @@ String devAccessToken =
 
 String devCitizenReportSubmissionUrl =
     "https://dev.corona-dghs.xyz/api/response/citizen";
+
+String volunteerAuthTokenUrl =
+    "https://us-central1-covid19-bd.cloudfunctions.net/validateToken";
 
 //GET Methods
 
@@ -71,8 +76,33 @@ Future<http.Response> postMainCaseReport() async {
     'Authorization': '$productionAccessToken',
     'Content-type': 'application/json',
   };
+  String mainCaseData = jsonEncode({
+    "age": {"answer": "$age"},
+    "phone": {"answer": "$phoneNumber"},
+    "name": {"answer": "$fullName"},
+    "gender": {"answer": gender},
+    "is_feverish": {"answer": fever},
+    "has_sore_throat": {"answer": coughOrThroatPain},
+    "has_breathlessness": {"answer": problemBreathing},
+    "is_visited_abroad": {"answer": cameBackFromAbroad},
+    "is_contacted_with_covid": {"answer": contactWithAnyCOVIDPatient},
+    "is_contacted_with_family_who_cough": {
+      "answer": cameInContactWithPersonHavingCoughOrThroatPain
+    },
+    "high_risk": {"answer": riskGroup},
+    "division": {"answer": division},
+    "district": {"answer": district},
+    "upazila": {"answer": upazila},
+    "location": {"latitude": lat, "longitude": lon, "altitude": alt},
+    "relationship_id": relationType,
+    "nid": nid,
+    "address": address,
+    "is_offline": false,
+    "metadata": {},
+    "submitted_at": DateTime.now().millisecondsSinceEpoch
+  });
   var response = await http.post(productionBaseUrl + "response",
-      body: mainCaseData, headers: headers);
+      body: "$mainCaseData", headers: headers);
   print("submitResponse() - ${response.body}");
   parseJson.decodeJson(response.body.toString());
   return response;
@@ -106,5 +136,24 @@ Future<http.Response> postCitizenReport() async {
 
   print("submitCitizenResponse() - ${response.body}");
   parseJson.decodeJson(response.body.toString());
+  return response;
+}
+
+/// Volunteer Auth
+Future<http.Response> postVolunteerToken() async {
+  Map<String, String> headers = {
+    'Content-type': 'application/json',
+  };
+  String volunteerToken = jsonEncode({
+    "data": {"access_token": volunteerAccessToken}
+  });
+
+  print(volunteerToken);
+  var response = await http.post(volunteerAuthTokenUrl,
+      body: "$volunteerToken", headers: headers);
+
+  print("postVolunteerToken() - ${response.body}");
+  parseJson.decodeJson(response.body.toString());
+  print(tokenStatus);
   return response;
 }
