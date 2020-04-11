@@ -11,7 +11,7 @@ class TriageQuestion extends StatelessWidget {
   }) : super(key: key);
 
   final String question;
-  bool placeHolder;
+  String placeHolder;
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +30,11 @@ class TriageQuestion extends StatelessWidget {
           ),
           options: [
             FormBuilderFieldOption(
-              value: 'হ্যাঁ',
+              value: true,
               child: Text('হ্যাঁ'),
             ),
             FormBuilderFieldOption(
-              value: 'না',
+              value: false,
               child: Text('না'),
             ),
           ],
@@ -42,49 +42,21 @@ class TriageQuestion extends StatelessWidget {
             FormBuilderValidators.required(),
           ],
           onSaved: (value) {
-            if (placeHolder == fever) {
-              if (value == "হ্যাঁ") {
-                fever = true;
-              } else if (value == "না") {
-                fever = false;
-              }
-            } else if (placeHolder == coughOrThroatPain) {
-              if (value == "হ্যাঁ") {
-                coughOrThroatPain = true;
-              } else if (value == "না") {
-                coughOrThroatPain = false;
-              }
-            } else if (placeHolder == problemBreathing) {
-              if (value == "হ্যাঁ") {
-                problemBreathing = true;
-              } else if (value == "না") {
-                problemBreathing = false;
-              }
-            } else if (placeHolder == cameBackFromAbroad) {
-              if (value == "হ্যাঁ") {
-                cameBackFromAbroad = true;
-              } else if (value == "না") {
-                cameBackFromAbroad = false;
-              }
-            } else if (placeHolder == contactWithAnyCOVIDPatient) {
-              if (value == "হ্যাঁ") {
-                contactWithAnyCOVIDPatient = true;
-              } else if (value == "না") {
-                contactWithAnyCOVIDPatient = false;
-              }
+            if (placeHolder == "fever") {
+              fever = value;
+            } else if (placeHolder == "coughOrThroatPain") {
+              coughOrThroatPain = value;
+            } else if (placeHolder == "problemBreathing") {
+              problemBreathing = value;
+            } else if (placeHolder == "cameBackFromAbroad") {
+              cameBackFromAbroad = value;
+            } else if (placeHolder == "contactWithAnyCOVIDPatient") {
+              contactWithAnyCOVIDPatient = value;
             } else if (placeHolder ==
-                cameInContactWithPersonHavingCoughOrThroatPain) {
-              if (value == "হ্যাঁ") {
-                cameInContactWithPersonHavingCoughOrThroatPain = true;
-              } else if (value == "না") {
-                cameInContactWithPersonHavingCoughOrThroatPain = false;
-              }
-            } else if (placeHolder == riskGroup) {
-              if (value == "হ্যাঁ") {
-                riskGroup = true;
-              } else if (value == "না") {
-                riskGroup = false;
-              }
+                "cameInContactWithPersonHavingCoughOrThroatPain") {
+              cameInContactWithPersonHavingCoughOrThroatPain = value;
+            } else if (placeHolder == "riskGroup") {
+              riskGroup = value;
             }
           },
         )
