@@ -5,17 +5,19 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:selfreportingapp/services/api.dart';
 import 'package:selfreportingapp/services/json_handle.dart';
+import 'package:selfreportingapp/widgets/loading.dart';
 import 'package:selfreportingapp/widgets/toast.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ActionButton extends StatelessWidget {
-  const ActionButton({
+  ActionButton({
     Key key,
     @required GlobalKey<FormBuilderState> fbKey,
   })  : _fbKey = fbKey,
         super(key: key);
 
   final GlobalKey<FormBuilderState> _fbKey;
+  final GlobalKey<State> _keyLoader = new GlobalKey<State>();
 
   @override
   Widget build(BuildContext context) {
@@ -63,32 +65,13 @@ class ActionButton extends StatelessWidget {
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () async {
-              showDialog(
-                  barrierDismissible: false,
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      content: Container(
-                          height: 100,
-                          width: 100,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Text("Please Wait"),
-                              SizedBox(height: 10),
-                              SpinKitThreeBounce(
-                                color: Colors.red,
-                                size: 30.0,
-                              ),
-                            ],
-                          )),
-                    );
-                  });
+              Dialogs.showLoadingDialog(context, _keyLoader);
               if (_fbKey.currentState.saveAndValidate()) {
                 print(_fbKey.currentState.value);
                 //await orgLoginResponse();
                 await postMainCaseReport();
+                Navigator.of(_keyLoader.currentContext, rootNavigator: false)
+                    .pop();
                 showDialog(
                   context: context,
                   barrierDismissible: false,
@@ -114,8 +97,8 @@ class ActionButton extends StatelessWidget {
                     actions: <Widget>[
                       new FlatButton(
                         onPressed: () {
-                          Navigator.of(context)
-                              .popUntil((route) => route.isFirst);
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              '/HomePage', (Route<dynamic> route) => false);
                         },
                         textColor: Theme.of(context).primaryColor,
                         child: const Text('ওকে'),

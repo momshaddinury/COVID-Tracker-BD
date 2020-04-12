@@ -2,10 +2,12 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:selfreportingapp/model/color_constants.dart';
 import 'package:selfreportingapp/model/patient_data.dart';
 import 'package:selfreportingapp/screens/Report/main_case_report_submission_page.dart';
 import 'package:selfreportingapp/services/api.dart';
 import 'package:selfreportingapp/services/json_handle.dart';
+import 'package:selfreportingapp/widgets/loading.dart';
 import 'package:selfreportingapp/widgets/toast.dart';
 
 class VolunteerUpdate extends StatefulWidget {
@@ -15,6 +17,7 @@ class VolunteerUpdate extends StatefulWidget {
 
 class _VolunteerUpdateState extends State<VolunteerUpdate> {
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+  final GlobalKey<State> _keyLoader = new GlobalKey<State>();
 
   @override
   Widget build(BuildContext context) {
@@ -122,38 +125,20 @@ class _VolunteerUpdateState extends State<VolunteerUpdate> {
                                 style: TextStyle(color: Colors.white),
                               ),
                               onPressed: () {
-                                showDialog(
-                                    barrierDismissible: false,
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return AlertDialog(
-                                        content: Container(
-                                            height: 100,
-                                            width: 100,
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: <Widget>[
-                                                Text("Please Wait"),
-                                                SizedBox(height: 10),
-                                                SpinKitThreeBounce(
-                                                  color: Colors.red,
-                                                  size: 30.0,
-                                                ),
-                                              ],
-                                            )),
-                                      );
-                                    });
+                                Dialogs.showLoadingDialog(context, _keyLoader);
                                 if (_fbKey.currentState.saveAndValidate()) {
                                   postVolunteerToken().then((onValue) {
                                     if (tokenStatus) {
                                       Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  MainCaseReport()));
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      MainCaseReport()))
+                                          .then((value) {
+                                        Navigator.of(_keyLoader.currentContext,
+                                                rootNavigator: false)
+                                            .pop();
+                                      });
                                     }
                                   });
                                 }
