@@ -159,7 +159,6 @@ class _MainCaseReportState extends State<MainCaseReport> {
                               .toList(),
                         ),
                         PersonalInformation(),
-
                         // বিভাগ
                         FormBuilderDropdown(
                           attribute: "divisionDropdown",

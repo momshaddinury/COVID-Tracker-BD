@@ -11,31 +11,15 @@ class Support extends StatelessWidget {
         brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.black87),
       ),
-      body: Container(
-        color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Expanded(
-              flex: 3,
-              child: Image.asset("assets/love.gif"),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Expanded(
-              flex: 2,
-              child: AutoSizeText(
-                "THANK YOU FOR YOUR SUPPORT\n\nEMAIL: index.zeroth@gmail.com\n\nCALL: 01407869294\n\nPAGE:https://www.facebook.com/zeroth.index/",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-          ],
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Container(
+          color: Colors.white,
+          child: AutoSizeText(
+            "THANK YOU FOR YOUR SUPPORT\n\nEMAIL: index.zeroth@gmail.com\n\nCALL: 01407869294\n\nPAGE:https://www.facebook.com/zeroth.index/",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
         ),
       ),
     );

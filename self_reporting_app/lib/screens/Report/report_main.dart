@@ -72,10 +72,7 @@ class _ReportMainState extends State<ReportMain> {
                             shape: StadiumBorder(),
                             child: AutoSizeText(
                               "শুরু করুন",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25,
-                              ),
+                              style: reportButtonTextStyle(),
                             ),
                             onPressed: () async {
                               Navigator.push(
@@ -97,10 +94,7 @@ class _ReportMainState extends State<ReportMain> {
                             shape: StadiumBorder(),
                             child: AutoSizeText(
                               "কমিউনিটি সার্ভিস",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25,
-                              ),
+                              style: reportButtonTextStyle(),
                             ),
                             onPressed: () async {
                               Navigator.push(
@@ -124,10 +118,7 @@ class _ReportMainState extends State<ReportMain> {
                             child: AutoSizeText(
                               "সম্ভাব্য করোনা আক্রান্ত ব্যাক্তির তথ্য দিন",
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25,
-                              ),
+                              style: reportButtonTextStyle(),
                             ),
                             onPressed: () async {
                               Navigator.push(
@@ -150,6 +141,13 @@ class _ReportMainState extends State<ReportMain> {
           ),
         ),
       ),
+    );
+  }
+
+  TextStyle reportButtonTextStyle() {
+    return TextStyle(
+      color: Colors.white,
+      fontSize: 25,
     );
   }
 }

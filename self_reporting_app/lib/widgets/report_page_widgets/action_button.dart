@@ -65,12 +65,22 @@ class ActionButton extends StatelessWidget {
               toast("অপেক্ষা করুন");
               if (_fbKey.currentState.saveAndValidate()) {
                 toast("প্রসেসিং");
-
+                showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        content: LinearProgressIndicator(
+                          semanticsLabel: "Please Wait...",
+                        ),
+                      );
+                    });
                 print(_fbKey.currentState.value);
                 //await orgLoginResponse();
                 await postMainCaseReport();
                 showDialog(
                   context: context,
+                  barrierDismissible: false,
                   builder: (BuildContext context) => AlertDialog(
                     content: SingleChildScrollView(
                       child: new Column(

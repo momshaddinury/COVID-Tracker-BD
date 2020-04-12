@@ -122,6 +122,13 @@ class _VolunteerUpdateState extends State<VolunteerUpdate> {
                               ),
                               onPressed: () {
                                 toast("অপেক্ষা করুন");
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return Dialog(
+                                        child: LinearProgressIndicator(),
+                                      );
+                                    });
                                 if (_fbKey.currentState.saveAndValidate()) {
                                   postVolunteerToken().then((onValue) {
                                     if (tokenStatus) {
