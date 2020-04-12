@@ -490,7 +490,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SmoothPageIndicator(
                     controller: controller2,
-                    count: 6,
+                    count: 5,
                     effect: ScrollingDotsEffect(
                       activeDotColor: Colors.indigo,
                       dotColor: Colors.indigo[50],

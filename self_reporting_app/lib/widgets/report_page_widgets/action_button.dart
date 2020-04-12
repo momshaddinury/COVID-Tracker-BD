@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:selfreportingapp/services/api.dart';
 import 'package:selfreportingapp/services/json_handle.dart';
 import 'package:selfreportingapp/widgets/toast.dart';
@@ -62,19 +63,29 @@ class ActionButton extends StatelessWidget {
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () async {
-              toast("অপেক্ষা করুন");
+              showDialog(
+                  barrierDismissible: false,
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      content: Container(
+                          height: 100,
+                          width: 100,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text("Please Wait"),
+                              SizedBox(height: 10),
+                              SpinKitThreeBounce(
+                                color: Colors.red,
+                                size: 30.0,
+                              ),
+                            ],
+                          )),
+                    );
+                  });
               if (_fbKey.currentState.saveAndValidate()) {
-                toast("প্রসেসিং");
-                showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        content: LinearProgressIndicator(
-                          semanticsLabel: "Please Wait...",
-                        ),
-                      );
-                    });
                 print(_fbKey.currentState.value);
                 //await orgLoginResponse();
                 await postMainCaseReport();

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:selfreportingapp/model/patient_data.dart';
 import 'package:selfreportingapp/screens/Report/main_case_report_submission_page.dart';
 import 'package:selfreportingapp/services/api.dart';
@@ -121,12 +122,28 @@ class _VolunteerUpdateState extends State<VolunteerUpdate> {
                                 style: TextStyle(color: Colors.white),
                               ),
                               onPressed: () {
-                                toast("অপেক্ষা করুন");
                                 showDialog(
+                                    barrierDismissible: false,
                                     context: context,
                                     builder: (BuildContext context) {
-                                      return Dialog(
-                                        child: LinearProgressIndicator(),
+                                      return AlertDialog(
+                                        content: Container(
+                                            height: 100,
+                                            width: 100,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: <Widget>[
+                                                Text("Please Wait"),
+                                                SizedBox(height: 10),
+                                                SpinKitThreeBounce(
+                                                  color: Colors.red,
+                                                  size: 30.0,
+                                                ),
+                                              ],
+                                            )),
                                       );
                                     });
                                 if (_fbKey.currentState.saveAndValidate()) {
