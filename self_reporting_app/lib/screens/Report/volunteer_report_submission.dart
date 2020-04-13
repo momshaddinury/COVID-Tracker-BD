@@ -125,22 +125,28 @@ class _VolunteerUpdateState extends State<VolunteerUpdate> {
                                 style: TextStyle(color: Colors.white),
                               ),
                               onPressed: () {
-                                Dialogs.showLoadingDialog(context, _keyLoader);
                                 if (_fbKey.currentState.saveAndValidate()) {
+                                  Dialogs.showLoadingDialog(
+                                      context, _keyLoader);
                                   postVolunteerToken().then((onValue) {
                                     if (tokenStatus) {
-                                      Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      MainCaseReport()))
+                                      Navigator.of(context)
+                                          .pushNamedAndRemoveUntil(
+                                              '/MainCaseReport',
+                                              ModalRoute.withName('/HomePage'))
                                           .then((value) {
                                         Navigator.of(_keyLoader.currentContext,
-                                                rootNavigator: false)
+                                                rootNavigator: true)
                                             .pop();
                                       });
+                                    } else {
+                                      Navigator.of(_keyLoader.currentContext,
+                                              rootNavigator: true)
+                                          .pop();
                                     }
                                   });
+                                } else {
+                                  print("ভেলিডেশন ফেইল্ড");
                                 }
                               },
                             ),

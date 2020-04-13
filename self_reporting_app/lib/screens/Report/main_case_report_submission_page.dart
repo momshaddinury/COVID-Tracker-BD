@@ -24,6 +24,13 @@ class _MainCaseReportState extends State<MainCaseReport> {
   String selectedDivision, selectedDistrict;
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
   List<String> districtList = [], subDistrictList = [], divisionList = [];
+  //final ValueNotifier<int> isReset = ValueNotifier<int>(0);
+
+  rebuildParent() {
+    //isReset.value += 1;
+    initState();
+    //print(isReset);
+  }
 
   var relationTypeNames = [
     "পিতা",
@@ -49,6 +56,7 @@ class _MainCaseReportState extends State<MainCaseReport> {
   @override
   void initState() {
     divisionList = bdModel.getDivisionListBn();
+    super.initState();
   }
 
   @override
@@ -280,7 +288,7 @@ class _MainCaseReportState extends State<MainCaseReport> {
                   SizedBox(
                     height: 20,
                   ),
-                  ActionButton(fbKey: _fbKey),
+                  ActionButton(fbKey: _fbKey, rebuildParent: rebuildParent),
                 ],
               ),
             ),

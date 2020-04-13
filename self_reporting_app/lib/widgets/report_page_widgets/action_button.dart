@@ -3,20 +3,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:selfreportingapp/screens/Report/main_case_report_submission_page.dart';
 import 'package:selfreportingapp/services/api.dart';
 import 'package:selfreportingapp/services/json_handle.dart';
 import 'package:selfreportingapp/widgets/loading.dart';
 import 'package:selfreportingapp/widgets/toast.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ActionButton extends StatelessWidget {
+class ActionButton extends StatefulWidget {
   ActionButton({
     Key key,
+    @required this.rebuildParent,
     @required GlobalKey<FormBuilderState> fbKey,
   })  : _fbKey = fbKey,
         super(key: key);
-
+  final Function() rebuildParent;
   final GlobalKey<FormBuilderState> _fbKey;
+
+  @override
+  _ActionButtonState createState() => _ActionButtonState();
+}
+
+class _ActionButtonState extends State<ActionButton> {
   final GlobalKey<State> _keyLoader = new GlobalKey<State>();
 
   @override
@@ -32,7 +40,7 @@ class ActionButton extends StatelessWidget {
             ),
             onPressed: () async {
               toast("অপেক্ষা করুন");
-              _fbKey.currentState.reset();
+              widget._fbKey.currentState.reset();
               // await auth.signOut();
               Navigator.pop(context);
             },
@@ -50,7 +58,7 @@ class ActionButton extends StatelessWidget {
             ),
             onPressed: () {
               toast("অপেক্ষা করুন");
-              _fbKey.currentState.reset();
+              Navigator.popAndPushNamed(context, '/MainCaseReport');
             },
           ),
         ),
@@ -65,12 +73,12 @@ class ActionButton extends StatelessWidget {
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () async {
-              Dialogs.showLoadingDialog(context, _keyLoader);
-              if (_fbKey.currentState.saveAndValidate()) {
-                print(_fbKey.currentState.value);
+              if (widget._fbKey.currentState.saveAndValidate()) {
+                Dialogs.showLoadingDialog(context, _keyLoader);
+                print(widget._fbKey.currentState.value);
                 //await orgLoginResponse();
                 await postMainCaseReport();
-                Navigator.of(_keyLoader.currentContext, rootNavigator: false)
+                Navigator.of(_keyLoader.currentContext, rootNavigator: true)
                     .pop();
                 showDialog(
                   context: context,
@@ -109,7 +117,7 @@ class ActionButton extends StatelessWidget {
                 //await auth.signOut();
                 toast("সফল ভাবে জমা হয়েছে");
               } else {
-                print(_fbKey.currentState.value);
+                print(widget._fbKey.currentState.value);
                 toast("পুনরায় চেক করুন");
                 print("ভেলিডেশন ফেইল্ড");
               }

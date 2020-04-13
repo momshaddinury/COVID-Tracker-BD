@@ -374,8 +374,8 @@ class _HomePageState extends State<HomePage> {
                                         children: <Widget>[
                                           AutoSizeText(
                                             todo[i],
-                                            textScaleFactor: 1.25,
-                                            maxLines: 5,
+                                            textScaleFactor: 1,
+                                            maxLines: 10,
                                             textAlign: TextAlign.center,
                                             style:
                                                 TextStyle(color: Colors.white),
