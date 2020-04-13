@@ -8,6 +8,7 @@ Lead Developer: [Momshad Dinury](https://github.com/dinurymomshad)
 ## Sections
 * [Resources Used](#resources-used)
 * [Team members](#team-members)
+* [App Directory](#app-directory)
 * [App Features](#app-features)
 * [API](#api)
 * [Covid19 Cloud Functions](#covid19-cloud-functions)
@@ -26,6 +27,18 @@ Lead Developer: [Momshad Dinury](https://github.com/dinurymomshad)
 * [Mahbubur Rahman (Server and API)](https://github.com/mahbubcubd)
 * Ibrahim Ullah (Data Logging and Model Analysis)
 
+## App Directory
+```bash
+├───bloc
+├───model
+├───screens
+│   └───Report
+├───services
+└───widgets
+    ├───report_page_widgets
+    └───SKOnBoarding
+
+```
 ## App Features
 1. User can check COVID19 Stat update of Bangladesh
 2. User can see other infected people in the location tab
