@@ -9,15 +9,32 @@ class OnBoardingScreen extends StatefulWidget {
   _OnBoardingScreenState createState() => _OnBoardingScreenState();
 }
 
-class _OnBoardingScreenState extends State<OnBoardingScreen> {
+class _OnBoardingScreenState extends State<OnBoardingScreen>
+    with WidgetsBindingObserver {
   @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
     try {
       checkForUpdate();
     } catch (e) {
       print(e);
     }
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      print(state);
+      checkForUpdate();
+    }
+    super.didChangeAppLifecycleState(state);
   }
 
   final pageList = [
