@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:selfreportingapp/model/country_data.dart';
+import 'package:selfreportingapp/model/district.dart';
+import 'package:selfreportingapp/model/division.dart';
 import 'package:selfreportingapp/model/patient_data.dart';
+import 'package:selfreportingapp/model/upazila.dart';
 import 'package:selfreportingapp/services/api.dart';
 import 'package:selfreportingapp/services/json_handle.dart';
 import 'package:selfreportingapp/widgets/toast.dart';
@@ -25,10 +28,72 @@ class _DoctorsReportState extends State<DoctorsReport> {
   String selectedDivision, selectedDistrict;
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
   List<String> districtList = [], subDistrictList = [], divisionList = [];
+  Future<List<Division>> futureDivision;
+  List<Division> divisionDetails;
+  Future<List<District>> futureDistrict;
+  List<District> districtDetails;
+  Future<List<Upazila>> futureUpazila;
+  List<Upazila> upazilaDetails;
 
   @override
   void initState() {
-    divisionList = bdModel.getDivisionListBn();
+    super.initState();
+//    divisionList = bdModel.getDivisionListBn();
+
+    futureDivision = getAllDivision();
+    futureDistrict = getAllDistricts();
+    futureUpazila  = getAllUpazila();
+    futureDivision.then((division){
+      setState(() {
+        divisionDetails = division;
+      });
+    });
+    futureDistrict.then((district){
+      setState(() {
+        districtDetails = district;
+      });
+    });
+    futureUpazila.then((upazila){
+      setState(() {
+        upazilaDetails = upazila;
+      });
+    });
+
+    divisionList = getDivisionList();
+  }
+
+  List<String> getDivisionList() {
+    List<String> list = [];
+    if(divisionDetails != null){
+      for(int i = 0; i< divisionDetails.length ; i++ ){
+        list.add(divisionDetails[i].nameBn);
+      }
+    }
+    return list;
+  }
+
+  List<String> getDistrictList(String division) {
+    List<String> list = [];
+    if(districtDetails != null){
+      for(int i = 0; i< districtDetails.length ; i++ ){
+        if(districtDetails[i].division.nameBn == division){
+          list.add(districtDetails[i].nameBn);
+        }
+      }
+    }
+    return list;
+  }
+
+  List<String> getUpazilaList(String district) {
+    List<String> list = [];
+    if(upazilaDetails != null){
+      for(int i = 0; i< upazilaDetails.length ; i++ ){
+        if(upazilaDetails[i].district.nameBn == district){
+          list.add(upazilaDetails[i].nameBn);
+        }
+      }
+    }
+    return list;
   }
 
   @override
@@ -164,7 +229,7 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           hint: Text('   বিভাগ নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
                           onSaved: (value) => division = value,
-                          items: divisionList
+                          items: getDivisionList()
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("$value")))
                               .toList(),
@@ -177,14 +242,16 @@ class _DoctorsReportState extends State<DoctorsReport> {
                                 .reset();
                             if (value == null) {
                               setState(() {
-                                divisionList = bdModel.getDivisionListBn();
+                                divisionList = getDivisionList();
+                                districtList = [];
+                                subDistrictList = [];
                               });
                             } else {
                               setState(() {
                                 divisionList = [];
                                 selectedDivision = value.toString().trim();
                                 districtList =
-                                    bdModel.getDistrictListBn(selectedDivision);
+                                    getDistrictList(selectedDivision);
                               });
                             }
                           },
@@ -211,16 +278,15 @@ class _DoctorsReportState extends State<DoctorsReport> {
                               if (selectedDivision != "" &&
                                   selectedDivision != null) {
                                 setState(() {
-                                  districtList = bdModel
-                                      .getDistrictListBn(selectedDivision);
+                                  districtList = getDistrictList(selectedDivision);
+                                  subDistrictList = [];
                                 });
                               }
                             } else {
                               setState(() {
                                 districtList = [];
                                 selectedDistrict = value.toString().trim();
-                                subDistrictList = bdModel
-                                    .getSubDistrictListBn(selectedDistrict);
+                                subDistrictList = getUpazilaList(selectedDistrict);
                               });
                             }
                           },
@@ -244,8 +310,7 @@ class _DoctorsReportState extends State<DoctorsReport> {
                               if (selectedDistrict != "" &&
                                   selectedDistrict != null) {
                                 setState(() {
-                                  subDistrictList = bdModel
-                                      .getSubDistrictListBn(selectedDistrict);
+                                  subDistrictList = getUpazilaList(selectedDistrict);
                                 });
                               }
                             } else {

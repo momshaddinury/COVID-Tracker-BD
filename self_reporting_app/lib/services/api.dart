@@ -2,8 +2,12 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:selfreportingapp/model/citizen_reporting_qa.dart';
+import 'package:selfreportingapp/model/district.dart';
+import 'package:selfreportingapp/model/division.dart';
 import 'package:selfreportingapp/model/main_case_report_qa.dart';
 import 'package:selfreportingapp/model/patient_data.dart';
+import 'package:selfreportingapp/model/upazila.dart';
+import 'package:selfreportingapp/screens/about_us.dart';
 
 import 'json_handle.dart';
 
@@ -37,35 +41,64 @@ Future<http.Response> getAllQuestions() async {
   return response;
 }
 
-//Get all Districts
-Future<http.Response> getAllDistricts() async {
+//Get all Division
+Future<List<Division>> getAllDivision() async {
   Map<String, String> headers = {
     'Authorization': '$productionAccessToken',
   };
-  var response =
-      await http.get(productionBaseUrl + "districts", headers: headers);
-  return response;
+  final response =
+      await http.get(productionBaseUrl + "divisions", headers: headers);
+  if (response.statusCode == 200){
+    List<dynamic> body = jsonDecode(response.body);
+    List<Division> divisionDetails = body
+        .map(
+            (dynamic item) => Division.fromJson(item)
+    )
+    .toList();
+    return divisionDetails;
+//    return Division.fromJson(json.decode(response.body));
+  } else {
+    throw Exception('Failed to load Divisions');
+  }
 }
 
-//Get all Division
-Future<http.Response> getAllDivision() async {
+//Get all Districts
+Future<List<District>> getAllDistricts() async {
   Map<String, String> headers = {
     'Authorization': '$productionAccessToken',
   };
-  var response =
-      await http.get(productionBaseUrl + "divisions", headers: headers);
-  return response;
+  final response =
+      await http.get(productionBaseUrl + "districts", headers: headers);
+  if(response.statusCode == 200){
+    List<dynamic> body = jsonDecode(response.body);
+    List<District> districtDetails = body
+        .map(
+            (dynamic item) => District.fromJson(item)
+    ).toList();
+    return districtDetails;
+  }else {
+    throw Exception('Failed to load Divisions');
+  }
 }
 
 //Get all Upazila
-Future<http.Response> getAllUpazila() async {
+Future<List<Upazila>> getAllUpazila() async {
   Map<String, String> headers = {
     'Authorization': '$productionAccessToken',
     'Content-type': 'application/json',
   };
-  var response =
+  final response =
       await http.get(productionBaseUrl + "upazilas", headers: headers);
-  return response;
+  if(response.statusCode == 200){
+    List<dynamic> body = jsonDecode(response.body);
+    List<Upazila> upazilaDetails = body
+        .map(
+            (dynamic item) => Upazila.fromJson(item)
+    ).toList();
+    return upazilaDetails;
+  }else {
+    throw Exception('Failed to load Divisions');
+  }
 }
 
 //POST Methods
