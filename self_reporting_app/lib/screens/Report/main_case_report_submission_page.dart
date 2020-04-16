@@ -73,19 +73,25 @@ class _MainCaseReportState extends State<MainCaseReport> {
     futureDistrict = getAllDistricts();
     futureUpazila  = getAllUpazila();
     futureDivision.then((division){
-      setState(() {
-        divisionDetails = division;
-      });
+      if(this.mounted){
+        setState(() {
+          divisionDetails = division;
+        });
+      }
     });
     futureDistrict.then((district){
-      setState(() {
-        districtDetails = district;
-      });
+      if(this.mounted){
+        setState(() {
+          districtDetails = district;
+        });
+      }
     });
     futureUpazila.then((upazila){
-      setState(() {
-        upazilaDetails = upazila;
-      });
+      if(this.mounted){
+        setState(() {
+          upazilaDetails = upazila;
+        });
+      }
     });
 
     divisionList = getDivisionList();
@@ -123,6 +129,38 @@ class _MainCaseReportState extends State<MainCaseReport> {
       }
     }
     return list;
+  }
+
+  String getDivisionCode(String division){
+    String code;
+    if(divisionDetails != null){
+      for(int i = 0; i< divisionDetails.length ; i++ ){
+        if(divisionDetails[i].nameBn == division){
+          code = divisionDetails[i].code.toString();
+        }
+      }
+    }
+    if(code == null){
+      return division;
+    } else {
+      return code;
+    }
+  }
+
+  String getUpazilaCode(String upazila){
+    String code;
+    if(upazilaDetails != null){
+      for(int i = 0; i< upazilaDetails.length ; i++ ){
+        if(upazilaDetails[i].nameBn == upazila){
+          code = upazilaDetails[i].code.toString();
+        }
+      }
+    }
+    if(code == null){
+      return upazila;
+    } else {
+      return code;
+    }
   }
 
   @override
@@ -240,7 +278,7 @@ class _MainCaseReportState extends State<MainCaseReport> {
                           // initialValue: 'Male',
                           hint: Text('   বিভাগ নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
-                          onSaved: (value) => division = value,
+                          onSaved: (value) => division = getDivisionCode(value.toString().trim()),
                           items: getDivisionList()
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("   $value")))
@@ -253,18 +291,22 @@ class _MainCaseReportState extends State<MainCaseReport> {
                                 .currentState
                                 .reset();
                             if (value == null) {
-                              setState(() {
-                                divisionList = getDivisionList();
-                                districtList = [];
-                                subDistrictList = [];
-                              });
+                              if(this.mounted){
+                                setState(() {
+                                  divisionList = getDivisionList();
+                                  districtList = [];
+                                  subDistrictList = [];
+                                });
+                              }
                             } else {
-                              setState(() {
-                                divisionList = [];
-                                selectedDivision = value.toString().trim();
-                                districtList =
-                                    getDistrictList(selectedDivision);
-                              });
+                              if(this.mounted){
+                                setState(() {
+                                  divisionList = [];
+                                  selectedDivision = value.toString().trim();
+                                  districtList =
+                                      getDistrictList(selectedDivision);
+                                });
+                              }
                             }
                           },
                           allowClear: true,
@@ -289,17 +331,21 @@ class _MainCaseReportState extends State<MainCaseReport> {
                             if (value == null) {
                               if (selectedDivision != "" &&
                                   selectedDivision != null) {
-                                setState(() {
-                                  districtList = getDistrictList(selectedDivision);
-                                  subDistrictList = [];
-                                });
+                                if(this.mounted){
+                                  setState(() {
+                                    districtList = getDistrictList(selectedDivision);
+                                    subDistrictList = [];
+                                  });
+                                }
                               }
                             } else {
-                              setState(() {
-                                districtList = [];
-                                selectedDistrict = value.toString().trim();
-                                subDistrictList = getUpazilaList(selectedDistrict);
-                              });
+                              if(this.mounted){
+                                setState(() {
+                                  districtList = [];
+                                  selectedDistrict = value.toString().trim();
+                                  subDistrictList = getUpazilaList(selectedDistrict);
+                                });
+                              }
                             }
                           },
                         ),
@@ -311,7 +357,7 @@ class _MainCaseReportState extends State<MainCaseReport> {
                           hint: Text('   উপজেলা নির্বাচন করুন'),
                           /*validators: [FormBuilderValidators.required()],*/
                           allowClear: true,
-                          onSaved: (value) => upazila = value,
+                          onSaved: (value) => upazila = getUpazilaCode(value.toString().trim()),
                           items: subDistrictList
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("   $value")))
@@ -320,14 +366,18 @@ class _MainCaseReportState extends State<MainCaseReport> {
                             if (value == null) {
                               if (selectedDistrict != "" &&
                                   selectedDistrict != null) {
-                                setState(() {
-                                  subDistrictList = getUpazilaList(selectedDistrict);
-                                });
+                                if(this.mounted){
+                                  setState(() {
+                                    subDistrictList = getUpazilaList(selectedDistrict);
+                                  });
+                                }
                               }
                             } else {
-                              setState(() {
-                                subDistrictList = [];
-                              });
+                              if(this.mounted){
+                                setState(() {
+                                  subDistrictList = [];
+                                });
+                              }
                             }
                           },
                         ),

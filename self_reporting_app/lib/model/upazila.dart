@@ -5,11 +5,12 @@ class Upazila {
   final String nameBn;
   final double latitude;
   final double longitude;
+  final String code;
   final String divisionId;
   final String districtId;
   final UnderDistrict district;
 
-  Upazila({this.isActive, this.id, this.name, this.nameBn, this.latitude, this.longitude, this.divisionId, this.districtId, this.district});
+  Upazila({this.isActive, this.id, this.name, this.nameBn, this.latitude, this.longitude, this.code, this.divisionId, this.districtId, this.district});
 
 
   factory Upazila.fromJson(Map<String, dynamic> json) {
@@ -20,6 +21,7 @@ class Upazila {
       nameBn: json['name_bn'],
       latitude: checkDouble(json['latitude']),
       longitude: checkDouble(json['longitude']),
+      code: json['code'],
       divisionId: json['division_id'],
       districtId: json['district_id'],
       district: UnderDistrict.fromJson(json['district']),

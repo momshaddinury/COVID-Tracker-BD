@@ -7,7 +7,6 @@ import 'package:selfreportingapp/model/division.dart';
 import 'package:selfreportingapp/model/main_case_report_qa.dart';
 import 'package:selfreportingapp/model/patient_data.dart';
 import 'package:selfreportingapp/model/upazila.dart';
-import 'package:selfreportingapp/screens/about_us.dart';
 
 import 'json_handle.dart';
 
