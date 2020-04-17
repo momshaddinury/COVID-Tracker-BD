@@ -31,15 +31,27 @@ class DeveloperStory extends StatelessWidget {
                   child: Image.asset('assets/bd.jpg'),
                 ),
                 Text(
-                  "This has been a total team effort. All of the members are students of EEE, CU. This is a small effort towards solving the national crisis.",
+                  "This has been a total team effort. Developers are students of EEE, CU. This is a small effort towards solving the national crisis.",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 20),
                 ),
                 SizedBox(
                   height: 30,
                 ),
+                Text(
+                  "DEVELOPERS",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
                 Container(
-                  height: 150,
+                  alignment: Alignment.center,
+                  height: 160,
+                  padding: EdgeInsets.all(8.0),
+                  width: MediaQuery.of(context).size.width,
+                  color: Color(0xFFF6F8FA),
                   child: ListView.builder(
                       itemCount: 1,
                       shrinkWrap: true,
@@ -47,7 +59,7 @@ class DeveloperStory extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             Column(
                               children: <Widget>[
@@ -132,15 +144,107 @@ class DeveloperStory extends StatelessWidget {
                   height: 30,
                 ),
                 Text(
-                  "CONTRIBUTORS",
+                  "Team",
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                 ),
                 SizedBox(
                   height: 15,
                 ),
                 Container(
-                  height: 150,
+                  padding: EdgeInsets.all(8.0),
+                  height: 430,
+                  color: Color(0xFFF6F8FA),
+                  child: ListView.builder(
+                      itemCount: 1,
+                      shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Text(
+                              "Dr. Arif Iftakher\nAssociate Professor, EEE, CU",
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              "Faisal Bin Kashem\nManagement",
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              "Muktashif Anwar Dhrubo\nManagement",
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              "Tasnim Tareq\nContent Writing",
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              "Afia Mahzabin Chowdhury\nExplainer Video",
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            new Text(
+                              "Md Rizuan Mozquree\nPublicity & Support Team",
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            new Text(
+                              "Md. Riaz Hossain\nMarketing & Support Team",
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            new Text(
+                              "Sadman Alam\nSupport Team",
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            new Text(
+                              "Md Shamsudoha  Shourov\nSupport Team",
+                              textAlign: TextAlign.center,
+                            )
+                          ],
+                        );
+                      }),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  "CONTRIBUTORS",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  height: 160,
+                  padding: EdgeInsets.all(8.0),
+                  width: MediaQuery.of(context).size.width,
+                  color: Color(0xFFF6F8FA),
                   child: ListView.builder(
                       itemCount: 1,
                       shrinkWrap: true,
@@ -233,7 +337,7 @@ class DeveloperStory extends StatelessWidget {
                   height: 70,
                 ),
                 Text(
-                  "Thanks to C19 Emergency Response Group, we were able to make this app. Without their continuous support & guideline it wouldn't been possible. Special thanks to  Faisal Bin Kashem & Muktashif Anwar Dhrubo.",
+                  "Thanks to C19 Emergency Response Group, we were able to make this app. Without their continuous support & guideline it wouldn't have been possible.",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 15),
                 ),

@@ -47,13 +47,10 @@ Future<List<Division>> getAllDivision() async {
   };
   final response =
       await http.get(productionBaseUrl + "divisions", headers: headers);
-  if (response.statusCode == 200){
+  if (response.statusCode == 200) {
     List<dynamic> body = jsonDecode(response.body);
-    List<Division> divisionDetails = body
-        .map(
-            (dynamic item) => Division.fromJson(item)
-    )
-    .toList();
+    List<Division> divisionDetails =
+        body.map((dynamic item) => Division.fromJson(item)).toList();
     return divisionDetails;
 //    return Division.fromJson(json.decode(response.body));
   } else {
@@ -68,14 +65,12 @@ Future<List<District>> getAllDistricts() async {
   };
   final response =
       await http.get(productionBaseUrl + "districts", headers: headers);
-  if(response.statusCode == 200){
+  if (response.statusCode == 200) {
     List<dynamic> body = jsonDecode(response.body);
-    List<District> districtDetails = body
-        .map(
-            (dynamic item) => District.fromJson(item)
-    ).toList();
+    List<District> districtDetails =
+        body.map((dynamic item) => District.fromJson(item)).toList();
     return districtDetails;
-  }else {
+  } else {
     throw Exception('Failed to load Divisions');
   }
 }
@@ -88,14 +83,12 @@ Future<List<Upazila>> getAllUpazila() async {
   };
   final response =
       await http.get(productionBaseUrl + "upazilas", headers: headers);
-  if(response.statusCode == 200){
+  if (response.statusCode == 200) {
     List<dynamic> body = jsonDecode(response.body);
-    List<Upazila> upazilaDetails = body
-        .map(
-            (dynamic item) => Upazila.fromJson(item)
-    ).toList();
+    List<Upazila> upazilaDetails =
+        body.map((dynamic item) => Upazila.fromJson(item)).toList();
     return upazilaDetails;
-  }else {
+  } else {
     throw Exception('Failed to load Divisions');
   }
 }

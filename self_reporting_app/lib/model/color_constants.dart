@@ -12,3 +12,8 @@ final Color kLight = Color(0xFF3594DD);
 final Color kMLight = Color(0xFF4563DB);
 final Color kDLight = Color(0xFF5036D5);
 final Color kDD = Color(0xFF5B16D0);
+
+final kPrimaryTitleStyle = TextStyle(
+  fontSize: 31,
+  fontWeight: FontWeight.bold,
+);

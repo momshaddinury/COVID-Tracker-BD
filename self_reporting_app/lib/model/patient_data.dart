@@ -24,7 +24,8 @@ bool fever,
     cameBackFromAbroad,
     contactWithAnyCOVIDPatient,
     cameInContactWithPersonHavingCoughOrThroatPain,
-    riskGroup;
+    riskGroup,
+    healthCareWorker;
 
 String anyoneCloseWithSymptoms;
 

@@ -1,6 +1,7 @@
 import 'dart:io' show Platform;
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,18 +9,19 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:selfreportingapp/bloc/bloc.dart';
 import 'package:selfreportingapp/bloc/event.dart';
 import 'package:selfreportingapp/bloc/state.dart';
+import 'package:selfreportingapp/initialize.dart';
 import 'package:selfreportingapp/model/todo_list.dart';
 import 'package:selfreportingapp/model/world_o_meter_repo.dart';
 import 'package:selfreportingapp/screens/heatmap.dart';
 import 'package:selfreportingapp/screens/support_page.dart';
 import 'package:selfreportingapp/services/world_o_meter_api.dart';
+import 'package:selfreportingapp/widgets/check_connection.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'Report/report_main.dart';
 import 'about_us.dart';
 
-//String selectedCategorie = "Adults";
 String title;
 
 class HomePage extends StatefulWidget {
@@ -31,18 +33,13 @@ class _HomePageState extends State<HomePage> {
   ApiService apiService;
   Map<String, int> dataMap = new Map();
   Map<String, double> dataMapAll = new Map();
-  final controller = PageController(viewportFraction: 0.5);
-  final controller2 = PageController(viewportFraction: 0.5);
-
-  //List<String> categories = ["Online Covid Test","Childrens","Womens","Mens"];
-
-  //List<SpecialityModel> specialities;
+  final controller = PageController(viewportFraction: 0.5, initialPage: 3);
+  final controller2 = PageController(viewportFraction: 0.5, initialPage: 2);
+  final controller3 = PageController(viewportFraction: 0.5, initialPage: 2);
 
   @override
   void initState() {
     super.initState();
-
-    //specialities = getSpeciality();
   }
 
   @override
@@ -53,7 +50,6 @@ class _HomePageState extends State<HomePage> {
           text: TextSpan(
             text: 'করোনা',
             style: TextStyle(
-                //color: Colors.black87.withOpacity(0.8), #95268D
                 color: Color(0xFF95268D),
                 fontSize: 25,
                 fontWeight: FontWeight.w700),
@@ -287,7 +283,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-
               SizedBox(
                 height: 50,
               ),
@@ -296,7 +291,7 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: AutoSizeText(
-                  "সর্বশেষ তথ্য \nতথ্যসূত্র: WorldoMeter",
+                  "সর্বশেষ তথ্য",
                   textScaleFactor: 1,
                   style: TextStyle(
                     color: Colors.black,
@@ -305,13 +300,28 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+
+              /// তথ্যসূত্র: WorldoMeter
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: AutoSizeText(
+                  "তথ্যসূত্র: WorldoMeter",
+                  textScaleFactor: 1,
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontFamily: 'CM Sans Serif',
+                    fontSize: 13.0,
+                  ),
+                ),
+              ),
               Container(
-                height: 250,
+                height: 500,
                 child: BlocProvider<CovidBloc>(
                   create: (BuildContext context) =>
                       CovidBloc(repository: Repository())
                         ..add(CovidBdDataEvent(
-                            param: "countries/bangladesh", paramAll: "all")),
+                            param: "v2/countries/bangladesh",
+                            paramAll: "v2/all")),
                   child: Center(
                     child: Container(
                       child: BlocBuilder<CovidBloc, CovidState>(
@@ -323,10 +333,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-
-              SizedBox(
+              /* SizedBox(
                 height: 30,
-              ),
+              ),*/
 
               /// ঝুঁকি রোধে করনীয়
               Padding(
@@ -399,7 +408,9 @@ class _HomePageState extends State<HomePage> {
                             dotColor: Colors.indigo[50],
                             activeStrokeWidth: 2.6,
                             activeDotScale: .4,
-                            radius: 8,
+                            dotWidth: 10,
+                            dotHeight: 10,
+                            radius: 10,
                             spacing: 10,
                           )),
                     ],
@@ -428,24 +439,32 @@ class _HomePageState extends State<HomePage> {
         ),
       );
     } else if (state is CovidBdState) {
-      if (state.covidBdData != null /*&& state.allData != null*/) {
-        dataMap.putIfAbsent("Active", () => state.covidBdData.active.toInt());
+      if (state.covidBdData != null && state.allData != null) {
+        /* dataMap.putIfAbsent("Active", () => state.covidBdData.active.toInt());
         dataMap.putIfAbsent(
             "Recovered", () => state.covidBdData.recovered.toInt());
         dataMap.putIfAbsent("Deaths", () => state.covidBdData.deaths.toInt());
-        /*print("CovidBdState ${state.covidBdData}");
+         print("CovidBdState ${state.covidBdData}");
         dataMapAll.putIfAbsent(
             "Total Cases ", () => (state.allData.cases).toDouble());
         dataMapAll.putIfAbsent(
             "Recovered", () => state.allData.recovered.toDouble());
         dataMapAll.putIfAbsent("Deaths", () => state.allData.deaths.toDouble());*/
 
-        List<Widget> getItemWidget = [
+        List<Widget> getLocalStatWidget = [
           getItem(state.covidBdData.recovered, "মোট সুস্থ"),
           getItem(state.covidBdData.cases, "মোট আক্রান্ত"),
           getItem(state.covidBdData.deaths, "মোট মৃত্যু"),
           getItem(state.covidBdData.todayDeaths, "২৪ ঘন্টায় মৃত্যু"),
           getItem(state.covidBdData.todayCases, "২৪ ঘন্টায় আক্রান্ত"),
+        ];
+
+        List<Widget> getGlobalStatWidget = [
+          getItem(state.allData.recovered, "মোট সুস্থ"),
+          getItem(state.allData.cases, "মোট আক্রান্ত"),
+          getItem(state.allData.deaths, "মোট মৃত্যু"),
+          getItem(state.allData.todayDeaths, "২৪ ঘন্টায় মৃত্যু"),
+          getItem(state.allData.todayCases, "২৪ ঘন্টায় আক্রান্ত"),
         ];
 
         return Center(
@@ -454,15 +473,24 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 16),
+                AutoSizeText(
+                  "বাংলাদেশ",
+                  textScaleFactor: 1,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'CM Sans Serif',
+                    fontSize: 26.0,
+                  ),
+                ),
+                SizedBox(height: 5),
                 SizedBox(
-                  height: 200,
+                  height: 166,
                   child: PageView(
                       controller: controller2,
                       children: List.generate(5, (i) {
                         return Center(
                           child: Card(
-                            elevation: 3.0,
+                            elevation: 5.0,
                             color: Colors.indigo[400],
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16)),
@@ -476,7 +504,7 @@ class _HomePageState extends State<HomePage> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    getItemWidget[i],
+                                    getLocalStatWidget[i],
                                   ],
                                 ),
                               ),
@@ -496,7 +524,66 @@ class _HomePageState extends State<HomePage> {
                       dotColor: Colors.indigo[50],
                       activeStrokeWidth: 2.6,
                       activeDotScale: .4,
-                      radius: 8,
+                      dotWidth: 10,
+                      dotHeight: 10,
+                      radius: 10,
+                      spacing: 10,
+                    )),
+                SizedBox(height: 15),
+                AutoSizeText(
+                  "বিশ্ব",
+                  textScaleFactor: 1,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'CM Sans Serif',
+                    fontSize: 26.0,
+                  ),
+                ),
+                SizedBox(height: 5),
+                SizedBox(
+                  height: 166,
+                  child: PageView(
+                      controller: controller3,
+                      children: List.generate(5, (i) {
+                        return Center(
+                          child: Card(
+                            elevation: 3.0,
+                            color: Colors.indigo[400],
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16)),
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 4),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                height: 166,
+                                width: 200,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    getGlobalStatWidget[i],
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      })),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                SmoothPageIndicator(
+                    controller: controller3,
+                    count: 5,
+                    effect: ScrollingDotsEffect(
+                      activeDotColor: Colors.indigo,
+                      dotColor: Colors.indigo[50],
+                      activeStrokeWidth: 2.6,
+                      activeDotScale: .4,
+                      dotWidth: 10,
+                      dotHeight: 10,
+                      radius: 10,
                       spacing: 10,
                     )),
               ],

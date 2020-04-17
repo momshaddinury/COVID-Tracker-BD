@@ -13,7 +13,7 @@ class DataConnectionService {
       switch (status) {
         case DataConnectionStatus.connected:
           print('::Data connection is available.');
-          streamController.sink.add("event");
+          streamController.sink.add(status);
           tasks();
           break;
         case DataConnectionStatus.disconnected:

@@ -36,7 +36,6 @@ class _MainCaseReportState extends State<MainCaseReport> {
   Future<List<Upazila>> futureUpazila;
   List<Upazila> upazilaDetails;
 
-
   rebuildParent() {
     //isReset.value += 1;
     initState();
@@ -71,36 +70,37 @@ class _MainCaseReportState extends State<MainCaseReport> {
 
     futureDivision = getAllDivision();
     futureDistrict = getAllDistricts();
-    futureUpazila  = getAllUpazila();
-    futureDivision.then((division){
-      if(this.mounted){
+    futureUpazila = getAllUpazila();
+    futureDivision.then((division) {
+      if (this.mounted) {
         setState(() {
           divisionDetails = division;
         });
       }
     });
-    futureDistrict.then((district){
-      if(this.mounted){
+    futureDistrict.then((district) {
+      if (this.mounted) {
         setState(() {
           districtDetails = district;
         });
       }
     });
-    futureUpazila.then((upazila){
-      if(this.mounted){
+    futureUpazila.then((upazila) {
+      if (this.mounted) {
         setState(() {
           upazilaDetails = upazila;
         });
       }
     });
+    //getAllQuestions();
 
     divisionList = getDivisionList();
   }
 
   List<String> getDivisionList() {
     List<String> list = [];
-    if(divisionDetails != null){
-      for(int i = 0; i< divisionDetails.length ; i++ ){
+    if (divisionDetails != null) {
+      for (int i = 0; i < divisionDetails.length; i++) {
         list.add(divisionDetails[i].nameBn);
       }
     }
@@ -109,9 +109,9 @@ class _MainCaseReportState extends State<MainCaseReport> {
 
   List<String> getDistrictList(String division) {
     List<String> list = [];
-    if(districtDetails != null){
-      for(int i = 0; i< districtDetails.length ; i++ ){
-        if(districtDetails[i].division.nameBn == division){
+    if (districtDetails != null) {
+      for (int i = 0; i < districtDetails.length; i++) {
+        if (districtDetails[i].division.nameBn == division) {
           list.add(districtDetails[i].nameBn);
         }
       }
@@ -121,9 +121,9 @@ class _MainCaseReportState extends State<MainCaseReport> {
 
   List<String> getUpazilaList(String district) {
     List<String> list = [];
-    if(upazilaDetails != null){
-      for(int i = 0; i< upazilaDetails.length ; i++ ){
-        if(upazilaDetails[i].district.nameBn == district){
+    if (upazilaDetails != null) {
+      for (int i = 0; i < upazilaDetails.length; i++) {
+        if (upazilaDetails[i].district.nameBn == district) {
           list.add(upazilaDetails[i].nameBn);
         }
       }
@@ -131,32 +131,32 @@ class _MainCaseReportState extends State<MainCaseReport> {
     return list;
   }
 
-  String getDivisionCode(String division){
+  String getDivisionCode(String division) {
     String code;
-    if(divisionDetails != null){
-      for(int i = 0; i< divisionDetails.length ; i++ ){
-        if(divisionDetails[i].nameBn == division){
+    if (divisionDetails != null) {
+      for (int i = 0; i < divisionDetails.length; i++) {
+        if (divisionDetails[i].nameBn == division) {
           code = divisionDetails[i].code.toString();
         }
       }
     }
-    if(code == null){
+    if (code == null) {
       return division;
     } else {
       return code;
     }
   }
 
-  String getUpazilaCode(String upazila){
+  String getUpazilaCode(String upazila) {
     String code;
-    if(upazilaDetails != null){
-      for(int i = 0; i< upazilaDetails.length ; i++ ){
-        if(upazilaDetails[i].nameBn == upazila){
+    if (upazilaDetails != null) {
+      for (int i = 0; i < upazilaDetails.length; i++) {
+        if (upazilaDetails[i].nameBn == upazila) {
           code = upazilaDetails[i].code.toString();
         }
       }
     }
-    if(code == null){
+    if (code == null) {
       return upazila;
     } else {
       return code;
@@ -278,7 +278,8 @@ class _MainCaseReportState extends State<MainCaseReport> {
                           // initialValue: 'Male',
                           hint: Text('   বিভাগ নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
-                          onSaved: (value) => division = getDivisionCode(value.toString().trim()),
+                          onSaved: (value) => division =
+                              getDivisionCode(value.toString().trim()),
                           items: getDivisionList()
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("   $value")))
@@ -291,7 +292,7 @@ class _MainCaseReportState extends State<MainCaseReport> {
                                 .currentState
                                 .reset();
                             if (value == null) {
-                              if(this.mounted){
+                              if (this.mounted) {
                                 setState(() {
                                   divisionList = getDivisionList();
                                   districtList = [];
@@ -299,7 +300,7 @@ class _MainCaseReportState extends State<MainCaseReport> {
                                 });
                               }
                             } else {
-                              if(this.mounted){
+                              if (this.mounted) {
                                 setState(() {
                                   divisionList = [];
                                   selectedDivision = value.toString().trim();
@@ -331,19 +332,21 @@ class _MainCaseReportState extends State<MainCaseReport> {
                             if (value == null) {
                               if (selectedDivision != "" &&
                                   selectedDivision != null) {
-                                if(this.mounted){
+                                if (this.mounted) {
                                   setState(() {
-                                    districtList = getDistrictList(selectedDivision);
+                                    districtList =
+                                        getDistrictList(selectedDivision);
                                     subDistrictList = [];
                                   });
                                 }
                               }
                             } else {
-                              if(this.mounted){
+                              if (this.mounted) {
                                 setState(() {
                                   districtList = [];
                                   selectedDistrict = value.toString().trim();
-                                  subDistrictList = getUpazilaList(selectedDistrict);
+                                  subDistrictList =
+                                      getUpazilaList(selectedDistrict);
                                 });
                               }
                             }
@@ -357,7 +360,8 @@ class _MainCaseReportState extends State<MainCaseReport> {
                           hint: Text('   উপজেলা নির্বাচন করুন'),
                           /*validators: [FormBuilderValidators.required()],*/
                           allowClear: true,
-                          onSaved: (value) => upazila = getUpazilaCode(value.toString().trim()),
+                          onSaved: (value) =>
+                              upazila = getUpazilaCode(value.toString().trim()),
                           items: subDistrictList
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("   $value")))
@@ -366,14 +370,15 @@ class _MainCaseReportState extends State<MainCaseReport> {
                             if (value == null) {
                               if (selectedDistrict != "" &&
                                   selectedDistrict != null) {
-                                if(this.mounted){
+                                if (this.mounted) {
                                   setState(() {
-                                    subDistrictList = getUpazilaList(selectedDistrict);
+                                    subDistrictList =
+                                        getUpazilaList(selectedDistrict);
                                   });
                                 }
                               }
                             } else {
-                              if(this.mounted){
+                              if (this.mounted) {
                                 setState(() {
                                   subDistrictList = [];
                                 });

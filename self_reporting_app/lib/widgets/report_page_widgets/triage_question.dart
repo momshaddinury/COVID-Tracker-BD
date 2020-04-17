@@ -57,6 +57,8 @@ class TriageQuestion extends StatelessWidget {
               cameInContactWithPersonHavingCoughOrThroatPain = value;
             } else if (placeHolder == "riskGroup") {
               riskGroup = value;
+            } else if (placeHolder == "healthCareWorker") {
+              healthCareWorker = value;
             }
           },
         )

@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:selfreportingapp/screens/loading_screen.dart';
 import 'package:selfreportingapp/screens/onboarding_screen.dart';
 import 'package:selfreportingapp/services/geo_locator.dart';
+import 'package:selfreportingapp/widgets/check_connection.dart';
 import 'services/connectivity.dart';
 
 /// Initializes fetchData() to fetch data, to  show in Home Tab
@@ -59,10 +61,15 @@ class _InitializeState extends State<Initialize> {
           if (snapShot.connectionState == ConnectionState.waiting) {
             ///if fetch data is working to fetch data
             return LoadingScreen();
+          } else if (snapShot.data == DataConnectionStatus.connected) {
+            return OnBoardingScreen();
+          } else if (snapShot.data == DataConnectionStatus.disconnected) {
+            WidgetsBinding.instance.addPostFrameCallback(
+                (_) => buildShowCheckConnectionDialog(context));
           }
 
           ///If fetchData() successfully fetched data
-          return OnBoardingScreen();
+          return Container();
         },
       ),
     );

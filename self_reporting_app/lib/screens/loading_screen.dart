@@ -19,7 +19,7 @@ class LoadingScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 SizedBox(
-                  height: 100,
+                  height: 50,
                 ),
                 Expanded(
                   flex: 2,
@@ -31,6 +31,26 @@ class LoadingScreen extends StatelessWidget {
                 Spacer(),
                 Column(
                   children: <Widget>[
+                    RichText(
+                      text: TextSpan(
+                        text: 'করোনা',
+                        style: TextStyle(
+                            color: Color(0xFF95268D),
+                            fontSize: 30,
+                            fontWeight: FontWeight.w700),
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: " ইনফো",
+                              style: TextStyle(
+                                  //textBaseline: TextBaseline.alphabetic,
+                                  //color: Colors.black87.withOpacity(0.8), #95268D
+                                  color: Color(0xFF4CB856),
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w700)),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 10),
                     AutoSizeText(
                       'সংক্রমণ প্রতিরোধের উপায়',
                       textScaleFactor: 1,

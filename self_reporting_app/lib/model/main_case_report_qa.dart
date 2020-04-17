@@ -12,15 +12,14 @@ String mainCaseData = jsonEncode({
   "phone": {"answer": "$phoneNumber"},
   "name": {"answer": "$fullName"},
   "gender": {"answer": gender},
-  "is_feverish": {"answer": fever},
   "has_sore_throat": {"answer": coughOrThroatPain},
   "has_breathlessness": {"answer": problemBreathing},
-  "is_visited_abroad": {"answer": cameBackFromAbroad},
   "is_contacted_with_covid": {"answer": contactWithAnyCOVIDPatient},
   "is_contacted_with_family_who_cough": {
     "answer": cameInContactWithPersonHavingCoughOrThroatPain
   },
   "high_risk": {"answer": riskGroup},
+  "is_healthcare_worker": {"answer": healthCareWorker},
   "division": {"answer": division},
   "district": {"answer": district},
   "upazila": {"answer": upazila},
