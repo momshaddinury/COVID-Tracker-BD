@@ -70,9 +70,11 @@ class _DoctorsReportState extends State<DoctorsReport> {
 
   List<String> getDivisionList() {
     List<String> list = [];
-    if(divisionDetails != null){
-      for(int i = 0; i< divisionDetails.length ; i++ ){
-        list.add(divisionDetails[i].nameBn);
+    if (divisionDetails != null) {
+      for (int i = 0; i < divisionDetails.length; i++) {
+        if(divisionDetails[i].nameBn != null){
+          list.add(divisionDetails[i].nameBn);
+        }
       }
     }
     return list;
@@ -80,11 +82,11 @@ class _DoctorsReportState extends State<DoctorsReport> {
 
   List<String> getDistrictList(String division) {
     List<String> list = [];
-    if(districtDetails != null){
-      for(int i = 0; i< districtDetails.length ; i++ ){
-        if(districtDetails[i].division.nameBn == division){
-          list.add(districtDetails[i].nameBn);
-        }
+    if (districtDetails != null) {
+      for (int i = 0; i < districtDetails.length; i++) {;
+      if (districtDetails[i].division != null && districtDetails[i].division.nameBn == division) {
+        list.add(districtDetails[i].nameBn);
+      }
       }
     }
     return list;
@@ -92,9 +94,9 @@ class _DoctorsReportState extends State<DoctorsReport> {
 
   List<String> getUpazilaList(String district) {
     List<String> list = [];
-    if(upazilaDetails != null){
-      for(int i = 0; i< upazilaDetails.length ; i++ ){
-        if(upazilaDetails[i].district.nameBn == district){
+    if (upazilaDetails != null) {
+      for (int i = 0; i < upazilaDetails.length; i++) {
+        if (upazilaDetails[i].district != null && upazilaDetails[i].district.nameBn == district) {
           list.add(upazilaDetails[i].nameBn);
         }
       }

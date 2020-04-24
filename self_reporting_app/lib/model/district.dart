@@ -12,14 +12,22 @@ class District {
 
   factory District.fromJson(Map<String, dynamic> json) {
     return District(
-      isActive: json['is_active'],
-      id: json['_id'],
-      name: json['name'],
-      nameBn: json['name_bn'],
-      latitude: checkDouble(json['latitude']),
-      longitude: checkDouble(json['longitude']),
-      divisionId: json['division_id'],
-      division: UnderDivision.fromJson(json['division']),
+      isActive: json['is_active'] != null
+          ? json['is_active'] : null,
+      id: json['_id'] != null
+          ? json['_id'] : null,
+      name: json['name'] != null
+          ? json['name'] : null,
+      nameBn: json['name_bn'] != null
+          ? json['name_bn'] : null,
+      latitude: json['latitude'] != null
+          ? checkDouble(json['latitude']) : null,
+      longitude: json['longitude'] != null
+          ? checkDouble(json['longitude']) : null,
+      divisionId: json['division_id'] != null
+          ? json['division_id'] : null,
+      division: json['division'] != null
+          ? UnderDivision.fromJson(json['division']) : null,
     );
   }
 
