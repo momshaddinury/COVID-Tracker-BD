@@ -1,12 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:selfreportingapp/model/country_data.dart';
 import 'package:selfreportingapp/model/district.dart';
 import 'package:selfreportingapp/model/division.dart';
 import 'package:selfreportingapp/model/patient_data.dart';
-import 'package:selfreportingapp/model/question_list.dart';
 import 'package:selfreportingapp/model/upazila.dart';
 import 'package:selfreportingapp/services/api.dart';
 import 'package:selfreportingapp/widgets/report_page_widgets/action_button.dart';
@@ -42,6 +40,27 @@ class _MainCaseReportState extends State<MainCaseReport> {
     //print(isReset);
   }
 
+  List<List> question = [
+    ["আপনার কি জ্বর/ কাশি / গলাব্যথা আছে ?", "coughOrThroatPain"],
+    ["আপনার কি শ্বাসকষ্ট আছে ?", "problemBreathing"],
+    [
+      "আপনার প্রতিবেশী বা এলাকার কোন ব্যক্তি কি করোনা ভাইরাসে আক্রান্ত ?",
+      "contactWithAnyCOVIDPatient"
+    ],
+    [
+      "আপনার পরিবারের কোন সদস্য কি জ্বর, কাশি, বা শ্বাসকষ্টে আক্রান্ত?",
+      "cameInContactWithPersonHavingCoughOrThroatPain"
+    ],
+    [
+      "আপনি কি ডায়াবেটিস, উচ্চ রক্তচাপ, হার্ট ,কিডনী লিভার বা ফুসফুসের কোন রোগ ( এজমা, সিওপিডি), এইচআইভি (এইডস), ক্যান্সার ইত্যাদি রোগে ভুগছেন?",
+      "riskGroup"
+    ],
+    [
+      " আপনি কি একজন স্বাস্থ্যকর্মী? (ডাক্তার, নার্স, সহায়ককর্মী ইত্যাদি)",
+      "healthCareWorker"
+    ],
+  ];
+
   var relationTypeNames = [
     "পিতা",
     "মাতা",
@@ -65,7 +84,6 @@ class _MainCaseReportState extends State<MainCaseReport> {
 
   @override
   void initState() {
-//    divisionList = bdModel.getDivisionListBn();
     super.initState();
 
     futureDivision = getAllDivision();
@@ -92,7 +110,6 @@ class _MainCaseReportState extends State<MainCaseReport> {
         });
       }
     });
-    //getAllQuestions();
 
     divisionList = getDivisionList();
   }
@@ -101,7 +118,7 @@ class _MainCaseReportState extends State<MainCaseReport> {
     List<String> list = [];
     if (divisionDetails != null) {
       for (int i = 0; i < divisionDetails.length; i++) {
-        if(divisionDetails[i].nameBn != null){
+        if (divisionDetails[i].nameBn != null) {
           list.add(divisionDetails[i].nameBn);
         }
       }
@@ -112,8 +129,9 @@ class _MainCaseReportState extends State<MainCaseReport> {
   List<String> getDistrictList(String division) {
     List<String> list = [];
     if (districtDetails != null) {
-      for (int i = 0; i < districtDetails.length; i++) {;
-        if (districtDetails[i].division != null && districtDetails[i].division.nameBn == division) {
+      for (int i = 0; i < districtDetails.length; i++) {
+        if (districtDetails[i].division != null &&
+            districtDetails[i].division.nameBn == division) {
           list.add(districtDetails[i].nameBn);
         }
       }
@@ -125,7 +143,8 @@ class _MainCaseReportState extends State<MainCaseReport> {
     List<String> list = [];
     if (upazilaDetails != null) {
       for (int i = 0; i < upazilaDetails.length; i++) {
-        if (upazilaDetails[i].district != null && upazilaDetails[i].district.nameBn == district) {
+        if (upazilaDetails[i].district != null &&
+            upazilaDetails[i].district.nameBn == district) {
           list.add(upazilaDetails[i].nameBn);
         }
       }
@@ -228,41 +247,41 @@ class _MainCaseReportState extends State<MainCaseReport> {
                           validators: [FormBuilderValidators.required()],
                           onSaved: (value) {
                             if (value == "পিতা") {
-                              relationType = "01";
+                              personalQAPlaceholder.relationType = "01";
                             } else if (value == "মাতা") {
-                              relationType = "02";
+                              personalQAPlaceholder.relationType = "02";
                             } else if (value == "বোন") {
-                              relationType = "03";
+                              personalQAPlaceholder.relationType = "03";
                             } else if (value == "ছেলে") {
-                              relationType = "04";
+                              personalQAPlaceholder.relationType = "04";
                             } else if (value == "মেয়ে") {
-                              relationType = "05";
+                              personalQAPlaceholder.relationType = "05";
                             } else if (value == "ভাই") {
-                              relationType = "06";
+                              personalQAPlaceholder.relationType = "06";
                             } else if (value == "স্বামী") {
-                              relationType = "07";
+                              personalQAPlaceholder.relationType = "07";
                             } else if (value == "স্ত্রী") {
-                              relationType = "08";
+                              personalQAPlaceholder.relationType = "08";
                             } else if (value == "দাদা") {
-                              relationType = "09";
+                              personalQAPlaceholder.relationType = "09";
                             } else if (value == "নাতি") {
-                              relationType = "10";
+                              personalQAPlaceholder.relationType = "10";
                             } else if (value == "দাদী") {
-                              relationType = "11";
+                              personalQAPlaceholder.relationType = "11";
                             } else if (value == "নাতনি") {
-                              relationType = "12";
+                              personalQAPlaceholder.relationType = "12";
                             } else if (value == "চাচা") {
-                              relationType = "13";
+                              personalQAPlaceholder.relationType = "13";
                             } else if (value == "চাচী") {
-                              relationType = "14";
+                              personalQAPlaceholder.relationType = "14";
                             } else if (value == "ভাইপো") {
-                              relationType = "15";
+                              personalQAPlaceholder.relationType = "15";
                             } else if (value == "ভাইঝি") {
-                              relationType = "16";
+                              personalQAPlaceholder.relationType = "16";
                             } else if (value == "কাজিন") {
-                              relationType = "17";
+                              personalQAPlaceholder.relationType = "17";
                             } else if (value == "সেলফ") {
-                              relationType = "00";
+                              personalQAPlaceholder.relationType = "00";
                             }
                           },
                           items: relationTypeNames
@@ -280,7 +299,7 @@ class _MainCaseReportState extends State<MainCaseReport> {
                           // initialValue: 'Male',
                           hint: Text('   বিভাগ নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
-                          onSaved: (value) => division =
+                          onSaved: (value) => personalQAPlaceholder.division =
                               getDivisionCode(value.toString().trim()),
                           items: getDivisionList()
                               .map((value) => DropdownMenuItem(
@@ -322,7 +341,8 @@ class _MainCaseReportState extends State<MainCaseReport> {
                           hint: Text('   জেলা নির্বাচন করুন'),
                           allowClear: true,
                           validators: [FormBuilderValidators.required()],
-                          onSaved: (value) => district = value,
+                          onSaved: (value) =>
+                              personalQAPlaceholder.district = value,
                           items: districtList
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("   $value")))
@@ -362,8 +382,8 @@ class _MainCaseReportState extends State<MainCaseReport> {
                           hint: Text('   উপজেলা নির্বাচন করুন'),
                           /*validators: [FormBuilderValidators.required()],*/
                           allowClear: true,
-                          onSaved: (value) =>
-                              upazila = getUpazilaCode(value.toString().trim()),
+                          onSaved: (value) => personalQAPlaceholder.upazila =
+                              getUpazilaCode(value.toString().trim()),
                           items: subDistrictList
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("   $value")))

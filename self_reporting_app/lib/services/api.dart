@@ -1,12 +1,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:selfreportingapp/model/citizen_reporting_qa.dart';
 import 'package:selfreportingapp/model/district.dart';
 import 'package:selfreportingapp/model/division.dart';
-import 'package:selfreportingapp/model/main_case_report_qa.dart';
 import 'package:selfreportingapp/model/patient_data.dart';
 import 'package:selfreportingapp/model/upazila.dart';
+import 'package:selfreportingapp/services/geo_locator.dart';
 
 import 'json_handle.dart';
 
@@ -26,6 +25,11 @@ String devCitizenReportSubmissionUrl =
 
 String volunteerAuthTokenUrl =
     "https://us-central1-covid19-bd.cloudfunctions.net/validateToken";
+
+//Location:
+double lat = position.latitude;
+double lon = position.longitude;
+double alt = position.altitude;
 
 //GET Methods
 
@@ -102,26 +106,55 @@ Future<http.Response> postMainCaseReport() async {
     'Content-type': 'application/json',
   };
   String mainCaseData = jsonEncode({
-    "age": {"answer": "$age"},
-    "phone": {"answer": "$phoneNumber"},
-    "name": {"answer": "$fullName"},
-    "gender": {"answer": gender},
-    "is_feverish": {"answer": fever},
-    "has_sore_throat": {"answer": coughOrThroatPain},
-    "has_breathlessness": {"answer": problemBreathing},
-    "is_visited_abroad": {"answer": cameBackFromAbroad},
-    "is_contacted_with_covid": {"answer": contactWithAnyCOVIDPatient},
-    "is_contacted_with_family_who_cough": {
-      "answer": cameInContactWithPersonHavingCoughOrThroatPain
+    "age": {
+      "answer": "${personalQAPlaceholder.personalQAPlaceholderValue['age']}"
     },
-    "high_risk": {"answer": riskGroup},
-    "division": {"answer": division},
-    "district": {"answer": district},
-    "upazila": {"answer": upazila},
+    "phone": {
+      "answer":
+          "${personalQAPlaceholder.personalQAPlaceholderValue['phoneNumber']}"
+    },
+    "name": {
+      "answer":
+          "${personalQAPlaceholder.personalQAPlaceholderValue['fullName']}"
+    },
+    "gender": {
+      "answer": personalQAPlaceholder.personalQAPlaceholderValue['gender']
+    },
+    "has_sore_throat": {
+      "answer":
+          triageQAPlaceHolder.triageQAPlaceholderValue['coughOrThroatPain']
+    },
+    "has_breathlessness": {
+      "answer": triageQAPlaceHolder.triageQAPlaceholderValue['problemBreathing']
+    },
+    "is_contacted_with_covid": {
+      "answer": triageQAPlaceHolder
+          .triageQAPlaceholderValue['contactWithAnyCOVIDPatient']
+    },
+    "is_contacted_with_family_who_cough": {
+      "answer": triageQAPlaceHolder.triageQAPlaceholderValue[
+          'cameInContactWithPersonHavingCoughOrThroatPain']
+    },
+    "high_risk": {
+      "answer": triageQAPlaceHolder.triageQAPlaceholderValue['riskGroup']
+    },
+    "is_healthcare_worker": {
+      "answer": triageQAPlaceHolder.triageQAPlaceholderValue['healthCareWorker']
+    },
+    "division": {
+      "answer": personalQAPlaceholder.personalQAPlaceholderValue['division']
+    },
+    "district": {
+      "answer": personalQAPlaceholder.personalQAPlaceholderValue['district']
+    },
+    "upazila": {
+      "answer": personalQAPlaceholder.personalQAPlaceholderValue['upazila']
+    },
     "location": {"latitude": lat, "longitude": lon, "altitude": alt},
-    "relationship_id": relationType,
-    "nid": nid,
-    "address": address,
+    "relationship_id":
+        personalQAPlaceholder.personalQAPlaceholderValue['relationType'],
+    "nid": personalQAPlaceholder.personalQAPlaceholderValue['nid'],
+    "address": personalQAPlaceholder.personalQAPlaceholderValue['address'],
     "is_offline": false,
     "metadata": {},
     "submitted_at": DateTime.now().millisecondsSinceEpoch
@@ -129,7 +162,7 @@ Future<http.Response> postMainCaseReport() async {
   print(mainCaseData);
   var response = await http.post(productionBaseUrl + "response",
       body: "$mainCaseData", headers: headers);
-  // print("submitResponse() - ${response.body}");
+  //print("submitResponse() - ${response.body}");
   parseJson.decodeJson(response.body.toString());
   return response;
 }
@@ -157,6 +190,97 @@ Future<http.Response> postCitizenReport() async {
     'Authorization': '$productionAccessToken',
     'Content-type': 'application/json',
   };
+  String citizenData = jsonEncode({
+    "name": {
+      "type": "text",
+      "question_bn": "ব্যক্তির নাম ",
+      "question_en": "",
+      "answer": "${citizenQAPlaceholder.citizenQAPlaceholderValue['fullName']}"
+    },
+    "phone": {
+      "type": "text",
+      "question_bn": "মোবাইল ",
+      "question_en": "",
+      "answer":
+          "${citizenQAPlaceholder.citizenQAPlaceholderValue['phoneNumber']}"
+    },
+    "father_name": {
+      "type": "text",
+      "question_bn": "পিতার নাম ",
+      "question_en": "",
+      "answer":
+          "${citizenQAPlaceholder.citizenQAPlaceholderValue['patientFatherName']}"
+    },
+    "gender": {
+      "type": "text",
+      "question_bn": "লিঙ্গ",
+      "question_en": "",
+      "answer": citizenQAPlaceholder.citizenQAPlaceholderValue['gender']
+    },
+    "estimated_age": {
+      "type": "text",
+      "question_bn": "আনুমানিক বয়স",
+      "question_en": "",
+      "answer": "${citizenQAPlaceholder.citizenQAPlaceholderValue['age']}"
+    },
+    "came_back_bangladesh_at": {
+      "type": "number",
+      "question_bn": "দেশে ফেরার তারিখ",
+      "question_en": "",
+      "answer":
+          citizenQAPlaceholder.citizenQAPlaceholderValue['dateofReturnNRB']
+    },
+    "from_country": {
+      "type": "text",
+      "question_bn": "যে দেশ থেকে ফিরেছেনরিখ",
+      "question_en": "",
+      "answer": citizenQAPlaceholder.citizenQAPlaceholderValue['countryNRB']
+    },
+    "division": {
+      "type": "text",
+      "question_bn": "বিভাগ",
+      "question_en": "",
+      "answer": citizenQAPlaceholder.citizenQAPlaceholderValue['division']
+    },
+    "zilla": {
+      "type": "text",
+      "question_bn": "জেলা",
+      "question_en": "",
+      "answer": citizenQAPlaceholder.citizenQAPlaceholderValue['district']
+    },
+    "upzilla": {
+      "type": "text",
+      "question_bn": "উপজেলা",
+      "question_en": "",
+      "answer": citizenQAPlaceholder.citizenQAPlaceholderValue['upazila']
+    },
+    "union": {
+      "type": "text",
+      "question_bn": "",
+      "question_en": "union",
+      "answer": citizenQAPlaceholder.citizenQAPlaceholderValue['union']
+    },
+    "ward": {
+      "type": "text",
+      "question_bn": "গ্রাম/ওয়ার্ড",
+      "question_en": "",
+      "answer": citizenQAPlaceholder.citizenQAPlaceholderValue['village']
+    },
+    "house_no": {
+      "type": "text",
+      "question_bn": "বাড়ির নম্বর/ওয়ার্ড",
+      "question_en": "",
+      "answer": citizenQAPlaceholder.citizenQAPlaceholderValue['address']
+    },
+    "location": {
+      "latitude": position.latitude,
+      "longitude": position.longitude,
+      "altitude": position.altitude
+    },
+    "relationship": "neighbor",
+    "metadata": {},
+    "submitted_at": DateTime.now().millisecondsSinceEpoch
+  });
   print(citizenData);
   var response = await http.post(productionBaseUrl + "response/citizen",
       body: citizenData, headers: headers);

@@ -1,3 +1,4 @@
+/*
 import 'package:auto_size_text/auto_size_text.dart';
 
 import 'package:flutter/material.dart';
@@ -90,7 +91,9 @@ class _PossibleAffectedState extends State<PossibleAffected> {
                                 hint: Text('উত্তর নির্বাচন করুন'),
                                 validators: [FormBuilderValidators.required()],
                                 onSaved: (value) => reporterType = value,
-                                items: [/*'ডাক্তার', */ 'সচেতন প্রতিবেশী']
+                                items: [*/
+/*'ডাক্তার', */ /*
+ 'সচেতন প্রতিবেশী']
                                     .map((reporter) => DropdownMenuItem(
                                         value: reporter,
                                         child: Text("$reporter")))
@@ -160,3 +163,4 @@ class _PossibleAffectedState extends State<PossibleAffected> {
     );
   }
 }
+*/

@@ -40,23 +40,23 @@ class _NeighboursReportState extends State<NeighboursReport> {
 
     futureDivision = getAllDivision();
     futureDistrict = getAllDistricts();
-    futureUpazila  = getAllUpazila();
-    futureDivision.then((division){
-      if(this.mounted){
+    futureUpazila = getAllUpazila();
+    futureDivision.then((division) {
+      if (this.mounted) {
         setState(() {
           divisionDetails = division;
         });
       }
     });
-    futureDistrict.then((district){
-      if(this.mounted){
+    futureDistrict.then((district) {
+      if (this.mounted) {
         setState(() {
           districtDetails = district;
         });
       }
     });
-    futureUpazila.then((upazila){
-      if(this.mounted){
+    futureUpazila.then((upazila) {
+      if (this.mounted) {
         setState(() {
           upazilaDetails = upazila;
         });
@@ -70,7 +70,7 @@ class _NeighboursReportState extends State<NeighboursReport> {
     List<String> list = [];
     if (divisionDetails != null) {
       for (int i = 0; i < divisionDetails.length; i++) {
-        if(divisionDetails[i].nameBn != null){
+        if (divisionDetails[i].nameBn != null) {
           list.add(divisionDetails[i].nameBn);
         }
       }
@@ -81,10 +81,11 @@ class _NeighboursReportState extends State<NeighboursReport> {
   List<String> getDistrictList(String division) {
     List<String> list = [];
     if (districtDetails != null) {
-      for (int i = 0; i < districtDetails.length; i++) {;
-      if (districtDetails[i].division != null && districtDetails[i].division.nameBn == division) {
-        list.add(districtDetails[i].nameBn);
-      }
+      for (int i = 0; i < districtDetails.length; i++) {
+        if (districtDetails[i].division != null &&
+            districtDetails[i].division.nameBn == division) {
+          list.add(districtDetails[i].nameBn);
+        }
       }
     }
     return list;
@@ -94,7 +95,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
     List<String> list = [];
     if (upazilaDetails != null) {
       for (int i = 0; i < upazilaDetails.length; i++) {
-        if (upazilaDetails[i].district != null && upazilaDetails[i].district.nameBn == district) {
+        if (upazilaDetails[i].district != null &&
+            upazilaDetails[i].district.nameBn == district) {
           list.add(upazilaDetails[i].nameBn);
         }
       }
@@ -102,38 +104,37 @@ class _NeighboursReportState extends State<NeighboursReport> {
     return list;
   }
 
-  String getDivisionCode(String division){
+  String getDivisionCode(String division) {
     String code;
-    if(divisionDetails != null){
-      for(int i = 0; i< divisionDetails.length ; i++ ){
-        if(divisionDetails[i].nameBn == division){
+    if (divisionDetails != null) {
+      for (int i = 0; i < divisionDetails.length; i++) {
+        if (divisionDetails[i].nameBn == division) {
           code = divisionDetails[i].code.toString();
         }
       }
     }
-    if(code == null){
+    if (code == null) {
       return division;
     } else {
       return code;
     }
   }
 
-  String getUpazilaCode(String upazila){
+  String getUpazilaCode(String upazila) {
     String code;
-    if(upazilaDetails != null){
-      for(int i = 0; i< upazilaDetails.length ; i++ ){
-        if(upazilaDetails[i].nameBn == upazila){
+    if (upazilaDetails != null) {
+      for (int i = 0; i < upazilaDetails.length; i++) {
+        if (upazilaDetails[i].nameBn == upazila) {
           code = upazilaDetails[i].code.toString();
         }
       }
     }
-    if(code == null){
+    if (code == null) {
       return upazila;
     } else {
       return code;
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -186,7 +187,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
                           validators: [
                             FormBuilderValidators.required(),
                           ],
-                          onSaved: (value) => fullName = value,
+                          onSaved: (value) =>
+                              citizenQAPlaceholder.fullName = value,
                         ),
 
                         //রোগীর পিতার নাম
@@ -197,7 +199,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
                             filled: true,
                             fillColor: Colors.grey[200],
                           ),
-                          onSaved: (value) => patientFatherName = value,
+                          onSaved: (value) =>
+                              citizenQAPlaceholder.patientFatherName = value,
                         ),
 
                         // লিঙ্গ:
@@ -231,7 +234,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
                               child: Text('অন্যান্য'),
                             ),
                           ],
-                          onSaved: (value) => gender = value,
+                          onSaved: (value) =>
+                              citizenQAPlaceholder.gender = value,
                         ),
 
                         // আনুমানিক বয়স
@@ -246,7 +250,7 @@ class _NeighboursReportState extends State<NeighboursReport> {
                             FormBuilderValidators.required(),
                             FormBuilderValidators.numeric(),
                           ],
-                          onSaved: (value) => age = value,
+                          onSaved: (value) => citizenQAPlaceholder.age = value,
                           keyboardType: TextInputType.number,
                         ),
 
@@ -256,7 +260,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
                           firstDate: DateTime(1970),
                           lastDate: DateTime(2030),
                           format: DateFormat("yyyy-MM-dd"),
-                          onSaved: (value) => dateofReturnNRB = value,
+                          onSaved: (value) =>
+                              citizenQAPlaceholder.dateofReturnNRB = value,
                           validators: [
                             FormBuilderValidators.required(),
                           ],
@@ -276,7 +281,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
                           validators: [
                             FormBuilderValidators.required(),
                           ],
-                          onSaved: (value) => countryNRB = value,
+                          onSaved: (value) =>
+                              citizenQAPlaceholder.countryNRB = value,
                         ),
 
                         // বিভাগ
@@ -286,7 +292,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
                           // initialValue: 'Male',
                           hint: Text('   বিভাগ নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
-                          onSaved: (value) => division = getDivisionCode(value.toString().trim()),
+                          onSaved: (value) => citizenQAPlaceholder.division =
+                              getDivisionCode(value.toString().trim()),
                           items: getDivisionList()
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("$value")))
@@ -299,7 +306,7 @@ class _NeighboursReportState extends State<NeighboursReport> {
                                 .currentState
                                 .reset();
                             if (value == null) {
-                              if(this.mounted){
+                              if (this.mounted) {
                                 setState(() {
                                   divisionList = getDivisionList();
                                   districtList = [];
@@ -307,7 +314,7 @@ class _NeighboursReportState extends State<NeighboursReport> {
                                 });
                               }
                             } else {
-                              if(this.mounted){
+                              if (this.mounted) {
                                 setState(() {
                                   divisionList = [];
                                   selectedDivision = value.toString().trim();
@@ -327,7 +334,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
                           hint: Text('   জেলা নির্বাচন করুন'),
                           allowClear: true,
                           validators: [FormBuilderValidators.required()],
-                          onSaved: (value) => district = value,
+                          onSaved: (value) =>
+                              citizenQAPlaceholder.district = value,
                           items: districtList
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("$value")))
@@ -339,19 +347,21 @@ class _NeighboursReportState extends State<NeighboursReport> {
                             if (value == null) {
                               if (selectedDivision != "" &&
                                   selectedDivision != null) {
-                                if(this.mounted){
+                                if (this.mounted) {
                                   setState(() {
-                                    districtList = getDistrictList(selectedDivision);
+                                    districtList =
+                                        getDistrictList(selectedDivision);
                                     subDistrictList = [];
                                   });
                                 }
                               }
                             } else {
-                              if(this.mounted){
+                              if (this.mounted) {
                                 setState(() {
                                   districtList = [];
                                   selectedDistrict = value.toString().trim();
-                                  subDistrictList = getUpazilaList(selectedDistrict);
+                                  subDistrictList =
+                                      getUpazilaList(selectedDistrict);
                                 });
                               }
                             }
@@ -366,7 +376,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
                           hint: Text('   উপজেলা নির্বাচন করুন'),
                           /*validators: [FormBuilderValidators.required()],*/
                           allowClear: true,
-                          onSaved: (value) => upazila = getUpazilaCode(value.toString().trim()),
+                          onSaved: (value) => citizenQAPlaceholder.upazila =
+                              getUpazilaCode(value.toString().trim()),
                           items: subDistrictList
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("$value")))
@@ -375,14 +386,15 @@ class _NeighboursReportState extends State<NeighboursReport> {
                             if (value == null) {
                               if (selectedDistrict != "" &&
                                   selectedDistrict != null) {
-                                if(this.mounted){
+                                if (this.mounted) {
                                   setState(() {
-                                    subDistrictList = getUpazilaList(selectedDistrict);
+                                    subDistrictList =
+                                        getUpazilaList(selectedDistrict);
                                   });
                                 }
                               }
                             } else {
-                              if(this.mounted){
+                              if (this.mounted) {
                                 setState(() {
                                   subDistrictList = [];
                                 });
@@ -399,7 +411,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
                             filled: true,
                             fillColor: Colors.grey[200],
                           ),
-                          onSaved: (value) => union = value,
+                          onSaved: (value) =>
+                              citizenQAPlaceholder.union = value,
                         ),
 
                         //গ্রাম/ওয়ার্ড
@@ -410,7 +423,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
                             filled: true,
                             fillColor: Colors.grey[200],
                           ),
-                          onSaved: (value) => village = value,
+                          onSaved: (value) =>
+                              citizenQAPlaceholder.village = value,
                         ),
 
                         //বাড়ির নম্বর/ঠিকানা
@@ -424,7 +438,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
                           validators: [
                             FormBuilderValidators.required(),
                           ],
-                          onSaved: (value) => address = value,
+                          onSaved: (value) =>
+                              citizenQAPlaceholder.address = value,
                         ),
 
                         //রোগীর মোবাইল
@@ -444,7 +459,8 @@ class _NeighboursReportState extends State<NeighboursReport> {
                             FormBuilderValidators.maxLength(11,
                                 errorText: "১১ ডিজিট")
                           ],
-                          onSaved: (value) => phoneNumber = value,
+                          onSaved: (value) =>
+                              citizenQAPlaceholder.phoneNumber = value,
                         ),
                       ],
                     ),

@@ -24,7 +24,7 @@ class PersonalInformation extends StatelessWidget {
           validators: [
             FormBuilderValidators.required(),
           ],
-          onSaved: (value) => fullName = value,
+          onSaved: (value) => personalQAPlaceholder.fullName = value,
         ),
 
         // Contact Number:
@@ -42,7 +42,7 @@ class PersonalInformation extends StatelessWidget {
             FormBuilderValidators.minLength(11, errorText: "১১ ডিজিট"),
             FormBuilderValidators.maxLength(11, errorText: "১১ ডিজিট")
           ],
-          onSaved: (value) => phoneNumber = value,
+          onSaved: (value) => personalQAPlaceholder.phoneNumber = value,
         ),
 
         // NID:
@@ -54,7 +54,7 @@ class PersonalInformation extends StatelessWidget {
             fillColor: Colors.grey[200],
           ),
           keyboardType: TextInputType.number,
-          onSaved: (value) => nid = value,
+          onSaved: (value) => personalQAPlaceholder.nid = value,
         ),
 
         // Gender:
@@ -86,7 +86,7 @@ class PersonalInformation extends StatelessWidget {
             FormBuilderValidators.required(),
           ],
           onSaved: (value) {
-            gender = value;
+            personalQAPlaceholder.gender = value;
           },
         ),
 
@@ -102,7 +102,7 @@ class PersonalInformation extends StatelessWidget {
             FormBuilderValidators.required(),
             FormBuilderValidators.numeric(),
           ],
-          onSaved: (value) => age = value,
+          onSaved: (value) => personalQAPlaceholder.age = value,
           keyboardType: TextInputType.number,
         ),
 
@@ -116,7 +116,7 @@ class PersonalInformation extends StatelessWidget {
           validators: [
             FormBuilderValidators.required(),
           ],
-          onSaved: (value) => address = value,
+          onSaved: (value) => personalQAPlaceholder.address = value,
         ),
       ],
     );

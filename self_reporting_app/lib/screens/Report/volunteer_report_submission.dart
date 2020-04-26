@@ -1,14 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:selfreportingapp/model/color_constants.dart';
 import 'package:selfreportingapp/model/patient_data.dart';
-import 'package:selfreportingapp/screens/Report/main_case_report_submission_page.dart';
 import 'package:selfreportingapp/services/api.dart';
 import 'package:selfreportingapp/services/json_handle.dart';
 import 'package:selfreportingapp/widgets/loading.dart';
-import 'package:selfreportingapp/widgets/toast.dart';
 
 class VolunteerUpdate extends StatefulWidget {
   @override

@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class Location extends StatefulWidget {
   @override
@@ -38,7 +37,7 @@ class _LocationState extends State<Location> with WidgetsBindingObserver {
       ),
       body: WebView(
         initialUrl: "https://perceptronlab.com/project/covidtrackerbd/heatmap",
-        //initialUrl: "https://coronavirus.app/map",
+        // initialUrl: "https://coronavirus.app/map",
         javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (WebViewController webViewController) {
           _controller.complete(webViewController);

@@ -1,7 +1,6 @@
 import 'dart:io' show Platform;
 
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,20 +8,15 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:selfreportingapp/bloc/bloc.dart';
 import 'package:selfreportingapp/bloc/event.dart';
 import 'package:selfreportingapp/bloc/state.dart';
-import 'package:selfreportingapp/initialize.dart';
-import 'package:selfreportingapp/model/todo_list.dart';
 import 'package:selfreportingapp/model/world_o_meter_repo.dart';
 import 'package:selfreportingapp/screens/heatmap.dart';
 import 'package:selfreportingapp/screens/support_page.dart';
 import 'package:selfreportingapp/services/world_o_meter_api.dart';
-import 'package:selfreportingapp/widgets/check_connection.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'Report/report_main.dart';
 import 'about_us.dart';
-
-String title;
 
 class HomePage extends StatefulWidget {
   @override
@@ -37,6 +31,15 @@ class _HomePageState extends State<HomePage> {
   final controller2 = PageController(viewportFraction: 0.5, initialPage: 2);
   final controller3 = PageController(viewportFraction: 0.5, initialPage: 2);
 
+  List<String> todo = [
+    "ঘন ঘন দুইহাত সবান পানি দিয়ে ভালোভাবে ধুয়ে নিন(কমপক্ষে ২০ সেকেন্ড)",
+    "হাঁচি-কাশির সময় টিস্যু/কাপড়/বাহুর ভাঁজে নাক-মুখ ঢেকে ফেলুন",
+    "অসুস্থ হলে বা অসুস্থ ব্যক্তির সংস্পর্শে আসলে বা আক্রান্ত দেশ থেকে আসলে মাস্ক ব্যবহার করুন",
+    "স্বাস্থ্য সেবায় নিয়োজিত সকলে মাস্ক ব্যবহার করুন",
+    "জরুরী প্রয়োজন ছাড়া ভিড় ও ভ্রমন এড়িয়ে চলুন",
+    "স্বাস্থ্য পরামর্শ পেতে ১৬২৬৩ অথবা ৩৩৩ নম্বরে কল করুন"
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -44,32 +47,41 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: RichText(
-          text: TextSpan(
-            text: 'করোনা',
-            style: TextStyle(
-                color: Color(0xFF95268D),
-                fontSize: 25,
-                fontWeight: FontWeight.w700),
-            children: <TextSpan>[
-              TextSpan(
-                  text: " ইনফো",
-                  style: TextStyle(
-                      //textBaseline: TextBaseline.alphabetic,
-                      //color: Colors.black87.withOpacity(0.8), #95268D
-                      color: Color(0xFF4CB856),
-                      fontSize: 25,
-                      fontWeight: FontWeight.w700)),
-            ],
-          ),
+    var homePageAppBar = AppBar(
+      title: RichText(
+        text: TextSpan(
+          text: 'করোনা',
+          style: TextStyle(
+              color: Color(0xFF95268D),
+              fontSize: 25,
+              fontWeight: FontWeight.w700),
+          children: <TextSpan>[
+            TextSpan(
+                text: " ইনফো",
+                style: TextStyle(
+                    //textBaseline: TextBaseline.alphabetic,
+                    //color: Colors.black87.withOpacity(0.8), #95268D
+                    color: Color(0xFF4CB856),
+                    fontSize: 25,
+                    fontWeight: FontWeight.w700)),
+          ],
         ),
-        backgroundColor: Colors.white,
-        elevation: 2.0,
-        brightness: Brightness.light,
-        iconTheme: IconThemeData(color: Colors.black87),
       ),
+      backgroundColor: Colors.white,
+      elevation: 2.0,
+      brightness: Brightness.light,
+      iconTheme: IconThemeData(color: Colors.black87),
+    );
+    var statBarHeight = MediaQuery.of(context).padding.top;
+    var appBarHeight = homePageAppBar.preferredSize.height;
+    var width = MediaQuery.of(context).size.width;
+    var height =
+        MediaQuery.of(context).size.height - statBarHeight - appBarHeight;
+    var tenPxHeight = SizedBox(
+      height: height * 0.01,
+    );
+    return Scaffold(
+      appBar: homePageAppBar,
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
@@ -123,15 +135,11 @@ class _HomePageState extends State<HomePage> {
                   Image.asset(
                     "assets/3623963.jpg",
                     fit: BoxFit.contain,
-                    width: 400,
-                    height: 400,
+                    height: height * 0.5,
                   ),
                 ],
               ),
-              SizedBox(
-                height: 10,
-              ),
-
+              tenPxHeight,
               Container(
                 color: Colors.white,
                 child: Padding(
@@ -629,7 +637,9 @@ class HeatMapTile extends StatelessWidget {
         const MethodChannel('com.tne.selfreportingapp/MAP_CHANNEL');
     try {
       final String result = await platform.invokeMethod('map');
-    } on PlatformException catch (e) {}
+    } on PlatformException catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -682,25 +692,6 @@ class HeatMapTile extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class ResizableTextWidget extends StatelessWidget {
-  const ResizableTextWidget({
-    Key key,
-    @required this.title,
-  }) : super(key: key);
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return AutoSizeText(
-      "$title",
-      style: TextStyle(fontSize: 13.0),
-      minFontSize: 10,
-      overflow: TextOverflow.ellipsis,
     );
   }
 }

@@ -11,7 +11,7 @@ class TriageQuestion extends StatelessWidget {
   }) : super(key: key);
 
   final String question;
-  String placeHolder;
+  final String placeHolder;
 
   @override
   Widget build(BuildContext context) {
@@ -42,23 +42,20 @@ class TriageQuestion extends StatelessWidget {
             FormBuilderValidators.required(),
           ],
           onSaved: (value) {
-            if (placeHolder == "fever") {
-              fever = value;
-            } else if (placeHolder == "coughOrThroatPain") {
-              coughOrThroatPain = value;
+            if (placeHolder == "coughOrThroatPain") {
+              triageQAPlaceHolder.coughOrThroatPain = value;
             } else if (placeHolder == "problemBreathing") {
-              problemBreathing = value;
-            } else if (placeHolder == "cameBackFromAbroad") {
-              cameBackFromAbroad = value;
+              triageQAPlaceHolder.problemBreathing = value;
             } else if (placeHolder == "contactWithAnyCOVIDPatient") {
-              contactWithAnyCOVIDPatient = value;
+              triageQAPlaceHolder.contactWithAnyCOVIDPatient = value;
             } else if (placeHolder ==
                 "cameInContactWithPersonHavingCoughOrThroatPain") {
-              cameInContactWithPersonHavingCoughOrThroatPain = value;
+              triageQAPlaceHolder
+                  .cameInContactWithPersonHavingCoughOrThroatPain = value;
             } else if (placeHolder == "riskGroup") {
-              riskGroup = value;
+              triageQAPlaceHolder.riskGroup = value;
             } else if (placeHolder == "healthCareWorker") {
-              healthCareWorker = value;
+              triageQAPlaceHolder.healthCareWorker = value;
             }
           },
         )

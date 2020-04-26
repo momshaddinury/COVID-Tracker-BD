@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
+/// Screen H,W, O
+
+/// Colors
 final Color deathColor = Color(0xFFF76353);
 final Color recoveredColor = Color(0xFF00CC99);
 final Color confirmedColor = Color(0xFFF2B900);
@@ -17,3 +20,10 @@ final kPrimaryTitleStyle = TextStyle(
   fontSize: 31,
   fontWeight: FontWeight.bold,
 );
+
+final kSecondaryTitleStyle = TextStyle(
+  fontSize: 21,
+  fontWeight: FontWeight.w500,
+);
+
+final kNormalTitleStyle = TextStyle();

@@ -45,7 +45,6 @@ class SKOnboardingScreenState extends State<SKOnboardingScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 

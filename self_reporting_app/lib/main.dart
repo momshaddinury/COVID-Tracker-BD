@@ -30,6 +30,7 @@ void main() {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    /// Locked at Portrait Mode
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
@@ -44,6 +45,7 @@ class App extends StatelessWidget {
         body: Initialize(),
       ),
       routes: <String, WidgetBuilder>{
+        /// Screens
         '/LoadingScreen': (BuildContext context) => LoadingScreen(),
         '/OnBoardingScreen': (BuildContext context) => OnBoardingScreen(),
         '/HomePage': (BuildContext context) => HomePage(),

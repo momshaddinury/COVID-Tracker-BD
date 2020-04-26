@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:selfreportingapp/screens/Report/possible_affected.dart';
 import 'package:selfreportingapp/screens/Report/main_case_report_submission_page.dart';
 import 'package:selfreportingapp/screens/Report/volunteer_report_submission.dart';
 
