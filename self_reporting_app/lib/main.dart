@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:selfreportingapp/screens/dashboard.dart';
+import 'package:selfreportingapp/screens/Report/main_case_report_submission_page.dart';
+import 'package:selfreportingapp/screens/Report/report_main.dart';
+import 'package:selfreportingapp/screens/homepage.dart';
 import 'package:selfreportingapp/screens/loading_screen.dart';
 import 'package:selfreportingapp/screens/onboarding_screen.dart';
 import 'initialize.dart';
@@ -28,6 +30,7 @@ void main() {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    /// Locked at Portrait Mode
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
@@ -42,9 +45,12 @@ class App extends StatelessWidget {
         body: Initialize(),
       ),
       routes: <String, WidgetBuilder>{
-        '/LoadingScreen': (BuildContext context) => new LoadingScreen(),
-        '/OnBoardingScreen': (BuildContext context) => new OnBoardingScreen(),
-        '/HomePage': (BuildContext context) => new HomePage(),
+        /// Screens
+        '/LoadingScreen': (BuildContext context) => LoadingScreen(),
+        '/OnBoardingScreen': (BuildContext context) => OnBoardingScreen(),
+        '/HomePage': (BuildContext context) => HomePage(),
+        '/ReportMain': (BuildContext context) => ReportMain(),
+        '/MainCaseReport': (BuildContext context) => MainCaseReport(),
       },
     );
   }

@@ -12,12 +12,12 @@ class DataConnectionService {
     listener = DataConnectionChecker().onStatusChange.listen((status) {
       switch (status) {
         case DataConnectionStatus.connected:
-          print('::Data connection is available.');
-          streamController.sink.add("event");
+          print('Data connection is available.');
+          streamController.sink.add(status);
           tasks();
           break;
         case DataConnectionStatus.disconnected:
-          print('::Disconnected from the internet.');
+          print('Disconnected from the internet.');
           break;
       }
     });

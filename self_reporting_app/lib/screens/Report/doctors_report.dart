@@ -1,3 +1,4 @@
+/*
 import 'package:auto_size_text/auto_size_text.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -5,7 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:selfreportingapp/model/country_data.dart';
+import 'package:selfreportingapp/model/district.dart';
+import 'package:selfreportingapp/model/division.dart';
 import 'package:selfreportingapp/model/patient_data.dart';
+import 'package:selfreportingapp/model/upazila.dart';
 import 'package:selfreportingapp/services/api.dart';
 import 'package:selfreportingapp/services/json_handle.dart';
 import 'package:selfreportingapp/widgets/toast.dart';
@@ -25,10 +29,115 @@ class _DoctorsReportState extends State<DoctorsReport> {
   String selectedDivision, selectedDistrict;
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
   List<String> districtList = [], subDistrictList = [], divisionList = [];
+  Future<List<Division>> futureDivision;
+  List<Division> divisionDetails;
+  Future<List<District>> futureDistrict;
+  List<District> districtDetails;
+  Future<List<Upazila>> futureUpazila;
+  List<Upazila> upazilaDetails;
 
   @override
   void initState() {
-    divisionList = bdModel.getDivisionListBn();
+    super.initState();
+//    divisionList = bdModel.getDivisionListBn();
+
+    futureDivision = getAllDivision();
+    futureDistrict = getAllDistricts();
+    futureUpazila = getAllUpazila();
+    futureDivision.then((division) {
+      if (this.mounted) {
+        setState(() {
+          divisionDetails = division;
+        });
+      }
+    });
+    futureDistrict.then((district) {
+      if (this.mounted) {
+        setState(() {
+          districtDetails = district;
+        });
+      }
+    });
+    futureUpazila.then((upazila) {
+      if (this.mounted) {
+        setState(() {
+          upazilaDetails = upazila;
+        });
+      }
+    });
+
+    divisionList = getDivisionList();
+  }
+
+  List<String> getDivisionList() {
+    List<String> list = [];
+    if (divisionDetails != null) {
+      for (int i = 0; i < divisionDetails.length; i++) {
+        if (divisionDetails[i].nameBn != null) {
+          list.add(divisionDetails[i].nameBn);
+        }
+      }
+    }
+    return list;
+  }
+
+  List<String> getDistrictList(String division) {
+    List<String> list = [];
+    if (districtDetails != null) {
+      for (int i = 0; i < districtDetails.length; i++) {
+        ;
+        if (districtDetails[i].division != null &&
+            districtDetails[i].division.nameBn == division) {
+          list.add(districtDetails[i].nameBn);
+        }
+      }
+    }
+    return list;
+  }
+
+  List<String> getUpazilaList(String district) {
+    List<String> list = [];
+    if (upazilaDetails != null) {
+      for (int i = 0; i < upazilaDetails.length; i++) {
+        if (upazilaDetails[i].district != null &&
+            upazilaDetails[i].district.nameBn == district) {
+          list.add(upazilaDetails[i].nameBn);
+        }
+      }
+    }
+    return list;
+  }
+
+  String getDivisionCode(String division) {
+    String code;
+    if (divisionDetails != null) {
+      for (int i = 0; i < divisionDetails.length; i++) {
+        if (divisionDetails[i].nameBn == division) {
+          code = divisionDetails[i].code.toString();
+        }
+      }
+    }
+    if (code == null) {
+      return division;
+    } else {
+      return code;
+    }
+  }
+
+  String getUpazilaCode(String upazila) {
+    String code;
+    if (upazilaDetails != null) {
+      for (int i = 0; i < upazilaDetails.length; i++) {
+        if (upazilaDetails[i].nameBn == upazila) {
+          code = upazilaDetails[i].code.toString();
+        }
+      }
+    }
+    if (code == null) {
+      return upazila;
+    } else {
+      return code;
+    }
   }
 
   @override
@@ -85,10 +194,12 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           validators: [
                             FormBuilderValidators.required(),
                             FormBuilderValidators.numeric(),
-                            /*FormBuilderValidators.minLength(11,
+                            */
+/*FormBuilderValidators.minLength(11,
                           errorText: "১১ ডিজিট"),
                           FormBuilderValidators.maxLength(11,
-                          errorText: "১১ ডিজিট")*/
+                          errorText: "১১ ডিজিট")*/ /*
+
                           ],
                           onSaved: (value) => bmdc = value,
                         ),
@@ -163,8 +274,9 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           // initialValue: 'Male',
                           hint: Text('   বিভাগ নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
-                          onSaved: (value) => division = value,
-                          items: divisionList
+                          onSaved: (value) => division =
+                              getDivisionCode(value.toString().trim()),
+                          items: getDivisionList()
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("$value")))
                               .toList(),
@@ -176,16 +288,22 @@ class _DoctorsReportState extends State<DoctorsReport> {
                                 .currentState
                                 .reset();
                             if (value == null) {
-                              setState(() {
-                                divisionList = bdModel.getDivisionListBn();
-                              });
+                              if (this.mounted) {
+                                setState(() {
+                                  divisionList = getDivisionList();
+                                  districtList = [];
+                                  subDistrictList = [];
+                                });
+                              }
                             } else {
-                              setState(() {
-                                divisionList = [];
-                                selectedDivision = value.toString().trim();
-                                districtList =
-                                    bdModel.getDistrictListBn(selectedDivision);
-                              });
+                              if (this.mounted) {
+                                setState(() {
+                                  divisionList = [];
+                                  selectedDivision = value.toString().trim();
+                                  districtList =
+                                      getDistrictList(selectedDivision);
+                                });
+                              }
                             }
                           },
                           allowClear: true,
@@ -210,18 +328,23 @@ class _DoctorsReportState extends State<DoctorsReport> {
                             if (value == null) {
                               if (selectedDivision != "" &&
                                   selectedDivision != null) {
-                                setState(() {
-                                  districtList = bdModel
-                                      .getDistrictListBn(selectedDivision);
-                                });
+                                if (this.mounted) {
+                                  setState(() {
+                                    districtList =
+                                        getDistrictList(selectedDivision);
+                                    subDistrictList = [];
+                                  });
+                                }
                               }
                             } else {
-                              setState(() {
-                                districtList = [];
-                                selectedDistrict = value.toString().trim();
-                                subDistrictList = bdModel
-                                    .getSubDistrictListBn(selectedDistrict);
-                              });
+                              if (this.mounted) {
+                                setState(() {
+                                  districtList = [];
+                                  selectedDistrict = value.toString().trim();
+                                  subDistrictList =
+                                      getUpazilaList(selectedDistrict);
+                                });
+                              }
                             }
                           },
                         ),
@@ -234,7 +357,8 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           hint: Text('   উপজেলা নির্বাচন করুন'),
                           validators: [FormBuilderValidators.required()],
                           allowClear: true,
-                          onSaved: (value) => upazila = value,
+                          onSaved: (value) =>
+                              upazila = getUpazilaCode(value.toString().trim()),
                           items: subDistrictList
                               .map((value) => DropdownMenuItem(
                                   value: value, child: Text("$value")))
@@ -243,15 +367,19 @@ class _DoctorsReportState extends State<DoctorsReport> {
                             if (value == null) {
                               if (selectedDistrict != "" &&
                                   selectedDistrict != null) {
-                                setState(() {
-                                  subDistrictList = bdModel
-                                      .getSubDistrictListBn(selectedDistrict);
-                                });
+                                if (this.mounted) {
+                                  setState(() {
+                                    subDistrictList =
+                                        getUpazilaList(selectedDistrict);
+                                  });
+                                }
                               }
                             } else {
-                              setState(() {
-                                subDistrictList = [];
-                              });
+                              if (this.mounted) {
+                                setState(() {
+                                  subDistrictList = [];
+                                });
+                              }
                             }
                           },
                         ),
@@ -292,7 +420,8 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           color: Colors.black45,
                         ),
                         // বিগত ১৪ দিনে বিদেশ ফেরত?:
-                        Padding(
+                        */
+/*Padding(
                           padding: const EdgeInsets.only(left: 10, top: 10),
                           child: AutoSizeText("বিগত ১৪ দিনে বিদেশ ফেরত?"),
                         ),
@@ -313,8 +442,9 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           validators: [
                             FormBuilderValidators.required(),
                           ],
-                          onSaved: (value) => cameBackFromAbroad = value,
-                        ),
+                          onSaved: (value) => triageQAPlaceHolder.cameBackFromAbroad = value,
+                        ),*/ /*
+
 
                         //বিগত ১৪ দিনে প্রবাসী/কোয়ারেন্টাইনকৃত/কোভিড১৯ আঙ্ক্রান্ত রোগীর সংপর্শে এসেছে কিনা?
                         Padding(
@@ -339,8 +469,8 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           validators: [
                             FormBuilderValidators.required(),
                           ],
-                          onSaved: (value) =>
-                              contactWithAnyCOVIDPatient = value,
+                          onSaved: (value) => triageQAPlaceHolder
+                              .contactWithAnyCOVIDPatient = value,
                         ),
                         Divider(
                           thickness: 10,
@@ -348,7 +478,8 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           color: Colors.black45,
                         ),
                         //জ্বর আছে কিনা?
-                        Padding(
+                        */
+/*Padding(
                           padding: const EdgeInsets.only(left: 10.0, top: 10),
                           child: AutoSizeText("জ্বর আছে কিনা?"),
                         ),
@@ -369,11 +500,13 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           validators: [
                             FormBuilderValidators.required(),
                           ],
-                          onSaved: (value) => fever = value,
-                        ),
+                          onSaved: (value) => triageQAPlaceHolder.fever = value,
+                        ),*/ /*
+
 
                         //সর্দি আছে কিনা?
-                        Padding(
+                        */
+/*Padding(
                           padding: const EdgeInsets.only(left: 10.0, top: 10),
                           child: AutoSizeText("সর্দি আছে কিনা?"),
                         ),
@@ -395,7 +528,8 @@ class _DoctorsReportState extends State<DoctorsReport> {
                             FormBuilderValidators.required(),
                           ],
                           onSaved: (value) => fever = value,
-                        ),
+                        ),*/ /*
+
 
                         //সর্দি আছে কিনা?
                         Padding(
@@ -419,7 +553,7 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           validators: [
                             FormBuilderValidators.required(),
                           ],
-                          onSaved: (value) => fever = value,
+                          //onSaved: (value) => fever = value,
                         ),
 
                         //গলা ব্যথা আছে কিনা?
@@ -444,7 +578,7 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           validators: [
                             FormBuilderValidators.required(),
                           ],
-                          onSaved: (value) => fever = value,
+                          //onSaved: (value) => fever = value,
                         ),
 
                         //শ্বাসকষ্ট আছে কিনা?
@@ -469,7 +603,7 @@ class _DoctorsReportState extends State<DoctorsReport> {
                           validators: [
                             FormBuilderValidators.required(),
                           ],
-                          onSaved: (value) => fever = value,
+                          //onSaved: (value) => fever = value,
                         ),
                       ],
                     ),
@@ -594,3 +728,4 @@ class _DoctorsReportState extends State<DoctorsReport> {
     );
   }
 }
+*/

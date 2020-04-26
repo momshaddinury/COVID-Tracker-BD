@@ -1,15 +1,13 @@
 import 'dart:async';
 
+import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:selfreportingapp/screens/loading_screen.dart';
 import 'package:selfreportingapp/screens/onboarding_screen.dart';
 import 'package:selfreportingapp/services/geo_locator.dart';
+import 'package:selfreportingapp/widgets/check_connection.dart';
 import 'services/connectivity.dart';
 
-/// Initializes fetchData() to fetch data, to  show in Home Tab
-/// Starts Scheduler to periodically call fetchData()
-
-/// Calls two process
 tasks() async {
   //await jsonHandler.fetchData();
   await getLocation();
@@ -40,14 +38,16 @@ class Initialize extends StatefulWidget {
 }
 
 class _InitializeState extends State<Initialize> {
-  /// When the widget initiates calls tasks()
   @override
   void initState() {
     super.initState();
-    dataConnectionService.networkCheck(); //Connectivity.dart
+    dataConnectionService.networkCheck();
+
+    /// Connectivity.dart - Check if network is available
   }
 
   /// StreamBuilder checks if the Stream has data and builds accordingly
+  /// Listening to Connectivity and checking if connection is available
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,12 +57,17 @@ class _InitializeState extends State<Initialize> {
         stream: streamController.stream,
         builder: (context, snapShot) {
           if (snapShot.connectionState == ConnectionState.waiting) {
-            ///if fetch data is working to fetch data
+            /// While Stream is waiting for data
             return LoadingScreen();
-          }
+          } else if (snapShot.data == DataConnectionStatus.connected) {
+            return OnBoardingScreen();
 
-          ///If fetchData() successfully fetched data
-          return OnBoardingScreen();
+            /// When connection is available
+          } else if (snapShot.data == DataConnectionStatus.disconnected) {
+            WidgetsBinding.instance.addPostFrameCallback(
+                (_) => buildShowCheckConnectionDialog(context));
+          }
+          return Container();
         },
       ),
     );

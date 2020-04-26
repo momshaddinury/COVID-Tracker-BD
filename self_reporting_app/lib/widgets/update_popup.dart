@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-String appStoreUrl = "https://zerothindex.org/static/files/corona_info.apk";
+String appStoreUrl = "https://zerothindex.org/";
 
 Future buildShowDialog(BuildContext context) {
   return showDialog(

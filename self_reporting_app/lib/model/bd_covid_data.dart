@@ -13,8 +13,6 @@ class CovidBdData {
   int todayDeaths;
   int recovered;
   int active;
-  int critical;
-  //double casesPerOneMillion;
 
   CovidBdData({
     this.country,
@@ -24,8 +22,6 @@ class CovidBdData {
     this.todayDeaths,
     this.recovered,
     this.active,
-    //this.critical,
-    //this.casesPerOneMillion,
   });
 
   factory CovidBdData.fromJson(Map<String, dynamic> json) => CovidBdData(
@@ -36,8 +32,6 @@ class CovidBdData {
         todayDeaths: json["todayDeaths"],
         recovered: json["recovered"],
         active: json["active"],
-        //critical: json["critical"],
-        //casesPerOneMillion: json["casesPerOneMillion"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -48,7 +42,5 @@ class CovidBdData {
         "todayDeaths": todayDeaths,
         "recovered": recovered,
         "active": active,
-        //"critical": critical,
-        //"casesPerOneMillion": casesPerOneMillion,
       };
 }

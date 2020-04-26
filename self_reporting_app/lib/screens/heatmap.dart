@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class Location extends StatefulWidget {
@@ -11,15 +10,17 @@ class Location extends StatefulWidget {
   _LocationState createState() => _LocationState();
 }
 
-class _LocationState extends State<Location>  with AutomaticKeepAliveClientMixin<Location> {
-  bool isLoading;
-
-  @override
-  bool get wantKeepAlive => true;
+class _LocationState extends State<Location> with WidgetsBindingObserver {
   @override
   void initState() {
-    isLoading = true;
+    WidgetsBinding.instance.addObserver(this);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
   }
 
   final Completer<WebViewController> _controller =
@@ -32,33 +33,15 @@ class _LocationState extends State<Location>  with AutomaticKeepAliveClientMixin
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         brightness: Brightness.light,
-        iconTheme: IconThemeData(
-            color: Colors.black87
-        ),
+        iconTheme: IconThemeData(color: Colors.black87),
       ),
-      body: Stack(
-        children: <Widget>[
-          WebView(
-            initialUrl:
-                "https://perceptronlab.com/project/covidtrackerbd/heatmap",
-            //initialUrl: "https://coronavirus.app/map",
-            javascriptMode: JavascriptMode.unrestricted,
-            onWebViewCreated: (WebViewController webViewController) {
-              _controller.complete(webViewController);
-              setState(() {
-                isLoading = false;
-              });
-            },
-          ),
-          isLoading
-              ? Center(
-                  child: SpinKitPulse(
-                    color: Colors.redAccent,
-                    size: 60.0,
-                  ),
-                )
-              : Container(),
-        ],
+      body: WebView(
+        initialUrl: "https://perceptronlab.com/project/covidtrackerbd/heatmap",
+        // initialUrl: "https://coronavirus.app/map",
+        javascriptMode: JavascriptMode.unrestricted,
+        onWebViewCreated: (WebViewController webViewController) {
+          _controller.complete(webViewController);
+        },
       ),
     );
   }

@@ -6,27 +6,21 @@ class Support extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
+        backgroundColor: Colors.white,
+        elevation: 2.0,
         brightness: Brightness.light,
         iconTheme: IconThemeData(color: Colors.black87),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          SizedBox(
-            height: 10,
-          ),
-          AutoSizeText(
-            "THANK YOU FOR YOUR SUPPORT\n\nSupport Email: index.zeroth@gmail.com\n\nPhone: 01407869294\n\nFacebook Page:https://www.facebook.com/zeroth.index/",
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Container(
+          color: Colors.white,
+          child: AutoSizeText(
+            "THANK YOU FOR YOUR SUPPORT\n\nEMAIL: index.zeroth@gmail.com\n\nCALL: 01407869294\n\nPAGE:https://www.facebook.com/zeroth.index/",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          SizedBox(
-            height: 10,
-          ),
-        ],
+        ),
       ),
     );
   }

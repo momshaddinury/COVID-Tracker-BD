@@ -24,7 +24,7 @@ class PersonalInformation extends StatelessWidget {
           validators: [
             FormBuilderValidators.required(),
           ],
-          onSaved: (value) => fullName = value,
+          onSaved: (value) => personalQAPlaceholder.fullName = value,
         ),
 
         // Contact Number:
@@ -42,7 +42,7 @@ class PersonalInformation extends StatelessWidget {
             FormBuilderValidators.minLength(11, errorText: "১১ ডিজিট"),
             FormBuilderValidators.maxLength(11, errorText: "১১ ডিজিট")
           ],
-          onSaved: (value) => phoneNumber = value,
+          onSaved: (value) => personalQAPlaceholder.phoneNumber = value,
         ),
 
         // NID:
@@ -54,7 +54,7 @@ class PersonalInformation extends StatelessWidget {
             fillColor: Colors.grey[200],
           ),
           keyboardType: TextInputType.number,
-          onSaved: (value) => nid = value,
+          onSaved: (value) => personalQAPlaceholder.nid = value,
         ),
 
         // Gender:
@@ -70,22 +70,24 @@ class PersonalInformation extends StatelessWidget {
           ),
           options: [
             FormBuilderFieldOption(
-              value: 'পুরুষ',
+              value: 'Male',
               child: Text('পুরুষ'),
             ),
             FormBuilderFieldOption(
-              value: 'মহিলা',
+              value: 'Female',
               child: Text('মহিলা'),
             ),
             FormBuilderFieldOption(
-              value: 'অন্যান্য',
+              value: 'Others',
               child: Text('অন্যান্য'),
             )
           ],
           validators: [
             FormBuilderValidators.required(),
           ],
-          onSaved: (value) => gender = value,
+          onSaved: (value) {
+            personalQAPlaceholder.gender = value;
+          },
         ),
 
         // Age
@@ -100,8 +102,21 @@ class PersonalInformation extends StatelessWidget {
             FormBuilderValidators.required(),
             FormBuilderValidators.numeric(),
           ],
-          onSaved: (value) => age = value,
+          onSaved: (value) => personalQAPlaceholder.age = value,
           keyboardType: TextInputType.number,
+        ),
+
+        FormBuilderTextField(
+          attribute: "text",
+          decoration: InputDecoration(
+            labelText: "বাড়ির নম্বর/ঠিকানা",
+            filled: true,
+            fillColor: Colors.grey[200],
+          ),
+          validators: [
+            FormBuilderValidators.required(),
+          ],
+          onSaved: (value) => personalQAPlaceholder.address = value,
         ),
       ],
     );

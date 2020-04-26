@@ -48,6 +48,7 @@ import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager;
 import com.mapbox.mapboxsdk.style.layers.FillLayer;
 import com.mapbox.mapboxsdk.style.layers.Property;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
+import com.mapbox.turf.TurfConversion;
 import com.mapbox.turf.TurfMeta;
 import com.mapbox.turf.TurfTransformation;
 import com.tne.selfreportingapp.databinding.ActivityMapBinding;
@@ -90,9 +91,39 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
     private Symbol testSymSS;
     private CircleManager circleManager;
 
+    private static final String mapMetaKey = "map_meta";
+    private static final String mapUrlKey = "mapBoxUrl";
+    private static final String mapCircleRadiusKey = "circleRadius";
+    private static final String mapCircleRadiusScalingKey = "circleRadiusScaling";
+    private static final String mapCircleStrokeKey = "strokedCircleLayout";
+
+    private static final boolean IS_STROKED_CIRCLE = true;
+    private static final float FIXED_RADIUS = 18000;
+    private static final float FIXED_RADIUS_SCALE = 1.5f;
+
+    private boolean isStrokedCircle = IS_STROKED_CIRCLE;
+
+    private String mapBoxUrl;
+    private float radius=FIXED_RADIUS;
+    private float radiusScaling=FIXED_RADIUS_SCALE;
+
     private RequestQueue requestQueue;
 
     private ArrayList<LatLngQR> centers = new ArrayList<>();
+
+    StringRequest mapRequest;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        requestQueue.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        requestQueue.stop();
+    }
 
     @SuppressLint("LogNotTimber")
     @Override
@@ -112,10 +143,19 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
         requestQueue = Volley.newRequestQueue(this);
 
         String mapUrl = "https://zerothindex.org/mapdata";
-        requestQueue.add(new StringRequest(Request.Method.GET, mapUrl, response -> {
+        requestQueue.add(mapRequest = new StringRequest(Request.Method.GET, mapUrl, response -> {
             Log.i(TAG, "onResponse: " + response);
             try {
                 JSONObject jsonObject = new JSONObject(response);
+
+                if (jsonObject.has(mapMetaKey)) {
+                    JSONObject mapMeta = jsonObject.getJSONObject(mapMetaKey);
+                    if (mapMeta.has(mapUrlKey)) mapBoxUrl=mapMeta.getString(mapUrlKey);
+                    if (mapMeta.has(mapCircleRadiusKey)) radius= (float) mapMeta.getDouble(mapCircleRadiusKey);
+                    if (mapMeta.has(mapCircleRadiusScalingKey)) radiusScaling= (float) mapMeta.getDouble(mapCircleRadiusScalingKey);
+                    if (mapMeta.has(mapCircleStrokeKey)) isStrokedCircle=mapMeta.getBoolean(mapCircleStrokeKey);
+                }
+
                 JSONArray latLngArray = jsonObject.getJSONArray("data");
                 for (int i = 0; i < latLngArray.length(); i++) {
                     centers.add(new LatLngQR(
@@ -130,7 +170,8 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
                 e.printStackTrace();
             }
         }, error -> {
-
+            Toast.makeText(MapActivity.this, "Possible Connection Issue, Retrying...", Toast.LENGTH_SHORT).show();
+            requestQueue.add(mapRequest);
         }));
 
 
@@ -142,7 +183,7 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
             Location lastKnownLocation = map.getLocationComponent().getLastKnownLocation();
 
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                    new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude()), 13.5), new MapboxMap.CancelableCallback() {
+                    new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude()), 6), new MapboxMap.CancelableCallback() {
                 @Override
                 public void onCancel() {
 
@@ -159,7 +200,7 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
     private void showStats(LatLngQR lnQR) {
         activityMapBinding.statusLayout.setVisibility(View.VISIBLE);
         activityMapBinding.regionT.setText(lnQR.name);
-        activityMapBinding.qText.setText(String.valueOf( lnQR.quarantine));
+        activityMapBinding.qText.setText(String.valueOf(lnQR.quarantine));
         activityMapBinding.rText.setText(String.valueOf(lnQR.release));
         activityMapBinding.statusProgress.setProgress(lnQR.quarantine * 100 / (lnQR.quarantine + lnQR.release));
 
@@ -177,7 +218,7 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
 
         mapView.getMapAsync(mapboxMap -> {
             map = mapboxMap;
-            map.setStyle(new Style.Builder().fromUri(/*"mapbox://styles/mapbox/cjf4m44iw0uza2spb3q0a7s41"*/ /*"mapbox://styles/mapbox/light-v10"*/ /*"mapbox://styles/mapbox/navigation-preview-day-v4"*/ "mapbox://styles/mapbox/streets-v11")
+            map.setStyle(new Style.Builder().fromUri(/*"mapbox://styles/mapbox/cjf4m44iw0uza2spb3q0a7s41"*/ /*"mapbox://styles/mapbox/light-v10"*/ /*"mapbox://styles/mapbox/navigation-preview-day-v4"*/ mapBoxUrl == null ? "mapbox://styles/mapbox/streets-v11" : mapBoxUrl)
                     , style -> {
 
                         activityMapBinding.locationFab.show();
@@ -290,17 +331,26 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
     private void initPolygonCircleFillLayer() {
         map.getStyle(style -> {
             for (int i = 0; i < centers.size(); i++) {
+                /*LineLayer lineLayerQ = new LineLayer(centers.get(i).name + "q",
+                        centers.get(i).name + "r");
+                lineLayerQ.setProperties(
+                        visibility(Property.VISIBLE),
+                        lineColor(Color.parseColor("#ff0000")),
+                        lineOpacity(.5f),
+                        lineWidth(centers.get(i).quarantine * 100 / (centers.get(i).quarantine + centers.get(i).release))
+                );*/
                 FillLayer fillLayerQ = new FillLayer(centers.get(i).name + "q",
                         centers.get(i).name + "q");
                 fillLayerQ.setProperties(
                         visibility(Property.VISIBLE),
                         fillColor(Color.parseColor("#ff0000")),
                         fillOpacity(.5f));
+
                 FillLayer fillLayerR = new FillLayer(centers.get(i).name + "r",
                         centers.get(i).name + "r");
                 fillLayerR.setProperties(
                         visibility(Property.VISIBLE),
-                        fillColor(Color.parseColor("#00ff00")),
+                        fillColor(Color.parseColor("#00dd00")),
                         fillOpacity(.5f));
                 /*if(i>0) {
                     style.addLayerAbove(fillLayerQ, centers.get(i - 1).name + "r");
@@ -319,7 +369,18 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
         map.getStyle(style -> {
             for (LatLngQR lnQR :
                     centers) {
-                Polygon polygonAreaQ = getTurfPolygon(Point.fromLngLat(lnQR.center.getLongitude(), lnQR.center.getLatitude()), lnQR.quarantine * 3f, 380, UNIT_METERS);
+                /*Polygon polygonAreaQ = getTurfPolygon(Point.fromLngLat(lnQR.center.getLongitude(), lnQR.center.getLatitude()), lnQR.quarantine * 3f, 400, UNIT_METERS);
+                GeoJsonSource polygonCircleSourceQ = style.getSourceAs(lnQR.name + "q");
+                if (polygonCircleSourceQ != null) {
+                    polygonCircleSourceQ.setGeoJson(Polygon.fromOuterInner(
+                            LineString.fromLngLats(TurfMeta.coordAll(polygonAreaQ, false))));
+                } else {
+                    polygonCircleSourceQ = new GeoJsonSource(lnQR.name + "q", Polygon.fromOuterInner(
+                            LineString.fromLngLats(TurfMeta.coordAll(polygonAreaQ, false))));
+                    style.addSource(polygonCircleSourceQ);
+                }*/
+
+                Polygon polygonAreaQ = getTurfPolygon(Point.fromLngLat(lnQR.center.getLongitude(), lnQR.center.getLatitude()), isStrokedCircle ? ((lnQR.quarantine + lnQR.release) * radiusScaling) : radius*radiusScaling, 400, UNIT_METERS);
                 GeoJsonSource polygonCircleSourceQ = style.getSourceAs(lnQR.name + "q");
                 if (polygonCircleSourceQ != null) {
                     polygonCircleSourceQ.setGeoJson(Polygon.fromOuterInner(
@@ -330,7 +391,8 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
                     style.addSource(polygonCircleSourceQ);
                 }
 
-                Polygon polygonAreaR = getTurfPolygon(Point.fromLngLat(lnQR.center.getLongitude(), lnQR.center.getLatitude()), lnQR.release * 3f, 380, UNIT_METERS);
+
+                Polygon polygonAreaR = getTurfPolygon(Point.fromLngLat(isStrokedCircle ? lnQR.center.getLongitude() : (lnQR.center.getLongitude() + TurfConversion.lengthToDegrees(radius * radiusScaling * 2, UNIT_METERS)), lnQR.center.getLatitude()), isStrokedCircle ? lnQR.release * radiusScaling : radius*radiusScaling, 400, UNIT_METERS);
                 GeoJsonSource polygonCircleSourceR = style.getSourceAs(lnQR.name + "r");
                 if (polygonCircleSourceR != null) {
                     polygonCircleSourceR.setGeoJson(Polygon.fromOuterInner(
@@ -357,6 +419,10 @@ public class MapActivity extends Activity implements OnMapReadyCallback, MapboxM
                 centers) {
             List<Feature> featureList;
             if ((featureList = map.queryRenderedFeatures(rectF, lnQR.name + "q")).size() > 0) {
+                Log.i(TAG, "onMapClick: " + featureList.get(0).toJson());
+//                Toast.makeText(MapActivity.this, "Clicked " + lnQR.name, Toast.LENGTH_LONG).show();
+                showStats(lnQR);
+            } else if ((featureList = map.queryRenderedFeatures(rectF, lnQR.name + "r")).size() > 0) {
                 Log.i(TAG, "onMapClick: " + featureList.get(0).toJson());
 //                Toast.makeText(MapActivity.this, "Clicked " + lnQR.name, Toast.LENGTH_LONG).show();
                 showStats(lnQR);
